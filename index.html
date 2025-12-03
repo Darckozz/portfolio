@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noé Spéciel | Portfolio Designer UX/UI</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuration de la typographie Inter et de la palette de couleurs -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7; /* Gris très clair */
+        }
+        /* Style d'accentuation original */
+        .accent-bg {
+            background-color: #4f46e5; /* Indigo 600 */
+        }
+        .accent-text {
+            color: #4f46e5;
+        }
+        .nav-link:hover {
+            color: #4f46e5;
+            transform: translateY(-2px);
+            transition: all 0.2s ease-in-out;
+        }
+        .project-card {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-900">
+
+    <!-- En-tête (Header) et Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold accent-text tracking-tight">Noé Spéciel<span class="text-gray-900 font-light text-base ml-2">UX/UI Designer</span></h1>
+            
+            <!-- Liens de navigation -->
+            <nav class="space-x-8 font-medium">
+                <a href="#" class="nav-link text-gray-600" data-page="work">Work</a>
+                <a href="#" class="nav-link text-gray-600" data-page="about">About</a>
+                <a href="#" class="nav-link text-gray-600" data-page="contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenu Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+
+        <!-- Conteneur Asymétrique et Original -->
+        <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-r-4 border-indigo-600/50">
+
+            <!-- PAGE 1 : WORK (Projets UX/UI) -->
+            <section id="page-work" data-page-content="work" class="page-content">
+                <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Mes Projets & Études de Cas</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
+                    
+                    <!-- Projet 1 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                        <div class="h-48 bg-indigo-200 flex items-center justify-center p-4">
+                            <!-- Placeholder pour le Mockup 1 -->
+                            <img src="https://placehold.co/600x400/818cf8/ffffff?text=App+Mobile+Rachat" alt="Mockup du projet d'application mobile de rachat d'objets." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/818cf8/ffffff?text=App+Mobile+Rachat';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 accent-text">ReCycleApp (Mobile)</h3>
+                            <p class="text-sm text-gray-600">Conception d'une application mobile pour simplifier le rachat et la revente d'articles de seconde main, axée sur la confiance utilisateur et la fluidité des transactions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Projet 2 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                        <div class="h-48 bg-teal-200 flex items-center justify-center p-4">
+                            <!-- Placeholder pour le Mockup 2 -->
+                            <img src="https://placehold.co/600x400/2dd4bf/ffffff?text=Dashboard+Finances" alt="Mockup du projet de tableau de bord pour la gestion financière." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/2dd4bf/ffffff?text=Dashboard+Finances';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 accent-text">FinanceFlow (SaaS/Desktop)</h3>
+                            <p class="text-sm text-gray-600">Refonte UX d'un tableau de bord financier complexe. Simplification des visualisations de données et mise en place d'un Design System complet pour la cohérence UI.</p>
+                        </div>
+                    </div>
+
+                    <!-- Projet 3 (Asymétrie : prend plus de place sur mobile et desktop) -->
+                    <div class="project-card md:col-span-2 lg:col-span-1 bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                        <div class="h-48 bg-pink-200 flex items-center justify-center p-4">
+                            <!-- Placeholder pour le Mockup 3 -->
+                            <img src="https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art" alt="Mockup du projet de site e-commerce d'artisanat." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 accent-text">Artisanat Local (E-commerce)</h3>
+                            <p class="text-sm text-gray-600">Création complète de l'expérience utilisateur et de l'interface d'un site e-commerce pour des artisans locaux. Optimisation du tunnel d'achat et tests utilisateurs approfondis.</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <p class="mt-12 text-center text-gray-500 italic text-sm">Cliquez sur un projet pour voir l'étude de cas complète (dans un contexte réel, chaque carte mènerait à une page détaillée).</p>
+            </section>
+
+            <!-- PAGE 2 : ABOUT (À Propos de Noé) -->
+            <section id="page-about" data-page-content="about" class="page-content hidden">
+                <div class="grid lg:grid-cols-3 gap-12 items-start">
+                    
+                    <!-- Colonne 1 : Photo & Vision -->
+                    <div class="lg:col-span-1">
+                        <!-- Photo/Avatar Stylisé -->
+                        <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full accent-bg flex items-center justify-center shadow-2xl mb-8 border-4 border-white">
+                            <span class="text-7xl text-white font-black">N<span class="text-indigo-900">S</span></span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
+                        <p class="text-gray-700 leading-relaxed italic border-l-4 border-indigo-300 pl-4">
+                            "Le bon design ne se voit pas, il se ressent. Ma mission est de transformer des problèmes complexes en expériences utilisateurs évidentes, joyeuses et efficaces."
+                        </p>
+                    </div>
+
+                    <!-- Colonne 2 : Parcours et Compétences -->
+                    <div class="lg:col-span-2">
+                        <h2 class="text-5xl font-extrabold mb-6 tracking-tighter">Salut, je suis Noé.</h2>
+                        
+                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                            Designer UX/UI passionné avec X années d'expérience, j'excelle à la jonction entre l'empathie utilisateur et la faisabilité technique. Mon approche est toujours itérative et centrée sur l'utilisateur final. Je m'engage à créer des interfaces non seulement belles, mais qui génèrent de la valeur réelle pour les entreprises et leurs clients.
+                        </p>
+
+                        <h3 class="text-2xl font-bold accent-text mb-4 mt-6">Compétences Clés</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">UX Research (Entretiens, Sondages)</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">UI Design (Figma, Sketch)</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Prototypage & Tests Utilisateurs</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Wireframing (Basse et Haute Fidélité)</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Design System & Accessibilité</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Analyse de Données & Métriques UX</span>
+                        </div>
+                        
+                        <!-- Lien CV -->
+                        <a href="lien_vers_mon_cv.pdf" target="_blank" class="mt-10 inline-block px-8 py-3 text-lg font-semibold text-white accent-bg rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                            Télécharger mon CV (PDF)
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PAGE 3 : CONTACT (Formulaire et Infos) -->
+            <section id="page-contact" data-page-content="contact" class="page-content hidden">
+                <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Intéressé(e) ? Discutons !</h2>
+                
+                <div class="grid lg:grid-cols-2 gap-12">
+                    
+                    <!-- Formulaire de contact -->
+                    <div class="lg:col-span-1">
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Nom / Société</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Votre Message (Décrivez votre projet)</label>
+                                <textarea id="message" name="message" rows="5" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full px-8 py-3 text-lg font-semibold text-white accent-bg rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.01]">
+                                    Envoyer le Message
+                                </button>
+                            </div>
+                            <div id="form-message" class="text-center text-sm font-medium hidden"></div>
+                        </form>
+                    </div>
+                    
+                    <!-- Coordonnées et Liens -->
+                    <div class="lg:col-span-1 bg-indigo-50 p-8 rounded-xl shadow-inner">
+                        <h3 class="text-2xl font-bold accent-text mb-4">Mes Coordonnées</h3>
+                        
+                        <div class="space-y-4 text-lg">
+                            <p class="flex items-center">
+                                <span class="mr-3 text-indigo-600">✉️</span>
+                                <a href="mailto:noe.speciel@hotmail.fr" class="hover:underline">noe.speciel@hotmail.fr</a>
+                            </p>
+                            <p class="flex items-center">
+                                <span class="mr-3 text-indigo-600">📞</span>
+                                (Disponible sur demande)
+                            </p>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold accent-text mb-4 mt-8">Réseaux Sociaux</h3>
+                        <div class="flex space-x-6">
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/noespeciel" target="_blank" class="text-gray-700 hover:text-indigo-600 transition duration-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/noespeciel" target="_blank" class="text-gray-700 hover:text-indigo-600 transition duration-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.5c-.773 0-.5.178-.5.835v1.665h2l-.353 2h-1.647v6h-3v-6h-2v-2h2v-2.107c0-2.09 1.09-3.342 3.23-3.342l1.77.014v2z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500 text-sm">
+        &copy; 2025 Noé Spéciel | Designer UX/UI. Tous droits réservés.
+    </footer>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageContents = document.querySelectorAll('.page-content');
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        // Fonction pour gérer la navigation
+        function showPage(pageId) {
+            // Masquer toutes les pages
+            pageContents.forEach(content => {
+                content.classList.add('hidden');
+                // Ajout d'une animation de sortie/entrée simple
+                content.style.opacity = '0';
+            });
+
+            // Afficher la page demandée
+            const currentPage = document.querySelector(`[data-page-content="${pageId}"]`);
+            if (currentPage) {
+                currentPage.classList.remove('hidden');
+                setTimeout(() => {
+                    currentPage.style.opacity = '1';
+                    currentPage.style.transition = 'opacity 0.5s ease-in-out';
+                }, 10); // Petit délai pour que l'animation fonctionne
+            }
+
+            // Mettre à jour le style du lien actif (optionnel, mais bon pour l'UX)
+            navLinks.forEach(link => {
+                link.classList.remove('accent-text', 'font-bold');
+                link.classList.add('text-gray-600');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('accent-text', 'font-bold');
+                    link.classList.remove('text-gray-600');
+                }
+            });
+
+            // Mettre à jour l'URL sans recharger la page
+            history.pushState({ page: pageId }, '', `#${pageId}`);
+        }
+
+        // Événement pour les liens de navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+
+        // Gestion de la navigation initiale ou par hash
+        function handleInitialLoad() {
+            const hash = window.location.hash.substring(1);
+            const initialPage = hash || 'work'; // Par défaut sur la page 'work'
+            showPage(initialPage);
+        }
+
+        // Soumission du formulaire de contact (Simulation)
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formMessage.textContent = 'Envoi en cours...';
+            formMessage.classList.remove('hidden', 'text-red-500', 'text-green-600');
+            formMessage.classList.add('text-indigo-600', 'animate-pulse');
+
+            // Simulation d'un appel API/Envoi (3 secondes)
+            setTimeout(() => {
+                const name = document.getElementById('name').value;
+                
+                // Ici, vous intégreriez la véritable logique d'envoi d'email.
+                // Le formulaire ne s'enverra pas réellement sans un backend (comme Firebase Functions, Netlify Forms, ou un service dédié).
+                
+                formMessage.classList.remove('text-indigo-600', 'animate-pulse');
+                formMessage.classList.add('text-green-600');
+                formMessage.textContent = `Merci ${name.split(' ')[0]} ! Votre message a été reçu. Noé vous répondra à l'adresse noe.speciel@hotmail.fr très bientôt.`;
+                
+                // Réinitialiser le formulaire
+                contactForm.reset();
+                formMessage.classList.remove('hidden');
+                
+            }, 3000);
+        });
+
+        // Lancement au chargement de la page
+        document.addEventListener('DOMContentLoaded', handleInitialLoad);
+    </script>
+</body>
+</html>
