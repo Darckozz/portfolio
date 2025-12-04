@@ -274,31 +274,6 @@
             showPage(initialPage);
         }
 
-        // Soumission du formulaire de contact (Simulation)
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            formMessage.textContent = 'Envoi en cours...';
-            formMessage.classList.remove('hidden', 'text-red-500', 'text-green-600');
-            formMessage.classList.add('text-indigo-600', 'animate-pulse');
-
-            // Simulation d'un appel API/Envoi (3 secondes)
-            setTimeout(() => {
-                const name = document.getElementById('name').value;
-                
-                // Ici, vous intégreriez la véritable logique d'envoi d'email.
-                // Le formulaire ne s'enverra pas réellement sans un backend (comme Firebase Functions, Netlify Forms, ou un service dédié).
-                
-                formMessage.classList.remove('text-indigo-600', 'animate-pulse');
-                formMessage.classList.add('text-green-600');
-                formMessage.textContent = `Merci ${name.split(' ')[0]} ! Votre message a été reçu. Noé vous répondra très bientôt.`;
-                
-                // Réinitialiser le formulaire
-                contactForm.reset();
-                formMessage.classList.remove('hidden');
-                
-            }, 3000);
-        });
-
         // Lancement au chargement de la page
         document.addEventListener('DOMContentLoaded', handleInitialLoad);
     </script>
