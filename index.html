@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Noé Spéciel</title>
-    <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
@@ -67,8 +66,8 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .skill-tag:hover {
-            background-color: #fee2e2; 
-            color: #7f1d1d; 
+            background-color: var(--color-bordeaux-light); 
+            color: var(--color-bordeaux-base); 
             border-color: #fca5a5; 
             box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
             transform: translateY(-1px);
@@ -114,25 +113,56 @@
             box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
         }
 
+        /* NOUVEAU STYLE pour la transition de page */
+        .page-content {
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; /* Ajout d'une transition pour l'opacité et le transform */
+            opacity: 0; /* Démarre caché */
+            transform: translateY(10px); /* Ajout d'un léger mouvement pour l'effet */
+            position: absolute; /* Permet aux pages de se superposer pour le fondu-enchaîné */
+            width: calc(100% - 2 * 1.5rem); /* Ajuster la largeur pour le padding md:p-12 (équivalent à 1.5rem ou 6rem en réalité selon le p) */
+            top: 0;
+            left: 0;
+        }
+        @media (min-width: 768px) {
+            .page-content {
+                /* Calculez la largeur en fonction du padding du conteneur parent (md:p-12 = 3rem) */
+                width: calc(100% - 2 * 3rem); 
+            }
+        }
+        @media (min-width: 1024px) {
+            .page-content {
+                /* Calculez la largeur en fonction du padding du conteneur parent (lg:p-16 = 4rem) */
+                width: calc(100% - 2 * 4rem); 
+            }
+        }
+
+        /* La page qui doit être affichée (opacité et position normale) */
+        .page-content.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            position: relative; /* Reprend son flux normal une fois visible */
+        }
+
+        /* Masquer les pages qui ne sont PAS la page actuelle */
+        .page-content:not(.is-visible) {
+            pointer-events: none; /* Rendre inactif au clic */
+            /* L'opacité à 0 et le transform sont déjà définis par .page-content */
+        }
+        
     </style>
     <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 <body class="min-h-screen text-gray-900">
 
-    <!-- En-tête (Header) et Navigation -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center sm:items-baseline">
             
-            <!-- TITRE/LIEN RETOUR AU PROJET -->
             <h1 id="home-link" class="text-2xl font-extrabold accent-text tracking-tight cursor-pointer flex items-baseline mb-2 sm:mb-0">
                 Noé Spéciel
                 <span class="text-gray-500 font-normal text-sm ml-2 hidden sm:inline">Étudiant en UX/UI Design</span>
             </h1>
             
-            <!-- Liens de navigation -->
             <nav class="space-x-1 sm:space-x-2 font-medium flex">
-                <!-- Les classes initiales sont text-gray-600 et le padding est appliqué dynamiquement -->
-                <!-- J'ai appliqué la classe 'is-active' à 'Projets' au départ -->
                 <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="work">Projets</a>
                 <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="about">À propos</a>
                 <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="contact">Contact</a>
@@ -140,22 +170,17 @@
         </div>
     </header>
 
-    <!-- Contenu Principal -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
 
-        <!-- Conteneur principal -->
-        <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-r-4 border-red-800/50">
+        <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-r-4 border-red-800/50" style="position: relative;">
 
-            <!-- PAGE 1 : WORK (Projets UX/UI) -->
-            <section id="page-work" data-page-content="work" class="page-content">
+            <section id="page-work" data-page-content="work" class="page-content hidden">
                 <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Mes Projets & Études de Cas</h2>
                 
                 <div class="grid md:grid-cols-3 gap-10 lg:gap-14">
                     
-                    <!-- Projet 1 : TàD IDFM (Desktop) -->
                     <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full" data-project-id="1" data-project-title="TàD IDFM (Desktop)">
                         <div class="h-48 bg-red-200 flex items-center justify-center p-4">
-                            <!-- Image de projet -->
                             <img src="https://placehold.co/600x400/fecaca/ffffff?text=App+Mobile+Rachat" alt="Mockup du projet d'application mobile de rachat d'objets." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fecaca/ffffff?text=App+Mobile+Rachat';">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
@@ -167,10 +192,8 @@
                         </div>
                     </div>
 
-                    <!-- Projet 2 : Le Médoc à la Carte (Desktop/Mobile) -->
                     <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full" data-project-id="2" data-project-title="Le Médoc à la Carte (Desktop/Mobile)">
                         <div class="h-48 bg-amber-200 flex items-center justify-center p-4">
-                            <!-- Image de projet -->
                             <img src="https://placehold.co/600x400/fcd34d/ffffff?text=Dashboard+Finances" alt="Mockup du projet de tableau de bord pour la gestion financière." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fcd34d/ffffff?text=Dashboard+Finances';">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
@@ -182,10 +205,8 @@
                         </div>
                     </div>
 
-                    <!-- Projet 3 : Allociné (Desktop) -->
                     <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full" data-project-id="3" data-project-title="Allociné (Desktop)">
                         <div class="h-48 bg-pink-200 flex items-center justify-center p-4">
-                            <!-- Image de projet -->
                             <img src="https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art" alt="Mockup du projet de site e-commerce d'artisanat." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art';">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
@@ -202,50 +223,39 @@
                 <p class="mt-12 text-center text-gray-500 italic text-sm">Cliquez sur un projet pour voir l'étude de cas complète.</p>
             </section>
 
-            <!-- PAGE DÉTAIL PROJET (Affichée après le clic) -->
             <section id="page-project-detail" data-page-content="project-detail" class="page-content hidden">
-                <!-- Bouton de retour à la liste des projets -->
                 <button id="back-to-work" class="flex items-center text-gray-600 hover:accent-text font-medium mb-8 transition duration-200">
-                    <!-- Icone de flèche Lucide-react: arrow-left -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
                     Retour à tous les projets
                 </button>
 
-                <!-- Titre du projet dynamique -->
                 <h2 id="project-detail-title" class="text-5xl font-extrabold mb-10 tracking-tighter accent-text">Titre du Projet</h2>
 
-                <!-- Métadonnées (Rôle, Durée, Outils...) -->
                 <div class="mb-12 p-6 bg-gray-50 rounded-xl border border-gray-200 grid md:grid-cols-4 gap-6 text-sm">
-                    <!-- Rôle -->
                     <div>
                         <p class="font-bold text-gray-800 mb-1">Rôle</p>
                         <p class="text-gray-600">UX / UI Designer</p>
                     </div>
-                    <!-- Durée -->
                     <div>
                         <p class="font-bold text-gray-800 mb-1">Durée</p>
                         <p class="text-gray-600">6 semaines</p>
                     </div>
-                    <!-- Outils -->
                     <div>
                         <p class="font-bold text-gray-800 mb-1">Outils</p>
                         <p class="text-gray-600">Figma, InVision, Photoshop, Miro</p>
                     </div>
-                    <!-- Skills -->
                     <div class="md:col-span-1">
                         <p class="font-bold text-gray-800 mb-1">Compétences clés</p>
                         <p class="text-gray-600">UX Research, Prototypage, UI Design, Tests Utilisateurs</p>
                     </div>
                 </div>
                 
-                <!-- NOUVEL AJOUT : Lien vers le prototype Figma / Source discret -->
                 <div class="flex justify-end mb-4">
                     <a id="figma-link-button-discreet" href="https://www.figma.com/file/project-1-prototype" target="_blank" class="tooltip">
                         <button
                             class="p-2 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition duration-150 ease-in-out"
                             aria-label="Voir le prototype de conception Figma"
                         >
-                            <!-- Icône Figma (SVG) -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-figma"><path d="M21.57 12H12"/><path d="M22 2v6h-6"/><path d="M12 22V12"/><path d="M8 8V2h4"/><path d="M8 12H2"/><path d="M2 18h6"/><path d="M12 18V22"/><path d="M12 18H22"/></svg>
                         </button>
                         <span class="tooltiptext">Voir le Prototype Figma</span>
@@ -253,18 +263,14 @@
                 </div>
 
 
-                <!-- Processus UX (Grid 2 par ligne) -->
                 <h3 class="text-3xl font-bold accent-text mb-6">Processus de l'Étude de Cas</h3>
                 
-                <!-- GRILLE 2X2 -->
                 <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
 
-                    <!-- Étape 1 : Phase d'Analyse (Ajout de data-process-id) -->
                     <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white" 
-                         data-process-id="analyse" data-process-title="Phase d'Analyse">
+                        data-process-id="analyse" data-process-title="Phase d'Analyse">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <!-- Icone Lucide-react: search -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Phase d'Analyse</h4>
@@ -272,12 +278,10 @@
                         <p class="text-gray-700 flex-grow">Le processus a débuté par une enquête contextuelle et une analyse approfondie pour comprendre les besoins des utilisateurs.</p>
                     </div>
 
-                    <!-- Étape 2 : Entretiens (Ajout de data-process-id) -->
                     <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                         data-process-id="entretiens" data-process-title="Entretiens & Observations">
+                        data-process-id="entretiens" data-process-title="Entretiens & Observations">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <!-- Icone Lucide-react: users -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Entretiens</h4>
@@ -285,12 +289,10 @@
                         <p class="text-gray-700 flex-grow">Des entretiens individuels ont été menés en mode "guerilla" avec les conducteurs et instructeurs, tandis que des observations (Shadowing) ont permis de tracer le parcours utilisateur.</p>
                     </div>
 
-                    <!-- Étape 3 : Personas (Ajout de data-process-id) -->
                     <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                         data-process-id="personas" data-process-title="Personas & Scénarios">
+                        data-process-id="personas" data-process-title="Personas & Scénarios">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <!-- Icone Lucide-react: user-check -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Personas & Scénarios</h4>
@@ -298,12 +300,10 @@
                         <p class="text-gray-700 flex-grow">Une attention particulière a été portée à la création de scénarios afin de mieux comprendre les besoins spécifiques de chaque persona.</p>
                     </div>
                     
-                    <!-- Étape 4 : Fonctionnalités (Ajout de data-process-id) -->
                     <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                         data-process-id="fonctionnalites" data-process-title="Définition des Fonctionnalités">
+                        data-process-id="fonctionnalites" data-process-title="Définition des Fonctionnalités">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <!-- Icone Lucide-react: settings -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.78 1.35a2 2 0 0 0 .73 2.73l.08.15a2 2 0 0 1 0 2l-.08.15a2 2 0 0 0-.73 2.73l.78 1.35a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73v.18a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.78-1.35a2 2 0 0 0-.73-2.73l-.08-.15a2 2 0 0 1 0-2l.08-.15a2 2 0 0 0-.73-2.73l-.78-1.35a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Définition des Fonctionnalités</h4>
@@ -311,12 +311,10 @@
                         <p class="text-gray-700 flex-grow">Les utilisateurs ont exprimé le besoin de mettre en favoris des documents et de surligner des paragraphes. La complexité résidait dans la conservation de ces données lors des mises à jour.</p>
                     </div>
 
-                    <!-- Étape 5 : Idéation (Ajout de data-process-id) -->
                     <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                         data-process-id="ideation" data-process-title="Idéation & Brainstorming">
+                        data-process-id="ideation" data-process-title="Idéation & Brainstorming">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <!-- Icone Lucide-react: lightbulb-off -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb"><path d="M15 14c.2-.8.5-1.5 1-2s1.5-1.7 2-3c2.2-2.8 4-7.5 4-10 0-.5-.5-1-1-1h-18c-.5 0-1 .5-1 1 0 2.5 1.8 7.2 4 10 .5 1.3 1 2 2 3s1.3 1.2 2 2"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Idéation</h4>
@@ -324,12 +322,10 @@
                         <p class="text-gray-700 flex-grow">L'équipe a analysé les données pour générer des idées (Brainstorming, Sketches). Ces idées ont servi de base au design.</p>
                     </div>
 
-                    <!-- Étape 6 : Conception (Wireframes) (Ajout de data-process-id) -->
                     <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                         data-process-id="conception" data-process-title="Conception (Basse Fidélité)">
+                        data-process-id="conception" data-process-title="Conception (Basse Fidélité)">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <!-- Icone Lucide-react: sketch-ellipsis -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-template"><path d="M21 3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><path d="M10 20V5"/><path d="M21 15H3"/></svg>
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Conception (Prototypage Basse Fidélité)</h4>
@@ -337,12 +333,10 @@
                         <p class="text-gray-700 flex-grow">Les prototypes ont été réalisés à l'aide d'Invision, permettant une visualisation interactive des idées conceptuelles avant de passer à l'étape visuelle.</p>
                     </div>
                     
-                    <!-- Étape 7 : Maquettage (Haute Fidélité) (Ajout de data-process-id) -->
                     <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                         data-process-id="maquettage" data-process-title="Maquettage (Haute Fidélité)">
+                        data-process-id="maquettage" data-process-title="Maquettage (Haute Fidélité)">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <!-- Icone Lucide-react: feather -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paintbrush"><path d="M18.37 2.63a2.12 2.12 0 0 1 3 3L11 16.5l-4 4 1.34-5.36z"/><path d="M2 21l3-3"/><path d="M7 16l3-3"/></svg>
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Maquettage (Haute Fidélité)</h4>
@@ -350,12 +344,10 @@
                         <p class="text-gray-700 flex-grow">Les maquettes finales ont été créées sur Photoshop, assurant une représentation visuelle précise de l'interface utilisateur.</p>
                     </div>
 
-                    <!-- Étape 8 : Tests (Ajout de data-process-id) -->
                     <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                         data-process-id="tests" data-process-title="Tests Utilisateurs">
+                        data-process-id="tests" data-process-title="Tests Utilisateurs">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <!-- Icone Lucide-react: check-square -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-square"><polyline points="9 11 11 13 15 9"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Tests Utilisateurs</h4>
@@ -363,11 +355,9 @@
                         <p class="text-gray-700 flex-grow">Des tests ont été effectués grâce des prototypes pour observer les comportements des utilisateurs. Les résultats ont montré que les utilisateurs ont pu mener à bien les tâches importantes.</p>
                     </div>
                     
-                    <!-- Étape 9 : Apprentissage et Conclusion (Occupe toute la largeur) -->
                     <div class="md:col-span-2 p-6 rounded-xl border border-red-200 shadow-lg bg-red-50 flex flex-col h-full">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0 bg-red-200">
-                                <!-- Icone Lucide-react: award -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 22 12 18 17 22 15.79 13.88"/></svg>
                             </span>
                             <h4 class="text-xl font-bold text-red-800">Apprentissage et Itération</h4>
@@ -378,47 +368,35 @@
                 </div>
                 
             </section>
-            
-            <!-- NOUVELLE PAGE DE DÉTAIL DU PROCESSUS -->
+
             <section id="page-process-detail" data-page-content="process-detail" class="page-content hidden">
-                <!-- Bouton de retour à l'étude de cas principale -->
                 <button id="back-to-project-detail" class="flex items-center text-gray-600 hover:accent-text font-medium mb-8 transition duration-200">
-                    <!-- Icone de flèche Lucide-react: arrow-left -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
                     Retour à l'étude de cas (<span id="current-project-name"></span>)
                 </button>
 
-                <!-- Titre de l'étape de processus dynamique -->
                 <h2 id="process-detail-title" class="text-5xl font-extrabold mb-10 tracking-tighter accent-text">Titre de l'étape</h2>
                 
-                <!-- Contenu détaillé dynamique -->
                 <div id="process-content" class="prose max-w-none text-gray-700">
-                    <!-- Le contenu sera injecté ici par JavaScript -->
                     <p>Le contenu détaillé de cette étape de processus apparaîtra ici.</p>
                 </div>
             </section>
 
-            <!-- PAGE 2 : ABOUT (À Propos de Noé) -->
             <section id="page-about" data-page-content="about" class="page-content hidden">
                 <div class="grid lg:grid-cols-3 gap-12 items-start">
                     
-                    <!-- Colonne 1 : Photo & Vision -->
                     <div class="lg:col-span-1">
-                        <!-- Photo/Avatar Stylisé : Ajout de accent-bg pour le fond si l'image ne charge pas -->
                         <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl mb-8 border-4 border-white accent-bg">
-                            <!-- Utilise l'image 'Photo de Profil.png'. Si elle échoue, l'élément img est caché. -->
                             <img src="Photo de Profil.png" alt="Photo de profil de Noé Spéciel" class="w-full h-full object-cover" 
                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/7f1d1d/ffffff?text=Photo+Noe'; this.classList.add('hidden');">
                         </div>
     
                         <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
-                        <!-- Bordure Bordeaux pour la citation -->
                         <p class="text-gray-700 leading-relaxed italic border-l-4 border-red-300 pl-4">
                             "Pour moi, le design se ressent avant tout. Mon objectif est de transformer des problèmes complexes en expériences claires, intuitives et agréables, où chaque interaction compte."
                         </p>
                     </div>
 
-                    <!-- Colonne 2 : Parcours et Compétences -->
                     <div class="lg:col-span-2">
                         <h2 class="text-5xl font-extrabold mb-6 tracking-tighter">Hello, moi c’est Noé.</h2>
                         
@@ -428,7 +406,6 @@
 
                         <h3 class="text-2xl font-bold accent-text mb-4 mt-6">Compétences</h3>
                         <div class="flex flex-wrap gap-3" id="current-skills">
-                            <!-- Compétences avec le style gris subtil -->
                             <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UX Research (Entretiens, Sondages)</span>
                             <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UI Design (Figma)</span>
                             <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Prototypage & Tests Utilisateurs</span>
@@ -441,20 +418,17 @@
                 </div>
             </section>
 
-            <!-- PAGE 3 : CONTACT (Infos et CV) -->
             <section id="page-contact" data-page-content="contact" class="page-content hidden">
                 <div class="flex flex-col items-center text-center">
                     
                     <h2 class="text-5xl font-extrabold mb-4 tracking-tighter">Intéressé(e) ? Discutons !</h2>
 
-                    <!-- Section Coordonnées (Fond Red 50) -->
                     <div class="w-full max-w-lg bg-red-50 p-8 rounded-xl shadow-lg mb-12">
                         <h3 class="text-2xl font-bold accent-text mb-6">Mes Coordonnées</h3>
                         
                         <div class="space-y-6 text-lg">
                             <div class="flex items-center justify-center">
                                 <span class="contact-icon mr-4 text-red-800">
-                                    <!-- Icone mail Lucide-react: mail -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                                 </span>
                                 <a href="mailto:noe.speciel@hotmail.fr" class="text-gray-800 hover:text-red-800 font-medium transition duration-200">noe.speciel@hotmail.fr</a>
@@ -462,7 +436,6 @@
 
                             <div class="flex items-center justify-center">
                                 <span class="contact-icon mr-4 text-red-800">
-                                    <!-- Icone phone Lucide-react: phone -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                                 </span>
                                 <span class="text-gray-800 font-medium">07.83.08.88.23</span>
@@ -470,32 +443,25 @@
                         </div>
                     </div>
 
-                    <!-- Lien CV (Bouton Bordeaux) -->
                     <h3 class="text-2xl font-bold accent-text mb-6">Mon CV</h3>
-                    <!-- MODIFIÉ : Utilisation de data URI pour forcer le téléchargement d'un fichier vide mais au format PDF -->
                     <a href="CV-Noé Spéciel.pdf" download target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105 ring-4 ring-indigo-300 ring-offset-2 button-fix">
-                        <!-- Icone de téléchargement Lucide-react: download -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                         Télécharger mon CV (PDF)
                     </a>
-                    <!-- Réseaux Sociaux (Hover Bordeaux) -->
                     <h3 class="text-2xl font-bold accent-text mb-4 mt-12">Réseaux Sociaux</h3>
                     <div class="flex space-x-6">
-                        <!-- LinkedIn -->
                         <a href="https://www.linkedin.com/in/no%C3%A9-sp%C3%A9ciel-b16411159/" target="_blank" class="text-gray-700 hover:text-red-800 transition duration-200 contact-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
                         </a>
-                        <!-- Ajoutez d'autres icônes sociales si nécessaire -->
-                    </div>
+                        </div>
                 </div>
             </section>
 
         </div>
     </main>
 
-    <!-- Pied de page -->
     <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-600 text-sm">
         &copy; 2025 Noé Spéciel | Designer UX/UI. Tous droits réservés.
     </footer>
@@ -756,72 +722,98 @@
         };
 
 
-        // Fonction pour afficher une page et gérer l'historique/les liens actifs
+        // Fonction pour afficher une page avec un fondu-enchaîné
         function showPage(pageId, projectId = null, projectTitle = null, processId = null, processTitle = null) {
-            // Masquer toutes les pages
-            pageContents.forEach(content => {
-                content.classList.add('hidden');
-                content.style.opacity = '0';
-            });
+            const activePage = document.querySelector('.page-content.is-visible');
+            const nextPage = document.querySelector(`[data-page-content="${pageId}"]`);
 
-            // Afficher la page demandée
-            const currentPage = document.querySelector(`[data-page-content="${pageId}"]`);
-            if (currentPage) {
-                currentPage.classList.remove('hidden');
-                setTimeout(() => {
-                    currentPage.style.opacity = '1';
-                }, 10); 
-            }
-
-            // GESTION DES LIENS DE NAVIGATION ACTIFS
-            let activeNavPage = pageId;
-            if (pageId === 'project-detail' || pageId === 'process-detail') {
-                activeNavPage = 'work'; 
-            }
-            
-            navLinks.forEach(link => {
-                link.classList.remove('is-active', 'text-gray-900', 'text-gray-600');
-                
-                if (link.dataset.page === activeNavPage) {
-                    link.classList.add('is-active', 'text-gray-900');
-                } else {
-                    link.classList.add('text-gray-600');
-                }
-            });
-            
-            // GESTION DU DÉTAIL DE PROJET
-            if (pageId === 'project-detail' && projectTitle && projectId) {
-                currentProject.id = projectId;
-                currentProject.title = projectTitle;
-                projectDetailTitle.textContent = projectTitle;
-                if (figmaLinkButton) {
-                    figmaLinkButton.href = `https://www.figma.com/file/project-${projectId}-prototype`;
-                }
-            }
-            
-            // GESTION DU DÉTAIL DE PROCESSUS
-            if (pageId === 'process-detail' && processId && processTitle) {
-                // S'assurer que le projet parent est défini
-                if (!currentProject.title || !currentProject.id) {
-                    // Si on arrive sur cette page sans projet parent, on revient à la liste des projets
-                    showPage('work');
+            if (!nextPage || nextPage === activePage) {
+                // La page demandée n'existe pas ou est déjà affichée
+                // Gérer le cas de project-detail qui est la même page mais avec un contenu différent si on clique plusieurs fois sur le même projet
+                if (pageId === 'project-detail' && currentProject.id === projectId) {
+                    // Si on est déjà sur le projet, on ne fait rien, mais on s'assure que le contenu est bien affiché
                     return; 
                 }
-
-                // RÉCUPÈRE LE CONTENU SPÉCIFIQUE AU PROJET ET À L'ÉTAPE
-                const projectContent = projectProcessDetails[currentProject.id];
-                const content = (projectContent && projectContent[processId]) ? projectContent[processId] : 
-                                "<p>Contenu détaillé non disponible pour cette étape ou ce projet.</p>";
-
-
-                processDetailTitle.textContent = processTitle;
-                currentProjectNameSpan.textContent = currentProject.title;
-                processContentDiv.innerHTML = content;
+                if (!nextPage) return;
             }
 
+            const startTransition = () => {
+                // GESTION DU DÉTAIL DE PROCESSUS (Doit se faire AVANT d'afficher la page)
+                if (pageId === 'process-detail' && processId && processTitle) {
+                    if (!currentProject.title || !currentProject.id) {
+                        showPage('work'); // Revenir à la liste des projets si le parent n'est pas défini
+                        return;
+                    }
 
-            // Déplacer la vue en haut de la page
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+                    const projectContent = projectProcessDetails[currentProject.id];
+                    const content = (projectContent && projectContent[processId]) ? projectContent[processId] :
+                        "<p>Contenu détaillé non disponible pour cette étape ou ce projet.</p>";
+
+                    processDetailTitle.textContent = processTitle;
+                    currentProjectNameSpan.textContent = currentProject.title;
+                    processContentDiv.innerHTML = content;
+                }
+                
+                // GESTION DU DÉTAIL DE PROJET
+                if (pageId === 'project-detail' && projectTitle && projectId) {
+                    currentProject.id = projectId;
+                    currentProject.title = projectTitle;
+                    projectDetailTitle.textContent = projectTitle;
+                    if (figmaLinkButton) {
+                        // Mise à jour du lien Figma
+                        figmaLinkButton.href = `https://www.figma.com/file/project-${projectId}-prototype`;
+                    }
+                }
+
+                // 1. Rendre la nouvelle page visible pour le fondu-in (la classe hidden n'est là que pour la superposition initiale)
+                nextPage.classList.remove('hidden'); 
+                
+                // 2. Déclencher le fondu-in (opacité: 0 -> 1)
+                setTimeout(() => {
+                    nextPage.classList.add('is-visible'); 
+                }, 10); // Petit délai pour garantir l'application du 'hidden' avant le fondu-in
+
+
+                // 3. Masquer l'ancienne page après que la nouvelle est affichée
+                if (activePage && activePage !== nextPage) {
+                    // Retirer 'is-visible' de l'ancienne page (déclenche le fade-out)
+                    activePage.classList.remove('is-visible');
+
+                    // 4. Remettre 'hidden' après la durée de la transition CSS (400ms)
+                    setTimeout(() => {
+                        activePage.classList.add('hidden');
+                    }, 400); 
+                }
+                
+                // GESTION DES LIENS DE NAVIGATION ACTIFS
+                let activeNavPage = pageId;
+                if (pageId === 'project-detail' || pageId === 'process-detail') {
+                    activeNavPage = 'work';
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('is-active', 'text-gray-900', 'text-gray-600');
+                    link.classList.add('text-gray-600');
+
+                    if (link.dataset.page === activeNavPage) {
+                        link.classList.add('is-active', 'text-gray-900');
+                    }
+                });
+
+                // Déplacer la vue en haut de la page
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            // Si une page est déjà active, on la masque d'abord (fade-out)
+            if (activePage && activePage !== nextPage) {
+                // Déclencher le fade-out de la page actuelle
+                activePage.classList.remove('is-visible');
+                // Attendre la fin du fade-out (400ms en CSS)
+                setTimeout(startTransition, 400);
+            } else {
+                // Sinon (premier chargement ou activePage est la même que nextPage), on affiche immédiatement la nouvelle page
+                startTransition();
+            }
         }
 
         // --- Event Listeners ---
