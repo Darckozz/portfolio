@@ -4,246 +4,276 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Noé Spéciel</title>
-    <!-- Tailwind CSS -->
+    <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Police et styles personnalisés -->
+    <!-- Configuration de la typographie Inter et de la palette de couleurs -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
+            background-color: #f7f7f7; /* Gris très clair */
         }
-        .accent-bg { background-color: #4f46e5; }
-        .accent-text { color: #4f46e5; }
+        /* Style d'accentuation original */
+        .accent-bg {
+            background-color: #4f46e5; /* Indigo 600 */
+        }
+        .accent-text {
+            color: #4f46e5;
+        }
         .nav-link:hover {
             color: #4f46e5;
             transform: translateY(-2px);
             transition: all 0.2s ease-in-out;
         }
         .project-card {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
     </style>
     <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 <body class="min-h-screen text-gray-900">
 
-<!-- Header -->
-<header class="sticky top-0 z-50 bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-extrabold accent-text tracking-tight">
-            Noé Spéciel
-            <span class="text-gray-900 font-light text-base ml-2">Etudiant en UX/UI Design</span>
-        </h1>
-        <nav class="space-x-8 font-medium">
-            <a href="#" class="nav-link text-gray-600" data-page="work">Projets</a>
-            <a href="#" class="nav-link text-gray-600" data-page="about">À propos</a>
-            <a href="#" class="nav-link text-gray-600" data-page="contact">Contact</a>
-        </nav>
-    </div>
-</header>
+    <!-- En-tête (Header) et Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold accent-text tracking-tight">Noé Spéciel<span class="text-gray-900 font-light text-base ml-2">Etudiant en UX/UI Design</span></h1>
+            
+            <!-- Liens de navigation -->
+            <nav class="space-x-8 font-medium">
+                <a href="#" class="nav-link text-gray-600" data-page="work">Projets</a>
+                <a href="#" class="nav-link text-gray-600" data-page="about">À propos</a>
+                <a href="#" class="nav-link text-gray-600" data-page="contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-<!-- Main content -->
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-    <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-r-4 border-indigo-600/50">
+    <!-- Contenu Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
 
-        <!-- PAGE 1 : WORK -->
-        <section id="page-work" data-page-content="work" class="page-content">
-            <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Mes Projets & Études de Cas</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
+        <!-- Conteneur Asymétrique et Original -->
+        <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-r-4 border-indigo-600/50">
 
-                <!-- Projet 1 -->
-                <div class="project-card bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
-                    <div class="h-48 bg-indigo-200 flex items-center justify-center p-4">
-                        <img src="https://placehold.co/600x400/818cf8/ffffff?text=App+Mobile+Rachat" alt="Mockup du projet d'application mobile de rachat d'objets." class="w-full h-full object-cover rounded-lg shadow-lg">
+            <!-- PAGE 1 : WORK (Projets UX/UI) -->
+            <section id="page-work" data-page-content="work" class="page-content">
+                <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Mes Projets & Études de Cas</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
+                    
+                    <!-- Projet 1 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                        <div class="h-48 bg-indigo-200 flex items-center justify-center p-4">
+                            <!-- Placeholder pour le Mockup 1 -->
+                            <img src="https://placehold.co/600x400/818cf8/ffffff?text=App+Mobile+Rachat" alt="Mockup du projet d'application mobile de rachat d'objets." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/818cf8/ffffff?text=App+Mobile+Rachat';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 accent-text">TàD IDFM (Desktop)</h3>
+                            <p class="text-sm text-gray-600"> Étude de cas sur le service de Transport à la Demande d’Île-de-France Mobilités visant à identifier les points de friction dans le parcours utilisateur et proposer des solutions pour améliorer l’expérience de réservation</p>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 accent-text">TàD IDFM (Desktop)</h3>
-                        <p class="text-sm text-gray-600">Étude de cas sur le service de Transport à la Demande d’Île-de-France Mobilités.</p>
+
+                    <!-- Projet 2 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                        <div class="h-48 bg-teal-200 flex items-center justify-center p-4">
+                            <!-- Placeholder pour le Mockup 2 -->
+                            <img src="https://placehold.co/600x400/2dd4bf/ffffff?text=Dashboard+Finances" alt="Mockup du projet de tableau de bord pour la gestion financière." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/2dd4bf/ffffff?text=Dashboard+Finances';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 accent-text">Le Médoc à la Carte (Desktop/Mobile)</h3>
+                            <p class="text-sm text-gray-600"> Création d’un site web responsive dédié aux visites touristiques et œnologiques dans le Médoc, offrant une expérience utilisateur claire et immersive.</p>
+                        </div>
+                    </div>
+
+                    <!-- Projet 3 (Asymétrie : prend plus de place sur mobile et desktop) -->
+                    <div class="project-card md:col-span-2 lg:col-span-1 bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                        <div class="h-48 bg-pink-200 flex items-center justify-center p-4">
+                            <!-- Placeholder pour le Mockup 3 -->
+                            <img src="https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art" alt="Mockup du projet de site e-commerce d'artisanat." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 accent-text">Allociné (Desktop)</h3>
+                            <p class="text-sm text-gray-600">Étude de cas visant à l'optimisation de l’expérience de recommandations de films sur Allociné pour une navigation plus fluide et des suggestions personnalisées. </p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <p class="mt-12 text-center text-gray-500 italic text-sm">Cliquez sur un projet pour voir l'étude de cas complète.</p>
+            </section>
+
+            <!-- PAGE 2 : ABOUT (À Propos de Noé) -->
+            <section id="page-about" data-page-content="about" class="page-content hidden">
+                <div class="grid lg:grid-cols-3 gap-12 items-start">
+                    
+                    <!-- Colonne 1 : Photo & Vision -->
+                    <div class="lg:col-span-1">
+                        <!-- Photo/Avatar Stylisé -->
+                        <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl mb-8 border-4 border-white">
+                            <img src="Photo de Profil.png" alt="Photo de Noé" class="w-full h-full object-cover">
+                        </div>
+     
+                        <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
+                        <p class="text-gray-700 leading-relaxed italic border-l-4 border-indigo-300 pl-4">
+                            "Pour moi, le design se ressent avant tout. Mon objectif est de transformer des problèmes complexes en expériences claires, intuitives et agréables, où chaque interaction compte."
+                        </p>
+                    </div>
+
+                    <!-- Colonne 2 : Parcours et Compétences -->
+                    <div class="lg:col-span-2">
+                        <h2 class="text-5xl font-extrabold mb-6 tracking-tighter">Hello, moi c’est Noé.</h2>
+                        
+                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                            Etudiant en design UX/UI, je combine la recherche utilisateur, le design d’interaction et l’esthétique visuelle pour créer des interfaces efficaces et mémorables. Passionné par les nouvelles technologies, j’aime relever des défis concrets à travers des projets pratiques. Mon portfolio met en avant ma capacité à allier créativité, stratégie et ergonomie pour un impact réel.
+                        </p>
+
+                        <h3 class="text-2xl font-bold accent-text mb-4 mt-6">Compétences Clés</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">UX Research (Entretiens, Sondages)</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">UI Design (Figma)</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Prototypage & Tests Utilisateurs</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Wireframing (Basse et Haute Fidélité)</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Design System & Accessibilité</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">HTML, CSS & JavaScript</span>
+                        </div>
+                        
+                        <!-- Lien CV -->
+                        <a href="CV-Noé Spéciel .pdf" download target="_blank" class="mt-10 inline-block px-8 py-3 text-lg font-semibold text-white accent-bg rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                            Télécharger mon CV (PDF)
+                        </a>
                     </div>
                 </div>
+            </section>
 
-                <!-- Projet 2 -->
-                <div class="project-card bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
-                    <div class="h-48 bg-teal-200 flex items-center justify-center p-4">
-                        <img src="https://placehold.co/600x400/2dd4bf/ffffff?text=Dashboard+Finances" alt="Mockup du projet de tableau de bord pour la gestion financière." class="w-full h-full object-cover rounded-lg shadow-lg">
+            <!-- PAGE 3 : CONTACT (Formulaire et Infos) -->
+            <section id="page-contact" data-page-content="contact" class="page-content hidden">
+                <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Intéressé(e) ? Discutons !</h2>
+                
+                <div class="grid lg:grid-cols-2 gap-12">
+                    
+                    <!-- Formulaire de contact -->
+                    <div class="lg:col-span-1">
+                        <form id="contact-form" action="https://formsubmit.co/noe.speciel@hotmail.fr" method="POST" class="space-y-6">
+                            <!-- Configuration FormSubmit -->
+                            <input type="hidden" name="_subject" value="Nouveau message depuis ton Portfolio !">
+                            <input type="hidden" name="_captcha" value="false">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Nom / Société</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm">
+                            </div>
+                        
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm">
+                            </div>
+                        
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Votre Message (Décrivez votre projet)</label>
+                                <textarea id="message" name="message" rows="5" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm"></textarea>
+                            </div>
+                        
+                            <button type="submit" class="w-full px-8 py-3 text-lg font-semibold text-white accent-bg rounded-lg shadow-md hover:bg-indigo-700">
+                                Envoyer le message
+                            </button>
+                        </form>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 accent-text">Le Médoc à la Carte</h3>
-                        <p class="text-sm text-gray-600">Création d’un site web responsive dédié aux visites touristiques et œnologiques dans le Médoc.</p>
+                    
+                    <!-- Coordonnées et Liens -->
+                    <div class="lg:col-span-1 bg-indigo-50 p-8 rounded-xl shadow-inner">
+                        <h3 class="text-2xl font-bold accent-text mb-4">Mes Coordonnées</h3>
+                        
+                        <div class="space-y-4 text-lg">
+                            <p class="flex items-center">
+                                <span class="mr-3 text-indigo-600">✉️</span>
+                                <a href="mailto:noe.speciel@hotmail.fr" class="hover:underline">noe.speciel@hotmail.fr</a>
+                            </p>
+                            <p class="flex items-center">
+                                <span class="mr-3 text-indigo-600">📞</span>
+                                07.83.08.88.23
+                            </p>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold accent-text mb-4 mt-8">Réseaux Sociaux</h3>
+                        <div class="flex space-x-6">
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/no%C3%A9-sp%C3%A9ciel-b16411159/" target="_blank" class="text-gray-700 hover:text-indigo-600 transition duration-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Projet 3 -->
-                <div class="project-card md:col-span-2 lg:col-span-1 bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
-                    <div class="h-48 bg-pink-200 flex items-center justify-center p-4">
-                        <img src="https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art" alt="Mockup du projet de site e-commerce d'artisanat." class="w-full h-full object-cover rounded-lg shadow-lg">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 accent-text">Allociné (Desktop)</h3>
-                        <p class="text-sm text-gray-600">Étude de cas visant à l'optimisation de l’expérience de recommandations de films sur Allociné.</p>
-                    </div>
-                </div>
+        </div>
+    </main>
 
-            </div>
-            <p class="mt-12 text-center text-gray-500 italic text-sm">Cliquez sur un projet pour voir l'étude de cas complète.</p>
-        </section>
+    <!-- Pied de page -->
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500 text-sm">
+        &copy; 2025 Noé Spéciel | Designer UX/UI. Tous droits réservés.
+    </footer>
 
-        <!-- PAGE 2 : ABOUT -->
-        <section id="page-about" data-page-content="about" class="page-content hidden">
-            <div class="grid lg:grid-cols-3 gap-12 items-start">
-                <div class="lg:col-span-1">
-                    <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl mb-8 border-4 border-white">
-                        <img src="Photo de Profil.png" alt="Photo de Noé" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
-                    <p class="text-gray-700 leading-relaxed italic border-l-4 border-indigo-300 pl-4">
-                        "Pour moi, le design se ressent avant tout..."
-                    </p>
-                </div>
-                <div class="lg:col-span-2">
-                    <h2 class="text-5xl font-extrabold mb-6 tracking-tighter">Hello, moi c’est Noé.</h2>
-                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
-                        Etudiant en design UX/UI, je combine la recherche utilisateur, le design d’interaction et l’esthétique visuelle pour créer des interfaces efficaces et mémorables.
-                    </p>
-                    <h3 class="text-2xl font-bold accent-text mb-4 mt-6">Compétences Clés</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">UX Research</span>
-                        <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">UI Design</span>
-                        <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Prototypage</span>
-                        <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Wireframing</span>
-                        <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Design System</span>
-                        <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">HTML/CSS/JS</span>
-                    </div>
-                    <a href="CV-Noé Spéciel .pdf" download target="_blank" class="mt-10 inline-block px-8 py-3 text-lg font-semibold text-white accent-bg rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
-                        Télécharger mon CV (PDF)
-                    </a>
-                </div>
-            </div>
-        </section>
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageContents = document.querySelectorAll('.page-content');
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
 
-        <!-- PAGE 3 : CONTACT -->
-        <section id="page-contact" data-page-content="contact" class="page-content hidden">
-            <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Intéressé(e) ? Discutons !</h2>
-            <div class="grid lg:grid-cols-2 gap-12">
+        // Fonction pour gérer la navigation
+        function showPage(pageId) {
+            // Masquer toutes les pages
+            pageContents.forEach(content => {
+                content.classList.add('hidden');
+                // Ajout d'une animation de sortie/entrée simple
+                content.style.opacity = '0';
+            });
 
-                <!-- Formulaire -->
-                <div class="lg:col-span-1">
-                    <form id="contact-form" action="https://formsubmit.co/noe.speciel@hotmail.fr" method="POST" class="space-y-6">
-                        <input type="hidden" name="_subject" value="Nouveau message depuis ton Portfolio !">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="#contact">
+            // Afficher la page demandée
+            const currentPage = document.querySelector(`[data-page-content="${pageId}"]`);
+            if (currentPage) {
+                currentPage.classList.remove('hidden');
+                setTimeout(() => {
+                    currentPage.style.opacity = '1';
+                    currentPage.style.transition = 'opacity 0.5s ease-in-out';
+                }, 10); // Petit délai pour que l'animation fonctionne
+            }
 
-                        <label for="name" class="block text-sm font-medium text-gray-700">Nom / Société</label>
-                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm">
+            // Mettre à jour le style du lien actif (optionnel, mais bon pour l'UX)
+            navLinks.forEach(link => {
+                link.classList.remove('accent-text', 'font-bold');
+                link.classList.add('text-gray-600');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('accent-text', 'font-bold');
+                    link.classList.remove('text-gray-600');
+                }
+            });
 
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm">
-
-                        <label for="message" class="block text-sm font-medium text-gray-700">Votre Message</label>
-                        <textarea id="message" name="message" rows="5" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm"></textarea>
-
-                        <button type="submit" class="w-full px-8 py-3 text-lg font-semibold text-white accent-bg rounded-lg shadow-md hover:bg-indigo-700">
-                            Envoyer le message
-                        </button>
-
-                        <div id="form-message" class="mt-4 text-sm"></div>
-                    </form>
-                </div>
-
-                <!-- Coordonnées -->
-                <div class="lg:col-span-1 bg-indigo-50 p-8 rounded-xl shadow-inner">
-                    <h3 class="text-2xl font-bold accent-text mb-4">Mes Coordonnées</h3>
-                    <p class="flex items-center"><span class="mr-3 text-indigo-600">✉️</span><a href="mailto:noe.speciel@hotmail.fr" class="hover:underline">noe.speciel@hotmail.fr</a></p>
-                    <p class="flex items-center"><span class="mr-3 text-indigo-600">📞</span>07.83.08.88.23</p>
-                </div>
-
-            </div>
-        </section>
-
-    </div>
-</main>
-
-<!-- Footer -->
-<footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500 text-sm">
-    &copy; 2025 Noé Spéciel | Designer UX/UI. Tous droits réservés.
-</footer>
-
-<!-- Scripts -->
-<script>
-const navLinks = document.querySelectorAll('.nav-link');
-const pageContents = document.querySelectorAll('.page-content');
-const contactForm = document.getElementById('contact-form');
-const formMessage = document.getElementById('form-message');
-
-// Navigation
-function showPage(pageId) {
-    pageContents.forEach(content => {
-        content.classList.add('hidden');
-        content.style.opacity = '0';
-    });
-    const currentPage = document.querySelector(`[data-page-content="${pageId}"]`);
-    if (currentPage) {
-        currentPage.classList.remove('hidden');
-        setTimeout(() => {
-            currentPage.style.opacity = '1';
-            currentPage.style.transition = 'opacity 0.5s ease-in-out';
-        }, 10);
-    }
-    navLinks.forEach(link => {
-        link.classList.remove('accent-text', 'font-bold');
-        link.classList.add('text-gray-600');
-        if (link.getAttribute('data-page') === pageId) {
-            link.classList.add('accent-text', 'font-bold');
-            link.classList.remove('text-gray-600');
+            // Mettre à jour l'URL sans recharger la page
+            history.pushState({ page: pageId }, '', `#${pageId}`);
         }
-    });
-    history.pushState({ page: pageId }, '', `#${pageId}`);
-}
 
-navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-        e.preventDefault();
-        showPage(link.getAttribute('data-page'));
-    });
-});
-
-function handleInitialLoad() {
-    const hash = window.location.hash.substring(1);
-    const initialPage = hash || 'work';
-    showPage(initialPage);
-}
-
-document.addEventListener('DOMContentLoaded', handleInitialLoad);
-
-// Formulaire contact avec fetch
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    formMessage.textContent = "Envoi en cours...";
-    formMessage.className = "text-indigo-600 animate-pulse";
-
-    const formData = new FormData(contactForm);
-    try {
-        await fetch(contactForm.action, {
-            method: "POST",
-            body: formData,
-            headers: { "Accept": "application/json" }
+        // Événement pour les liens de navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+            });
         });
-        formMessage.textContent = "Merci ! Votre message a été envoyé.";
-        formMessage.className = "text-green-600";
-        contactForm.reset();
-    } catch {
-        formMessage.textContent = "Erreur lors de l'envoi. Réessayez plus tard.";
-        formMessage.className = "text-red-500";
-    }
-});
-</script>
 
+        // Gestion de la navigation initiale ou par hash
+        function handleInitialLoad() {
+            const hash = window.location.hash.substring(1);
+            const initialPage = hash || 'work'; // Par défaut sur la page 'work'
+            showPage(initialPage);
+        }
+
+        // Lancement au chargement de la page
+        document.addEventListener('DOMContentLoaded', handleInitialLoad);
+    </script>
 </body>
 </html>
-
