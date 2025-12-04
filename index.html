@@ -374,7 +374,7 @@
                         </div>
     
                         <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
-                        <p class="text-gray-700 leading-relaxed italic border-l-4 border-gray-300 pl-4">
+                        <p class="text-gray-700 leading-relaxed italic border-l-4 border-red-300 pl-4">
                             "Pour moi, le design se ressent avant tout. Mon objectif est de transformer des problèmes complexes en expériences claires, intuitives et agréables, où chaque interaction compte."
                         </p>
                     </div>
@@ -426,14 +426,14 @@
                     </div>
 
                     <h3 class="text-2xl font-bold accent-text mb-6">Mon CV</h3>
-                    <a href="CV-Noé Spéciel.pdf" download target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-red-900 transition duration-300 transform hover:scale-105">
+                    <a href="CV-Noé Spéciel.pdf" download target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-red-900 transition duration-300 transform hover:scale-105 whitespace-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                         Télécharger mon CV (PDF)
                     </a>
                     <h3 class="text-2xl font-bold accent-text mb-4 mt-12">Réseaux Sociaux</h3>
                     <div class="flex space-x-6">
                         <a href="https://www.linkedin.com/in/no%C3%A9-sp%C3%A9ciel-b16411159/" target="_blank" class="text-gray-700 hover:text-red-800 transition duration-200 contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
                         </a>
@@ -726,7 +726,7 @@
             // Vérification de non-rechargement si la page demandée est déjà affichée
             if (activePage === nextPage) {
                 // Sauf si on est dans un sous-niveau (process-detail ou project-detail) et qu'on revient au niveau parent
-                if (pageId === 'work' && currentProject.id !== null) {
+                if (pageId === 'work' && (currentProject.id !== null || activePage.id === 'page-project-detail' || activePage.id === 'page-process-detail')) {
                     currentProject.id = null;
                     currentProject.title = null;
                 } else {
@@ -756,7 +756,7 @@
             // --- ÉTAPE 1: PRÉPARATION & DÉBUT DE TRANSITION DE SORTIE (Fade-out) ---
 
             // Si une page est déjà active, on initie la sortie
-            if (activePage) {
+            if (activePage && activePage !== nextPage) {
                 const initialHeight = activePage.offsetHeight;
                 // Fixer la hauteur de départ pour une transition en douceur
                 contentContainer.style.minHeight = `${initialHeight}px`; 
@@ -779,7 +779,7 @@
             // --- ÉTAPE 2: GESTION DU CONTENU ET DÉBUT DE TRANSITION D'ENTRÉE (Fade-in) ---
             function startTransition() {
                 // Masquer l'ancienne page complètement après le fade-out
-                if (activePage) {
+                if (activePage && activePage !== nextPage) {
                     activePage.classList.add('hidden');
                 }
 
