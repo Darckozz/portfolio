@@ -407,7 +407,7 @@
                         <!-- Photo/Avatar Stylisé : Ajout de accent-bg pour le fond si l'image ne charge pas -->
                         <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl mb-8 border-4 border-white accent-bg">
                             <!-- Utilise l'image 'Photo de Profil.png'. Si elle échoue, l'élément img est caché. -->
-                            <img src="https://placehold.co/600x400/7f1d1d/ffffff?text=Photo+Noe" alt="Photo de profil de Noé Spéciel" class="w-full h-full object-cover" 
+                            <img src="Photo de Profil.png" alt="Photo de profil de Noé Spéciel" class="w-full h-full object-cover" 
                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/7f1d1d/ffffff?text=Photo+Noe'; this.classList.add('hidden');">
                         </div>
     
@@ -473,12 +473,11 @@
                     <!-- Lien CV (Bouton Bordeaux) -->
                     <h3 class="text-2xl font-bold accent-text mb-6">Mon CV</h3>
                     <!-- MODIFIÉ : Utilisation de data URI pour forcer le téléchargement d'un fichier vide mais au format PDF -->
-                    <a href="data:application/pdf;base64, " download="CV-Noé Speciel.pdf" target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-red-900 transition duration-300 transform hover:scale-105 ring-4 ring-red-300 ring-offset-2 button-fix">
+                    <a href="CV-Noé Spéciel.pdf" download target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105 ring-4 ring-indigo-300 ring-offset-2 button-fix">
                         <!-- Icone de téléchargement Lucide-react: download -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                         Télécharger mon CV (PDF)
                     </a>
-
                     <!-- Réseaux Sociaux (Hover Bordeaux) -->
                     <h3 class="text-2xl font-bold accent-text mb-4 mt-12">Réseaux Sociaux</h3>
                     <div class="flex space-x-6">
