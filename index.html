@@ -11,30 +11,33 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7; /* Gris très clair */
+            /* Changement de couleur de fond pour un gris très très clair, moins de blanc agressif */
+            background-color: #ededed; 
         }
-        /* Style d'accentuation original */
+        /* Style d'accentuation : BORDEAUX / ROUGE PROFOND */
         .accent-bg {
-            background-color: #4f46e5; /* Indigo 600 */
+            background-color: #991b1b; /* Red 800 */
         }
         .accent-text {
-            color: #4f46e5;
+            color: #991b1b;
         }
         .nav-link:hover {
-            color: #4f46e5;
+            color: #991b1b;
             transform: translateY(-2px);
             transition: all 0.2s ease-in-out;
         }
+        /* CARTES DE PROJETS - Ombre forte et élévation au survol */
         .project-card {
-            /* Ombre ajustée : de 0.05 à 0.10 pour un meilleur contraste */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10); 
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #fff; 
+            border: none; 
         }
         .project-card:hover {
-            transform: translateY(-8px);
-            /* Ombre ajustée au survol : de 0.1 à 0.15 pour une élévation plus visible */
+            transform: translateY(-8px); /* Plus grande élévation au survol */
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); 
         }
+        
         /* Style pour les icônes de contact */
         .contact-icon {
             display: inline-flex;
@@ -43,15 +46,52 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #eef2ff; /* Indigo 50 */
+            background-color: #fee2e2; /* Red 100 */
             transition: background-color 0.3s;
         }
         .contact-icon:hover {
-            background-color: #c7d2fe; /* Indigo 200 */
+            background-color: #fca5a5; /* Red 300 */
         }
         /* Correction de rendu pour éviter la pixellisation du texte lors de la mise à l'échelle */
         .button-fix:hover {
             will-change: transform;
+        }
+        
+        /* Conteneur principal (La grande case) - Animation de parallaxe conservée */
+        #content-container {
+            transition: transform 0.1s linear;
+            /* Les styles spécifiques sont gérés par les classes Tailwind */
+        }
+        
+        /* Style pour le loader */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #991b1b; /* Accent color */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* NOUVEAU STYLE POUR LES PASTILLES DE COMPÉTENCES (GRIS SUBTIL ET BON CONTRASTE) */
+        .skill-tag {
+            background-color: #f3f4f6; /* Gris très clair (Gray 100) */
+            color: #1f2937; /* Gris foncé (Gray 800) pour une lisibilité maximale */
+            border: 1px solid #e5e7eb; /* Bordure gris encore plus clair (Gray 200) */
+            transition: all 0.2s ease-in-out;
+            cursor: default; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Ombre très légère */
+        }
+        .skill-tag:hover {
+            background-color: #fee2e2; /* Red 100 au survol */
+            color: #7f1d1d; /* Red 900 au survol */
+            border-color: #fca5a5; /* Red 300 au survol */
+            box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
+            transform: translateY(-1px);
         }
     </style>
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -59,12 +99,12 @@
 <body class="min-h-screen text-gray-900">
 
     <!-- En-tête (Header) et Navigation -->
+    <!-- Le header reste blanc pour la clarté -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             
             <!-- TITRE/LIEN RETOUR AU PROJET SANS LOGO -->
             <h1 id="home-link" class="text-2xl font-extrabold accent-text tracking-tight cursor-pointer flex items-baseline">
-                <!-- L'image du logo a été supprimée ici -->
                 Noé Spéciel
                 <span class="text-gray-500 font-normal text-sm ml-2">Étudiant en UX/UI Design</span>
             </h1>
@@ -81,49 +121,97 @@
     <!-- Contenu Principal -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
 
-        <!-- Conteneur Asymétrique et Original -->
-        <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-r-4 border-indigo-600/50">
+        <!-- Conteneur principal avec le retour à la bordure asymétrique d'origine -->
+        <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-r-4 border-red-800/50">
 
             <!-- PAGE 1 : WORK (Projets UX/UI) -->
             <section id="page-work" data-page-content="work" class="page-content">
                 <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Mes Projets & Études de Cas</h2>
                 
-                <!-- Mise à jour : md:grid-cols-3 assure l'alignement côte à côte dès la taille tablette -->
+                <!-- Le conteneur Grid assure que toutes les cartes ont la même hauteur de ligne -->
                 <div class="grid md:grid-cols-3 gap-10 lg:gap-14">
                     
-                    <!-- Projet 1 -->
-                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
-                        <div class="h-48 bg-indigo-200 flex items-center justify-center p-4">
-                            <!-- Placeholder pour le Mockup 1 -->
-                            <img src="https://placehold.co/600x400/818cf8/ffffff?text=App+Mobile+Rachat" alt="Mockup du projet d'application mobile de rachat d'objets." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/818cf8/ffffff?text=App+Mobile+Rachat';">
+                    <!-- Projet 1 : TàD IDFM (Desktop) -->
+                    <!-- Ajout de 'flex flex-col h-full' pour que la carte prenne toute la hauteur de la cellule de la grille -->
+                    <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full">
+                        <div class="h-48 bg-red-200 flex items-center justify-center p-4">
+                            <img src="https://placehold.co/600x400/fecaca/ffffff?text=App+Mobile+Rachat" alt="Mockup du projet d'application mobile de rachat d'objets." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fecaca/ffffff?text=App+Mobile+Rachat';">
                         </div>
-                        <div class="p-6">
+                        <!-- Ajout de 'flex flex-col flex-grow' pour que le contenu s'étende verticalement -->
+                        <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-bold mb-2 accent-text">TàD IDFM (Desktop)</h3>
-                            <p class="text-sm text-gray-600">Étude de cas sur le service de Transport à la Demande d’Île-de-France Mobilités visant à identifier les points de friction dans le parcours utilisateur et proposer des solutions pour améliorer l’expérience de réservation</p>
+                            <!-- 1. CORRECTION ALIGNEMENT : Retrait de la hauteur fixe (h-[120px]) qui était inefficace. -->
+                            <p class="text-sm text-gray-600 mb-4" id="desc-1">
+                                Étude de cas sur le service de Transport à la Demande d’Île-de-France Mobilités visant à identifier les points de friction dans le parcours utilisateur et proposer des solutions pour améliorer l’expérience de réservation.
+                            </p>
+                            <!-- 2. CORRECTION ALIGNEMENT : Ajout d'un élément flex-grow pour pousser le bouton vers le bas et aligner tous les boutons. -->
+                            <div class="flex-grow"></div> 
+                            
+                            <!-- Bouton LLM pour l'analyse -->
+                            <button onclick="analyzeProject('TàD IDFM', document.getElementById('desc-1').textContent, 'analysis-1')" 
+                                class="w-full py-2 px-4 text-sm font-semibold rounded-full bg-red-800 text-white hover:bg-red-900 transition duration-300 flex items-center justify-center">
+                                <span class="flex items-center" id="btn-content-1">
+                                    ✨ Analyse rapide par IA
+                                </span>
+                            </button>
+                            <!-- 3. CORRECTION HAUTEUR ANALYSE : Application de h-28 pour hauteur fixe, permettant l'espace blanc et le défilement. -->
+                            <div id="analysis-1" class="mt-4 p-3 bg-red-50 text-gray-700 text-xs rounded-lg hidden border-l-4 border-red-400 h-28 overflow-y-auto"></div>
                         </div>
                     </div>
 
-                    <!-- Projet 2 -->
-                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
-                        <div class="h-48 bg-teal-200 flex items-center justify-center p-4">
-                            <!-- Placeholder pour le Mockup 2 -->
-                            <img src="https://placehold.co/600x400/2dd4bf/ffffff?text=Dashboard+Finances" alt="Mockup du projet de tableau de bord pour la gestion financière." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/2dd4bf/ffffff?text=Dashboard+Finances';">
+                    <!-- Projet 2 : Le Médoc à la Carte (Desktop/Mobile) -->
+                    <!-- Ajout de 'flex flex-col h-full' -->
+                    <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full">
+                        <div class="h-48 bg-amber-200 flex items-center justify-center p-4">
+                            <img src="https://placehold.co/600x400/fcd34d/ffffff?text=Dashboard+Finances" alt="Mockup du projet de tableau de bord pour la gestion financière." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fcd34d/ffffff?text=Dashboard+Finances';">
                         </div>
-                        <div class="p-6">
+                        <!-- Ajout de 'flex flex-col flex-grow' -->
+                        <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-bold mb-2 accent-text">Le Médoc à la Carte (Desktop/Mobile)</h3>
-                            <p class="text-sm text-gray-600">Création d’un site web responsive dédié aux visites touristiques et œnologiques dans le Médoc, offrant une expérience utilisateur claire et immersive.</p>
+                            <!-- 1. CORRECTION ALIGNEMENT : Retrait de la hauteur fixe (h-[120px]) qui était inefficace. -->
+                            <p class="text-sm text-gray-600 mb-4" id="desc-2">
+                                Création d’un site web responsive dédié aux visites touristiques et œnologiques dans le Médoc, offrant une expérience utilisateur claire et immersive.
+                            </p>
+                            <!-- 2. CORRECTION ALIGNEMENT : Ajout d'un élément flex-grow pour pousser le bouton vers le bas et aligner tous les boutons. -->
+                            <div class="flex-grow"></div> 
+                            
+                            <!-- Bouton LLM pour l'analyse -->
+                            <button onclick="analyzeProject('Le Médoc à la Carte', document.getElementById('desc-2').textContent, 'analysis-2')" 
+                                class="w-full py-2 px-4 text-sm font-semibold rounded-full bg-red-800 text-white hover:bg-red-900 transition duration-300 flex items-center justify-center">
+                                <span class="flex items-center" id="btn-content-2">
+                                    ✨ Analyse rapide par IA
+                                </span>
+                            </button>
+                            <!-- 3. CORRECTION HAUTEUR ANALYSE : Application de h-28 pour hauteur fixe, permettant l'espace blanc et le défilement. -->
+                            <div id="analysis-2" class="mt-4 p-3 bg-red-50 text-gray-700 text-xs rounded-lg hidden border-l-4 border-red-400 h-28 overflow-y-auto"></div>
                         </div>
                     </div>
 
-                    <!-- Projet 3 -->
-                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                    <!-- Projet 3 : Allociné (Desktop) -->
+                    <!-- Ajout de 'flex flex-col h-full' -->
+                    <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full">
                         <div class="h-48 bg-pink-200 flex items-center justify-center p-4">
-                            <!-- Placeholder pour le Mockup 3 -->
                             <img src="https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art" alt="Mockup du projet de site e-commerce d'artisanat." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art';">
                         </div>
-                        <div class="p-6">
+                        <!-- Ajout de 'flex flex-col flex-grow' -->
+                        <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-bold mb-2 accent-text">Allociné (Desktop)</h3>
-                            <p class="text-sm text-gray-600">Étude de cas visant à l'optimisation de l’expérience de recommandations de films sur Allociné pour une navigation plus fluide et des suggestions personnalisées.</p>
+                            <!-- 1. CORRECTION ALIGNEMENT : Retrait de la hauteur fixe (h-[120px]) qui était inefficace. -->
+                            <p class="text-sm text-gray-600 mb-4" id="desc-3">
+                                Étude de cas visant à l'optimisation de l’expérience de recommandations de films sur Allociné pour une navigation plus fluide et des suggestions personnalisées.
+                            </p>
+                            <!-- 2. CORRECTION ALIGNEMENT : Ajout d'un élément flex-grow pour pousser le bouton vers le bas et aligner tous les boutons. -->
+                            <div class="flex-grow"></div> 
+                            
+                            <!-- Bouton LLM pour l'analyse -->
+                            <button onclick="analyzeProject('Allociné', document.getElementById('desc-3').textContent, 'analysis-3')" 
+                                class="w-full py-2 px-4 text-sm font-semibold rounded-full bg-red-800 text-white hover:bg-red-900 transition duration-300 flex items-center justify-center">
+                                <span class="flex items-center" id="btn-content-3">
+                                    ✨ Analyse rapide par IA
+                                </span>
+                            </button>
+                            <!-- 3. CORRECTION HAUTEUR ANALYSE : Application de h-28 pour hauteur fixe, permettant l'espace blanc et le défilement. -->
+                            <div id="analysis-3" class="mt-4 p-3 bg-red-50 text-gray-700 text-xs rounded-lg hidden border-l-4 border-red-400 h-28 overflow-y-auto"></div>
                         </div>
                     </div>
 
@@ -139,13 +227,14 @@
                     <!-- Colonne 1 : Photo & Vision -->
                     <div class="lg:col-span-1">
                         <!-- Photo/Avatar Stylisé -->
-                        <!-- NOTE: L'image 'Photo de Profil.png' est conservée, en supposant qu'elle est localement disponible. -->
                         <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl mb-8 border-4 border-white">
-                            <img src="Photo de Profil.png" alt="Photo de Noé" class="w-full h-full object-cover">
+                            <!-- Placeholder pour l'image locale -->
+                            <img src="https://placehold.co/192x192/991b1b/ffffff?text=No%C3%A9" alt="Photo de Noé" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/192x192/991b1b/ffffff?text=No%C3%A9';">
                         </div>
     
                         <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
-                        <p class="text-gray-700 leading-relaxed italic border-l-4 border-indigo-300 pl-4">
+                        <!-- Bordure Bordeaux pour la citation -->
+                        <p class="text-gray-700 leading-relaxed italic border-l-4 border-red-300 pl-4">
                             "Pour moi, le design se ressent avant tout. Mon objectif est de transformer des problèmes complexes en expériences claires, intuitives et agréables, où chaque interaction compte."
                         </p>
                     </div>
@@ -158,16 +247,17 @@
                             Étudiant en design UX/UI, je combine la recherche utilisateur, le design d’interaction et l’esthétique visuelle pour créer des interfaces efficaces et mémorables. Passionné par les nouvelles technologies, j’aime relever des défis concrets à travers des projets pratiques. Mon portfolio met en avant ma capacité à allier créativité, stratégie et ergonomie pour un impact réel.
                         </p>
 
-                        <!-- Le mot "Clés" a été supprimé lors de la modification précédente -->
                         <h3 class="text-2xl font-bold accent-text mb-4 mt-6">Compétences</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">UX Research (Entretiens, Sondages)</span>
-                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">UI Design (Figma)</span>
-                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Prototypage & Tests Utilisateurs</span>
-                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Wireframing (Basse et Haute Fidélité)</span>
-                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Design System & Accessibilité</span>
-                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">HTML, CSS & JavaScript</span>
+                        <div class="flex flex-wrap gap-3" id="current-skills">
+                            <!-- Compétences existantes. J'utilise la classe 'skill-tag' avec les nouveaux styles gris subtils. -->
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UX Research (Entretiens, Sondages)</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UI Design (Figma)</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Prototypage & Tests Utilisateurs</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Wireframing (Basse et Haute Fidélité)</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Design System & Accessibilité</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>HTML, CSS & JavaScript</span>
                         </div>
+                        
                     </div>
                 </div>
             </section>
@@ -177,23 +267,22 @@
                 <div class="flex flex-col items-center text-center">
                     
                     <h2 class="text-5xl font-extrabold mb-4 tracking-tighter">Intéressé(e) ? Discutons !</h2>
-                    <!-- Le paragraphe de description a été supprimé lors de la modification précédente -->
 
-                    <!-- Section Coordonnées -->
-                    <div class="w-full max-w-lg bg-indigo-50 p-8 rounded-xl shadow-lg mb-12">
+                    <!-- Section Coordonnées (Fond Red 50) -->
+                    <div class="w-full max-w-lg bg-red-50 p-8 rounded-xl shadow-lg mb-12">
                         <h3 class="text-2xl font-bold accent-text mb-6">Mes Coordonnées</h3>
                         
                         <div class="space-y-6 text-lg">
                             <div class="flex items-center justify-center">
-                                <span class="contact-icon mr-4 text-indigo-600">
+                                <span class="contact-icon mr-4 text-red-800">
                                     <!-- Icone mail Lucide-react: mail -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                                 </span>
-                                <a href="mailto:noe.speciel@hotmail.fr" class="text-gray-800 hover:text-indigo-600 font-medium transition duration-200">noe.speciel@hotmail.fr</a>
+                                <a href="mailto:noe.speciel@hotmail.fr" class="text-gray-800 hover:text-red-800 font-medium transition duration-200">noe.speciel@hotmail.fr</a>
                             </div>
 
                             <div class="flex items-center justify-center">
-                                <span class="contact-icon mr-4 text-indigo-600">
+                                <span class="contact-icon mr-4 text-red-800">
                                     <!-- Icone phone Lucide-react: phone -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                                 </span>
@@ -202,20 +291,20 @@
                         </div>
                     </div>
 
-                    <!-- Lien CV (Maintenant sur la page Contact) -->
+                    <!-- Lien CV (Bouton Bordeaux) -->
                     <h3 class="text-2xl font-bold accent-text mb-6">Mon CV</h3>
-                    <!-- Application de la classe button-fix -->
-                    <a href="CV-Noé Spéciel.pdf" download target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105 ring-4 ring-indigo-300 ring-offset-2 button-fix">
+                    <!-- Mise à jour : hover:bg-red-900 et ring-red-300 -->
+                    <a href="CV-Noé Spéciel .pdf" download target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-red-900 transition duration-300 transform hover:scale-105 ring-4 ring-red-300 ring-offset-2 button-fix">
                         <!-- Icone de téléchargement Lucide-react: download -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                         Télécharger mon CV (PDF)
                     </a>
 
-                    <!-- Réseaux Sociaux (Garder l'alignement centré) -->
+                    <!-- Réseaux Sociaux (Hover Bordeaux) -->
                     <h3 class="text-2xl font-bold accent-text mb-4 mt-12">Réseaux Sociaux</h3>
                     <div class="flex space-x-6">
                         <!-- LinkedIn -->
-                        <a href="https://www.linkedin.com/in/no%C3%A9-sp%C3%A9ciel-b16411159/" target="_blank" class="text-gray-700 hover:text-indigo-600 transition duration-200 contact-icon">
+                        <a href="https://www.linkedin.com/in/no%C3%A9-sp%C3%A9ciel-b16411159/" target="_blank" class="text-gray-700 hover:text-red-800 transition duration-200 contact-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
@@ -229,7 +318,7 @@
     </main>
 
     <!-- Pied de page -->
-    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500 text-sm">
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-600 text-sm">
         &copy; 2025 Noé Spéciel | Designer UX/UI. Tous droits réservés.
     </footer>
 
@@ -237,6 +326,98 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const pageContents = document.querySelectorAll('.page-content');
         const homeLink = document.getElementById('home-link');
+        const contentContainer = document.getElementById('content-container'); // Ajout pour la parallaxe
+
+        // Clé API pour Gemini (laissez vide, elle est fournie par l'environnement)
+        const apiKey = "";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        
+        // Stockage des messages d'erreur dans l'interface
+        const errorMessage = "Erreur de l'IA : Impossible de générer la réponse. Veuillez réessayer.";
+
+        /**
+         * Fonction pour effectuer l'appel à l'API Gemini avec gestion des erreurs et de l'attente (backoff).
+         * @param {Object} payload - Le corps de la requête API.
+         * @param {number} maxRetries - Nombre maximum de tentatives.
+         * @param {number} delay - Délai initial avant la première réessai (en ms).
+         * @returns {Promise<Object>} La réponse JSON de l'API.
+         */
+        async function fetchGeminiWithRetries(payload, maxRetries = 3, delay = 1000) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        return await response.json();
+                    } else if (response.status === 429) {
+                        // Too Many Requests - attente exponentielle
+                        if (i < maxRetries - 1) {
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            delay *= 2; // Délai doublé
+                            continue;
+                        }
+                    }
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                } catch (error) {
+                    if (i === maxRetries - 1) {
+                        throw new Error("Échec de l'appel API après plusieurs tentatives.");
+                    }
+                    // Attente avant la prochaine tentative
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2; // Délai doublé
+                }
+            }
+        }
+        
+        /**
+         * Fonction LLM : Analyse de Projet
+         * Génère une analyse UX/UI concise pour un projet donné.
+         */
+        async function analyzeProject(title, description, outputId) {
+            const outputDiv = document.getElementById(outputId);
+            const buttonContent = document.getElementById(`btn-content-${outputId.slice(-1)}`);
+            const button = outputDiv.previousElementSibling;
+
+            // 1. Démarrer le chargement
+            outputDiv.classList.remove('hidden');
+            outputDiv.innerHTML = '<div class="flex items-center justify-center"><div class="loader mr-3"></div> Analyse en cours...</div>';
+            button.disabled = true;
+            buttonContent.innerHTML = '<div class="loader mr-2"></div> Analyse en cours';
+
+            // Mise à jour du prompt pour EXCLURE le décompte des mots.
+            const systemPrompt = "Agis comme un expert UX/UI et un recruteur senior. Lis la description du projet et fournis une analyse très courte (maximum 40 mots, sans mentionner le nombre de mots) qui met en évidence la principale force UX/UI et le rôle de l'étudiant. Rédige en français et en utilisant un ton professionnel.";
+            const userQuery = `Analyse le projet suivant pour un portfolio : Titre: "${title}". Description: "${description.trim()}"`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
+
+            try {
+                const result = await fetchGeminiWithRetries(payload);
+                let text = result?.candidates?.[0]?.content?.parts?.[0]?.text || errorMessage;
+                
+                // Nettoyage de la chaîne de caractères : Suppression des mentions de type (XX mots) ou (XX words)
+                text = text.replace(/\s*\([\d]+\s*(mots|words)\)/gi, '').trim();
+
+                // 2. Afficher le résultat
+                outputDiv.innerHTML = `<strong>Analyse IA :</strong> ${text}`;
+
+            } catch (error) {
+                console.error("Erreur lors de l'analyse du projet:", error);
+                outputDiv.innerHTML = errorMessage;
+            } finally {
+                // 3. Arrêter le chargement
+                button.disabled = false;
+                buttonContent.innerHTML = '✨ Analyse rapide par IA';
+            }
+        }
+        
+        // --- LOGIQUE DE NAVIGATION EXISTANTE ---
 
         // Fonction pour gérer la navigation
         function showPage(pageId) {
@@ -271,6 +452,22 @@
             history.pushState({ page: pageId }, '', `#${pageId}`);
         }
 
+        // Fonction pour l'effet de parallaxe sur le conteneur principal
+        function handleParallax() {
+            // Calcule la position de défilement de la fenêtre
+            const scrollPosition = window.scrollY; 
+            // Définit la force de l'effet de parallaxe (plus ce nombre est grand, moins l'effet est prononcé)
+            const parallaxStrength = 15; 
+            // Calcule le décalage Y. On divise la position de défilement, puis on ajoute un petit décalage pour l'effet.
+            const yOffset = scrollPosition / parallaxStrength;
+
+            // Applique la transformation (on ne veut bouger le bloc qu'en négatif)
+            // On limite le décalage pour qu'il ne descende pas trop loin.
+            if (contentContainer) {
+                contentContainer.style.transform = `translateY(${Math.min(0, -yOffset)}px)`;
+            }
+        }
+
         // Événement pour les liens de navigation
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -291,7 +488,12 @@
             const hash = window.location.hash.substring(1);
             const initialPage = hash || 'work'; // Par défaut sur la page 'work'
             showPage(initialPage);
+            // On initialise l'effet de parallaxe au chargement
+            handleParallax(); 
         }
+
+        // GESTION DE LA PARALLAXE AU SCROLL
+        window.addEventListener('scroll', handleParallax);
 
         // Lancement au chargement de la page
         document.addEventListener('DOMContentLoaded', handleInitialLoad);
