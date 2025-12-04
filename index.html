@@ -113,7 +113,7 @@
             box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
         }
 
-        /* NOUVEAU STYLE pour la transition de page (Simplifié pour la gestion de la hauteur) */
+        /* NOUVEAU STYLE pour la transition de page */
         .page-content {
             transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
             opacity: 0; 
@@ -462,7 +462,7 @@
         const currentProjectNameSpan = document.getElementById('current-project-name');
         const processDetailTitle = document.getElementById('process-detail-title');
         const processContentDiv = document.getElementById('process-content');
-        const contentContainer = document.getElementById('content-container'); // Récupération du conteneur principal
+        const contentContainer = document.getElementById('content-container');
         const TRANSITION_DURATION = 400; // Doit correspondre au CSS (0.4s)
 
         // Contenu DÉTAILLÉ et UNIQUE pour chaque étape de CHAQUE projet
@@ -706,6 +706,7 @@
             
             const activePage = document.querySelector('.page-content.is-visible');
             const nextPage = document.querySelector(`[data-page-content="${pageId}"]`);
+            const TRANSITION_DURATION_MS = TRANSITION_DURATION; 
 
             if (!nextPage) {
                 console.error(`Page ID '${pageId}' non trouvée.`);
@@ -716,29 +717,34 @@
                 if (pageId === 'process-detail' && currentProject.id === projectId) return;
             }
 
-            // Fonction pour gérer la hauteur du conteneur avant la transition
-            const prepareTransition = () => {
+            // --- ÉTAPE 1: PRÉPARATION & DÉBUT DE TRANSITION DE SORTIE (Fade-out) ---
+
+            // Si une page est déjà active, on initie la sortie
+            if (activePage) {
+                const initialHeight = activePage.offsetHeight;
+                // Fixer la hauteur de départ pour une transition en douceur
+                contentContainer.style.minHeight = `${initialHeight}px`; 
+
+                // Déclencher le fade-out de la page actuelle
+                activePage.classList.remove('is-visible');
                 
-                // 1. Définir la hauteur fixe du conteneur pour éviter le saut
+                // Attendre la fin du fade-out avant d'afficher la nouvelle page
+                setTimeout(startTransition, TRANSITION_DURATION_MS);
+
+            } else {
+                // Si aucune page n'est active (chargement initial)
+                startTransition();
+            }
+
+            // --- ÉTAPE 2: GESTION DU CONTENU ET DÉBUT DE TRANSITION D'ENTRÉE (Fade-in) ---
+            function startTransition() {
+                // Masquer immédiatement l'ancienne page après le fade-out
                 if (activePage) {
-                    const height = activePage.offsetHeight;
-                    // Applique la hauteur + le padding du conteneur pour être précis
-                    contentContainer.style.minHeight = `${height}px`; 
-
-                    // 2. Déclencher le fade-out de la page actuelle
-                    activePage.classList.remove('is-visible');
-                    
-                    // 3. Attendre la fin du fade-out avant d'afficher la nouvelle page
-                    setTimeout(startTransition, TRANSITION_DURATION);
-                } else {
-                    // Si aucune page n'est active (chargement initial)
-                    startTransition();
+                    activePage.classList.add('hidden');
                 }
-            };
 
-            // Fonction pour afficher la nouvelle page
-            const startTransition = () => {
-                // Mettre à jour le contenu dynamique (même logique que précédemment)
+                // 2.1 Mettre à jour le contenu dynamique (mêmes étapes que précédemment)
+                
                 if (pageId === 'process-detail' && processId && processTitle) {
                     if (!currentProject.title || !currentProject.id) {
                         showPage('work');
@@ -760,24 +766,29 @@
                         figmaLinkButton.href = `https://www.figma.com/file/project-${projectId}-prototype`;
                     }
                 }
-
-                // 1. S'assurer que la nouvelle page est dans l'arbre DOM
+                
+                // 2.2 Préparer et rendre la nouvelle page visible (opacité 0)
                 nextPage.classList.remove('hidden'); 
                 
-                // 2. Déclencher le fondu-in après un micro délai
+                // Lire la hauteur de la nouvelle page (doit être fait avant de l'afficher)
+                const targetHeight = nextPage.offsetHeight;
+
+                // 2.3 Déclencher l'animation de hauteur du conteneur
+                // Le navigateur va animer de l'ancienne min-height à la nouvelle min-height
+                contentContainer.style.minHeight = `${targetHeight}px`; 
+
+                // 2.4 Déclencher le fondu-in après un micro délai
                 setTimeout(() => {
                     nextPage.classList.add('is-visible'); 
                     
-                    // 3. Après le délai de transition, relâcher la hauteur fixe
-                    setTimeout(() => {
-                        contentContainer.style.minHeight = 'auto'; // La nouvelle page prend le contrôle de la hauteur
-                        
-                        // 4. Masquer l'ancienne page complètement (si elle existe et est différente de la nouvelle)
-                        if (activePage && activePage !== nextPage) {
-                            activePage.classList.add('hidden');
-                        }
+                    // --- ÉTAPE 3: FIN DE TRANSITION ET NETTOYAGE ---
 
-                        // Gérer les liens de navigation actifs
+                    // 3.1 Attendre la fin des animations (hauteur et fade-in)
+                    setTimeout(() => {
+                        // 3.2 Réinitialiser min-height à auto pour permettre au conteneur de s'adapter au contenu dynamique futur
+                        contentContainer.style.minHeight = 'auto'; 
+
+                        // 3.3 Gérer les liens de navigation actifs
                         let activeNavPage = pageId;
                         if (pageId === 'project-detail' || pageId === 'process-detail') {
                             activeNavPage = 'work';
@@ -794,12 +805,10 @@
                         // Déplacer la vue en haut de la page
                         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                    }, TRANSITION_DURATION);
-
+                    }, TRANSITION_DURATION_MS); // Attendre la fin de l'animation de hauteur/fade
                 }, 10);
-            };
+            }
 
-            prepareTransition();
         }
 
         // --- Event Listeners ---
