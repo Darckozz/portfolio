@@ -11,7 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            /* Changement de couleur de fond pour un gris très très clair, moins de blanc agressif */
+            /* Changement de couleur de fond pour un gris très très clair */
             background-color: #ededed; 
         }
         /* Style d'accentuation : BORDEAUX / ROUGE PROFOND */
@@ -63,7 +63,7 @@
             /* Les styles spécifiques sont gérés par les classes Tailwind */
         }
         
-        /* Style pour le loader */
+        /* Style pour le loader (Conservé, mais plus utilisé) */
         .loader {
             border: 4px solid #f3f3f3; /* Light grey */
             border-top: 4px solid #991b1b; /* Accent color */
@@ -77,7 +77,7 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* NOUVEAU STYLE POUR LES PASTILLES DE COMPÉTENCES (GRIS SUBTIL ET BON CONTRASTE) */
+        /* Style pour les pastilles de compétences (GRIS SUBTIL ET BON CONTRASTE) */
         .skill-tag {
             background-color: #f3f4f6; /* Gris très clair (Gray 100) */
             color: #1f2937; /* Gris foncé (Gray 800) pour une lisibilité maximale */
@@ -99,11 +99,10 @@
 <body class="min-h-screen text-gray-900">
 
     <!-- En-tête (Header) et Navigation -->
-    <!-- Le header reste blanc pour la clarté -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             
-            <!-- TITRE/LIEN RETOUR AU PROJET SANS LOGO -->
+            <!-- TITRE/LIEN RETOUR AU PROJET -->
             <h1 id="home-link" class="text-2xl font-extrabold accent-text tracking-tight cursor-pointer flex items-baseline">
                 Noé Spéciel
                 <span class="text-gray-500 font-normal text-sm ml-2">Étudiant en UX/UI Design</span>
@@ -121,97 +120,60 @@
     <!-- Contenu Principal -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
 
-        <!-- Conteneur principal avec le retour à la bordure asymétrique d'origine -->
+        <!-- Conteneur principal avec bordure asymétrique -->
         <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-r-4 border-red-800/50">
 
             <!-- PAGE 1 : WORK (Projets UX/UI) -->
             <section id="page-work" data-page-content="work" class="page-content">
                 <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Mes Projets & Études de Cas</h2>
                 
-                <!-- Le conteneur Grid assure que toutes les cartes ont la même hauteur de ligne -->
                 <div class="grid md:grid-cols-3 gap-10 lg:gap-14">
                     
                     <!-- Projet 1 : TàD IDFM (Desktop) -->
-                    <!-- Ajout de 'flex flex-col h-full' pour que la carte prenne toute la hauteur de la cellule de la grille -->
                     <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full">
                         <div class="h-48 bg-red-200 flex items-center justify-center p-4">
                             <img src="https://placehold.co/600x400/fecaca/ffffff?text=App+Mobile+Rachat" alt="Mockup du projet d'application mobile de rachat d'objets." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fecaca/ffffff?text=App+Mobile+Rachat';">
                         </div>
-                        <!-- Ajout de 'flex flex-col flex-grow' pour que le contenu s'étende verticalement -->
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-bold mb-2 accent-text">TàD IDFM (Desktop)</h3>
-                            <!-- 1. CORRECTION ALIGNEMENT : Retrait de la hauteur fixe (h-[120px]) qui était inefficace. -->
                             <p class="text-sm text-gray-600 mb-4" id="desc-1">
                                 Étude de cas sur le service de Transport à la Demande d’Île-de-France Mobilités visant à identifier les points de friction dans le parcours utilisateur et proposer des solutions pour améliorer l’expérience de réservation.
                             </p>
-                            <!-- 2. CORRECTION ALIGNEMENT : Ajout d'un élément flex-grow pour pousser le bouton vers le bas et aligner tous les boutons. -->
                             <div class="flex-grow"></div> 
                             
-                            <!-- Bouton LLM pour l'analyse -->
-                            <button onclick="analyzeProject('TàD IDFM', document.getElementById('desc-1').textContent, 'analysis-1')" 
-                                class="w-full py-2 px-4 text-sm font-semibold rounded-full bg-red-800 text-white hover:bg-red-900 transition duration-300 flex items-center justify-center">
-                                <span class="flex items-center" id="btn-content-1">
-                                    ✨ Analyse rapide par IA
-                                </span>
-                            </button>
-                            <!-- 3. CORRECTION HAUTEUR ANALYSE : Application de h-28 pour hauteur fixe, permettant l'espace blanc et le défilement. -->
-                            <div id="analysis-1" class="mt-4 p-3 bg-red-50 text-gray-700 text-xs rounded-lg hidden border-l-4 border-red-400 h-28 overflow-y-auto"></div>
+                            <!-- Retrait du bouton d'analyse IA et de l'espace associé -->
                         </div>
                     </div>
 
                     <!-- Projet 2 : Le Médoc à la Carte (Desktop/Mobile) -->
-                    <!-- Ajout de 'flex flex-col h-full' -->
                     <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full">
                         <div class="h-48 bg-amber-200 flex items-center justify-center p-4">
                             <img src="https://placehold.co/600x400/fcd34d/ffffff?text=Dashboard+Finances" alt="Mockup du projet de tableau de bord pour la gestion financière." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fcd34d/ffffff?text=Dashboard+Finances';">
                         </div>
-                        <!-- Ajout de 'flex flex-col flex-grow' -->
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-bold mb-2 accent-text">Le Médoc à la Carte (Desktop/Mobile)</h3>
-                            <!-- 1. CORRECTION ALIGNEMENT : Retrait de la hauteur fixe (h-[120px]) qui était inefficace. -->
                             <p class="text-sm text-gray-600 mb-4" id="desc-2">
                                 Création d’un site web responsive dédié aux visites touristiques et œnologiques dans le Médoc, offrant une expérience utilisateur claire et immersive.
                             </p>
-                            <!-- 2. CORRECTION ALIGNEMENT : Ajout d'un élément flex-grow pour pousser le bouton vers le bas et aligner tous les boutons. -->
                             <div class="flex-grow"></div> 
                             
-                            <!-- Bouton LLM pour l'analyse -->
-                            <button onclick="analyzeProject('Le Médoc à la Carte', document.getElementById('desc-2').textContent, 'analysis-2')" 
-                                class="w-full py-2 px-4 text-sm font-semibold rounded-full bg-red-800 text-white hover:bg-red-900 transition duration-300 flex items-center justify-center">
-                                <span class="flex items-center" id="btn-content-2">
-                                    ✨ Analyse rapide par IA
-                                </span>
-                            </button>
-                            <!-- 3. CORRECTION HAUTEUR ANALYSE : Application de h-28 pour hauteur fixe, permettant l'espace blanc et le défilement. -->
-                            <div id="analysis-2" class="mt-4 p-3 bg-red-50 text-gray-700 text-xs rounded-lg hidden border-l-4 border-red-400 h-28 overflow-y-auto"></div>
+                            <!-- Retrait du bouton d'analyse IA et de l'espace associé -->
                         </div>
                     </div>
 
                     <!-- Projet 3 : Allociné (Desktop) -->
-                    <!-- Ajout de 'flex flex-col h-full' -->
                     <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full">
                         <div class="h-48 bg-pink-200 flex items-center justify-center p-4">
                             <img src="https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art" alt="Mockup du projet de site e-commerce d'artisanat." class="w-full h-full object-cover rounded-lg shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fbcfe8/ffffff?text=Site+E-commerce+Art';">
                         </div>
-                        <!-- Ajout de 'flex flex-col flex-grow' -->
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-bold mb-2 accent-text">Allociné (Desktop)</h3>
-                            <!-- 1. CORRECTION ALIGNEMENT : Retrait de la hauteur fixe (h-[120px]) qui était inefficace. -->
                             <p class="text-sm text-gray-600 mb-4" id="desc-3">
                                 Étude de cas visant à l'optimisation de l’expérience de recommandations de films sur Allociné pour une navigation plus fluide et des suggestions personnalisées.
                             </p>
-                            <!-- 2. CORRECTION ALIGNEMENT : Ajout d'un élément flex-grow pour pousser le bouton vers le bas et aligner tous les boutons. -->
                             <div class="flex-grow"></div> 
                             
-                            <!-- Bouton LLM pour l'analyse -->
-                            <button onclick="analyzeProject('Allociné', document.getElementById('desc-3').textContent, 'analysis-3')" 
-                                class="w-full py-2 px-4 text-sm font-semibold rounded-full bg-red-800 text-white hover:bg-red-900 transition duration-300 flex items-center justify-center">
-                                <span class="flex items-center" id="btn-content-3">
-                                    ✨ Analyse rapide par IA
-                                </span>
-                            </button>
-                            <!-- 3. CORRECTION HAUTEUR ANALYSE : Application de h-28 pour hauteur fixe, permettant l'espace blanc et le défilement. -->
-                            <div id="analysis-3" class="mt-4 p-3 bg-red-50 text-gray-700 text-xs rounded-lg hidden border-l-4 border-red-400 h-28 overflow-y-auto"></div>
+                            <!-- Retrait du bouton d'analyse IA et de l'espace associé -->
                         </div>
                     </div>
 
@@ -226,10 +188,10 @@
                     
                     <!-- Colonne 1 : Photo & Vision -->
                     <div class="lg:col-span-1">
-                        <!-- Photo/Avatar Stylisé -->
+                        <!-- Photo/Avatar Stylisé (Mise à jour du chemin d'accès à l'image) -->
                         <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl mb-8 border-4 border-white">
-                            <!-- Placeholder pour l'image locale -->
-                            <img src="https://placehold.co/192x192/991b1b/ffffff?text=No%C3%A9" alt="Photo de Noé" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/192x192/991b1b/ffffff?text=No%C3%A9';">
+                            <!-- Chemin d'accès à votre image de profil -->
+                            <img src="Photo de Profil.png" alt="Photo de profil de Noé Spéciel" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/192x192/991b1b/ffffff?text=No%C3%A9';">
                         </div>
     
                         <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
@@ -249,7 +211,7 @@
 
                         <h3 class="text-2xl font-bold accent-text mb-4 mt-6">Compétences</h3>
                         <div class="flex flex-wrap gap-3" id="current-skills">
-                            <!-- Compétences existantes. J'utilise la classe 'skill-tag' avec les nouveaux styles gris subtils. -->
+                            <!-- Compétences avec le style gris subtil -->
                             <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UX Research (Entretiens, Sondages)</span>
                             <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UI Design (Figma)</span>
                             <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Prototypage & Tests Utilisateurs</span>
@@ -327,97 +289,6 @@
         const pageContents = document.querySelectorAll('.page-content');
         const homeLink = document.getElementById('home-link');
         const contentContainer = document.getElementById('content-container'); // Ajout pour la parallaxe
-
-        // Clé API pour Gemini (laissez vide, elle est fournie par l'environnement)
-        const apiKey = "";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-        
-        // Stockage des messages d'erreur dans l'interface
-        const errorMessage = "Erreur de l'IA : Impossible de générer la réponse. Veuillez réessayer.";
-
-        /**
-         * Fonction pour effectuer l'appel à l'API Gemini avec gestion des erreurs et de l'attente (backoff).
-         * @param {Object} payload - Le corps de la requête API.
-         * @param {number} maxRetries - Nombre maximum de tentatives.
-         * @param {number} delay - Délai initial avant la première réessai (en ms).
-         * @returns {Promise<Object>} La réponse JSON de l'API.
-         */
-        async function fetchGeminiWithRetries(payload, maxRetries = 3, delay = 1000) {
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (response.ok) {
-                        return await response.json();
-                    } else if (response.status === 429) {
-                        // Too Many Requests - attente exponentielle
-                        if (i < maxRetries - 1) {
-                            await new Promise(resolve => setTimeout(resolve, delay));
-                            delay *= 2; // Délai doublé
-                            continue;
-                        }
-                    }
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                } catch (error) {
-                    if (i === maxRetries - 1) {
-                        throw new Error("Échec de l'appel API après plusieurs tentatives.");
-                    }
-                    // Attente avant la prochaine tentative
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2; // Délai doublé
-                }
-            }
-        }
-        
-        /**
-         * Fonction LLM : Analyse de Projet
-         * Génère une analyse UX/UI concise pour un projet donné.
-         */
-        async function analyzeProject(title, description, outputId) {
-            const outputDiv = document.getElementById(outputId);
-            const buttonContent = document.getElementById(`btn-content-${outputId.slice(-1)}`);
-            const button = outputDiv.previousElementSibling;
-
-            // 1. Démarrer le chargement
-            outputDiv.classList.remove('hidden');
-            outputDiv.innerHTML = '<div class="flex items-center justify-center"><div class="loader mr-3"></div> Analyse en cours...</div>';
-            button.disabled = true;
-            buttonContent.innerHTML = '<div class="loader mr-2"></div> Analyse en cours';
-
-            // Mise à jour du prompt pour EXCLURE le décompte des mots.
-            const systemPrompt = "Agis comme un expert UX/UI et un recruteur senior. Lis la description du projet et fournis une analyse très courte (maximum 40 mots, sans mentionner le nombre de mots) qui met en évidence la principale force UX/UI et le rôle de l'étudiant. Rédige en français et en utilisant un ton professionnel.";
-            const userQuery = `Analyse le projet suivant pour un portfolio : Titre: "${title}". Description: "${description.trim()}"`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
-
-            try {
-                const result = await fetchGeminiWithRetries(payload);
-                let text = result?.candidates?.[0]?.content?.parts?.[0]?.text || errorMessage;
-                
-                // Nettoyage de la chaîne de caractères : Suppression des mentions de type (XX mots) ou (XX words)
-                text = text.replace(/\s*\([\d]+\s*(mots|words)\)/gi, '').trim();
-
-                // 2. Afficher le résultat
-                outputDiv.innerHTML = `<strong>Analyse IA :</strong> ${text}`;
-
-            } catch (error) {
-                console.error("Erreur lors de l'analyse du projet:", error);
-                outputDiv.innerHTML = errorMessage;
-            } finally {
-                // 3. Arrêter le chargement
-                button.disabled = false;
-                buttonContent.innerHTML = '✨ Analyse rapide par IA';
-            }
-        }
-        
-        // --- LOGIQUE DE NAVIGATION EXISTANTE ---
 
         // Fonction pour gérer la navigation
         function showPage(pageId) {
