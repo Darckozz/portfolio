@@ -86,16 +86,18 @@
 
     <!-- En-tête (Header) et Navigation -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <!-- MODIFICATIONS ICI : Ajout de flex-col sur mobile et alignement centré -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center sm:items-baseline">
             
             <!-- TITRE/LIEN RETOUR AU PROJET -->
-            <h1 id="home-link" class="text-2xl font-extrabold accent-text tracking-tight cursor-pointer flex items-baseline">
+            <h1 id="home-link" class="text-2xl font-extrabold accent-text tracking-tight cursor-pointer flex items-baseline mb-2 sm:mb-0">
                 Noé Spéciel
-                <span class="text-gray-500 font-normal text-sm ml-2">Étudiant en UX/UI Design</span>
+                <span class="text-gray-500 font-normal text-sm ml-2 hidden sm:inline">Étudiant en UX/UI Design</span>
             </h1>
             
             <!-- Liens de navigation -->
-            <nav class="space-x-8 font-medium">
+            <!-- MODIFICATIONS ICI : Réduction de l'espace sur mobile (space-x-4) -->
+            <nav class="space-x-4 sm:space-x-8 font-medium">
                 <a href="#" class="nav-link text-gray-600" data-page="work">Projets</a>
                 <a href="#" class="nav-link text-gray-600" data-page="about">À propos</a>
                 <a href="#" class="nav-link text-gray-600" data-page="contact">Contact</a>
@@ -204,7 +206,7 @@
                 <!-- Processus UX (Grid 2 par ligne) -->
                 <h3 class="text-3xl font-bold accent-text mb-6">Processus de l'Étude de Cas</h3>
                 
-                <!-- NOUVELLE GRILLE 2X2 -->
+                <!-- GRILLE 2X2 -->
                 <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
 
                     <!-- Étape 1 : Phase d'Analyse -->
