@@ -3,81 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Noé Spéciel</title>
+    <title>Noé Spéciel - Designer UX/UI</title>
     <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuration de la typographie Inter et de la palette de couleurs -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        /* Configuration de la police Inter par défaut */
         body {
             font-family: 'Inter', sans-serif;
-            /* Changement de couleur de fond pour un gris très très clair */
-            background-color: #ededed; 
+            background-color: #f7f7f9; /* Un gris très léger pour le fond */
         }
-        /* Style d'accentuation : BORDEAUX / ROUGE PROFOND */
-        .accent-bg {
-            background-color: #991b1b; /* Red 800 */
+
+        /* Définition de la couleur d'accent (Bordeaux/Rouge profond) */
+        :root {
+            --color-bordeaux-base: #7f1d1d; /* Red 900 - Bordeaux profond */
+            --color-bordeaux-light: #fee2e2; /* Red 100 - Arrière-plan subtil pour l'état actif */
+            --color-bordeaux-dark: #450a0a; /* Red 950 - Survol bouton principal */
         }
+
         .accent-text {
-            color: #991b1b;
+            color: var(--color-bordeaux-base); 
         }
-        .nav-link:hover {
-            color: #991b1b;
-            transform: translateY(-2px);
-            transition: all 0.2s ease-in-out;
+        .accent-bg {
+            background-color: var(--color-bordeaux-base); 
         }
-        /* CARTES DE PROJETS - Ombre forte et élévation au survol */
+        .accent-bg:hover {
+            background-color: var(--color-bordeaux-dark); 
+        }
+
+        /* MISE À JOUR : Style pour l'état actif sans fond coloré */
+        .nav-link.is-active {
+            /* background-color: var(--color-bordeaux-light); <--- RETIRÉ */
+            color: var(--color-bordeaux-base); /* Texte bordeaux foncé */
+            font-weight: 700; /* Gras */
+            /* Retirer le padding et le border-radius pour que cela ressemble à un lien simple */
+            padding: 0.5rem 0.75rem; 
+        }
+        /* Maintient le style au survol pour les liens non actifs */
+        .nav-link:not(.is-active):hover {
+            background-color: #f3f4f6; /* Gray 100 au survol des liens non actifs */
+            border-radius: 0.5rem; /* Ajout du rounded pour le survol */
+        }
+        
+        /* Styles pour les cartes de projet */
         .project-card {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10); 
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            background-color: #fff; 
-            border: none; 
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
         }
         .project-card:hover {
-            transform: translateY(-8px); /* Plus grande élévation au survol */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); 
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(127, 29, 29, 0.1), 0 4px 6px -4px rgba(127, 29, 29, 0.1);
+            border-color: #fca5a5; /* Red 300 */
         }
         
-        /* Style pour les icônes de contact et d'étapes (Red 100 pour le fond) */
-        .contact-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #fee2e2; /* Red 100 */
-            transition: background-color 0.3s;
-        }
-        .contact-icon:hover {
-            background-color: #fca5a5; /* Red 300 */
-        }
-        /* Correction de rendu pour éviter la pixellisation du texte lors de la mise à l'échelle */
-        .button-fix:hover {
-            will-change: transform;
-        }
-        
-        /* Conteneur principal (La grande case) - Animation de parallaxe conservée */
-        #content-container {
-            transition: transform 0.1s linear;
-            /* Les styles spécifiques sont gérés par les classes Tailwind */
-        }
-        
-        /* Style pour les pastilles de compétences (GRIS SUBTIL ET BON CONTRASTE) */
+        /* Style pour les pastilles de compétences */
         .skill-tag {
-            background-color: #f3f4f6; /* Gris très clair (Gray 100) */
-            color: #1f2937; /* Gris foncé (Gray 800) pour une lisibilité maximale */
-            border: 1px solid #e5e7eb; /* Bordure gris encore plus clair (Gray 200) */
+            background-color: #f3f4f6;
+            color: #1f2937;
+            border: 1px solid #e5e7eb;
             transition: all 0.2s ease-in-out;
             cursor: default; 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Ombre très légère */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .skill-tag:hover {
-            background-color: #fee2e2; /* Red 100 au survol */
-            color: #7f1d1d; /* Red 900 au survol */
-            border-color: #fca5a5; /* Red 300 au survol */
+            background-color: #fee2e2; 
+            color: #7f1d1d; 
+            border-color: #fca5a5; 
             box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
             transform: translateY(-1px);
+        }
+
+        /* Styles pour l'infobulle (tooltip) */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 170px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 120%; 
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -86,7 +109,6 @@
 
     <!-- En-tête (Header) et Navigation -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
-        <!-- MODIFICATIONS ICI : Ajout de flex-col sur mobile et alignement centré -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center sm:items-baseline">
             
             <!-- TITRE/LIEN RETOUR AU PROJET -->
@@ -96,11 +118,12 @@
             </h1>
             
             <!-- Liens de navigation -->
-            <!-- MODIFICATIONS ICI : Réduction de l'espace sur mobile (space-x-4) -->
-            <nav class="space-x-4 sm:space-x-8 font-medium">
-                <a href="#" class="nav-link text-gray-600" data-page="work">Projets</a>
-                <a href="#" class="nav-link text-gray-600" data-page="about">À propos</a>
-                <a href="#" class="nav-link text-gray-600" data-page="contact">Contact</a>
+            <nav class="space-x-1 sm:space-x-2 font-medium flex">
+                <!-- J'ai appliqué la classe 'is-active' à 'Projets' au départ -->
+                <!-- Note : le padding est conservé pour uniformiser la hauteur des liens (même si le fond n'est plus coloré) -->
+                <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="work">Projets</a>
+                <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="about">À propos</a>
+                <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="contact">Contact</a>
             </nav>
         </div>
     </header>
@@ -108,7 +131,7 @@
     <!-- Contenu Principal -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
 
-        <!-- Conteneur principal avec bordure asymétrique -->
+        <!-- Conteneur principal -->
         <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-r-4 border-red-800/50">
 
             <!-- PAGE 1 : WORK (Projets UX/UI) -->
@@ -202,6 +225,21 @@
                         <p class="text-gray-600">UX Research, Prototypage, UI Design, Tests Utilisateurs</p>
                     </div>
                 </div>
+                
+                <!-- NOUVEL AJOUT : Lien vers le prototype Figma / Source discret -->
+                <div class="flex justify-end mb-4">
+                    <a id="figma-link-button-discreet" href="https://www.figma.com/file/project-1-prototype" target="_blank" class="tooltip">
+                        <button
+                            class="p-2 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition duration-150 ease-in-out"
+                            aria-label="Voir le prototype de conception Figma"
+                        >
+                            <!-- Icône Figma (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-figma"><path d="M21.57 12H12"/><path d="M22 2v6h-6"/><path d="M12 22V12"/><path d="M8 8V2h4"/><path d="M8 12H2"/><path d="M2 18h6"/><path d="M12 18V22"/><path d="M12 18H22"/></svg>
+                        </button>
+                        <span class="tooltiptext">Voir le Prototype Figma</span>
+                    </a>
+                </div>
+
 
                 <!-- Processus UX (Grid 2 par ligne) -->
                 <h3 class="text-3xl font-bold accent-text mb-6">Processus de l'Étude de Cas</h3>
@@ -218,6 +256,7 @@
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Phase d'Analyse</h4>
                         </div>
+                        <p class="text-gray-700 flex-grow">Le processus a débuté par une enquête contextuelle et une analyse approfondie pour comprendre les besoins des utilisateurs.</p>
                     </div>
 
                     <!-- Étape 2 : Entretiens -->
@@ -229,6 +268,8 @@
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Entretiens</h4>
                             </div>
+                        <p class="text-gray-700 flex-grow">Des entretiens individuels ont été menés en mode "guerilla" avec les conducteurs et instructeurs, tandis que des observations (Shadowing) ont permis de tracer le parcours utilisateur.</p>
+                    </div>
 
                     <!-- Étape 3 : Personas -->
                     <div class="p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white">
@@ -239,6 +280,7 @@
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Personas & Scénarios</h4>
                         </div>
+                        <p class="text-gray-700 flex-grow">Une attention particulière a été portée à la création de scénarios afin de mieux comprendre les besoins spécifiques de chaque persona.</p>
                     </div>
                     
                     <!-- Étape 4 : Fonctionnalités -->
@@ -250,6 +292,7 @@
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Définition des Fonctionnalités</h4>
                         </div>
+                        <p class="text-gray-700 flex-grow">Les utilisateurs ont exprimé le besoin de mettre en favoris des documents et de surligner des paragraphes. La complexité résidait dans la conservation de ces données lors des mises à jour.</p>
                     </div>
 
                     <!-- Étape 5 : Idéation -->
@@ -261,6 +304,7 @@
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Idéation</h4>
                         </div>
+                        <p class="text-gray-700 flex-grow">L'équipe a analysé les données pour générer des idées (Brainstorming, Sketches). Ces idées ont servi de base au design.</p>
                     </div>
 
                     <!-- Étape 6 : Conception (Wireframes) -->
@@ -272,6 +316,7 @@
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Conception (Prototypage Basse Fidélité)</h4>
                         </div>
+                        <p class="text-gray-700 flex-grow">Les prototypes ont été réalisés à l'aide d'Invision, permettant une visualisation interactive des idées conceptuelles avant de passer à l'étape visuelle.</p>
                     </div>
                     
                     <!-- Étape 7 : Maquettage (Haute Fidélité) -->
@@ -283,6 +328,7 @@
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Maquettage (Haute Fidélité)</h4>
                         </div>
+                        <p class="text-gray-700 flex-grow">Les maquettes finales ont été créées sur Photoshop, assurant une représentation visuelle précise de l'interface utilisateur.</p>
                     </div>
 
                     <!-- Étape 8 : Tests -->
@@ -294,6 +340,7 @@
                             </span>
                             <h4 class="text-xl font-bold text-gray-900">Tests Utilisateurs</h4>
                         </div>
+                        <p class="text-gray-700 flex-grow">Des tests ont été effectués grâce des prototypes pour observer les comportements des utilisateurs. Les résultats ont montré que les utilisateurs ont pu mener à bien les tâches importantes.</p>
                     </div>
                     
                     <!-- Étape 9 : Apprentissage et Conclusion (Occupe toute la largeur) -->
@@ -305,9 +352,11 @@
                             </span>
                             <h4 class="text-xl font-bold text-red-800">Apprentissage et Itération</h4>
                         </div>
+                        <p class="text-gray-700 font-medium flex-grow">Le processus a été itératif, aboutissant à un produit extrêmement simple à utiliser et véritablement utile, en accord avec les besoins des conducteurs de train chez Eurotunnel.</p>
                     </div>
 
                 </div>
+                
             </section>
 
             <!-- PAGE 2 : ABOUT (À Propos de Noé) -->
@@ -319,8 +368,8 @@
                         <!-- Photo/Avatar Stylisé : Ajout de accent-bg pour le fond si l'image ne charge pas -->
                         <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl mb-8 border-4 border-white accent-bg">
                             <!-- Utilise l'image 'Photo de Profil.png'. Si elle échoue, l'élément img est caché. -->
-                            <img src="Photo de Profil.png" alt="Photo de profil de Noé Spéciel" class="w-full h-full object-cover" 
-                                onerror="this.onerror=null; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; this.classList.add('hidden');">
+                            <img src="https://placehold.co/600x400/7f1d1d/ffffff?text=Photo+Noe" alt="Photo de profil de Noé Spéciel" class="w-full h-full object-cover" 
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x400/7f1d1d/ffffff?text=Photo+Noe'; this.classList.add('hidden');">
                         </div>
     
                         <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
@@ -387,7 +436,7 @@
                     <!-- Mise à jour : hover:bg-red-900 et ring-red-300 -->
                     <a href="CV-Noé Spéciel .pdf" download target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-red-900 transition duration-300 transform hover:scale-105 ring-4 ring-red-300 ring-offset-2 button-fix">
                         <!-- Icone de téléchargement Lucide-react: download -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                         Télécharger mon CV (PDF)
                     </a>
 
@@ -417,10 +466,11 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const pageContents = document.querySelectorAll('.page-content');
         const homeLink = document.getElementById('home-link');
-        const contentContainer = document.getElementById('content-container'); 
         const projectCards = document.querySelectorAll('.project-card');
         const projectDetailTitle = document.getElementById('project-detail-title');
         const backToWorkButton = document.getElementById('back-to-work');
+        const figmaLinkButton = document.getElementById('figma-link-button-discreet'); 
+
 
         // Fonction pour afficher une page et gérer l'historique/les liens actifs
         function showPage(pageId, projectId = null, projectTitle = null) {
@@ -436,120 +486,83 @@
                 currentPage.classList.remove('hidden');
                 setTimeout(() => {
                     currentPage.style.opacity = '1';
-                    currentPage.style.transition = 'opacity 0.5s ease-in-out';
                 }, 10); 
             }
 
-            // Si c'est une page de détail de projet, mettre à jour le titre
-            if (pageId === 'project-detail' && projectTitle) {
-                projectDetailTitle.textContent = projectTitle;
+            // Mettre à jour les liens de navigation actifs (TEXTE BORDEAUX SEULEMENT)
+            // ---------------------------------------------------------------------
+            let activeNavPage = pageId;
+            if (pageId === 'project-detail') {
+                activeNavPage = 'work'; // Le détail du projet active toujours l'onglet "Projets"
             }
-
-            // Mettre à jour le style du lien actif dans la nav (sauf pour project-detail)
-            const activeNavId = (pageId === 'project-detail') ? 'work' : pageId;
+            
             navLinks.forEach(link => {
-                link.classList.remove('accent-text', 'font-bold');
-                link.classList.add('text-gray-600');
-                if (link.getAttribute('data-page') === activeNavId) {
-                    link.classList.add('accent-text', 'font-bold');
-                    link.classList.remove('text-gray-600');
+                // Retirer la classe active de tous les liens
+                link.classList.remove('is-active', 'text-gray-900', 'text-gray-600');
+                
+                // Appliquer les classes si le data-page correspond à la page active
+                if (link.dataset.page === activeNavPage) {
+                    // C'est le lien actif : Appliquer le style bordeaux (via is-active)
+                    link.classList.add('is-active'); // is-active contient maintenant le texte bordeaux
+                } else {
+                    // C'est un lien inactif : Appliquer le style par défaut
+                    link.classList.add('text-gray-600');
                 }
             });
+            // ---------------------------------------------------------------------
 
-            // Mettre à jour l'URL
-            let hash = `#${pageId}`;
-            if (pageId === 'project-detail' && projectId) {
-                hash = `#project-detail-${projectId}`;
+
+            // Mettre à jour le titre et le lien Figma si on est sur la page détail
+            if (pageId === 'project-detail' && projectTitle) {
+                projectDetailTitle.textContent = projectTitle;
+                
+                // Mise à jour du lien Figma
+                if (figmaLinkButton) {
+                    figmaLinkButton.href = `https://www.figma.com/file/project-${projectId}-prototype`;
+                }
             }
-            history.pushState({ page: pageId, id: projectId }, '', hash);
+
+            // Déplacer la vue en haut de la page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Fonction pour l'effet de parallaxe sur le conteneur principal
-        function handleParallax() {
-            const scrollPosition = window.scrollY; 
-            const parallaxStrength = 15; 
-            const yOffset = scrollPosition / parallaxStrength;
+        // --- Event Listeners ---
 
-            if (contentContainer) {
-                contentContainer.style.transform = `translateY(${Math.min(0, -yOffset)}px)`;
-            }
-        }
-
-        // --- GESTION DES CLICS ---
-
-        // Événement pour les liens de navigation
+        // 1. Navigation principale
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const pageId = link.getAttribute('data-page');
+                const pageId = link.dataset.page;
                 showPage(pageId);
             });
         });
 
-        // Événement pour le titre qui renvoie à la page "Projets"
+        // 2. Lien de retour à l'accueil/Projets (Titre principal)
         homeLink.addEventListener('click', (e) => {
             e.preventDefault();
             showPage('work');
         });
-        
-        // Événement pour les cartes de projet (ouvre la page de détail)
+
+        // 3. Clic sur une carte de projet
         projectCards.forEach(card => {
             card.addEventListener('click', () => {
-                const projectId = card.getAttribute('data-project-id');
-                const projectTitle = card.getAttribute('data-project-title');
+                const projectId = card.dataset.projectId;
+                const projectTitle = card.dataset.projectTitle;
                 showPage('project-detail', projectId, projectTitle);
-                // Remonter en haut de la page pour une meilleure UX
-                window.scrollTo(0, 0); 
             });
         });
 
-        // Événement pour le bouton "Retour à tous les projets"
-        backToWorkButton.addEventListener('click', () => {
+        // 4. Bouton de retour dans la page détail
+        backToWorkButton.addEventListener('click', (e) => {
+            e.preventDefault();
             showPage('work');
-            window.scrollTo(0, 0);
         });
 
-        // --- GESTION DE L'HISTORIQUE ET DU CHARGEMENT INITIAL ---
-
-        // Gestion de la navigation arrière/avant du navigateur
-        window.addEventListener('popstate', (e) => {
-            const hash = window.location.hash.substring(1);
-            if (hash.startsWith('project-detail-')) {
-                const parts = hash.split('-');
-                const projectId = parts[parts.length - 1];
-                // Trouver le titre du projet correspondant au projectId (simplifié pour cet exemple)
-                const projectCard = document.querySelector(`[data-project-id="${projectId}"]`);
-                const projectTitle = projectCard ? projectCard.getAttribute('data-project-title') : 'Détail du Projet';
-                showPage('project-detail', projectId, projectTitle);
-            } else {
-                const initialPage = hash.split('-')[0] || 'work';
-                showPage(initialPage);
-            }
+        // 5. Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Afficher la page 'work' au chargement
+            showPage('work');
         });
-
-
-        // Gestion de la navigation initiale ou par hash
-        function handleInitialLoad() {
-            const hash = window.location.hash.substring(1);
-            if (hash.startsWith('project-detail-')) {
-                const parts = hash.split('-');
-                const projectId = parts[parts.length - 1];
-                const projectCard = document.querySelector(`[data-project-id="${projectId}"]`);
-                const projectTitle = projectCard ? projectCard.getAttribute('data-project-title') : 'Détail du Projet';
-                showPage('project-detail', projectId, projectTitle);
-            } else {
-                const initialPage = hash || 'work'; // Par défaut sur la page 'work'
-                showPage(initialPage);
-            }
-            // On initialise l'effet de parallaxe au chargement
-            handleParallax(); 
-        }
-
-        // GESTION DE LA PARALLAXE AU SCROLL
-        window.addEventListener('scroll', handleParallax);
-
-        // Lancement au chargement de la page
-        document.addEventListener('DOMContentLoaded', handleInitialLoad);
     </script>
 </body>
 </html>
