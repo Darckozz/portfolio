@@ -126,48 +126,39 @@ body {
     transform: translateY(0);
 }
 
-/* --- NOUVEAU STYLE POUR LE BOUTON FIGMA (Correction du cadre) --- */
-
-/* --- NOUVEAU STYLE POUR LE BOUTON FIGMA (Correction du cadre) --- */
-
-/* --- NOUVEAU STYLE POUR LE BOUTON FIGMA (Correction du cadre) --- */
-
-.figma-logo-btn {
-    /* Dimensions pour un bouton plus grand */
-    width: 56px;
-    height: 56px;
-
-    /* Retirer le padding et s'assurer que tout débordement est masqué */
-    padding: 0;
-    overflow: hidden;
-
-    /* Style du bouton */
-    background-color: white; /* Fond blanc pour bien faire ressortir le "F" */
-    border: none;
-    border-radius: 50%; /* Cercle */
-
-    /* Conservation des ombres et transitions */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/* NOUVEAU STYLE POUR LE BOUTON FIGMA */
+.figma-button-icon {
+    /* Cache l'icône SVG par défaut */
+    display: none;
+}
+.figma-button-wrapper {
+    /* Style pour le conteneur du bouton, assurez-vous qu'il est en relative pour le tooltip */
+    position: relative;
+    display: inline-block;
+}
+/* Style pour le conteneur du bouton réel qui contenait le SVG */
+.figma-button-container {
+    width: 40px; /* Taille du bouton (20px de large + 2 * 10px de padding) */
+    height: 40px; /* Taille du bouton */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bordeaux-base); /* Red 600 dans le HTML */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.figma-logo-btn:hover {
-    background-color: #f3f4f6;
-    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.1);
-    transform: translateY(-1px);
+/* Style pour l'image Figma dans le bouton */
+.figma-button-container img {
+    width: 20px; /* Taille de l'icône (ajustée à 20px comme le SVG) */
+    height: 20px;
+    object-fit: contain; /* S'assure que le logo est bien dans le cadre */
+    filter: invert(1); /* Rend le logo blanc (si l'original figma.png a des couleurs) */
 }
 
-.figma-logo-img {
-    width: 100%;
-    height: 100%;
-
-    /* Ajustez le SCALE pour ne garder que le "F" coloré et pas le cercle gris/noir */
-    /* 1.6 ou 1.8 est souvent suffisant pour la plupart des fichiers sources */
-    transform: scale(1.6); /* **VALEUR CLÉ AJUSTÉE** */
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Garder la transition */
-}
-
-/* Animation au survol: Le zoom reste léger */
-.figma-logo-btn:hover .figma-logo-img {
-    transform: scale(1.8); /* Zoom un peu plus au survol */
+/* Animation au survol */
+.figma-button-container:hover {
+    background-color: var(--color-bordeaux-dark); /* Red 700 / Red 950 */
+    transform: scale(1.05); /* Petit effet de zoom */
 }
