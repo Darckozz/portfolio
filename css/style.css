@@ -126,38 +126,48 @@ body {
     transform: translateY(0);
 }
 
+/* style.css */
+
+/* ... (votre code existant) ... */
+
+/* --- NOUVEAUX STYLES POUR LE BOUTON FIGMA (CORRIGÉ) --- */
+
+/* Conteneur principal (pour le tooltip) */
 .figma-button-wrapper {
     position: relative;
     display: inline-block;
 }
 
+/* Style pour le conteneur du bouton Figma :
+   C'est l'élément sur lequel le zoom sera appliqué.
 */
 .figma-button-container {
-    /* Suppression du cercle bordeaux et des dimensions fixes du conteneur */
     display: flex;
     align-items: center;
     justify-content: center;
     
-    /* On enlève la transition de couleur, on ne garde que celle du transform */
-    transition: transform 0.15s ease-in-out;
-    
-    /* Le curseur doit montrer qu'on peut cliquer */
+    /* Animation appliquée au survol */
+    transition: transform 0.15s ease-in-out; 
     cursor: pointer; 
 }
 
+/* Style pour l'image Figma dans le bouton :
+   TAILLE DE L'IMAGE RÉDUITE ET FIXÉE à 24px
 */
 .figma-button-container img {
-    width: 32px; /* Taille de l'icône, ajustée pour être visible */
-    height: 32px;
+    width: 24px; /* Taille standard pour un logo discret */
+    height: 24px;
     object-fit: contain; 
     opacity: 1;
-    
-    /* Assure que l'image elle-même n'est pas mise à l'échelle (on zoome le conteneur) */
+    /* Assure que l'image ne bouge pas si l'on zoome l'image elle-même */
     transition: none; 
 }
 
 /* Animation au survol : On applique le zoom au conteneur */
 .figma-button-container:hover {
-    background-color: transparent; /* Assure l'absence de couleur au survol */
-    transform: scale(1.2); /* Effet de zoom léger et animé */
+    /* Maintient le fond transparent (ce n'est pas nécessaire de le déclarer, mais sécurisant) */
+    background-color: transparent; 
+    
+    /* Le logo et tout ce qu'il contient fera un zoom de 20% */
+    transform: scale(1.2); 
 }
