@@ -27,16 +27,82 @@ const projectProcessDetails = {
     // --- Projet 1 : TàD IDFM (Desktop) ---
     "1": {
         analyse: `
-            <p>La <strong>Phase d'Analyse (TàD IDFM)</strong> a commencé par une immersion complète dans le contexte du Transport à la Demande (TàD) d'Île-de-France Mobilités. Nous avons mené une analyse concurrentielle pour comprendre les forces et faiblesses des solutions existantes (telles que Uber, Kapten, etc.) et une analyse heuristique de l'interface actuelle pour identifier les problèmes d'utilisabilité majeurs.</p>
+            <p>Pour mieux comprendre les <strong>besoins, motivations et difficultés</strong> des utilisateurs du Transport à la Demande (TàD) en Île-de-France, nous avons mené une recherche centrée sur l’utilisateur combinant entretiens semi-directifs, observations et sondages en ligne. L’objectif était de mettre en évidence les <strong>points de friction</strong> et d’identifier des pistes d’amélioration pour le parcours de réservation.</p>
             
-            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Objectifs Clés :</h3>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Méthodologie & Participants</h3>
+            <div class="space-y-4">
+                <p class="font-semibold text-gray-800">Participants :</p>
+                <ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+                    <li><strong>8 utilisateurs</strong> représentant différents profils : 2 étudiants, 2 actifs avec horaires irréguliers, 2 seniors peu familiers du numérique, 2 résidents de zones périphériques.</li>
+                </ul>
+                <p class="font-semibold text-gray-800">Méthodes :</p>
+                <ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+                    <li><strong>Entretiens semi-directifs (45 min) :</strong> Questions ouvertes sur les habitudes de déplacement, difficultés et attentes.</li>
+                    <li><strong>Observation / Contextual Inquiry :</strong> Suivi de 3 participants lors d’une recherche de transport ou d’un trajet TàD pour observer les comportements réels.</li>
+                    <li><strong>Sondage en ligne (25 réponses simulées) :</strong> Collecte de données quantitatives sur la fréquence d’utilisation et la perception de la simplicité du service.</li>
+                </ul>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Synthèse de la Recherche & Enseignements</h3>
+            
+            <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Points récurrents observés :</h4>
             <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>Définir le périmètre du projet et ses contraintes (techniques, budgétaires).</li>
-                <li>Cartographier le parcours utilisateur "as is" (actuel) de la réservation.</li>
-                <li>Identifier les points de friction les plus douloureux pour les utilisateurs quotidiens.</li>
+                <li><strong>Difficulté à localiser sa zone :</strong> Les utilisateurs ne comprennent pas toujours la notion de zone de service TàD. Les résidents périphériques se sentent parfois perdus.</li>
+                <li><strong>Méconnaissance des arrêts :</strong> Les utilisateurs expriment la crainte d’entrer une adresse non desservie, entraînant frustration et hésitation.</li>
+                <li><strong>Complexité pour les novices :</strong> Certains seniors ont du mal à naviguer dans l’interface et à comprendre l’ordre des étapes.</li>
+                <li><strong>Recherche manuelle fastidieuse :</strong> Les utilisateurs aimeraient que la géolocalisation et des suggestions automatiques réduisent le temps de saisie.</li>
+                <li><strong>Besoin de feedback clair :</strong> Lorsqu’aucun trajet n’est disponible, le message générique ne permet pas de comprendre pourquoi ni d’explorer des alternatives.</li>
             </ul>
-            <p class="mt-4">Cette phase a permis de poser les bases de la recherche utilisateur à venir en ciblant précisément les zones d'ombre du service de transport à la demande.</p>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Citations & Verbatims représentatifs :</h4>
+            <div class="space-y-3 italic text-gray-600 border-l-4 border-red-300 pl-4">
+                <p>« Je ne sais jamais si mon arrêt est dans la bonne zone, j’ai peur de me tromper. » – <em>Étudiant</em></p>
+                <p>« Quand il n’y a pas de bus, je ne sais pas quoi faire, ça m’énerve. » – <em>Actif</em></p>
+                <p>« L’interface est un peu compliquée, je préfère demander à mon petit-fils de m’aider. » – <em>Senior</em></p>
+                <p>« J’aimerais pouvoir juste cliquer sur ma position et que l’appli propose le trajet. » – <em>Résident périphérique</em></p>
+            </div>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Résultats Clés du Sondage (Simulés) :</h4>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-red-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-red-800">Question</th>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-red-800">Réponse majoritaire</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 text-sm">
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Fréquence d’utilisation du TàD</td>
+                            <td class="px-4 py-2 text-gray-600">40 % occasionnellement</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Confort avec les outils numériques</td>
+                            <td class="px-4 py-2 text-gray-600">44 % moyen</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Importance de la géolocalisation</td>
+                            <td class="px-4 py-2 text-gray-600">72 % très importante</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Frustration principale</td>
+                            <td class="px-4 py-2 text-gray-600">Choix de la zone (56 %)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Cartes d'Empathie (Empathy Maps) 🧭</h3>
+            <p>Pour formaliser les besoins et frustrations des utilisateurs, nous avons construit des <strong>Empathy Maps</strong> pour chaque profil type. </p>
+            
+            <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Insights Généraux :</h4>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>La <strong>géolocalisation</strong> et les <strong>suggestions automatiques</strong> sont essentielles pour réduire les frictions de saisie.</li>
+                <li>Les utilisateurs novices ont besoin d’un <strong>accompagnement progressif</strong> (tutoriel ou guides).</li>
+                <li>Les messages d’erreur doivent être <strong>clairs, explicatifs</strong> et proposer des alternatives pour ne pas décourager l’utilisateur.</li>
+            </ul>
         `,
+        // La section entretiens originale va dans 'entretiens'
         entretiens: `
             <p>Nous avons combiné plusieurs méthodes de <strong>Recherche Utilisateur (TàD IDFM)</strong> pour obtenir une vision complète :</p>
             
@@ -355,7 +421,7 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
                 figmaLinkButton.href = `https://www.figma.com/file/project-${projectId}-prototype`;
             }
 
-            // ********** NOUVELLE LOGIQUE POUR L'IMAGE DU PROJET **********
+            // ********** LOGIQUE POUR L'IMAGE DU PROJET **********
             if (projectVisual) {
                 if (projectId === '1') {
                     // Afficher l'image pour le projet IDFM (ID 1)
