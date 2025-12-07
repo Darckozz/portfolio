@@ -136,18 +136,6 @@ body {
     position: relative;
     display: inline-block;
 }
-/* Style pour le conteneur du bouton réel qui contenait le SVG */
-.figma-button-container {
-    width: 40px; /* Taille du bouton (20px de large + 2 * 10px de padding) */
-    height: 40px; /* Taille du bouton */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-bordeaux-base); /* Red 600 dans le HTML */
-    border-radius: 9999px; /* rounded-full */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
 
 /* Style pour l'image Figma dans le bouton */
 .figma-button-container img {
@@ -155,6 +143,9 @@ body {
     height: 40px;
     object-fit: contain; 
     opacity: 1;
+    border-radius: 9999px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 /* Animation au survol */
