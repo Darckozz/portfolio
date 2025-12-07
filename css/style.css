@@ -125,3 +125,8 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Animation du logo Figma au survol */
+.figma-logo-btn:hover .figma-logo-img {
+    transform: rotate(15deg) scale(1.1); /* Rotation légère et zoom */
+}
