@@ -155,8 +155,8 @@ body {
    TAILLE DE L'IMAGE RÉDUITE ET FIXÉE à 24px
 */
 .figma-button-container img {
-    width: 40px; /* Taille standard pour un logo discret */
-    height: 40px;
+    width: 60px; /* Taille standard pour un logo discret */
+    height: 60px;
     object-fit: contain; 
     opacity: 1;
     /* Assure que l'image ne bouge pas si l'on zoome l'image elle-même */
