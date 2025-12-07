@@ -151,10 +151,10 @@ body {
 
 /* Style pour l'image Figma dans le bouton */
 .figma-button-container img {
-    width: 20px; /* Taille de l'icône (ajustée à 20px comme le SVG) */
-    height: 20px;
-    object-fit: contain; /* S'assure que le logo est bien dans le cadre */
-    filter: invert(1); /* Rend le logo blanc (si l'original figma.png a des couleurs) */
+    width: 26px; /* Taille de l'icône agrandie */
+    height: 26px;
+    object-fit: contain; 
+    opacity: 1;
 }
 
 /* Animation au survol */
