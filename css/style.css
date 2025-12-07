@@ -126,3 +126,31 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Nouveau style pour l'icône Figma */
+.figma-icon {
+    width: 48px; /* Taille de l'icône, vous pouvez ajuster */
+    height: 48px;
+    border-radius: 9999px; /* Cercle */
+    cursor: pointer;
+    /* Styles de transition pour l'interactivité */
+    transform: scale(1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.figma-icon:hover {
+    transform: scale(1.08); /* Agrandissement subtil au survol */
+    box-shadow: 0 8px 15px rgba(127, 29, 29, 0.3); /* Ombre plus marquée, couleur bordeaux */
+}
+
+/* Mise à jour du style d'infobulle pour qu'il soit bien positionné au-dessus du logo */
+.tooltip .tooltiptext {
+    /* ... vos styles existants ... */
+    bottom: 120%; /* Reste en haut */
+}
+
+.tooltip:hover .tooltiptext {
+    /* ... vos styles existants ... */
+    visibility: visible;
+    opacity: 1;
+}
