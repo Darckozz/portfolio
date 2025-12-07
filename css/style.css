@@ -126,40 +126,38 @@ body {
     transform: translateY(0);
 }
 
-/* NOUVEAU STYLE POUR LE BOUTON FIGMA */
-.figma-button-icon {
-    /* Cache l'icône SVG par défaut */
-    display: none;
-}
 .figma-button-wrapper {
-    /* Style pour le conteneur du bouton, assurez-vous qu'il est en relative pour le tooltip */
     position: relative;
     display: inline-block;
 }
 
-/* Style pour le conteneur du bouton réel qui contenait le SVG */
+*/
 .figma-button-container {
-    width: 40px; /* Taille du bouton (20px de large + 2 * 10px de padding) */
-    height: 40px; /* Taille du bouton */
+    /* Suppression du cercle bordeaux et des dimensions fixes du conteneur */
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-bordeaux-base); /* Red 600 dans le HTML */
-    border-radius: 9999px; /* rounded-full */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    
+    /* On enlève la transition de couleur, on ne garde que celle du transform */
+    transition: transform 0.15s ease-in-out;
+    
+    /* Le curseur doit montrer qu'on peut cliquer */
+    cursor: pointer; 
 }
 
-/* Style pour l'image Figma dans le bouton */
+*/
 .figma-button-container img {
-    width: 40px; /* Taille de l'icône agrandie */
-    height: 40px;
+    width: 32px; /* Taille de l'icône, ajustée pour être visible */
+    height: 32px;
     object-fit: contain; 
     opacity: 1;
+    
+    /* Assure que l'image elle-même n'est pas mise à l'échelle (on zoome le conteneur) */
+    transition: none; 
 }
 
-/* Animation au survol */
+/* Animation au survol : On applique le zoom au conteneur */
 .figma-button-container:hover {
-    background-color: var(--color-bordeaux-dark); /* Red 700 / Red 950 */
-    transform: scale(1.05); /* Petit effet de zoom */
+    background-color: transparent; /* Assure l'absence de couleur au survol */
+    transform: scale(1.2); /* Effet de zoom léger et animé */
 }
