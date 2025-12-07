@@ -12,6 +12,7 @@ const projectCards = document.querySelectorAll('.project-card');
 const projectDetailTitle = document.getElementById('project-detail-title');
 const backToWorkButton = document.getElementById('back-to-work');
 const figmaLinkButton = document.getElementById('figma-link-button-discreet');
+const projectVisual = document.getElementById('project-detail-visual'); // NOUVEL ÉLÉMENT AJOUTÉ
 const processCards = document.querySelectorAll('.process-card');
 const backToProjectDetailButton = document.getElementById('back-to-project-detail');
 const currentProjectNameSpan = document.getElementById('current-project-name');
@@ -257,7 +258,7 @@ const projectProcessDetails = {
 };
 
 
-// --- Fonctions de Navigation (Déplacées du HTML) ---
+// --- Fonctions de Navigation ---
 
 function getActivePage() {
     return document.querySelector('.page-content.is-visible');
@@ -274,7 +275,7 @@ function getActivePage() {
 function showPage(pageId, projectId = null, projectTitle = null, processId = null, processTitle = null) {
     const activePage = getActivePage();
     const nextPage = document.querySelector(`[data-page-content="${pageId}"]`);
-    const TRANSITION_DURATION_MS = TRANSITION_DURATION; 
+    const TRANSITION_DURATION_MS = TRANSITION_DURATION;
 
     if (!nextPage) {
         console.error(`Page ID '${pageId}' non trouvée.`);
@@ -312,7 +313,7 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
 
     if (activePage && activePage !== nextPage) {
         const initialHeight = activePage.offsetHeight;
-        contentContainer.style.minHeight = `${initialHeight}px`; 
+        contentContainer.style.minHeight = `${initialHeight}px`;
 
         activePage.classList.remove('is-visible');
         
@@ -331,7 +332,7 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
             activePage.classList.add('hidden');
         }
 
-        // 2.1 Mettre à jour le contenu dynamique 
+        // 2.1 Mettre à jour le contenu dynamique
         
         if (pageId === 'process-detail' && processId && processTitle) {
             if (!currentProject.title || !currentProject.id) {
@@ -353,25 +354,42 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
             if (figmaLinkButton) {
                 figmaLinkButton.href = `https://www.figma.com/file/project-${projectId}-prototype`;
             }
+
+            // ********** NOUVELLE LOGIQUE POUR L'IMAGE DU PROJET **********
+            if (projectVisual) {
+                if (projectId === '1') {
+                    // Afficher l'image pour le projet IDFM (ID 1)
+                    projectVisual.classList.remove('hidden');
+                } else {
+                    // Masquer l'image pour les autres projets
+                    projectVisual.classList.add('hidden');
+                }
+            }
+            // ************************************************************
+        }
+
+        // Si on quitte la page détail, on cache l'image
+        if (pageId !== 'project-detail' && projectVisual) {
+             projectVisual.classList.add('hidden');
         }
 
         // 2.2 Préparer et rendre la nouvelle page visible (opacité 0)
-        nextPage.classList.remove('hidden'); 
+        nextPage.classList.remove('hidden');
         
         // Lire la hauteur de la nouvelle page 
         const targetHeight = nextPage.offsetHeight;
 
         // 2.3 Déclencher l'animation de hauteur du conteneur
-        contentContainer.style.minHeight = `${targetHeight}px`; 
+        contentContainer.style.minHeight = `${targetHeight}px`;
 
         // 2.4 Déclencher le fondu-in après un micro délai
         setTimeout(() => {
-            nextPage.classList.add('is-visible'); 
+            nextPage.classList.add('is-visible');
             
             // --- ÉTAPE 3: FIN DE TRANSITION ET NETTOYAGE ---
             setTimeout(() => {
-                contentContainer.style.minHeight = 'auto'; 
-            }, TRANSITION_DURATION_MS); 
+                contentContainer.style.minHeight = 'auto';
+            }, TRANSITION_DURATION_MS);
         }, 10);
     }
 }
