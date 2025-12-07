@@ -130,27 +130,29 @@ body {
 
 /* --- NOUVEAU STYLE POUR LE BOUTON FIGMA (Correction du cadre) --- */
 
+/* --- NOUVEAU STYLE POUR LE BOUTON FIGMA (Correction du cadre) --- */
+
 .figma-logo-btn {
-    /* Dimensions pour un bouton plus grand afin que le logo coloré soit bien visible */
-    width: 56px; 
+    /* Dimensions pour un bouton plus grand */
+    width: 56px;
     height: 56px;
-    
+
     /* Retirer le padding et s'assurer que tout débordement est masqué */
-    padding: 0; 
-    overflow: hidden; 
-    
+    padding: 0;
+    overflow: hidden;
+
     /* Style du bouton */
-    background-color: transparent; /* Assure un fond propre */
+    background-color: white; /* Fond blanc pour bien faire ressortir le "F" */
     border: none;
-    border-radius: 50%;
-    
+    border-radius: 50%; /* Cercle */
+
     /* Conservation des ombres et transitions */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .figma-logo-btn:hover {
-    background-color: #f3f4f6; /* Fond très léger au survol */
+    background-color: #f3f4f6;
     box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.1);
     transform: translateY(-1px);
 }
@@ -158,15 +160,14 @@ body {
 .figma-logo-img {
     width: 100%;
     height: 100%;
-    
-    /* Le logo Figma est un F dans un cercle gris/noir. L'image complète a un fond transparent. */
-    /* Pour éliminer la bordure noire/grise et ne garder que le "F" coloré, nous devons zoomer davantage. */
-    /* 1.6 éliminait le fond gris. 2.0+ éliminera aussi l'espace entre le F et le bord du cercle gris. */
-    transform: scale(2.2); /* Zoom important pour n'afficher que les formes colorées du "F" */
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Ajustez le SCALE pour ne garder que le "F" coloré et pas le cercle gris/noir */
+    /* 1.6 ou 1.8 est souvent suffisant pour la plupart des fichiers sources */
+    transform: scale(1.6); /* **VALEUR CLÉ AJUSTÉE** */
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Garder la transition */
 }
 
-/* Animation au survol: L'image bouge à peine pour donner un effet de légèreté */
+/* Animation au survol: Le zoom reste léger */
 .figma-logo-btn:hover .figma-logo-img {
-    transform: scale(2.4); /* Zoom un peu plus au survol */
+    transform: scale(1.8); /* Zoom un peu plus au survol */
 }
