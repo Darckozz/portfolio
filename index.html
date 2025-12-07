@@ -183,6 +183,109 @@
                 </div>
             </section>
 
+            <section id="page-project-detail" data-page-content="project-detail" class="page-content hidden">
+                <button id="back-to-work" class="flex items-center text-gray-600 hover:accent-text font-medium mb-8 transition duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                    Retour à tous les projets
+                </button>
+
+                <h2 id="project-detail-title" class="text-5xl font-extrabold mb-10 tracking-tighter accent-text">Titre du Projet</h2>
+
+                <div id="project-detail-visual" class="mb-12 rounded-xl overflow-hidden shadow-2xl hidden">
+                    <img src="IDFM-site.png" alt="Aperçu de l'interface de réservation de trajet IDFM" class="w-full h-auto object-cover"/>
+                </div>
+                <div class="mb-12 p-6 bg-gray-50 rounded-xl border border-gray-200 grid md:grid-cols-4 gap-6 text-sm">
+                    <div>
+                        <p class="font-bold text-gray-800 mb-1">Rôle</p>
+                        <p class="text-gray-600">UX / UI Designer</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-800 mb-1">Durée</p>
+                        <p class="text-gray-600">1 semaine</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-800 mb-1">Outils</p>
+                        <p class="text-gray-600">Figma</p>
+                    </div>
+                    <div class="md:col-span-1">
+                        <p class="font-bold text-gray-800 mb-1">Compétences clés</p>
+                        <p class="text-gray-600">UX Research, Prototypage, UI Design, Tests Utilisateurs</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-end mb-4">
+                    <a id="figma-link-button-discreet" href="https://www.figma.com/file/project-1-prototype" target="_blank" class="figma-button-wrapper tooltip p-0 m-0">
+                        <div
+                            class="figma-button-container"
+                            aria-label="Voir le prototype de conception Figma"
+                        >
+                            <img src="figma.png" alt="Logo Figma" />
+                        </div>
+                        <span class="tooltiptext">Voir le Prototype Figma</span>
+                    </a>
+                </div>
+
+                <h3 class="text-3xl font-bold accent-text mb-6">Processus de l'Étude de Cas</h3>
+
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
+
+                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white" 
+                        data-process-id="analyse" data-process-title="Phase d'Analyse">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-gray-900">Empathie / Analyse Utilisateur</h4>
+                        </div>
+                        <p class="text-gray-700 flex-grow">Le processus a débuté par une enquête contextuelle et une analyse approfondie pour comprendre les besoins des utilisateurs.</p>
+                    </div>
+
+                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
+                        data-process-id="entretiens" data-process-title="Entretiens & Observations">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-gray-900">Définition / Synthèse</h4>
+                            </div>
+                        <p class="text-gray-700 flex-grow">Des entretiens individuels ont été menés en mode "guerilla" avec les conducteurs et instructeurs, tandis que des observations (Shadowing) ont permis de tracer le parcours utilisateur.</p>
+                    </div>
+
+                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
+                        data-process-id="personas" data-process-title="Personas & Scénarios">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M14 14c2.67-1.33 4-3.33 4-6a6 6 0 0 0-12 0c0 2.67 1.33 4.67 4 6"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-gray-900">Idéation / Conceptualisation</h4>
+                        </div>
+                        <p class="text-gray-700 flex-grow">Une attention particulière a été portée à la création de scénarios afin de mieux comprendre les besoins spécifiques de chaque persona.</p>
+                    </div>
+
+                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
+                        data-process-id="fonctionnalites" data-process-title="Définition des Fonctionnalités">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-gray-900">Prototypage</h4>
+                        </div>
+                        <p class="text-gray-700 flex-grow">Les utilisateurs ont exprimé le besoin de mettre en favoris des documents et de surligner des paragraphes. La complexité résidait dans la conservation de ces données lors des mises à jour.</p>
+                    </div>
+                    
+                    <div class="md:col-span-2 p-6 rounded-xl border border-red-200 shadow-lg bg-red-50 flex flex-col h-full">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0 bg-red-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-square"><polyline points="9 11 11 13 15 9"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-red-800">Tests Utilisateurs & Itération</h4>
+                        </div>
+                        <p class="text-gray-700 font-medium flex-grow">Le processus a été itératif, aboutissant à un produit extrêmement simple à utiliser et véritablement utile, en accord avec les besoins des conducteurs de train chez Eurotunnel.</p>
+                    </div>
+
+                </div>
+            </section>
+
             <section id="page-process-detail" data-page-content="process-detail" class="page-content hidden">
                 <button id="back-to-project-detail" class="flex items-center text-gray-600 hover:accent-text font-medium mb-8 transition duration-200">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
