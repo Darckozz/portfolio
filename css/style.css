@@ -21,10 +21,20 @@ body {
     background-color: var(--color-bordeaux-dark); 
 }
 
-/* STYLE DU LIEN DE NAVIGATION : Rendu plus rapide */
+/* ------------------------------------------------------------------ */
+/* NOUVEAU STYLE : CONTENEUR PRINCIPAL (Ombre moderne et douce) */
+/* ------------------------------------------------------------------ */
+#content-container {
+    /* Ajout d'une ombre complexe et douce pour la profondeur */
+    box-shadow: 
+        0 4px 6px -1px rgba(0, 0, 0, 0.05), /* Ombre très légère */
+        0 10px 30px -5px rgba(127, 29, 29, 0.15); /* Ombre de profondeur avec accent de couleur */
+}
+/* ------------------------------------------------------------------ */
+
+/* STYLE DU LIEN DE NAVIGATION */
 .nav-link {
     transition: all 0.15s ease-in-out; 
-    /* MODIFICATION CLÉ : Ajouter le padding et le border-radius ici */
     border-radius: 0.5rem; /* rounded-lg */
     padding: 0.5rem 0.75rem; /* Le padding de is-active */
 }
@@ -32,29 +42,41 @@ body {
 /* NOUVEAU STYLE POUR L'ÉTAT ACTIF (Bordeaux clair) */
 .nav-link.is-active {
     background-color: var(--color-bordeaux-light); /* Fond très léger */
-    color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé (utiliser !important pour écraser text-gray-600) */
+    color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé */
     font-weight: 700; /* Gras */
-    /* Suppression des propriétés redondantes car elles sont maintenant dans .nav-link */
 }
 
 /* MODIFICATION CLÉ : Simplification du style au survol pour les liens non actifs */
 .nav-link:not(.is-active):hover {
     background-color: #f3f4f6; /* Ajouter un fond gris très léger pour un survol plus doux que transparent */
-    color: var(--color-bordeaux-base); /* Optionnel : Changer la couleur du texte au survol non-actif */
+    color: var(--color-bordeaux-base); 
 }
 
-/* Styles pour les cartes de projet */
-.project-card {
-    border: 1px solid #e5e7eb;
+/* ------------------------------------------------------------------ */
+/* NOUVEAUX STYLES : CARTES DE PROJET ET DE PROCESSUS */
+/* ------------------------------------------------------------------ */
+
+/* Style de base des cartes (Ombre très légère) */
+.project-card, .process-card {
+    border: 1px solid #f3f4f6; /* Bordure très claire pour une meilleure définition */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    /* Ombre de base : plus subtile et moins présente */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03), 0 1px 2px -1px rgba(0, 0, 0, 0.03); 
 }
-/* MODIFIÉ : Retrait de la couleur de bordure et du transform au survol */
-.project-card:hover {
-    transform: translateY(-3px); /* Laisse un petit lift subtil */
-    box-shadow: 0 8px 12px -3px rgba(127, 29, 29, 0.08), 0 3px 5px -3px rgba(127, 29, 29, 0.05);
-    border-color: #e5e7eb; /* Reste gris clair */
+
+/* Survol : Effet de soulèvement (lift) plus élégant et ombre diffuse */
+.project-card:hover, .process-card:hover {
+    transform: translateY(-4px); /* Augmenter légèrement le lift */
+    /* Nouvelle ombre au survol : Plus large, plus diffuse, plus foncée */
+    box-shadow: 
+        0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+        0 4px 6px -4px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(127, 29, 29, 0.1); /* Petit halo rouge discret */
+    border-color: #fca5a5; /* Bordure plus visible (Red 300) */
 }
+/* ------------------------------------------------------------------ */
+
 
 /* Style pour les pastilles de compétences */
 .skill-tag {
@@ -99,18 +121,6 @@ body {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
-}
-
-/* Style spécifique pour les cartes du processus pour activer le curseur */
-.process-card {
-    cursor: pointer;
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-.process-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
 }
 
 /* NOUVEAU STYLE pour la transition de page */
