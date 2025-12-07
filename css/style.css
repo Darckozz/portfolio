@@ -151,8 +151,8 @@ body {
 
 /* Style pour l'image Figma dans le bouton */
 .figma-button-container img {
-    width: 26px; /* Taille de l'icône agrandie */
-    height: 26px;
+    width: 40px; /* Taille de l'icône agrandie */
+    height: 40px;
     object-fit: contain; 
     opacity: 1;
 }
