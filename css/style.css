@@ -128,8 +128,6 @@ body {
 
 /* --- NOUVEAU STYLE POUR LE BOUTON FIGMA (Correction du cadre) --- */
 
-/* --- NOUVEAU STYLE POUR LE BOUTON FIGMA (Correction du cadrage) --- */
-
 .figma-logo-btn {
     /* Maintenir les dimensions pour un bouton visible et l'effet de l'ombre */
     width: 56px; 
@@ -155,21 +153,3 @@ body {
     transform: translateY(-1px);
 }
 
-.figma-logo-img {
-    width: 100%;
-    height: 100%;
-    
-    /* **CORRECTION CLÉ** : Réduire le zoom (scale) à 1.4-1.5 pour afficher les formes colorées */
-    /* Cela permet de masquer le cercle gris foncé de l'image sans couper le F coloré. */
-    transform: scale(1.4); 
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* Assurer que l'image est centrée (utile si le scale n'est pas parfait) */
-    display: block;
-    margin: 0 auto;
-}
-
-/* Animation au survol: léger zoom pour l'effet d'interactivité */
-.figma-logo-btn:hover .figma-logo-img {
-    transform: scale(1.5); /* Léger zoom au survol pour l'effet */
-}
