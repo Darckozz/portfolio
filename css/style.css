@@ -11,14 +11,9 @@ body {
     --color-bordeaux-dark: #450a0a; /* Red 950 - Survol bouton principal */
 }
 
-/* MODIFICATION 3 : Dégradé de texte pour la modernité */
+/* CORRECTION : Laissez le texte en couleur unie pour garantir que les ombres fonctionnent */
 .accent-text {
-    /* Définir le dégradé */
-    background: linear-gradient(90deg, var(--color-bordeaux-base) 0%, #a03c3c 100%); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: var(--color-bordeaux-base); /* Fallback */
+    color: var(--color-bordeaux-base); /* Le texte redevient bordeaux plein */
 }
 .accent-bg {
     background-color: var(--color-bordeaux-base); 
@@ -28,13 +23,13 @@ body {
 }
 
 /* ------------------------------------------------------------------ */
-/* MODIFICATION 1 : CONTENEUR PRINCIPAL (Ombre moderne colorée) */
+/* MODIFICATION 1 : CONTENEUR PRINCIPAL (Ombre moderne TRÈS colorée) */
 /* ------------------------------------------------------------------ */
 #content-container {
-    /* Nouvelle ombre complexe et douce pour la profondeur, avec un halo plus intense */
+    /* Nouvelle ombre complexe et douce pour la profondeur */
     box-shadow: 
-        0 4px 6px -1px rgba(0, 0, 0, 0.05), 
-        0 15px 40px -8px rgba(127, 29, 29, 0.3); /* Halo de couleur plus visible */
+        0 8px 15px -3px rgba(0, 0, 0, 0.1), /* Ombre grise de base plus forte */
+        0 20px 50px -10px rgba(127, 29, 29, 0.5); /* Halo de couleur plus large et plus opaque (0.5) pour le "peps" */
 }
 /* ------------------------------------------------------------------ */
 
@@ -64,22 +59,21 @@ body {
 
 /* Style de base des cartes (Ombre très légère) */
 .project-card, .process-card {
-    /* Bordure par défaut plus définie */
     border: 1px solid #e5e7eb; 
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03); 
 }
 
-/* Survol : Effet de soulèvement (lift) élégant et LUEUR BORDEAUX */
+/* Survol : Effet de soulèvement (lift) élégant et LUEUR BORDEAUX GARANTIE */
 .project-card:hover, .process-card:hover {
     transform: translateY(-4px); 
     box-shadow: 
         0 10px 15px -3px rgba(0, 0, 0, 0.1), 
         0 4px 6px -4px rgba(0, 0, 0, 0.1),
-        /* Lueur de couleur pour l'effet moderne */
+        /* Lueur de couleur pour l'effet moderne et visible */
         0 0 0 2px var(--color-bordeaux-base),
-        0 0 0 4px rgba(127, 29, 29, 0.1); 
+        0 0 0 4px rgba(127, 29, 29, 0.3); /* Augmentation de l'opacité pour plus de "peps" */
     border-color: transparent; 
 }
 /* ------------------------------------------------------------------ */
@@ -98,7 +92,7 @@ body {
     background-color: var(--color-bordeaux-light); 
     color: var(--color-bordeaux-base); 
     border-color: #fce7f3; /* Rose très clair */
-    box-shadow: 0 4px 8px rgba(127, 29, 29, 0.1); /* Ombre colorée */
+    box-shadow: 0 4px 8px rgba(127, 29, 29, 0.15); /* Ombre colorée plus visible */
     transform: translateY(-1px);
 }
 
