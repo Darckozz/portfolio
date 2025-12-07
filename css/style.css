@@ -24,6 +24,7 @@ body {
 /* STYLE DU LIEN DE NAVIGATION : Rendu plus rapide */
 .nav-link {
     transition: all 0.15s ease-in-out; 
+    /* MODIFICATION CLÉ : Ajouter le padding et le border-radius ici */
     border-radius: 0.5rem; /* rounded-lg */
     padding: 0.5rem 0.75rem; /* Le padding de is-active */
 }
@@ -31,8 +32,9 @@ body {
 /* NOUVEAU STYLE POUR L'ÉTAT ACTIF (Bordeaux clair) */
 .nav-link.is-active {
     background-color: var(--color-bordeaux-light); /* Fond très léger */
-    color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé */
+    color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé (utiliser !important pour écraser text-gray-600) */
     font-weight: 700; /* Gras */
+    /* Suppression des propriétés redondantes car elles sont maintenant dans .nav-link */
 }
 
 /* MODIFICATION CLÉ : Simplification du style au survol pour les liens non actifs */
@@ -47,6 +49,7 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
+/* MODIFIÉ : Retrait de la couleur de bordure et du transform au survol */
 .project-card:hover {
     transform: translateY(-3px); /* Laisse un petit lift subtil */
     box-shadow: 0 8px 12px -3px rgba(127, 29, 29, 0.08), 0 3px 5px -3px rgba(127, 29, 29, 0.05);
