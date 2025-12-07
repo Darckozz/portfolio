@@ -1,127 +1,127 @@
 /* Configuration de la police Inter par défaut */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f7f7f9; /* Un gris très léger pour le fond */
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f7f9; /* Un gris très léger pour le fond */
 }
 
 /* Définition de la couleur d'accent (Bordeaux/Rouge profond) */
 :root {
-    --color-bordeaux-base: #7f1d1d; /* Red 900 - Bordeaux profond */
-    --color-bordeaux-light: #fee2e2; /* Red 100 - Arrière-plan subtil pour l'état actif */
-    --color-bordeaux-dark: #450a0a; /* Red 950 - Survol bouton principal */
+    --color-bordeaux-base: #7f1d1d; /* Red 900 - Bordeaux profond */
+    --color-bordeaux-light: #fee2e2; /* Red 100 - Arrière-plan subtil pour l'état actif */
+    --color-bordeaux-dark: #450a0a; /* Red 950 - Survol bouton principal */
 }
 
 .accent-text {
-    color: var(--color-bordeaux-base); 
+    color: var(--color-bordeaux-base); 
 }
 .accent-bg {
-    background-color: var(--color-bordeaux-base); 
+    background-color: var(--color-bordeaux-base); 
 }
 .accent-bg:hover {
-    background-color: var(--color-bordeaux-dark); 
+    background-color: var(--color-bordeaux-dark); 
 }
 
 /* STYLE DU LIEN DE NAVIGATION : Rendu plus rapide */
 .nav-link {
-    transition: all 0.15s ease-in-out; 
-    /* MODIFICATION CLÉ : Ajouter le padding et le border-radius ici */
-    border-radius: 0.5rem; /* rounded-lg */
-    padding: 0.5rem 0.75rem; /* Le padding de is-active */
+    transition: all 0.15s ease-in-out; 
+    /* MODIFICATION CLÉ : Ajouter le padding et le border-radius ici */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.5rem 0.75rem; /* Le padding de is-active */
 }
 
 /* NOUVEAU STYLE POUR L'ÉTAT ACTIF (Bordeaux clair) */
 .nav-link.is-active {
-    background-color: var(--color-bordeaux-light); /* Fond très léger */
-    color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé (utiliser !important pour écraser text-gray-600) */
-    font-weight: 700; /* Gras */
-    /* Suppression des propriétés redondantes car elles sont maintenant dans .nav-link */
+    background-color: var(--color-bordeaux-light); /* Fond très léger */
+    color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé (utiliser !important pour écraser text-gray-600) */
+    font-weight: 700; /* Gras */
+    /* Suppression des propriétés redondantes car elles sont maintenant dans .nav-link */
 }
 
 /* MODIFICATION CLÉ : Simplification du style au survol pour les liens non actifs */
 .nav-link:not(.is-active):hover {
-    background-color: #f3f4f6; /* Ajouter un fond gris très léger pour un survol plus doux que transparent */
-    color: var(--color-bordeaux-base); /* Optionnel : Changer la couleur du texte au survol non-actif */
+    background-color: #f3f4f6; /* Ajouter un fond gris très léger pour un survol plus doux que transparent */
+    color: var(--color-bordeaux-base); /* Optionnel : Changer la couleur du texte au survol non-actif */
 }
 
 /* Styles pour les cartes de projet */
 .project-card {
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
 /* MODIFIÉ : Retrait de la couleur de bordure et du transform au survol */
 .project-card:hover {
-    transform: translateY(-3px); /* Laisse un petit lift subtil */
-    box-shadow: 0 8px 12px -3px rgba(127, 29, 29, 0.08), 0 3px 5px -3px rgba(127, 29, 29, 0.05);
-    border-color: #e5e7eb; /* Reste gris clair */
+    transform: translateY(-3px); /* Laisse un petit lift subtil */
+    box-shadow: 0 8px 12px -3px rgba(127, 29, 29, 0.08), 0 3px 5px -3px rgba(127, 29, 29, 0.05);
+    border-color: #e5e7eb; /* Reste gris clair */
 }
 
 /* Style pour les pastilles de compétences */
 .skill-tag {
-    background-color: #f3f4f6;
-    color: #1f2937;
-    border: 1px solid #e5e7eb;
-    transition: all 0.2s ease-in-out;
-    cursor: default; 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    background-color: #f3f4f6;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease-in-out;
+    cursor: default; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 .skill-tag:hover {
-    background-color: var(--color-bordeaux-light); 
-    color: var(--color-bordeaux-base); 
-    border-color: #fca5a5; 
-    box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
-    transform: translateY(-1px);
+    background-color: var(--color-bordeaux-light); 
+    color: var(--color-bordeaux-base); 
+    border-color: #fca5a5; 
+    box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
+    transform: translateY(-1px);
 }
 
 /* Styles pour l'infobulle (tooltip) */
 .tooltip {
-    position: relative;
-    display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 170px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 8px;
-    position: absolute;
-    z-index: 10;
-    bottom: 120%; 
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.8rem;
-    white-space: nowrap;
+    visibility: hidden;
+    width: 170px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 10;
+    bottom: 120%; 
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+    white-space: nowrap;
 }
 .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Style spécifique pour les cartes du processus pour activer le curseur */
 .process-card {
-    cursor: pointer;
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 .process-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
 }
 
 /* NOUVEAU STYLE pour la transition de page */
 .page-content {
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-    opacity: 0; 
-    transform: translateY(10px); 
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    opacity: 0; 
+    transform: translateY(10px); 
 }
 
 /* La page qui doit être affichée */
 .page-content.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
