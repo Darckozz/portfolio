@@ -126,10 +126,6 @@ body {
     transform: translateY(0);
 }
 
-/* style.css */
-
-/* ... (votre code existant) ... */
-
 /* --- NOUVEAUX STYLES POUR LE BOUTON FIGMA (CORRIGÉ) --- */
 
 /* Conteneur principal (pour le tooltip) */
@@ -139,7 +135,7 @@ body {
 }
 
 /* Style pour le conteneur du bouton Figma :
-   C'est l'élément sur lequel le zoom sera appliqué.
+    C'est l'élément sur lequel le zoom sera appliqué.
 */
 .figma-button-container {
     display: flex;
@@ -152,7 +148,7 @@ body {
 }
 
 /* Style pour l'image Figma dans le bouton :
-   TAILLE DE L'IMAGE RÉDUITE ET FIXÉE à 24px
+    TAILLE DE L'IMAGE RÉDUITE ET FIXÉE à 24px
 */
 .figma-button-container img {
     width: 60px; /* Taille standard pour un logo discret */
