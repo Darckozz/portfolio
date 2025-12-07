@@ -12,7 +12,7 @@ const projectCards = document.querySelectorAll('.project-card');
 const projectDetailTitle = document.getElementById('project-detail-title');
 const backToWorkButton = document.getElementById('back-to-work');
 const figmaLinkButton = document.getElementById('figma-link-button-discreet');
-const projectVisual = document.getElementById('project-detail-visual'); // NOUVEL ÉLÉMENT AJOUTÉ
+const projectVisual = document.getElementById('project-detail-visual'); 
 const processCards = document.querySelectorAll('.process-card');
 const backToProjectDetailButton = document.getElementById('back-to-project-detail');
 const currentProjectNameSpan = document.getElementById('current-project-name');
@@ -93,8 +93,23 @@ const projectProcessDetails = {
             </div>
 
             <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Cartes d'Empathie (Empathy Maps) 🧭</h3>
-            <p>Pour formaliser les besoins et frustrations des utilisateurs, nous avons construit des <strong>Empathy Maps</strong> pour chaque profil type. </p>
+            <p>Pour formaliser les besoins et frustrations des utilisateurs, nous avons construit des <strong>Empathy Maps</strong> pour chaque profil type, servant de référence pour la définition des problèmes (étape suivante).</p>
             
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="text-center p-4 border rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 1 – Ethan, Étudiant Urbain (22 ans)</h4>
+                    <img src="empathy-map-ethan.png" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Ethan';" />
+                </div>
+                <div class="text-center p-4 border rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 2 – Jean-Pierre, Senior Novice (68 ans)</h4>
+                    <img src="empathy-map-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
+                </div>
+                <div class="text-center p-4 border rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 3 – Charline, Active Flexible (40 ans)</h4>
+                    <img src="empathy-map-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
+                </div>
+            </div>
+
             <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Insights Généraux :</h4>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li>La <strong>géolocalisation</strong> et les <strong>suggestions automatiques</strong> sont essentielles pour réduire les frictions de saisie.</li>
@@ -102,7 +117,6 @@ const projectProcessDetails = {
                 <li>Les messages d’erreur doivent être <strong>clairs, explicatifs</strong> et proposer des alternatives pour ne pas décourager l’utilisateur.</li>
             </ul>
         `,
-        // La section entretiens originale va dans 'entretiens'
         entretiens: `
             <p>Nous avons combiné plusieurs méthodes de <strong>Recherche Utilisateur (TàD IDFM)</strong> pour obtenir une vision complète :</p>
             
@@ -167,7 +181,7 @@ const projectProcessDetails = {
             <p class="mt-4">Le prototype basse fidélité a permis de valider l'architecture de l'information très tôt, économisant du temps sur la phase de design haute fidélité.</p>
         `,
         maquettage: `
-            <p>La phase de <strong>Maquettage Haute Fidélité (TàD IDFM)</strong> (UI Design) a eu lieu sur Photoshop et Figma, intégrant la charte graphique et le Design System de la marque (couleurs, typographie, composants interactifs).</p>
+            <p>La <strong>Maquettage Haute Fidélité (TàD IDFM)</strong> (UI Design) a eu lieu sur Photoshop et Figma, intégrant la charte graphique et le Design System de la marque (couleurs, typographie, composants interactifs).</p>
 
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Objectifs UI :</h3>
             <ul class="list-disc list-inside space-y-2 ml-4">
