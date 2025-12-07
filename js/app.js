@@ -428,5 +428,3 @@ backToProjectDetailButton.addEventListener('click', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     showPage('work');
 });
-
-J'aimerais que tu remplace le bouton voir le prototype figma grace a mon image faut que ca rend bien et interactif
