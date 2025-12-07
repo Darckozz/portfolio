@@ -11,8 +11,7 @@ const homeLink = document.getElementById('home-link');
 const projectCards = document.querySelectorAll('.project-card');
 const projectDetailTitle = document.getElementById('project-detail-title');
 const backToWorkButton = document.getElementById('back-to-work');
-const projectMockupLink = document.getElementById('project-mockup-link'); // Lien du mockup
-const projectMockupImg = document.getElementById('project-mockup-img'); // Image du mockup
+const figmaLinkButton = document.getElementById('figma-link-button-discreet');
 const processCards = document.querySelectorAll('.process-card');
 const backToProjectDetailButton = document.getElementById('back-to-project-detail');
 const currentProjectNameSpan = document.getElementById('current-project-name');
@@ -22,7 +21,7 @@ const contentContainer = document.getElementById('content-container');
 const TRANSITION_DURATION = 400; // Doit correspondre au CSS (0.4s)
 
 
-// --- Données des Études de Cas (Détails de chaque étape) ---
+// --- Données des Études de Cas (Déplacées du HTML) ---
 const projectProcessDetails = {
     // --- Projet 1 : TàD IDFM (Desktop) ---
     "1": {
@@ -36,21 +35,6 @@ const projectProcessDetails = {
                 <li>Identifier les points de friction les plus douloureux pour les utilisateurs quotidiens.</li>
             </ul>
             <p class="mt-4">Cette phase a permis de poser les bases de la recherche utilisateur à venir en ciblant précisément les zones d'ombre du service de transport à la demande.</p>
-        `,
-        entretiens: `
-            <p>Nous avons combiné plusieurs méthodes de <strong>Recherche Utilisateur (TàD IDFM)</strong> pour obtenir une vision complète :</p>
-            
-            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Méthodes utilisées :</h3>
-            <div class="space-y-4">
-                <p class="font-semibold text-gray-800">1. Entretiens Contextuels (Qualitatif)</p>
-                <p>Des entretiens semi-directifs ont été menés auprès de 10 utilisateurs réguliers du TàD. Les questions se concentraient sur leurs habitudes de transport, leurs attentes, et les émotions ressenties lors de la réservation et du voyage.</p>
-                
-                <p class="font-semibold text-gray-800">2. Enquêtes de Satisfaction (Quantitatif)</p>
-                <p>Un questionnaire diffusé en ligne a permis de collecter 150 réponses sur la satisfaction globale et l'évaluation de fonctionnalités spécifiques (e.g., facilité d'annulation, clarté des horaires).</p>
-
-                <p class="font-semibold text-gray-800">3. Shadowing / Observation</p>
-                <p>Nous avons observé trois utilisateurs réserver et effectuer un trajet en temps réel. Cette observation non-intrusive a révélé des problèmes d'utilisabilité et de compréhension des messages qui n'auraient pas été mentionnés en entretien (ex : hésitation sur la saisie des adresses).</p>
-            </div>
         `,
         entretiens: `
             <p>Nous avons combiné plusieurs méthodes de <strong>Recherche Utilisateur (TàD IDFM)</strong> pour obtenir une vision complète :</p>
@@ -273,7 +257,7 @@ const projectProcessDetails = {
 };
 
 
-// --- Fonctions de Navigation ---
+// --- Fonctions de Navigation (Déplacées du HTML) ---
 
 function getActivePage() {
     return document.querySelector('.page-content.is-visible');
@@ -281,6 +265,11 @@ function getActivePage() {
 
 /**
  * Affiche une page avec une transition de fondu et ajuste la hauteur du conteneur.
+ * @param {string} pageId - L'ID de la page à afficher (work, about, contact, project-detail, process-detail).
+ * @param {string} [projectId=null] - L'ID du projet sélectionné.
+ * @param {string} [projectTitle=null] - Le titre du projet sélectionné.
+ * @param {string} [processId=null] - L'ID de l'étape du processus sélectionné.
+ * @param {string} [processTitle=null] - Le titre de l'étape du processus sélectionné.
  */
 function showPage(pageId, projectId = null, projectTitle = null, processId = null, processTitle = null) {
     const activePage = getActivePage();
@@ -292,7 +281,7 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
         return;
     }
 
-    // Évite de recharger la même page si déjà visible
+    // Vérification de non-rechargement si la page demandée est déjà affichée
     if (activePage === nextPage) {
         if (pageId === 'work' && (currentProject.id !== null || activePage.id === 'page-project-detail' || activePage.id === 'page-process-detail')) {
             currentProject.id = null;
@@ -361,15 +350,8 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
             currentProject.id = projectId;
             currentProject.title = projectTitle;
             projectDetailTitle.textContent = projectTitle;
-            
-            // LOGIQUE MISE À JOUR POUR LE BLOC IMAGE/LIEN
-            if (projectMockupLink && projectMockupImg) {
-                // 1. Mettre à jour l'URL du prototype Figma
-                projectMockupLink.href = `https://www.figma.com/file/project-${projectId}-prototype`;
-                
-                // 2. Mettre à jour la source de l'image (si les fichiers sont nommés project-X-mockup.jpg)
-                projectMockupImg.src = `project-${projectId}-mockup.jpg`;
-                projectMockupImg.alt = `Maquette du prototype pour ${projectTitle}`;
+            if (figmaLinkButton) {
+                figmaLinkButton.href = `https://www.figma.com/file/project-${projectId}-prototype`;
             }
         }
 
@@ -446,3 +428,5 @@ backToProjectDetailButton.addEventListener('click', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     showPage('work');
 });
+
+J'aimerais que tu remplace le bouton voir le prototype figma grace a mon image faut que ca rend bien et interactif
