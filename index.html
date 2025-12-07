@@ -34,18 +34,23 @@
         /* STYLE DU LIEN DE NAVIGATION : Rendu plus rapide */
         .nav-link {
             transition: all 0.15s ease-in-out; 
+            /* MODIFICATION CLÉ : Ajouter le padding et le border-radius ici */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.5rem 0.75rem; /* Le padding de is-active */
         }
 
         /* NOUVEAU STYLE POUR L'ÉTAT ACTIF (Bordeaux clair) */
         .nav-link.is-active {
             background-color: var(--color-bordeaux-light); /* Fond très léger */
-            color: var(--color-bordeaux-base); /* Texte bordeaux foncé */
+            color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé (utiliser !important pour écraser text-gray-600) */
             font-weight: 700; /* Gras */
-            border-radius: 0.5rem; /* rounded-lg */
-            padding: 0.5rem 0.75rem; /* Ajustement padding */
+            /* Suppression des propriétés redondantes car elles sont maintenant dans .nav-link */
         }
+        
+        /* MODIFICATION CLÉ : Simplification du style au survol pour les liens non actifs */
         .nav-link:not(.is-active):hover {
-            background-color: transparent; /* plus de carré gris au survol */
+            background-color: #f3f4f6; /* Ajouter un fond gris très léger pour un survol plus doux que transparent */
+            color: var(--color-bordeaux-base); /* Optionnel : Changer la couleur du texte au survol non-actif */
         }
 
         /* Styles pour les cartes de projet */
