@@ -1,4 +1,3 @@
-
 /* Configuration de la police Inter par défaut */
 body {
     font-family: 'Inter', sans-serif;
@@ -89,7 +88,7 @@ body {
     padding: 5px 8px;
     position: absolute;
     z-index: 10;
-    bottom: 120%; 
+    bottom: 120%;  /* Reste en haut */
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -127,7 +126,8 @@ body {
     transform: translateY(0);
 }
 
-/* Nouveau style pour l'icône Figma */
+/* --- NOUVEAU STYLE POUR L'ICÔNE FIGMA --- */
+
 .figma-icon {
     width: 48px; /* Taille de l'icône, vous pouvez ajuster */
     height: 48px;
@@ -141,16 +141,4 @@ body {
 .figma-icon:hover {
     transform: scale(1.08); /* Agrandissement subtil au survol */
     box-shadow: 0 8px 15px rgba(127, 29, 29, 0.3); /* Ombre plus marquée, couleur bordeaux */
-}
-
-/* Mise à jour du style d'infobulle pour qu'il soit bien positionné au-dessus du logo */
-.tooltip .tooltiptext {
-    /* ... vos styles existants ... */
-    bottom: 120%; /* Reste en haut */
-}
-
-.tooltip:hover .tooltiptext {
-    /* ... vos styles existants ... */
-    visibility: visible;
-    opacity: 1;
 }
