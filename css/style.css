@@ -211,6 +211,9 @@ body {
     z-index: 0; 
     animation: float 4s ease-in-out infinite alternate;
     pointer-events: none; /* Rendre les stickers ignorables par la souris */
+    
+    /* MODIFICATION CLÉ: Ajout de l'ombre de base pour tous les stickers */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* 1. Carré jaune (Note Post-it) - En haut à gauche */
@@ -221,11 +224,12 @@ body {
     border-radius: 6px;
     top: 100px; 
     left: 8%; 
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 5.5s;
 }
 
 /* 2. Triangle vert (Forme abstraite) - Au milieu à gauche */
+/* NOTE: Utilisation des bordures pour créer un triangle. L'ombre étant appliquée au conteneur, elle devrait fonctionner.
+   J'ai retiré l'opacité initiale (0.85) qui pourrait interagir bizarrement avec l'ombre. */
 .sticker-2 {
     width: 0;
     height: 0;
@@ -234,8 +238,6 @@ body {
     border-bottom: 50px solid #10b981; /* Vert émeraude */
     top: 430px; 
     left: 2%; 
-    opacity: 0.85;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 4s;
     animation-delay: 1.2s;
 }
@@ -248,7 +250,6 @@ body {
     background-color: var(--color-bordeaux-base); /* Bordeaux */
     top: 100px; 
     right: 10%; 
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 6s;
     animation-delay: 0.5s;
 }
@@ -261,7 +262,6 @@ body {
     background-color: #06b6d4; /* Cyan */
     top: 400px;
     right: 2%;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 3s;
     animation-delay: 0.8s;
 }
@@ -275,7 +275,6 @@ body {
     bottom: 50px; 
     right: 5%; /* Maintenu à 5% pour le dégagement */
     opacity: 0.9;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 5s;
     animation-delay: 1.5s;
 }
@@ -289,7 +288,6 @@ body {
     bottom: 80px;
     left: 5%;
     opacity: 0.7;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 4.8s;
     animation-delay: 2s;
 }
