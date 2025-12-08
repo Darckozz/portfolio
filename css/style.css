@@ -4,11 +4,16 @@ body {
     background-color: #f7f7f9; /* Un gris très léger pour le fond */
 }
 
-/* Définition de la couleur d'accent (Bordeaux/Rouge profond) */
+/* Définition de la couleur d'accent (Rouge Vif) */
 :root {
-    --color-bordeaux-base: #7f1d1d; /* Red 900 - Bordeaux profond */
-    --color-bordeaux-light: #fee2e2; /* Red 100 - Arrière-plan subtil pour l'état actif */
-    --color-bordeaux-dark: #450a0a; /* Red 950 - Survol bouton principal */
+    /* MODIFIÉ : Rouge plus vif (similaire à Red 600) */
+    --color-bordeaux-base: #dc2626; 
+    
+    /* MODIFIÉ : Arrière-plan subtil (similaire à Red 100) */
+    --color-bordeaux-light: #fee2e2; 
+    
+    /* MODIFIÉ : Survol bouton principal (similaire à Red 800) */
+    --color-bordeaux-dark: #991b1b; 
 }
 
 .accent-text {
@@ -52,7 +57,8 @@ body {
 /* MODIFIÉ : Retrait de la couleur de bordure et du transform au survol */
 .project-card:hover {
     transform: translateY(-3px); /* Laisse un petit lift subtil */
-    box-shadow: 0 8px 12px -3px rgba(127, 29, 29, 0.08), 0 3px 5px -3px rgba(127, 29, 29, 0.05);
+    /* Ombre subtile utilisant la nouvelle couleur d'accent */
+    box-shadow: 0 8px 12px -3px rgba(220, 38, 38, 0.08), 0 3px 5px -3px rgba(220, 38, 38, 0.05); 
     border-color: #e5e7eb; /* Reste gris clair */
 }
 
@@ -69,7 +75,7 @@ body {
     background-color: var(--color-bordeaux-light); 
     color: var(--color-bordeaux-base); 
     border-color: #fca5a5; 
-    box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
+    box-shadow: 0 2px 5px rgba(220, 38, 38, 0.1); /* Utilisation du nouveau rouge */
     transform: translateY(-1px);
 }
 
@@ -110,7 +116,8 @@ body {
 }
 .process-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
+    /* Ombre subtile utilisant la nouvelle couleur d'accent */
+    box-shadow: 0 6px 10px rgba(220, 38, 38, 0.1); 
 }
 
 /* NOUVEAU STYLE pour la transition de page */
@@ -135,7 +142,7 @@ body {
 }
 
 /* Style pour le conteneur du bouton Figma :
-    C'est l'élément sur lequel le zoom sera appliqué.
+     C'est l'élément sur lequel le zoom sera appliqué.
 */
 .figma-button-container {
     display: flex;
