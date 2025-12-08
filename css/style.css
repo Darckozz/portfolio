@@ -130,29 +130,71 @@ body {
 }
 
 /* --- STYLES POUR LE BOUTON FIGMA --- */
-/* (Styles Figma inchangés pour le z-index) */
+
+/* Conteneur principal (pour le tooltip) */
 .figma-button-wrapper {
     position: relative;
     display: inline-block;
+    /* Z-INDEX TRÈS ÉLEVÉ pour être certain qu'il est cliquable */
     z-index: 50; 
 }
+
+/* Style pour le conteneur du bouton Figma : */
 .figma-button-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Définit explicitement la zone pour le zoom */
     width: 60px;
     height: 60px;
+    
+    /* Animation appliquée au survol */
     transition: transform 0.15s ease-in-out; 
     cursor: pointer; 
 }
-/* ... (Reste du Figma inchangé) */
 
-/* --- MODIFICATION CLÉ --- */
-#content-container {
-    min-height: 400px; 
+/* Style pour l'image Figma dans le bouton : */
+.figma-button-container img {
+    /* Rétabli les dimensions d'origine */
+    width: 60px; 
+    height: 60px;
+    object-fit: contain; 
+    opacity: 1;
+    /* Assure que l'image ne bouge pas si l'on zoome l'image elle-même */
+    transition: none; 
 }
 
-/* --- NOUVEAUX STYLES POUR LES STICKERS ET ÉLÉMENTS DÉCORATIFS (8 ÉLÉMENTS) --- */
+/* Animation au survol : On applique le zoom au conteneur */
+.figma-button-container:hover {
+    /* Maintient le fond transparent (ce n'est pas nécessaire de le déclarer, mais sécurisant) */
+    background-color: transparent; 
+    
+    /* Le logo et tout ce qu'il contient fera un zoom de 20% */
+    transform: scale(1.2); 
+}
+
+/* --- NOUVEAUX STYLES POUR LA MODALE DE ZOOM --- */
+
+/* Style pour le bouton de fermeture de la modale */
+.close-modal-btn {
+    font-size: 3rem; 
+    line-height: 1; 
+}
+
+/* S'assurer que l'image dans la modale ne déborde pas */
+#modal-image {
+    max-width: 90vw; 
+    max-height: 90vh; 
+    transition: transform 0.3s ease-out; 
+}
+
+/* --- MODIFICATION CLÉ --- */
+/* Fixer une hauteur minimale pour le conteneur principal */
+#content-container {
+    min-height: 400px; /* Assure que le cadre ne remonte pas trop sur les pages courtes */
+}
+
+/* --- NOUVEAUX STYLES POUR LES STICKERS ET ÉLÉMENTS DÉCORATIFS (FLOTTANTS) --- */
 
 /* Animation de flottement subtil */
 @keyframes float {
@@ -163,126 +205,93 @@ body {
 
 /* Base pour tous les stickers */
 .floating-sticker {
+    /* Maintient la position stable par rapport à la fenêtre */
     position: fixed; 
+    /* Placé derrière la carte */
     z-index: 0; 
     animation: float 4s ease-in-out infinite alternate;
-    pointer-events: none; 
+    pointer-events: none; /* Rendre les stickers ignorables par la souris */
 }
 
-/* Styles spécifiques pour les images de stickers */
-.floating-sticker[alt*="décoratif"] {
-    width: auto; 
-    height: 70px; 
-    object-fit: contain;
-}
-/* Le crayon a besoin d'une hauteur spécifique */
-.floating-sticker[alt*="Crayon"] {
-    height: 120px; 
-}
-
-
-/* 1. Carré jaune (Post-it) - Haut gauche (ÉLOIGNÉ DU STICKER 7) */
+/* 1. Carré jaune (Note Post-it) - En haut à gauche */
 .sticker-1 {
     width: 70px;
     height: 70px;
-    background-color: #fde047; 
+    background-color: #fde047; /* Jaune */
     border-radius: 6px;
     transform: rotate(-15deg);
-    top: 250px; /* Plus bas pour le dégagement */
+    top: 150px; 
     left: 2%; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 5.5s;
 }
 
-/* 2. Triangle vert - Milieu gauche */
+/* 2. Triangle vert (Forme abstraite) - Au milieu à gauche */
 .sticker-2 {
     width: 0;
     height: 0;
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
-    border-bottom: 50px solid #10b981; 
+    border-bottom: 50px solid #10b981; /* Vert émeraude */
     transform: rotate(25deg);
-    top: 550px; 
+    top: 450px; 
     left: 0%; 
     opacity: 0.85;
     animation-duration: 4s;
     animation-delay: 1.2s;
 }
 
-/* --- STICKERS CÔTÉ DROIT (RÉÉQUILIBRÉ) --- */
-
-/* 3. Étoile bordeaux - Haut droit */
+/* 3. Étoile bordeaux - En haut à droite */
 .sticker-3 {
     width: 50px;
     height: 50px;
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    background-color: var(--color-bordeaux-base); 
+    background-color: var(--color-bordeaux-base); /* Bordeaux */
     transform: rotate(10deg);
-    top: 150px; /* Ancrage haut */
-    right: 5%; 
+    top: 100px; 
+    right: 2%; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation-duration: 6s;
     animation-delay: 0.5s;
 }
 
-/* 4. Cercle bleu/vert - Milieu droit (Monté) */
+/* 4. Cercle bleu/vert (Ligne de crayon) - Au milieu à droite */
 .sticker-4 {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #06b6d4; 
-    top: 350px; /* Monté */
-    right: 3%; 
+    background-color: #06b6d4; /* Cyan */
+    top: 400px;
+    right: 0%; 
     animation-duration: 3s;
     animation-delay: 0.8s;
 }
 
-/* 7. post-it.png - Haut gauche (Image, MONTÉ) */
-.sticker-7 {
-    width: 70px;
-    height: 70px;
-    transform: rotate(5deg);
-    top: 100px; /* Positionné haut, à gauche, loin du Sticker 1 */
-    left: 5%; 
-    animation-duration: 3.5s;
-    animation-delay: 0.1s;
-}
-
-/* 8. pen.png - NOUVELLE POSITION: Milieu Droit (Image) */
-.sticker-8 {
-    transform: rotate(120deg); /* Changé la rotation pour le côté droit */
-    height: 120px;
-    top: 550px; /* Positionné en milieu/bas droit */
-    right: 0%; 
-    animation-duration: 4s;
-    animation-delay: 2.5s;
-}
-
-/* 6. Forme rectangulaire bordeaux - Bas gauche (LAISSÉ À GAUCHE) */
-.sticker-6 {
-    width: 50px;
-    height: 40px;
-    background-color: var(--color-bordeaux-dark);
-    border-radius: 4px;
-    transform: rotate(-8deg);
-    bottom: 80px; 
-    left: 10%; /* Laisse de l'espace pour le Sticker 8 s'il était là, mais garde le côté gauche rempli */
-    opacity: 0.7;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation-duration: 4.8s;
-    animation-delay: 2s;
-}
-
-/* 5. Cercle en spirale - Bas droit (ABAISSÉ/ADAPTÉ) */
+/* 5. Cercle en spirale (CONSERVÉ À right: 5%) - En bas à droite */
 .sticker-5 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
     transform: rotate(-30deg);
-    bottom: 250px; /* Positionné au-dessus du Crayon */
-    right: 8%; 
+    bottom: 50px; 
+    right: 5%; /* Maintenu à 5% pour le dégagement */
     opacity: 0.9;
     animation-duration: 5s;
     animation-delay: 1.5s;
+}
+
+/* 6. Forme rectangulaire bordeaux (Autre Post-it) - En bas à gauche */
+.sticker-6 {
+    width: 50px;
+    height: 40px;
+    background-color: var(--color-bordeaux-dark);
+    border-radius: 4px;
+    transform: rotate(-8deg);
+    bottom: 80px;
+    left: 5%;
+    opacity: 0.7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation-duration: 4.8s;
+    animation-delay: 2s;
 }
