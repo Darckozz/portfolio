@@ -204,14 +204,15 @@ body {
 
 /* Base pour tous les stickers */
 .floating-sticker {
-    /* Positionnement fixe par rapport à la fenêtre de visualisation */
+    /* MODIFICATION CLÉ : Utiliser ABSOLUTE pour qu'ils défilent avec la page */
     position: absolute; 
+    
     /* Placé derrière la carte */
     z-index: 0; 
     animation: float 4s ease-in-out infinite alternate;
     pointer-events: none; /* Rendre les stickers ignorables par la souris */
     
-    /* Ombre de base appliquée à tous (sauf s'ils la désactivent) */
+    /* Ombre de base appliquée à tous (sera surchargée si besoin) */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -236,7 +237,7 @@ body {
     top: 430px; 
     left: 2%; 
     
-    /* MODIFICATION CLÉ: Supprime l'ombre du conteneur pour corriger l'effet sur les bords transparents */
+    /* Ombre retirée spécifiquement pour corriger l'effet sur les bords transparents */
     box-shadow: none;
     
     opacity: 0.85; 
@@ -293,4 +294,22 @@ body {
     opacity: 0.7;
     animation-duration: 4.8s;
     animation-delay: 2s;
+}
+
+/* NOUVEAU STICKER 7 : Hexagone Gris/Bleu - En haut au centre */
+.sticker-7 {
+    width: 50px;
+    height: 50px;
+    background-color: #64748b; /* Slate 500 */
+    /* Forme Hexagone */
+    clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
+    /* Centré au-dessus de la zone du contenu */
+    top: 50px; 
+    left: 50%; 
+    transform: translateX(-50%); /* Décalage pour centrage horizontal */
+    opacity: 0.9;
+    animation-duration: 6.5s; /* Une durée plus longue */
+    animation-delay: 0.2s;
+    
+    /* Le défilement est géré par position: absolute dans .floating-sticker */
 }
