@@ -137,7 +137,7 @@ body {
 }
 
 /* Style pour le conteneur du bouton Figma :
-     C'est l'élément sur lequel le zoom sera appliqué.
+      C'est l'élément sur lequel le zoom sera appliqué.
 */
 .figma-button-container {
     display: flex;
@@ -181,4 +181,10 @@ body {
     max-width: 90vw; 
     max-height: 90vh; 
     transition: transform 0.3s ease-out; 
+}
+
+/* --- MODIFICATION CLÉ --- */
+/* Fixer une hauteur minimale pour le conteneur principal */
+#content-container {
+    min-height: 400px; /* Assure que le cadre ne remonte pas trop sur les pages courtes */
 }
