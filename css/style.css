@@ -220,8 +220,8 @@ body {
     background-color: #fde047; /* Jaune */
     border-radius: 6px;
     transform: rotate(-15deg);
-    top: 150px; 
-    left: 2%; 
+    top: 100px; 
+    left: 10%; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 5.5s;
 }
@@ -234,8 +234,8 @@ body {
     border-right: 25px solid transparent;
     border-bottom: 50px solid #10b981; /* Vert émeraude */
     transform: rotate(25deg);
-    top: 450px; 
-    left: 0%; 
+    top: 430px; 
+    left: 2%; 
     opacity: 0.85;
     animation-duration: 4s;
     animation-delay: 1.2s;
@@ -249,7 +249,7 @@ body {
     background-color: var(--color-bordeaux-base); /* Bordeaux */
     transform: rotate(10deg);
     top: 100px; 
-    right: 2%; 
+    right: 10%; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation-duration: 6s;
     animation-delay: 0.5s;
@@ -262,7 +262,7 @@ body {
     border-radius: 50%;
     background-color: #06b6d4; /* Cyan */
     top: 400px;
-    right: 0%; 
+    right: 2%; 
     animation-duration: 3s;
     animation-delay: 0.8s;
 }
