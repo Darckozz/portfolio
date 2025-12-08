@@ -205,7 +205,7 @@ body {
 /* Base pour tous les stickers */
 .floating-sticker {
     /* Positionnement fixe par rapport à la fenêtre de visualisation */
-    position: fixed; 
+    position: absolute; 
     /* Placé derrière la carte */
     z-index: 0; 
     animation: float 4s ease-in-out infinite alternate;
