@@ -204,7 +204,7 @@ body {
 
 /* Base pour tous les stickers */
 .floating-sticker {
-    /* MISE À JOUR IMPORTANTE: position: fixed FAIT EN SORTE QUE LES STICKERS NE DEFILENT PAS AVEC LE CONTENU */
+    /* Positionnement fixe par rapport à la fenêtre de visualisation */
     position: fixed; 
     /* Placé derrière la carte */
     z-index: 0; 
