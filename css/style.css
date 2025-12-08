@@ -130,21 +130,29 @@ body {
 }
 
 /* --- STYLES POUR LE BOUTON FIGMA --- */
-
-/* Conteneur principal (pour le tooltip) */
+/* (Styles Figma inchangés pour le z-index) */
 .figma-button-wrapper {
     position: relative;
     display: inline-block;
     z-index: 50; 
 }
-/* (Styles Figma button inchangés...) */
+.figma-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    transition: transform 0.15s ease-in-out; 
+    cursor: pointer; 
+}
+/* ... (Reste du Figma inchangé) */
 
 /* --- MODIFICATION CLÉ --- */
 #content-container {
     min-height: 400px; 
 }
 
-/* --- NOUVEAUX STYLES POUR LES STICKERS ET ÉLÉMENTS DÉCORATIFS (FLOTTANTS) --- */
+/* --- NOUVEAUX STYLES POUR LES STICKERS ET ÉLÉMENTS DÉCORATIFS (8 ÉLÉMENTS) --- */
 
 /* Animation de flottement subtil */
 @keyframes float {
@@ -163,29 +171,30 @@ body {
 
 /* Styles spécifiques pour les images de stickers */
 .floating-sticker[alt*="décoratif"] {
-    width: auto; /* Permet à l'image de prendre sa taille naturelle */
-    height: 70px; /* Taille maximale pour les images */
+    width: auto; 
+    height: 70px; 
     object-fit: contain;
 }
+/* Le crayon a besoin d'une hauteur spécifique */
 .floating-sticker[alt*="Crayon"] {
-    height: 120px; /* Le crayon est plus long */
+    height: 120px; 
 }
 
 
-/* 1. Carré jaune (Note Post-it) - En haut à gauche */
+/* 1. Carré jaune (Post-it) - Haut gauche (ÉLOIGNÉ DU STICKER 7) */
 .sticker-1 {
     width: 70px;
     height: 70px;
     background-color: #fde047; 
     border-radius: 6px;
     transform: rotate(-15deg);
-    top: 150px; 
-    left: 1%; /* Ajusté pour laisser de la place au Sticker 7 */
+    top: 250px; /* Plus bas pour le dégagement */
+    left: 2%; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 5.5s;
 }
 
-/* 2. Triangle vert (Forme abstraite) - Au milieu à gauche */
+/* 2. Triangle vert - Milieu gauche */
 .sticker-2 {
     width: 0;
     height: 0;
@@ -193,85 +202,87 @@ body {
     border-right: 25px solid transparent;
     border-bottom: 50px solid #10b981; 
     transform: rotate(25deg);
-    top: 450px; 
+    top: 550px; 
     left: 0%; 
     opacity: 0.85;
     animation-duration: 4s;
     animation-delay: 1.2s;
 }
 
-/* 3. Étoile bordeaux - En haut à droite */
+/* --- STICKERS CÔTÉ DROIT (RÉÉQUILIBRÉ) --- */
+
+/* 3. Étoile bordeaux - Haut droit */
 .sticker-3 {
     width: 50px;
     height: 50px;
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     background-color: var(--color-bordeaux-base); 
     transform: rotate(10deg);
-    top: 100px; 
-    right: 5%; /* Ajusté pour laisser de la place */
+    top: 150px; /* Ancrage haut */
+    right: 5%; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation-duration: 6s;
     animation-delay: 0.5s;
 }
 
-/* 4. Cercle bleu/vert (Ligne de crayon) - Au milieu à droite */
+/* 4. Cercle bleu/vert - Milieu droit (Monté) */
 .sticker-4 {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     background-color: #06b6d4; 
-    top: 400px;
-    right: 2%; /* Ajusté pour laisser de la place */
+    top: 350px; /* Monté */
+    right: 3%; 
     animation-duration: 3s;
     animation-delay: 0.8s;
 }
 
-/* 5. Cercle en spirale (Ajusté) - En bas à droite */
-.sticker-5 {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
-    transform: rotate(-30deg);
-    bottom: 50px; 
-    right: 5%; 
-    opacity: 0.9;
-    animation-duration: 5s;
-    animation-delay: 1.5s;
+/* 7. post-it.png - Haut gauche (Image, MONTÉ) */
+.sticker-7 {
+    width: 70px;
+    height: 70px;
+    transform: rotate(5deg);
+    top: 100px; /* Positionné haut, à gauche, loin du Sticker 1 */
+    left: 5%; 
+    animation-duration: 3.5s;
+    animation-delay: 0.1s;
 }
 
-/* 6. Forme rectangulaire bordeaux (Autre Post-it) - En bas à gauche */
+/* 8. pen.png - NOUVELLE POSITION: Milieu Droit (Image) */
+.sticker-8 {
+    transform: rotate(120deg); /* Changé la rotation pour le côté droit */
+    height: 120px;
+    top: 550px; /* Positionné en milieu/bas droit */
+    right: 0%; 
+    animation-duration: 4s;
+    animation-delay: 2.5s;
+}
+
+/* 6. Forme rectangulaire bordeaux - Bas gauche (LAISSÉ À GAUCHE) */
 .sticker-6 {
     width: 50px;
     height: 40px;
     background-color: var(--color-bordeaux-dark);
     border-radius: 4px;
     transform: rotate(-8deg);
-    bottom: 180px; /* Monté pour faire de la place au crayon */
-    left: 10%;
+    bottom: 80px; 
+    left: 10%; /* Laisse de l'espace pour le Sticker 8 s'il était là, mais garde le côté gauche rempli */
     opacity: 0.7;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     animation-duration: 4.8s;
     animation-delay: 2s;
 }
 
-/* 7. NOUVEAU: post-it.png - En haut à gauche (Image) */
-.sticker-7 {
-    width: 70px;
-    height: 70px;
-    transform: rotate(5deg);
-    top: 70px;
-    left: 8%; /* Positionné près du coin gauche supérieur */
-    animation-duration: 3.5s;
-    animation-delay: 0.1s;
-}
-
-/* 8. NOUVEAU: pen.png - En bas à gauche (Image) */
-.sticker-8 {
-    transform: rotate(45deg); /* Incliné comme s'il était posé */
-    height: 120px;
-    bottom: 50px;
-    left: 2%; /* Positionné bas à gauche */
-    animation-duration: 4s;
-    animation-delay: 2.5s;
+/* 5. Cercle en spirale - Bas droit (ABAISSÉ/ADAPTÉ) */
+.sticker-5 {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
+    transform: rotate(-30deg);
+    bottom: 250px; /* Positionné au-dessus du Crayon */
+    right: 8%; 
+    opacity: 0.9;
+    animation-duration: 5s;
+    animation-delay: 1.5s;
 }
