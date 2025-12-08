@@ -272,9 +272,9 @@ body {
     border-radius: 50%;
     background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
     transform: rotate(-30deg);
-    /* CORRECTION: Positionné plus bas pour s'assurer qu'il ne chevauche pas le cadre */
-    bottom: 0px; 
-    right: 15%; 
+    /* CORRECTION: Ancré au bas de la fenêtre, ce qui le stabilise quelle que soit la longueur du contenu */
+    bottom: 50px; 
+    right: 10%; 
     opacity: 0.9;
     animation-duration: 5s;
     animation-delay: 1.5s;
