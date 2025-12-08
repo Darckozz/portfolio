@@ -235,6 +235,7 @@ body {
     top: 430px; 
     left: 2%; 
     opacity: 0.85;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 4s;
     animation-delay: 1.2s;
 }
@@ -247,7 +248,7 @@ body {
     background-color: var(--color-bordeaux-base); /* Bordeaux */
     top: 100px; 
     right: 10%; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 6s;
     animation-delay: 0.5s;
 }
@@ -259,7 +260,8 @@ body {
     border-radius: 50%;
     background-color: #06b6d4; /* Cyan */
     top: 400px;
-    right: 2%; 
+    right: 2%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 3s;
     animation-delay: 0.8s;
 }
@@ -273,6 +275,7 @@ body {
     bottom: 50px; 
     right: 5%; /* Maintenu à 5% pour le dégagement */
     opacity: 0.9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 5s;
     animation-delay: 1.5s;
 }
@@ -286,7 +289,7 @@ body {
     bottom: 80px;
     left: 5%;
     opacity: 0.7;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 4.8s;
     animation-delay: 2s;
 }
