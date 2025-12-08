@@ -267,7 +267,7 @@ body {
     animation-delay: 0.8s;
 }
 
-/* 5. Cercle en spirale (AJUSTÉ) - En bas à droite */
+/* 5. Cercle en spirale (CONSERVÉ À right: 5%) - En bas à droite */
 .sticker-5 {
     width: 60px;
     height: 60px;
@@ -275,7 +275,7 @@ body {
     background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
     transform: rotate(-30deg);
     bottom: 50px; 
-    right: 5%; /* Ajusté à 5% pour le déplacer un peu à gauche */
+    right: 5%; /* Maintenu à 5% pour le dégagement */
     opacity: 0.9;
     animation-duration: 5s;
     animation-delay: 1.5s;
@@ -294,17 +294,4 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     animation-duration: 4.8s;
     animation-delay: 2s;
-}
-
-/* 7. NOUVEAU: Cercle Indigo - En haut et à droite */
-.sticker-7 {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #6366f1; /* Indigo */
-    top: 50px; /* Positionné bien au-dessus */
-    right: 10%; /* Légèrement à droite du cadre */
-    opacity: 0.8;
-    animation-duration: 3.5s;
-    animation-delay: 0.1s;
 }
