@@ -35,7 +35,6 @@ body {
     background-color: var(--color-bordeaux-light); /* Fond très léger */
     color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé (utiliser !important pour écraser text-gray-600) */
     font-weight: 700; /* Gras */
-    /* Suppression des propriétés redondantes car elles sont maintenant dans .nav-link */
 }
 
 /* MODIFICATION CLÉ : Simplification du style au survol pour les liens non actifs */
@@ -212,7 +211,7 @@ body {
     animation: float 4s ease-in-out infinite alternate;
     pointer-events: none; /* Rendre les stickers ignorables par la souris */
     
-    /* MODIFICATION CLÉ: Ajout de l'ombre de base pour tous les stickers */
+    /* Ombre de base appliquée à tous */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -228,8 +227,7 @@ body {
 }
 
 /* 2. Triangle vert (Forme abstraite) - Au milieu à gauche */
-/* NOTE: Utilisation des bordures pour créer un triangle. L'ombre étant appliquée au conteneur, elle devrait fonctionner.
-   J'ai retiré l'opacité initiale (0.85) qui pourrait interagir bizarrement avec l'ombre. */
+/* Correction: Retire l'ombre du conteneur et la recrée avec ::after pour éviter l'ombre sur les bords transparents */
 .sticker-2 {
     width: 0;
     height: 0;
@@ -238,9 +236,32 @@ body {
     border-bottom: 50px solid #10b981; /* Vert émeraude */
     top: 430px; 
     left: 2%; 
+    
+    /* Annule l'ombre du conteneur parent */
+    box-shadow: none; 
+    opacity: 0.85; 
+    
     animation-duration: 4s;
     animation-delay: 1.2s;
+    position: relative; /* Nécessaire pour positionner le pseudo-élément */
 }
+
+/* Ombre recréée sur le bas du triangle uniquement */
+.sticker-2::after {
+    content: "";
+    width: 70px; /* Plus large que la base du triangle (50px) */
+    height: 1px;
+    position: absolute;
+    bottom: -15px; /* Positionner sous le triangle */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Appliquer l'ombre souhaitée sur le bas */
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); 
+    z-index: -1; /* Placer l'ombre sous le triangle */
+    background: transparent;
+}
+
 
 /* 3. Étoile bordeaux - En haut à droite */
 .sticker-3 {
