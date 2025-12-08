@@ -304,8 +304,8 @@ body {
     /* Forme Hexagone */
     clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
     /* Centré au-dessus de la zone du contenu */
-    top: 50px; 
-    left: 50%; 
+    top: 60px; 
+    left: 45%; 
     transform: translateX(-50%); /* Décalage pour centrage horizontal */
     opacity: 0.9;
     animation-duration: 6.5s; /* Une durée plus longue */
