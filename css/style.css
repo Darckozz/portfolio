@@ -210,7 +210,6 @@ body {
     /* Placé derrière la carte */
     z-index: 0; 
     animation: float 4s ease-in-out infinite alternate;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     pointer-events: none; /* Rendre les stickers ignorables par la souris */
 }
 
