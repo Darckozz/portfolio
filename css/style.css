@@ -233,7 +233,6 @@ body {
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
     border-bottom: 50px solid #10b981; /* Vert émeraude */
-    transform: rotate(25deg);
     top: 430px; 
     left: 2%; 
     opacity: 0.85;
@@ -247,7 +246,6 @@ body {
     height: 50px;
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     background-color: var(--color-bordeaux-base); /* Bordeaux */
-    transform: rotate(10deg);
     top: 100px; 
     right: 10%; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -273,7 +271,6 @@ body {
     height: 60px;
     border-radius: 50%;
     background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
-    transform: rotate(-30deg);
     bottom: 50px; 
     right: 5%; /* Maintenu à 5% pour le dégagement */
     opacity: 0.9;
@@ -287,7 +284,6 @@ body {
     height: 40px;
     background-color: var(--color-bordeaux-dark);
     border-radius: 4px;
-    transform: rotate(-8deg);
     bottom: 80px;
     left: 5%;
     opacity: 0.7;
