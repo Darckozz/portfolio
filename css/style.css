@@ -219,7 +219,6 @@ body {
     height: 70px;
     background-color: #fde047; /* Jaune */
     border-radius: 6px;
-    transform: rotate(-15deg);
     top: 100px; 
     left: 8%; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
