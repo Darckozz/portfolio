@@ -221,7 +221,7 @@ body {
     border-radius: 6px;
     transform: rotate(-15deg);
     top: 100px; 
-    left: 10%; 
+    left: 8%; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 5.5s;
 }
