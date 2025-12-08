@@ -215,7 +215,7 @@ const projectProcessDetails = {
     // --- Projet 2 : Le Médoc à la Carte (Desktop/Mobile) ---
     "2": {
         analyse: `
-            <p>La <strong>Phase d'Analyse (Le Médoc à la Carte)</strong> a été axée sur le tourisme œnologique en Gironde. Nous avons mené une analyse concurrentielle des plateformes de réservation de visites de châteaux et des sites de guides touristiques pour identifier les lacunes en matière d'expérience utilisateur dans ce secteur.</p>
+            <p>La <strong>Empathie / Analyse Utilisateur (Le Médoc à la Carte)</strong> a été axée sur le tourisme œnologique en Gironde. Nous avons mené une analyse concurrentielle des plateformes de réservation de visites de châteaux et des sites de guides touristiques pour identifier les lacunes en matière d'expérience utilisateur dans ce secteur.</p>
             
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Problématique :</h3>
             <p>Comment créer une expérience de découverte fluide qui équilibre l'information sur les domaines viticoles et la simplicité de réservation d'itinéraires personnalisés ?</p>
