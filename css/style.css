@@ -2,7 +2,7 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f7f7f9; /* Un gris très léger pour le fond */
-    overflow-x: hidden; /* Empêche un défilement horizontal causé par des éléments absolus */
+    overflow-x: hidden; /* Empêche un défilement horizontal causé par des éléments fixes */
 }
 
 /* Définition de la couleur d'accent (Bordeaux/Rouge profond) */
@@ -135,8 +135,8 @@ body {
 .figma-button-wrapper {
     position: relative;
     display: inline-block;
-    /* CORRECTION: Assure que le bouton est au-dessus des stickers */
-    z-index: 20; 
+    /* Z-INDEX TRÈS ÉLEVÉ pour être certain qu'il est cliquable */
+    z-index: 50; 
 }
 
 /* Style pour le conteneur du bouton Figma : */
@@ -144,7 +144,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* CORRECTION: Définit explicitement la zone pour le zoom */
+    /* Définit explicitement la zone pour le zoom */
     width: 60px;
     height: 60px;
     
@@ -205,10 +205,12 @@ body {
 
 /* Base pour tous les stickers */
 .floating-sticker {
-    position: absolute;
-    /* CORRECTION: Placé derrière la carte pour l'effet de profondeur */
+    /* Maintient la position stable par rapport à la fenêtre */
+    position: fixed; 
+    /* Placé derrière la carte */
     z-index: 0; 
     animation: float 4s ease-in-out infinite alternate;
+    pointer-events: none; /* Rendre les stickers ignorables par la souris */
 }
 
 /* 1. Carré jaune (Note Post-it) - En haut à gauche */
@@ -218,8 +220,8 @@ body {
     background-color: #fde047; /* Jaune */
     border-radius: 6px;
     transform: rotate(-15deg);
-    top: 50px;
-    left: 5%;
+    top: 150px; 
+    left: 2%; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     animation-duration: 5.5s;
 }
@@ -232,8 +234,8 @@ body {
     border-right: 25px solid transparent;
     border-bottom: 50px solid #10b981; /* Vert émeraude */
     transform: rotate(25deg);
-    top: 350px;
-    left: 2%;
+    top: 450px; 
+    left: 0%; 
     opacity: 0.85;
     animation-duration: 4s;
     animation-delay: 1.2s;
@@ -246,8 +248,8 @@ body {
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     background-color: var(--color-bordeaux-base); /* Bordeaux */
     transform: rotate(10deg);
-    top: 150px;
-    right: 5%;
+    top: 100px; 
+    right: 2%; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation-duration: 6s;
     animation-delay: 0.5s;
@@ -260,12 +262,12 @@ body {
     border-radius: 50%;
     background-color: #06b6d4; /* Cyan */
     top: 400px;
-    right: 2%;
+    right: 0%; 
     animation-duration: 3s;
     animation-delay: 0.8s;
 }
 
-/* 5. Cercle en spirale (Effet d'esquisse - contient du rouge/orange) - En bas à droite */
+/* 5. Cercle en spirale (AJUSTÉ) - En bas à droite */
 .sticker-5 {
     width: 60px;
     height: 60px;
@@ -273,7 +275,7 @@ body {
     background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
     transform: rotate(-30deg);
     bottom: 50px; 
-    right: 0%; /* ANCRAGE AU BORD DROIT pour éviter le chevauchement */
+    right: 5%; /* Ajusté à 5% pour le déplacer un peu à gauche */
     opacity: 0.9;
     animation-duration: 5s;
     animation-delay: 1.5s;
@@ -286,10 +288,23 @@ body {
     background-color: var(--color-bordeaux-dark);
     border-radius: 4px;
     transform: rotate(-8deg);
-    bottom: 100px;
-    left: 10%;
+    bottom: 80px;
+    left: 5%;
     opacity: 0.7;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     animation-duration: 4.8s;
     animation-delay: 2s;
+}
+
+/* 7. NOUVEAU: Cercle Indigo - En haut et à droite */
+.sticker-7 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #6366f1; /* Indigo */
+    top: 50px; /* Positionné bien au-dessus */
+    right: 10%; /* Légèrement à droite du cadre */
+    opacity: 0.8;
+    animation-duration: 3.5s;
+    animation-delay: 0.1s;
 }
