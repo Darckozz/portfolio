@@ -188,3 +188,101 @@ body {
 #content-container {
     min-height: 400px; /* Assure que le cadre ne remonte pas trop sur les pages courtes */
 }
+
+/* --- NOUVEAUX STYLES POUR LES STICKERS ET ÉLÉMENTS DÉCORATIFS (FLOTTANTS) --- */
+
+.main-wrapper {
+    position: relative;
+}
+
+/* Animation de flottement subtil */
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(5px, -5px) rotate(1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Base pour tous les stickers */
+.floating-sticker {
+    position: absolute;
+    z-index: 10; /* Assure qu'ils sont au-dessus de l'arrière-plan mais sous le header */
+    animation: float 4s ease-in-out infinite alternate;
+}
+
+/* Styles spécifiques pour chaque sticker */
+
+/* Sticker en haut à gauche (Carré jaune plié) */
+.sticker-1 {
+    width: 60px;
+    height: 60px;
+    background-color: #fde047; /* Jaune */
+    border-radius: 6px;
+    transform: rotate(-15deg);
+    top: 100px; /* Positionnement par rapport au haut de la page */
+    left: 10%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation-duration: 5s;
+}
+
+/* Sticker en bas à gauche (Triangle vert) */
+.sticker-2 {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #10b981; /* Vert émeraude */
+    transform: rotate(20deg);
+    bottom: 50px;
+    left: 5%;
+    animation-duration: 4.5s;
+}
+
+/* Sticker en haut à droite (Étoile bordeaux) */
+.sticker-3 {
+    width: 40px;
+    height: 40px;
+    clip-path: polygon(
+        50% 0%, 
+        61% 35%, 
+        98% 35%, 
+        68% 57%, 
+        79% 91%, 
+        50% 70%, 
+        21% 91%, 
+        32% 57%, 
+        2% 35%, 
+        39% 35%
+    );
+    background-color: var(--color-bordeaux-base); /* Bordeaux */
+    transform: rotate(5deg);
+    top: 70px;
+    right: 15%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation-duration: 6s;
+}
+
+/* Sticker en bas à droite (Cercle en spirale) */
+.sticker-4 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); /* Spirale sim. */
+    transform: rotate(-30deg);
+    bottom: 120px;
+    right: 10%;
+    opacity: 0.8;
+    animation-duration: 5.5s;
+}
+
+/* Petit confetti coloré */
+.sticker-confetti {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #6366f1; /* Indigo */
+    position: absolute;
+    z-index: 10;
+    top: 300px;
+    left: 20px;
+    animation: float 3s ease-in-out infinite alternate;
+}
