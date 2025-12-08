@@ -4,16 +4,11 @@ body {
     background-color: #f7f7f9; /* Un gris très léger pour le fond */
 }
 
-/* Définition de la couleur d'accent (Rouge Vif) */
+/* Définition de la couleur d'accent (Bordeaux/Rouge profond) */
 :root {
-    /* MODIFIÉ : Rouge plus vif (similaire à Red 600) */
-    --color-bordeaux-base: #dc2626; 
-    
-    /* MODIFIÉ : Arrière-plan subtil (similaire à Red 100) */
-    --color-bordeaux-light: #fee2e2; 
-    
-    /* MODIFIÉ : Survol bouton principal (similaire à Red 800) */
-    --color-bordeaux-dark: #991b1b; 
+    --color-bordeaux-base: #7f1d1d; /* Red 900 - Bordeaux profond (Rétabli) */
+    --color-bordeaux-light: #fee2e2; /* Red 100 - Arrière-plan subtil pour l'état actif */
+    --color-bordeaux-dark: #450a0a; /* Red 950 - Survol bouton principal (Rétabli) */
 }
 
 .accent-text {
@@ -54,11 +49,10 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
-/* MODIFIÉ : Retrait de la couleur de bordure et du transform au survol */
+/* MODIFIÉ : Rétabli l'ombre subtile basée sur le bordeaux profond (7f1d1d) */
 .project-card:hover {
     transform: translateY(-3px); /* Laisse un petit lift subtil */
-    /* Ombre subtile utilisant la nouvelle couleur d'accent */
-    box-shadow: 0 8px 12px -3px rgba(220, 38, 38, 0.08), 0 3px 5px -3px rgba(220, 38, 38, 0.05); 
+    box-shadow: 0 8px 12px -3px rgba(127, 29, 29, 0.08), 0 3px 5px -3px rgba(127, 29, 29, 0.05);
     border-color: #e5e7eb; /* Reste gris clair */
 }
 
@@ -71,11 +65,12 @@ body {
     cursor: default; 
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
+/* MODIFIÉ : Rétabli l'ombre et le survol basés sur le bordeaux profond (7f1d1d) */
 .skill-tag:hover {
     background-color: var(--color-bordeaux-light); 
     color: var(--color-bordeaux-base); 
     border-color: #fca5a5; 
-    box-shadow: 0 2px 5px rgba(220, 38, 38, 0.1); /* Utilisation du nouveau rouge */
+    box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
     transform: translateY(-1px);
 }
 
@@ -114,10 +109,10 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+/* MODIFIÉ : Rétabli l'ombre basée sur le bordeaux profond (7f1d1d) */
 .process-card:hover {
     transform: translateY(-3px);
-    /* Ombre subtile utilisant la nouvelle couleur d'accent */
-    box-shadow: 0 6px 10px rgba(220, 38, 38, 0.1); 
+    box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
 }
 
 /* NOUVEAU STYLE pour la transition de page */
