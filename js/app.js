@@ -402,9 +402,9 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
         }
     });
 
-    // --- ÉTAPE 1: PRÉPARATION & DÉBUT DE TRANSITION DE SORTIE (Fade-out) ---
-
+    // --- ÉTAPE 1: PRÉPARATION & DÉBUT DE TRANSITION DE SORTIE (Fade-out & Hauteur initiale) ---
     if (activePage && activePage !== nextPage) {
+        // Définir la hauteur actuelle pour commencer la transition de taille
         const initialHeight = activePage.offsetHeight;
         contentContainer.style.minHeight = `${initialHeight}px`;
 
@@ -412,21 +412,22 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
         
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        setTimeout(startTransition, TRANSITION_DURATION_MS);
+        // Attendre la fin du fondu-out (TRANSITION_DURATION_MS) avant de masquer l'ancienne page
+        setTimeout(startContentUpdate, TRANSITION_DURATION_MS);
 
     } else {
+        // Pas de page active, démarrer directement
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        startTransition();
+        startContentUpdate();
     }
 
-    // --- ÉTAPE 2: GESTION DU CONTENU ET DÉBUT DE TRANSITION D'ENTRÉE (Fade-in) ---
-    function startTransition() {
+    // --- ÉTAPE 2: GESTION DU CONTENU ET CALCUL DE LA NOUVELLE HAUTEUR ---
+    function startContentUpdate() {
         if (activePage && activePage !== nextPage) {
             activePage.classList.add('hidden');
         }
 
-        // 2.1 Mettre à jour le contenu dynamique
-        
+        // 2.1 Mettre à jour le contenu dynamique (Même logique que l'original)
         if (pageId === 'process-detail' && processId && processTitle) {
             if (!currentProject.title || !currentProject.id) {
                 showPage('work');
@@ -439,7 +440,6 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
             currentProjectNameSpan.textContent = currentProject.title;
             processContentDiv.innerHTML = content;
             
-            // NOUVEAU : Active le zoom d'image si on est sur la page de détail de processus
             setupImageZoom();
         }
         
@@ -468,24 +468,28 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
         if (pageId !== 'project-detail' && projectVisual) {
              projectVisual.classList.add('hidden');
         }
-
-        // 2.2 Préparer et rendre la nouvelle page visible (opacité 0)
-        nextPage.classList.remove('hidden');
         
-        // Lire la hauteur de la nouvelle page 
+        // 2.2 Préparer la nouvelle page, la rendre visible (mais toujours opacité 0) pour calculer sa hauteur
+        nextPage.classList.remove('hidden');
+        nextPage.classList.remove('is-visible'); // S'assurer qu'elle n'est pas visible
+
+        // Lire la hauteur de la nouvelle page (elle est maintenant dans le DOM et son contenu a été mis à jour)
         const targetHeight = nextPage.offsetHeight;
 
         // 2.3 Déclencher l'animation de hauteur du conteneur
+        // Cela lance la transition CSS de 'min-height'
         contentContainer.style.minHeight = `${targetHeight}px`;
 
-        // 2.4 Déclencher le fondu-in après un micro délai
+        // 2.4 Déclencher le fondu-in après un petit délai (microtask delay) pour permettre au navigateur de commencer l'animation de hauteur
         setTimeout(() => {
             nextPage.classList.add('is-visible');
             
-            // --- ÉTAPE 3: FIN DE TRANSITION ET NETTOYAGE ---
+            // --- ÉTAPE 3: FIN DE TRANSITION ET NETTOYAGE (Hauteur) ---
+            // Attendre la fin de la transition d'opacité ET de hauteur pour enlever la min-height fixe
             setTimeout(() => {
-                contentContainer.style.minHeight = 'auto';
-            }, TRANSITION_DURATION_MS);
+                // S'assurer que la min-height est remise à 'auto' une fois l'animation terminée.
+                contentContainer.style.minHeight = 'auto'; 
+            }, TRANSITION_DURATION_MS); 
         }, 10);
     }
 }
