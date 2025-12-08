@@ -204,14 +204,14 @@ body {
 
 /* Base pour tous les stickers */
 .floating-sticker {
-    /* Maintient la position stable par rapport à la fenêtre */
+    /* MISE À JOUR IMPORTANTE: position: fixed FAIT EN SORTE QUE LES STICKERS NE DEFILENT PAS AVEC LE CONTENU */
     position: fixed; 
     /* Placé derrière la carte */
     z-index: 0; 
     animation: float 4s ease-in-out infinite alternate;
     pointer-events: none; /* Rendre les stickers ignorables par la souris */
     
-    /* Ombre de base appliquée à tous */
+    /* Ombre de base appliquée à tous (sauf s'ils la désactivent) */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -227,7 +227,6 @@ body {
 }
 
 /* 2. Triangle vert (Forme abstraite) - Au milieu à gauche */
-/* Correction: Retire l'ombre du conteneur et la recrée avec ::after pour éviter l'ombre sur les bords transparents */
 .sticker-2 {
     width: 0;
     height: 0;
@@ -237,31 +236,14 @@ body {
     top: 430px; 
     left: 2%; 
     
-    /* Annule l'ombre du conteneur parent */
-    box-shadow: none; 
+    /* MODIFICATION CLÉ: Supprime l'ombre du conteneur pour corriger l'effet sur les bords transparents */
+    box-shadow: none;
+    
     opacity: 0.85; 
     
     animation-duration: 4s;
     animation-delay: 1.2s;
-    position: relative; /* Nécessaire pour positionner le pseudo-élément */
 }
-
-/* Ombre recréée sur le bas du triangle uniquement */
-.sticker-2::after {
-    content: "";
-    width: 70px; /* Plus large que la base du triangle (50px) */
-    height: 1px;
-    position: absolute;
-    bottom: -15px; /* Positionner sous le triangle */
-    left: 50%;
-    transform: translateX(-50%);
-    
-    /* Appliquer l'ombre souhaitée sur le bas */
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); 
-    z-index: -1; /* Placer l'ombre sous le triangle */
-    background: transparent;
-}
-
 
 /* 3. Étoile bordeaux - En haut à droite */
 .sticker-3 {
