@@ -224,7 +224,7 @@ body {
     border-radius: 6px;
     top: 100px; 
     /* CHANGÉ : Ancré à gauche de la zone de contenu max (640px = 1280px/2) + décalage */
-    left: calc(50% - 640px - 30px); 
+    left: calc(50% - 640px - 100px); 
     animation-duration: 5.5s;
 }
 
@@ -237,7 +237,7 @@ body {
     border-bottom: 50px solid #10b981; /* Vert émeraude */
     top: 430px; 
     /* CHANGÉ : Ancré plus loin à gauche de la zone de contenu max */
-    left: calc(50% - 640px - 70px); 
+    left: calc(50% - 640px - 160px); 
     
     /* Ombre retirée spécifiquement pour corriger l'effet sur les bords transparents */
     box-shadow: none;
@@ -256,7 +256,7 @@ body {
     background-color: var(--color-bordeaux-base); /* Bordeaux */
     top: 100px; 
     /* CHANGÉ : Ancré à droite de la zone de contenu max (640px = 1280px/2) + décalage */
-    right: calc(50% - 640px - 20px); 
+    right: calc(50% - 640px - 90px); 
     animation-duration: 6s;
     animation-delay: 0.5s;
 }
@@ -269,7 +269,7 @@ body {
     background-color: #06b6d4; /* Cyan */
     top: 400px;
     /* CHANGÉ : Ancré plus loin à droite de la zone de contenu max */
-    right: calc(50% - 640px - 70px);
+    right: calc(50% - 640px - 160px);
     animation-duration: 3s;
     animation-delay: 0.8s;
 }
@@ -282,7 +282,7 @@ body {
     background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
     bottom: 50px; 
     /* CHANGÉ : Ancré à droite de la zone de contenu max */
-    right: calc(50% - 640px - 50px); 
+    right: calc(50% - 640px - 120px); 
     opacity: 0.9;
     animation-duration: 5s;
     animation-delay: 1.5s;
@@ -296,7 +296,7 @@ body {
     border-radius: 4px;
     bottom: 80px;
     /* CHANGÉ : Ancré à gauche de la zone de contenu max */
-    left: calc(50% - 640px - 50px);
+    left: calc(50% - 640px - 120px);
     opacity: 0.7;
     animation-duration: 4.8s;
     animation-delay: 2s;
