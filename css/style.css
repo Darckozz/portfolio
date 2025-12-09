@@ -204,8 +204,8 @@ body {
 
 /* Base pour tous les stickers */
 .floating-sticker {
-    /* MODIFICATION CLÉ : Utiliser FIXED pour qu'ils soient ancrés au VIEWPORT */
-    position: fixed; /* Était 'absolute' */
+    /* MODIFICATION CLÉ : Utiliser FIXED pour qu'ils soient ancrés au VIEWPORT et ne défilent pas */
+    position: fixed; 
     
     /* Placé derrière la carte */
     z-index: 0; 
@@ -223,7 +223,8 @@ body {
     background-color: #fde047; /* Jaune */
     border-radius: 6px;
     top: 100px; 
-    left: 8%; 
+    /* CHANGÉ : Ancré à gauche de la zone de contenu max (640px = 1280px/2) + décalage */
+    left: calc(50% - 640px + 20px); 
     animation-duration: 5.5s;
 }
 
@@ -235,7 +236,8 @@ body {
     border-right: 25px solid transparent;
     border-bottom: 50px solid #10b981; /* Vert émeraude */
     top: 430px; 
-    left: 2%; 
+    /* CHANGÉ : Ancré plus loin à gauche de la zone de contenu max */
+    left: calc(50% - 640px - 20px); 
     
     /* Ombre retirée spécifiquement pour corriger l'effet sur les bords transparents */
     box-shadow: none;
@@ -253,7 +255,8 @@ body {
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     background-color: var(--color-bordeaux-base); /* Bordeaux */
     top: 100px; 
-    right: 10%; 
+    /* CHANGÉ : Ancré à droite de la zone de contenu max (640px = 1280px/2) + décalage */
+    right: calc(50% - 640px + 30px); 
     animation-duration: 6s;
     animation-delay: 0.5s;
 }
@@ -265,7 +268,8 @@ body {
     border-radius: 50%;
     background-color: #06b6d4; /* Cyan */
     top: 400px;
-    right: 2%;
+    /* CHANGÉ : Ancré plus loin à droite de la zone de contenu max */
+    right: calc(50% - 640px - 20px);
     animation-duration: 3s;
     animation-delay: 0.8s;
 }
@@ -277,7 +281,8 @@ body {
     border-radius: 50%;
     background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
     bottom: 50px; 
-    right: 5%; /* Maintenu à 5% pour le dégagement */
+    /* CHANGÉ : Ancré à droite de la zone de contenu max */
+    right: calc(50% - 640px + 5px); 
     opacity: 0.9;
     animation-duration: 5s;
     animation-delay: 1.5s;
@@ -290,7 +295,8 @@ body {
     background-color: var(--color-bordeaux-dark);
     border-radius: 4px;
     bottom: 80px;
-    left: 5%;
+    /* CHANGÉ : Ancré à gauche de la zone de contenu max */
+    left: calc(50% - 640px + 5px);
     opacity: 0.7;
     animation-duration: 4.8s;
     animation-delay: 2s;
@@ -310,6 +316,4 @@ body {
     opacity: 0.9;
     animation-duration: 6.5s; /* Une durée plus longue */
     animation-delay: 0.2s;
-    
-    /* Le défilement est géré par position: absolute dans .floating-sticker */
 }
