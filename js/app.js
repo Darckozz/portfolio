@@ -29,7 +29,7 @@ const closeBtn = document.querySelector('.close-modal-btn');
 
 // --- Données des Études de Cas (Déplacées du HTML) ---
 const projectProcessDetails = {
-    // --- Projet 1 : TàD IDFM (Desktop) ---
+    // --- Projet 1 : Transport à la Demande IDFM (Desktop) ---
     "1": {
         analyse: `
             <p>Pour mieux comprendre les <strong>besoins, motivations et difficultés</strong> des utilisateurs du Transport à la Demande (TàD) en Île-de-France, nous avons mené une recherche centrée sur l’utilisateur combinant entretiens semi-directifs, observations et sondages en ligne. L’objectif était de mettre en évidence les <strong>points de friction</strong> et d’identifier des pistes d’amélioration pour le parcours de réservation.</p>
