@@ -204,8 +204,8 @@ body {
 
 /* Base pour tous les stickers */
 .floating-sticker {
-    /* MODIFICATION CLÉ : Utiliser ABSOLUTE pour qu'ils défilent avec la page */
-    position: absolute; 
+    /* MODIFICATION CLÉ : Utiliser FIXED pour qu'ils soient ancrés au VIEWPORT */
+    position: fixed; /* Était 'absolute' */
     
     /* Placé derrière la carte */
     z-index: 0; 
