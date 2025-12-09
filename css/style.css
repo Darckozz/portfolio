@@ -280,7 +280,7 @@ body {
     height: 60px;
     border-radius: 50%;
     background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
-    top: 900px; 
+    top: 800px; 
     /* CHANGÉ : Ancré à droite de la zone de contenu max */
     right: calc(50% - 640px - 120px); 
     opacity: 0.9;
@@ -294,7 +294,7 @@ body {
     height: 40px;
     background-color: var(--color-bordeaux-dark);
     border-radius: 4px;
-    top: 900px; 
+    top: 800px; 
     /* CHANGÉ : Ancré à gauche de la zone de contenu max */
     left: calc(50% - 640px - 120px);
     opacity: 0.7;
