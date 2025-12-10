@@ -144,8 +144,8 @@
                         <p class="text-gray-700 flex-grow">Le processus a débuté par une exploration du contexte et des usages afin de comprendre les besoins, attentes et difficultés des utilisateurs.</p>
                     </div>
 
-                                        <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                        data-process-id="definition" data-process-title="Définition / Synthèse">
+                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
+                        data-process-id="entretiens" data-process-title="Définition / Synthèse">
                         <div class="flex items-center mb-4">
                             <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -299,3 +299,674 @@
     <script src="js/app.js"></script>
 </body>
 </html>
+
+style.css :
+
+/* Configuration de la police Inter par défaut */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f7f9; /* Un gris très léger pour le fond */
+    overflow-x: hidden; /* Empêche un défilement horizontal causé par des éléments fixes */
+}
+
+/* Définition de la couleur d'accent (Bordeaux/Rouge profond) */
+:root {
+    --color-bordeaux-base: #7f1d1d; /* Red 900 - Bordeaux profond (Rétabli) */
+    --color-bordeaux-light: #fee2e2; /* Red 100 - Arrière-plan subtil pour l'état actif */
+    --color-bordeaux-dark: #450a0a; /* Red 950 - Survol bouton principal (Rétabli) */
+}
+
+.accent-text {
+    color: var(--color-bordeaux-base); 
+}
+.accent-bg {
+    background-color: var(--color-bordeaux-base); 
+}
+.accent-bg:hover {
+    background-color: var(--color-bordeaux-dark); 
+}
+
+/* STYLE DU LIEN DE NAVIGATION : Rendu plus rapide */
+.nav-link {
+    transition: all 0.15s ease-in-out; 
+    /* MODIFICATION CLÉ : Ajouter le padding et le border-radius ici */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.5rem 0.75rem; /* Le padding de is-active */
+}
+
+/* NOUVEAU STYLE POUR L'ÉTAT ACTIF (Bordeaux clair) */
+.nav-link.is-active {
+    background-color: var(--color-bordeaux-light); /* Fond très léger */
+    color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé (utiliser !important pour écraser text-gray-600) */
+    font-weight: 700; /* Gras */
+}
+
+/* MODIFICATION CLÉ : Simplification du style au survol pour les liens non actifs */
+.nav-link:not(.is-active):hover {
+    background-color: #f3f4f6; /* Ajouter un fond gris très léger pour un survol plus doux que transparent */
+    color: var(--color-bordeaux-base); /* Optionnel : Changer la couleur du texte au survol non-actif */
+}
+
+/* Styles pour les cartes de projet */
+.project-card {
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+/* MODIFIÉ : Rétabli l'ombre subtile basée sur le bordeaux profond (7f1d1d) */
+.project-card:hover {
+    transform: translateY(-3px); /* Laisse un petit lift subtil */
+    box-shadow: 0 8px 12px -3px rgba(127, 29, 29, 0.08), 0 3px 5px -3px rgba(127, 29, 29, 0.05);
+    border-color: #e5e7eb; /* Reste gris clair */
+}
+
+/* Style pour les pastilles de compétences */
+.skill-tag {
+    background-color: #f3f4f6;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease-in-out;
+    cursor: default; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+/* MODIFIÉ : Rétabli l'ombre et le survol basés sur le bordeaux profond (7f1d1d) */
+.skill-tag:hover {
+    background-color: var(--color-bordeaux-light); 
+    color: var(--color-bordeaux-base); 
+    border-color: #fca5a5; 
+    box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
+    transform: translateY(-1px);
+}
+
+/* Styles pour l'infobulle (tooltip) */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 170px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 10;
+    bottom: 120%; 
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Style spécifique pour les cartes du processus pour activer le curseur */
+.process-card {
+    cursor: pointer;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+/* MODIFIÉ : Rétabli l'ombre basée sur le bordeaux profond (7f1d1d) */
+.process-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
+}
+
+/* NOUVEAU STYLE pour la transition de page */
+.page-content {
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    opacity: 0; 
+    transform: translateY(10px); 
+}
+
+/* La page qui doit être affichée */
+.page-content.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- STYLES POUR LE BOUTON FIGMA --- */
+
+/* Conteneur principal (pour le tooltip) */
+.figma-button-wrapper {
+    position: relative;
+    display: inline-block;
+    /* Z-INDEX TRÈS ÉLEVÉ pour être certain qu'il est cliquable */
+    z-index: 50; 
+}
+
+/* Style pour le conteneur du bouton Figma : */
+.figma-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Définit explicitement la zone pour le zoom */
+    width: 60px;
+    height: 60px;
+    
+    /* Animation appliquée au survol */
+    transition: transform 0.15s ease-in-out; 
+    cursor: pointer; 
+}
+
+/* Style pour l'image Figma dans le bouton : */
+.figma-button-container img {
+    /* Rétabli les dimensions d'origine */
+    width: 60px; 
+    height: 60px;
+    object-fit: contain; 
+    opacity: 1;
+    /* Assure que l'image ne bouge pas si l'on zoome l'image elle-même */
+    transition: none; 
+}
+
+/* Animation au survol : On applique le zoom au conteneur */
+.figma-button-container:hover {
+    /* Maintient le fond transparent (ce n'est pas nécessaire de le déclarer, mais sécurisant) */
+    background-color: transparent; 
+    
+    /* Le logo et tout ce qu'il contient fera un zoom de 20% */
+    transform: scale(1.2); 
+}
+
+/* --- NOUVEAUX STYLES POUR LA MODALE DE ZOOM --- */
+
+/* Style pour le bouton de fermeture de la modale */
+.close-modal-btn {
+    font-size: 3rem; 
+    line-height: 1; 
+}
+
+/* S'assurer que l'image dans la modale ne déborde pas */
+#modal-image {
+    max-width: 90vw; 
+    max-height: 90vh; 
+    transition: transform 0.3s ease-out; 
+}
+
+/* --- MODIFICATION CLÉ --- */
+/* Fixer une hauteur minimale pour le conteneur principal */
+#content-container {
+    min-height: 400px; /* Assure que le cadre ne remonte pas trop sur les pages courtes */
+}
+
+/* --- NOUVEAUX STYLES POUR LES STICKERS ET ÉLÉMENTS DÉCORATIFS (FLOTTANTS) --- */
+
+/* Animation de flottement subtil */
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(5px, -5px) rotate(1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Base pour tous les stickers */
+.floating-sticker {
+    /* MODIFICATION CLÉ : Utiliser FIXED pour qu'ils soient ancrés au VIEWPORT et ne défilent pas */
+    position: absolute; 
+    
+    /* Placé derrière la carte */
+    z-index: 0; 
+    animation: float 4s ease-in-out infinite alternate;
+    pointer-events: none; /* Rendre les stickers ignorables par la souris */
+    
+    /* Ombre de base appliquée à tous (sera surchargée si besoin) */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 1. Carré jaune (Note Post-it) - En haut à gauche */
+.sticker-1 {
+    width: 70px;
+    height: 70px;
+    background-color: #fde047; /* Jaune */
+    border-radius: 6px;
+    top: 100px; 
+    /* CHANGÉ : Ancré à gauche de la zone de contenu max (640px = 1280px/2) + décalage */
+    left: calc(50% - 640px - 100px); 
+    animation-duration: 5.5s;
+}
+
+/* 2. Triangle vert (Forme abstraite) - Au milieu à gauche */
+.sticker-2 {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid #10b981; /* Vert émeraude */
+    top: 430px; 
+    /* CHANGÉ : Ancré plus loin à gauche de la zone de contenu max */
+    left: calc(50% - 640px - 160px); 
+    
+    /* Ombre retirée spécifiquement pour corriger l'effet sur les bords transparents */
+    box-shadow: none;
+    
+    opacity: 0.85; 
+    
+    animation-duration: 4s;
+    animation-delay: 1.2s;
+}
+
+/* 3. Étoile bordeaux - En haut à droite */
+.sticker-3 {
+    width: 50px;
+    height: 50px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: var(--color-bordeaux-base); /* Bordeaux */
+    top: 100px; 
+    /* CHANGÉ : Ancré à droite de la zone de contenu max (640px = 1280px/2) + décalage */
+    right: calc(50% - 640px - 90px); 
+    animation-duration: 6s;
+    animation-delay: 0.5s;
+}
+
+/* 4. Cercle bleu/vert (Ligne de crayon) - Au milieu à droite */
+.sticker-4 {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #06b6d4; /* Cyan */
+    top: 400px;
+    /* CHANGÉ : Ancré plus loin à droite de la zone de contenu max */
+    right: calc(50% - 640px - 160px);
+    animation-duration: 3s;
+    animation-delay: 0.8s;
+}
+
+/* 5. Cercle en spirale (CONSERVÉ À right: 5%) - En bas à droite */
+.sticker-5 {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
+    top: 800px; 
+    /* CHANGÉ : Ancré à droite de la zone de contenu max */
+    right: calc(50% - 640px - 120px); 
+    opacity: 0.9;
+    animation-duration: 5s;
+    animation-delay: 1.5s;
+}
+
+/* 6. Forme rectangulaire bordeaux (Autre Post-it) - En bas à gauche */
+.sticker-6 {
+    width: 50px;
+    height: 40px;
+    background-color: var(--color-bordeaux-dark);
+    border-radius: 4px;
+    top: 800px; 
+    /* CHANGÉ : Ancré à gauche de la zone de contenu max */
+    left: calc(50% - 640px - 120px);
+    opacity: 0.7;
+    animation-duration: 4.8s;
+    animation-delay: 2s;
+}
+
+/* NOUVEAU STICKER 7 : Hexagone Gris/Bleu - En haut au centre */
+.sticker-7 {
+    width: 50px;
+    height: 50px;
+    background-color: #64748b; /* Slate 500 */
+    /* Forme Hexagone */
+    clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
+    /* Centré au-dessus de la zone du contenu */
+    top: 60px; 
+    left: 45%; 
+    transform: translateX(-50%); /* Décalage pour centrage horizontal */
+    opacity: 0.9;
+    animation-duration: 6.5s; /* Une durée plus longue */
+    animation-delay: 0.2s;
+}
+
+app.js :
+
+// État global pour stocker le projet actuellement affiché
+let currentProject = {
+    id: null,
+    title: null
+};
+
+// --- Sélection des Éléments DOM ---
+const navLinks = document.querySelectorAll('.nav-link');
+const pageContents = document.querySelectorAll('.page-content');
+const homeLink = document.getElementById('home-link');
+const projectCards = document.querySelectorAll('.project-card');
+const projectDetailTitle = document.getElementById('project-detail-title');
+const backToWorkButton = document.getElementById('back-to-work');
+const figmaLinkButton = document.getElementById('figma-link-button-discreet');
+const projectVisual = document.getElementById('project-detail-visual'); 
+const processCards = document.querySelectorAll('.process-card');
+const backToProjectDetailButton = document.getElementById('back-to-project-detail');
+const currentProjectNameSpan = document.getElementById('current-project-name');
+const processDetailTitle = document.getElementById('process-detail-title');
+const processContentDiv = document.getElementById('process-content');
+const contentContainer = document.getElementById('content-container');
+const TRANSITION_DURATION = 400; // Doit correspondre au CSS (0.4s)
+
+// --- NOUVEAUX ÉLÉMENTS DOM POUR LE ZOOM ---
+const modal = document.getElementById('image-modal');
+const modalImg = document.getElementById('modal-image');
+const closeBtn = document.querySelector('.close-modal-btn');
+
+
+// --- Données des Études de Cas (Déplacées du HTML) ---
+const projectProcessDetails = {
+    // --- Projet 1 : Transport à la Demande IDFM (Desktop) ---
+    "1": {
+        analyse: `
+            <p>Pour mieux comprendre les <strong>besoins, motivations et difficultés</strong> des utilisateurs du Transport à la Demande (TàD) en Île-de-France, nous avons mené une recherche centrée sur l’utilisateur combinant entretiens semi-directifs, observations et sondages en ligne. L’objectif était de mettre en évidence les <strong>points de friction</strong> et d’identifier des pistes d’amélioration pour le parcours de réservation.</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Méthodologie & Participants</h3>
+            <div class="space-y-4">
+                <p class="font-semibold text-gray-800">Participants :</p>
+                <ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+                    <li><strong>8 utilisateurs</strong> représentant différents profils : 2 étudiants, 2 actifs avec horaires irréguliers, 2 seniors peu familiers du numérique, 2 résidents de zones périphériques.</li>
+                </ul>
+                <p class="font-semibold text-gray-800">Méthodes :</p>
+                <ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+                    <li><strong>Entretiens semi-directifs (45 min) :</strong> Questions ouvertes sur les habitudes de déplacement, difficultés et attentes.</li>
+                    <li><strong>Observation / Contextual Inquiry :</strong> Suivi de 3 participants lors d’une recherche de transport ou d’un trajet TàD pour observer les comportements réels.</li>
+                    <li><strong>Sondage en ligne (25 réponses simulées) :</strong> Collecte de données quantitatives sur la fréquence d’utilisation et la perception de la simplicité du service.</li>
+                </ul>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Synthèse de la Recherche & Enseignements</h3>
+            
+            <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Points récurrents observés :</h4>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Difficulté à localiser sa zone :</strong> Les utilisateurs ne comprennent pas toujours la notion de zone de service TàD. Les résidents périphériques se sentent parfois perdus.</li>
+                <li><strong>Méconnaissance des arrêts :</strong> Les utilisateurs expriment la crainte d’entrer une adresse non desservie, entraînant frustration et hésitation.</li>
+                <li><strong>Complexité pour les novices :</strong> Certains seniors ont du mal à naviguer dans l’interface et à comprendre l’ordre des étapes.</li>
+                <li><strong>Recherche manuelle fastidieuse :</strong> Les utilisateurs aimeraient que la géolocalisation et des suggestions automatiques réduisent le temps de saisie.</li>
+                <li><strong>Besoin de feedback clair :</strong> Lorsqu’aucun trajet n’est disponible, le message générique ne permet pas de comprendre pourquoi ni d’explorer des alternatives.</li>
+            </ul>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Citations & Verbatims représentatifs :</h4>
+            <div class="space-y-3 italic text-gray-600 border-l-4 border-red-300 pl-4">
+                <p>« Je ne sais jamais si mon arrêt est dans la bonne zone, j’ai peur de me tromper. » – <em>Étudiant</em></p>
+                <p>« Quand il n’y a pas de bus, je ne sais pas quoi faire, ça m’énerve. » – <em>Actif</em></p>
+                <p>« L’interface est un peu compliquée, je préfère demander à mon petit-fils de m’aider. » – <em>Senior</em></p>
+                <p>« J’aimerais pouvoir juste cliquer sur ma position et que l’appli propose le trajet. » – <em>Résident périphérique</em></p>
+            </div>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Résultats Clés du Sondage (Simulés) :</h4>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-red-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-red-800">Question</th>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-red-800">Réponse majoritaire</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 text-sm">
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Fréquence d’utilisation du TàD</td>
+                            <td class="px-4 py-2 text-gray-600">40 % occasionnellement</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Confort avec les outils numériques</td>
+                            <td class="px-4 py-2 text-gray-600">44 % moyen</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Importance de la géolocalisation</td>
+                            <td class="px-4 py-2 text-gray-600">72 % très importante</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Frustration principale</td>
+                            <td class="px-4 py-2 text-gray-600">Choix de la zone (56 %)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Cartes d'Empathie (Empathy Maps) 🧭</h3>
+            <p>Pour formaliser les besoins et frustrations des utilisateurs, nous avons construit des <strong>Empathy Maps</strong> pour chaque profil type, servant de référence pour la définition des problèmes (étape suivante).</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="text-center p-4 border rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 1 – Ethan, Étudiant Urbain (22 ans)</h4>
+                    <img src="carte-d'empathie-ethan.png" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Ethan';" />
+                </div>
+                <div class="text-center p-4 border rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 2 – Jean-Pierre, Senior Novice (68 ans)</h4>
+                    <img src="carte-d'empathie-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
+                </div>
+                <div class="text-center p-4 border rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 3 – Charline, Active Flexible (40 ans)</h4>
+                    <img src="carte-d'empathie-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
+                </div>
+            </div>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Insights Généraux :</h4>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>La <strong>géolocalisation</strong> et les <strong>suggestions automatiques</strong> sont essentielles pour réduire les frictions de saisie.</li>
+                <li>Les utilisateurs novices ont besoin d’un <strong>accompagnement progressif</strong> (tutoriel ou guides).</li>
+                <li>Les messages d’erreur doivent être <strong>clairs, explicatifs</strong> et proposer des alternatives pour ne pas décourager l’utilisateur.</li>
+            </ul>
+        `,
+        entretiens: `
+            <p>Nous avons combiné plusieurs méthodes de <strong>Recherche Utilisateur (TàD IDFM)</strong> pour obtenir une vision complète :</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Méthodes utilisées :</h3>
+            <div class="space-y-4">
+                <p class="font-semibold text-gray-800">1. Entretiens Contextuels (Qualitatif)</p>
+                <p>Des entretiens semi-directifs ont été menés auprès de 10 utilisateurs réguliers du TàD. Les questions se concentraient sur leurs habitudes de transport, leurs attentes, et les émotions ressenties lors de la réservation et du voyage.</p>
+                
+                <p class="font-semibold text-gray-800">2. Enquêtes de Satisfaction (Quantitatif)</p>
+                <p>Un questionnaire diffusé en ligne a permis de collecter 150 réponses sur la satisfaction globale et l'évaluation de fonctionnalités spécifiques (e.g., facilité d'annulation, clarté des horaires).</p>
+
+                <p class="font-semibold text-gray-800">3. Shadowing / Observation</p>
+                <p>Nous avons observé trois utilisateurs réserver et effectuer un trajet en temps réel. Cette observation non-intrusive a révélé des problèmes d'utilisabilité et de compréhension des messages qui n'auraient pas été mentionnés en entretien (ex : hésitation sur la saisie des adresses).</p>
+            </div>
+        `,
+        // NOTE: le contenu original pour 'definition' renvoyait des infos sur 'entretiens'
+        // J'ai conservé le contenu de l'étape "Définition / Synthèse" comme prévu par l'arborescence
+        definition: `
+            <p>La <strong>Définition / Synthèse (TàD IDFM)</strong> est l'étape où nous avons transformé les données brutes des entretiens et sondages en informations exploitables.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Cartographie du Parcours Utilisateur (User Journey Map)</h3>
+            <p>Nous avons créé une cartographie du parcours utilisateur actuel pour identifier précisément les moments de douleur (pain points) et les opportunités d'amélioration. Les points critiques étaient :</p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Découverte du service :</strong> Confusion sur les zones desservies.</li>
+                <li><strong>Saisie de l'adresse :</strong> Le système de recherche d'arrêt est peu performant.</li>
+                <li><strong>Absence de trajet :</strong> Le feedback en cas d'indisponibilité n'est pas utile.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Problème à résoudre (HMW - How Might We)</h3>
+            <p>Sur la base de cette analyse, le principal défi défini était : <strong>Comment pourrions-nous simplifier la saisie des adresses et la sélection des zones de TàD pour les utilisateurs novices, tout en garantissant un feedback clair en cas d'échec de réservation ?</strong></p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Personas Clés</h3>
+            <p>Les trois personas créés (Ethan, Jean-Pierre, Charline) ont été finalisés et utilisés pour valider toutes les décisions de conception ultérieures. (Voir l'étape d'empathie pour les profils initiaux).</p>
+        `,
+        personas: `
+            <p>Basé sur les données d'analyse et les entretiens, nous avons synthétisé nos découvertes en trois <strong>Personas (TàD IDFM)</strong> clés, représentant les archétypes d'utilisateurs du service TàD.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Exemple de Persona : "Sophie, l'Utilisatrice Prévoyante"</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Objectif :</strong> Réserver son trajet de retour du travail la veille pour être certaine d'avoir une place.</li>
+                <li><strong>Frustration :</strong> L'interface de modification de réservation est cachée et les messages d'erreur sont peu clairs si un changement n'est plus possible.</li>
+                <li><strong>Besoin :</strong> Un tableau de bord clair avec un historique et une modification en un clic.</li>
+            </ul>
+            
+            <p class="mt-4">Chaque persona était associé à un <strong>Scénario d'Usage</strong> critique, servant de référence constante lors des phases de conception pour évaluer l'efficacité de nos solutions.</p>
+        `,
+        fonctionnalites: `
+            <p>La <strong>Définition des Fonctionnalités (TàD IDFM)</strong> a été réalisée à l'aide de la méthode MoSCoW (Must-have, Should-have, Could-have, Won't-have) en concertation avec les parties prenantes (IDFM) et les retours utilisateurs.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Priorités (Must-Have) :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Simplification du formulaire de réservation (réduction des champs obligatoires).</li>
+                <li>Visualisation claire de la position du véhicule en temps réel sur une carte.</li>
+                <li>Possibilité d'enregistrer des adresses favorites pour une réservation rapide.</li>
+            </ul>
+            
+            <p class="mt-4">Nous avons décidé d'intégrer une fonctionnalité de "réservation récurrente" (Should-Have) pour les trajets quotidiens, un point de friction important identifié lors des entretiens.</p>
+        `,
+        ideation: `
+            <p>La phase d'<strong>Idéation (TàD IDFM)</strong> a été un atelier collaboratif de 2 jours mobilisant l'équipe de design, un développeur et un représentant client (Product Owner). L'objectif était de générer un maximum de solutions créatives pour répondre aux besoins prioritaires définis.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Techniques utilisées :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Brainstorming :</strong> Session libre pour générer des idées sur la refonte du tableau de bord.</li>
+                <li><strong>Crazy 8s :</strong> Sketching rapide de 8 variations de l'écran de réservation en 8 minutes. </li>
+                <li><strong>Dot Voting :</strong> Utilisation de pastilles pour voter collectivement sur les idées les plus prometteuses et les plus réalisables techniquement.</li>
+            </ul>
+            
+            <p class="mt-4">Cette phase a permis de transformer des concepts abstraits en esquisses tangibles, jetant les bases des futurs wireframes.</p>
+        `,
+        // NOTE : Le contenu original de 'fonctionnalites' est renommé 'prototypage' dans la carte,
+        // donc je fusionne les étapes pour correspondre au nouveau titre
+        prototypage: `
+            <p>La phase de <strong>Prototypage (TàD IDFM)</strong> a englobé la conception Basse Fidélité (wireframes) et Haute Fidélité (maquettes UI) dans Figma. L'objectif était de matérialiser les idées validées lors de l'Idéation.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Basse Fidélité (Wireframes)</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Création de **flux utilisateurs (User Flows)** détaillés pour la réservation et la modification.</li>
+                <li>**Wireframes desktop** se concentrant sur la simplicité du formulaire (réduction des champs obligatoires).</li>
+                <li>Validation de l'architecture d'information : navigation par onglets pour différencier la recherche et les trajets favoris.</li>
+            </ul>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Haute Fidélité (Maquettes UI)</h3>
+            <p>Les wireframes ont été habillés en utilisant la charte graphique existante d'IDFM. Les efforts ont porté sur :</p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Accessibilité :</strong> Assurer un contraste suffisant et des tailles de texte adaptées, notamment pour la population senior.</li>
+                <li><strong>Clarté des données :</strong> Utilisation de cartes et d'icônes claires pour représenter les arrêts et la position du véhicule en temps réel.</li>
+                <li><strong>Feedback :</strong> Conception de messages d'erreur et de succès non intrusifs et explicatifs.</li>
+            </ul>
+        `,
+        tests: `
+            <p>La phase finale a été le <strong>Test Utilisateur & Itération (TàD IDFM)</strong>, mené avec 5 utilisateurs n'ayant pas participé à la phase de recherche initiale, afin de mesurer l'efficacité de nos solutions.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Métrique et Tâches :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Tâche 1 :</strong> Réserver un trajet aller-retour pour la semaine prochaine (critique : succès).</li>
+                <li><strong>Tâche 2 :</strong> Modifier l'heure de départ d'une réservation existante (critique : efficacité).</li>
+                <li><strong>Tâche 3 :</strong> Ajouter une adresse à ses favoris (critique : satisfaction).</li>
+            </ul>
+            
+            <p class="font-semibold mt-4">Résultats Clés :</p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Le **taux de réussite de la tâche de réservation** est passé de 65% (ancienne interface observée) à **95%** (nouvelle interface testée).</li>
+                <li>**Point de friction :** Le processus de modification a révélé une confusion sur l'emplacement du bouton d'édition, menant à une itération.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Itération</h3>
+            <p>Suite aux tests, le bouton de modification a été déplacé du menu contextuel vers un bouton d'action principal et son label a été clarifié. Cette amélioration a permis de remonter le taux de réussite de la tâche de modification de 70% à 90%.</p>
+        `
+    },
+    
+    // --- Projet 2 : Le Médoc à la Carte (Desktop/Mobile) ---
+    "2": {
+        analyse: `
+            <p>La <strong>Empathie / Analyse Utilisateur (Le Médoc à la Carte)</strong> a été axée sur le tourisme œnologique en Gironde. Nous avons mené une analyse concurrentielle des plateformes de réservation de visites de châteaux et des sites de guides touristiques pour identifier les lacunes en matière d'expérience utilisateur dans ce secteur.</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Problématique :</h3>
+            <p>Comment créer une expérience de découverte fluide qui équilibre l'information sur les domaines viticoles et la simplicité de réservation d'itinéraires personnalisés ?</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Objectifs :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Définir la typologie des utilisateurs (touriste œnophile, local curieux, organisateur de groupe).</li>
+                <li>Cartographier le flux d'information requis pour une visite de cave (horaires, prix, langues).</li>
+            </ul>
+        `,
+        entretiens: `
+            <p>Pour le projet Médoc, nous avons mené des <strong>Définition / Synthèse (Médoc)</strong> pour consolider les besoins. Nous avons mené des entretiens auprès de deux groupes distincts : 5 propriétaires ou responsables de châteaux pour comprendre leurs contraintes de gestion des visites, et 10 touristes (locaux et internationaux) pour évaluer leurs habitudes de planification de voyage.</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Points Clés Révélés :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Les touristes internationaux trouvent difficile de consolider les informations sur les visites en français.</li>
+                <li>Les propriétaires de châteaux ont besoin d'un outil de gestion des réservations simple et non intrusif.</li>
+                <li>L'importance de la géolocalisation pour créer des itinéraires optimisés.</li>
+            </ul>
+        `,
+        definition: `
+             <p>Le travail de <strong>Définition / Synthèse (Médoc)</strong> a abouti à la création de deux Personas : **Marc, le Connaisseur** (recherche des crus classés et une expérience approfondie) et **Léa, l'Organisatrice** (recherche un itinéraire simple et rapide pour toute sa famille).</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Scénario de Léa :</h3>
+            <p>Léa doit pouvoir sélectionner trois châteaux différents sur une journée, voir un itinéraire cartographié entre eux, et les réserver en moins de 10 minutes. Le scénario a mis l'accent sur la facilité de tri et de filtrage par "familial" ou "rapide".</p>
+        `,
+        ideation: `
+            <p>L'<strong>Idéation / Conceptualisation (Médoc)</strong> a impliqué des workshops de sketchs pour concevoir le module de carte interactive. L'enjeu était de visualiser les domaines sans surcharger l'interface.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Solutions Innovantes :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Utilisation d'une carte vectorielle stylisée pour mettre en évidence les zones AOC.</li>
+                <li>Développement d'une "Carte de Vœux" (Wishlist) pour les châteaux à visiter plus tard.</li>
+            </ul>
+        `,
+        prototypage: `
+            <p>La phase de <strong>Prototypage (Médoc)</strong> a mis l'accent sur le responsive design. Le wireframing a d'abord été fait pour la version mobile (**Mobile First**), en s'assurant que la carte interactive restait utilisable sur petit écran. Le maquettage Haute Fidélité a utilisé une palette de couleurs inspirée des teintes du vin (bordeaux, ocre, doré) pour une immersion visuelle.</p>
+        `,
+        fonctionnalites: `
+            <p>La <strong>Définition des Fonctionnalités (Médoc)</strong> a mis en avant le besoin d'un "constructeur d'itinéraire" dynamique et de filtres avancés pour les types de visites (dégustation, atelier, repas).</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Priorités (Must-Have) :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Filtre par type de vin/AOC.</li>
+                <li>Création et sauvegarde d'un itinéraire multi-étapes.</li>
+                <li>Interface multilingue (Français/Anglais).</li>
+            </ul>
+        `,
+        tests: `
+            <p>Les <strong>Tests Utilisateurs & Itération (Médoc)</strong> ont été effectués sur le prototype Figma final. La métrique principale était le temps nécessaire pour réserver un itinéraire personnalisé de 3 châteaux.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Résultats & Itération :</h3>
+            <p>Le temps de réalisation de la tâche a été réduit de 40% par rapport aux sites concurrents. Un point de friction a été identifié : les utilisateurs n'utilisaient pas la fonctionnalité de sauvegarde des itinéraires, pensant qu'elle ne servait que pour la réservation finale. L'itération a consisté à renommer le bouton et ajouter une infobulle explicative.</p>
+        `
+    },
+    
+    // --- Projet 3 : Allociné (Desktop) ---
+    "3": {
+        analyse: `
+            <p>L'<strong>Analyse (Allociné)</strong> s'est concentrée sur la plateforme Desktop d'Allociné, ciblant l'expérience de découverte de films. L'analyse heuristique a montré une saturation de l'information et un manque de personnalisation flagrant des recommandations.</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Objectifs de l'Étude de Cas :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Améliorer la pertinence des suggestions de films.</li>
+                <li>Simplifier l'interface de navigation pour les utilisateurs non habitués.</li>
+                <li>Mettre en valeur les fonctionnalités sociales (avis, notation).</li>
+            </ul>
+        `,
+        entretiens: `
+            <p>Des <strong>Définition / Synthèse (Allociné)</strong> ont été menés avec des cinéphiles occasionnels et réguliers (8 utilisateurs). Nous avons utilisé la méthode du "Card Sorting" pour comprendre comment ils regroupaient naturellement les films (par genre, réalisateur, humeur, etc.).</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Conclusion de la Recherche :</h3>
+            <p>Les utilisateurs valorisent les recommandations basées sur l'humeur ou les critères sociaux (ce que leurs amis regardent) davantage que les simples catégories de genre classiques.</p>
+        `,
+        definition: `
+             <p>Le <strong>Définition / Synthèse (Allociné)</strong> principal créé est **Thomas, le Cinéphile Social**, qui cherche un film à regarder ce soir avec des amis et se fie aux notes critiques et aux tendances sur les plateformes de streaming.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Besoin Clé :</h3>
+            <p>Une section "Tendance chez vos amis" ou "Recommandé pour votre humeur" pour faciliter la prise de décision rapide.</p>
+        `,
+        ideation: `
+            <p>L'<strong>Idéation / Conceptualisation (Allociné)</strong> a généré plusieurs concepts pour l'affichage de la fiche film. Nous avons utilisé le concept de "Design Sprint" pour prototyper rapidement une nouvelle page d'accueil axée sur la découverte.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Idées Retenues :</h3>
+            <p>Utiliser des cartes de films grand format avec des bandes-annonces en autoplay (muet) pour un impact visuel maximal sur la page d'accueil.</p>
+        `,
+        prototypage: `
+            <p>La phase de <strong>Prototypage (Allociné)</strong> a revu l'architecture de l'information pour désencombrer la page d'accueil. L'enjeu était de réduire le nombre d'éléments cliquables sans réduire la richesse du catalogue. Le maquettage Haute Fidélité a privilégié un thème sombre pour mettre en valeur les visuels des films (posters).</p>
+        `,
+        fonctionnalites: `
+            <p>La <strong>Définition des Fonctionnalités (Allociné)</strong> a priorisé l'intégration d'un outil de filtration par "Humeur" et la refonte des listes de recommandations pour qu'elles soient visuellement plus impactantes.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Priorités (Must-Have) :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Système de notation plus clair (fusion des notes presse et spectateurs).</li>
+                <li>Module de recommandation par "Humeur" ou "Activité Récente".</li>
+                <li>Espace personnel des listes de films à voir (Watchlist) plus accessible.</li>
+            </ul>
+        `,
+        tests: `
+            <p>Les <strong>Tests Utilisateurs & Itération (Allociné)</strong> ont comparé l'ancienne et la nouvelle interface. La tâche clé était de "trouver un film de science-fiction récent et bien noté".</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Bilan & Itération :</h3>
+            <p>Le taux de succès de la tâche a augmenté de 25% grâce à l'amélioration du filtre de recherche et à la clarté du nouveau système de notation. Une itération a été nécessaire sur la couleur des boutons d'action (Ajouter à ma liste) pour un meilleur contraste.</p>
+        `
+    }
+};
