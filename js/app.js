@@ -130,30 +130,18 @@ const projectProcessDetails = {
             
             <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">1. Ethan – Étudiant Urbain (22 ans)</h4>
                     <img src="persona-ethan.png" alt="Photo de profil Persona Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Persona+Ethan';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
-                        <li><strong>Besoin :</strong> Système rapide, automatique (géolocalisation).</li>
-                        <li><strong>Objectif :</strong> Obtenir un trajet en quelques secondes.</li>
-                        <li><strong>Frustration :</strong> "Je ne sais pas si l’adresse est desservie."</li>
                     </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">2. Jean-Pierre – Senior Novice (68 ans)</h4>
                     <img src="persona-jean-pierre.png" alt="Photo de profil Persona Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Persona+Jean-Pierre';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
-                        <li><strong>Besoin :</strong> Accompagnement simple et guidé.</li>
-                        <li><strong>Difficulté :</strong> Se perd dans les zones et la terminologie du service.</li>
-                        <li><strong>Frustration :</strong> “Je ne comprends pas les étapes.”</li>
                     </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">3. Charline – Active Flexible (40 ans)</h4>
                     <img src="persona-charline.png" alt="Photo de profil Persona Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Persona+Charline';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
-                        <li><strong>Besoin :</strong> Outil efficace et fiable, même en horaires décalés.</li>
-                        <li><strong>Attente :</strong> Informations claires lorsqu'un trajet n'est pas disponible.</li>
-                        <li><strong>Frustration :</strong> “Si ça ne marche pas, je ne sais pas quoi ajuster.”</li>
                     </ul>
                 </div>
             </div>
