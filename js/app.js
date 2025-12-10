@@ -44,7 +44,7 @@ const projectProcessDetails = {
                 <p class="font-semibold text-gray-800">Méthodes de Recherche :</p>
                 <ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
                     <li><strong>Entretiens semi-directifs (45 min) :</strong> Questions ouvertes sur les habitudes de déplacement, difficultés et attentes.</li>
-                    <li><strong>Observation (Contextual Inquiry) :</strong> Suivi de 3 participants lors d’une recherche ou d'un trajet TàD pour observer les comportements réels.</li>
+                    <li><strong>Observation (Contextual Inquiry) :</strong> Suivi de 3 participants lors d’une recherche de transport ou d’un trajet TàD pour observer les comportements réels.</li>
                     <li><strong>Sondage en ligne (25 réponses simulées) :</strong> Collecte de données quantitatives sur la fréquence d’utilisation et la perception de la simplicité du service.</li>
                 </ul>
             </div>
@@ -55,7 +55,7 @@ const projectProcessDetails = {
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li><strong>Difficulté de la notion de zone (Priorité) :</strong> Les utilisateurs ne comprennent pas toujours la zone de service TàD (56% de frustration principale, voir tableau).</li>
                 <li><strong>Méconnaissance des arrêts :</strong> Crainte d’entrer une adresse non desservie, source de frustration et d’hésitation.</li>
-                <li><strong>Complexité pour les novices (Seniors) :</strong> Difficulté à naviguer et à comprendre la séquence des étapes de réservation TàD.</li>
+                <li><strong>Complexité pour les novices (Seniors) :</strong> Difficulté à naviguer dans l’interface et à comprendre la séquence des étapes de réservation TàD.</li>
                 <li><strong>Recherche manuelle fastidieuse :</strong> Forte demande pour la <strong>géolocalisation</strong> et les suggestions automatiques (72% jugée très importante).</li>
                 <li><strong>Manque de feedback clair :</strong> Messages d'erreur génériques ("Aucun service disponible") qui n'expliquent pas le problème et ne proposent pas d'alternatives.</li>
             </ul>
@@ -107,7 +107,7 @@ const projectProcessDetails = {
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Jean-Pierre Senior (68 ans)</h4>
-                    <img src="empathies-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
+                    <img src="empathie-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Charline Active (40 ans)</h4>
@@ -117,7 +117,7 @@ const projectProcessDetails = {
             <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Synthèse des Insights (Vers la Définition) :</h4>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li>La conception doit se concentrer sur l'<strong>accompagnement visuel</strong> et l'<strong>automatisation</strong> des tâches répétitives.</li>
-                <li>Le besoin d'un <strong>guide contextuel<strong> est fort pour rassurer les utilisateurs les moins à l'aise (Jean-Pierre).</li>
+                <li>Le besoin d'un <strong>guide contextuel</strong> est fort pour rassurer les utilisateurs les moins à l'aise (Jean-Pierre).</li>
                 <li>Chaque point de blocage doit être géré par un <strong>feedback clair et une alternative</strong> pour éviter l'abandon.</li>
             </ul>
         `,
@@ -132,18 +132,24 @@ const projectProcessDetails = {
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Ethan (Étudiant)</h4>
                     <img src="persona-ethan.png" alt="Photo de profil Persona Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Persona+Ethan';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit space-y-1 text-gray-600">
+                        <li><strong>Problématique :</strong> Temps perdu avec les étapes manuelles et l'incertitude sur la desserte.</li>
+                        <li><strong>Besoin clé :</strong> Rapidité, Géolocalisation automatique, Fluidité comme les apps de VTC.</li>
                     </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Jean-Pierre (Senior)</h4>
                     <img src="persona-jean-pierre.png" alt="Photo de profil Persona Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Persona+Jean-Pierre';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit space-y-1 text-gray-600">
+                        <li><strong>Problématique :</strong> Compréhension difficile du système de zones, crainte de faire une erreur.</li>
+                        <li><strong>Besoin clé :</strong> Clarté, Accompagnement (guide ou tutoriel), Messages rassurants.</li>
                     </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Charline (Active)</h4>
                     <img src="persona-charline.png" alt="Photo de profil Persona Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Persona+Charline';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit space-y-1 text-gray-600">
+                        <li><strong>Problématique :</strong> Manque d'alternatives et d'explications en cas de trajet impossible.</li>
+                        <li><strong>Besoin clé :</strong> Fiabilité, Processus rapide, Informations claires sur la disponibilité du service.</li>
                     </ul>
                 </div>
             </div>
@@ -185,7 +191,7 @@ const projectProcessDetails = {
             <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧠 Insight UX majeur</h3>
             <div class="bg-red-100 border-l-8 border-red-500 p-6 rounded-lg my-4 shadow-inner">
                 <p class="text-xl font-bold text-red-800">
-                    Les utilisateurs ne souhaitent pas <strong>“chercher un trajet”<strong> , ils souhaitent <strong>“être guidés vers une solution disponible”<strong>.
+                    Les utilisateurs ne souhaitent pas <strong>“chercher un trajet”</strong>, ils souhaitent <strong>“être guidés vers une solution disponible”</strong>.
                 </p>
                 <p class="text-base text-gray-700 mt-2">
                     La friction vient principalement du manque d’accompagnement, d’aides visuelles et d’automatisation.
@@ -203,16 +209,16 @@ const projectProcessDetails = {
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🎯 Objectif de conception</h3>
             <p>Créer un parcours de réservation fluide, assisté et compréhensible, intégrant les 5 piliers suivants :</p>
             <ul class="list-disc list-inside space-y-2 ml-4">
-                <li><strong>Automatisation :<strong> Géolocalisation automatique.</li>
-                <li><strong>Assistance à la saisie :<strong> Suggestions intelligentes d’arrêts valides.</li>
-                <li><strong>Gestion de l'erreur :<strong> Feedback clair et actionnable.</li>
-                <li><strong>Accessibilité :<strong> Accompagnement (guide) pour les novices.</li>
-                <li><strong>Clarté :<strong> Visualisation plus intuitive des zones et arrêts.</li>
+                <li><strong>Automatisation :</strong> Géolocalisation automatique.</li>
+                <li><strong>Assistance à la saisie :</strong> Suggestions intelligentes d’arrêts valides.</li>
+                <li><strong>Gestion de l'erreur :</strong> Feedback clair et actionnable.</li>
+                <li><strong>Accessibilité :</strong> Accompagnement (guide) pour les novices.</li>
+                <li><strong>Clarté :</strong> Visualisation plus intuitive des zones et arrêts.</li>
             </ul>
             <p class="italic text-sm mt-4 text-gray-500">Cette problématique guidera les phases suivantes : idéation, prototypage et tests.</p>
         `,
         ideation: `
-            <p>Cette phase vise à transformer le problème central ("Comment simplifier la recherche de trajet et réduire les erreurs de saisie en guidant l’utilisateur — même novice — vers un trajet disponible dès son arrivée sur la plateforme ?") en solutions concrètes, en se basant sur les besoins et les points de friction identifiés pour **Jean-Pierre**, **Charline**, et **Ethan**.</p>
+            <p>Cette phase vise à transformer le problème central ("Comment simplifier la recherche de trajet et réduire les erreurs de saisie en guidant l’utilisateur — même novice — vers un trajet disponible dès son arrivée sur la plateforme ?") en solutions concrètes, en se basant sur les besoins et les points de friction identifiés pour <strong>Jean-Pierre</strong>, <strong>Charline</strong>, et <strong>Ethan</strong>.</p>
             
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Méthode d'Idéation : Brainstorming sur les Problèmes Clés</h3>
             <p>L'idéation a été menée en se concentrant sur les quatre problèmes clés (zone, saisie manuelle, feedback, parcours novice), aboutissant à quatre fonctionnalités clés :</p>
@@ -222,8 +228,8 @@ const projectProcessDetails = {
                     <h4 class="text-xl font-bold text-red-800 mb-2">🌟 1. "Le Guide TàD" (Focus : Jean-Pierre)</h4>
                     <p class="text-gray-700"><strong>Concept :</strong> Un mode d'assistance activable/désactivable par l'utilisateur (ou proposé par défaut pour les profils novices).</p>
                     <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
-                        <li>**Implémentation :** Affichage d'<strong>info-bulles didactiques</strong> à chaque étape du parcours.</li>
-                        <li>**Bénéfice :** Réduit le stress et la peur de l'erreur, **accélère l'onboarding** pour les utilisateurs moins familiers du numérique.</li>
+                        <li><strong>Implémentation :</strong> Affichage d'<strong>info-bulles didactiques</strong> à chaque étape du parcours.</li>
+                        <li><strong>Bénéfice :</strong> Réduit le stress et la peur de l'erreur, <strong>accélère l'onboarding</strong> pour les utilisateurs moins familiers du numérique.</li>
                     </ul>
                 </div>
 
@@ -231,8 +237,8 @@ const projectProcessDetails = {
                     <h4 class="text-xl font-bold text-red-800 mb-2">📍 2. "Saisie Intelligente Géolocalisée" (Focus : Ethan & Charline)</h4>
                     <p class="text-gray-700"><strong>Concept :</strong> Minimiser la saisie manuelle et éliminer l'incertitude liée aux arrêts.</p>
                     <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
-                        <li>**Implémentation :** Bouton **"Utiliser ma position"** évident. Système de saisie avec **auto-complétion intelligente** (suggestions d'arrêts valides *uniquement*). Feedback de couleur (vert/rouge) sur les champs.</li>
-                        <li>**Bénéfice :** **Réduction du temps de recherche**, élimination de la frustration liée aux adresses non desservies.</li>
+                        <li><strong>Implémentation :</strong> Bouton <strong>"Utiliser ma position"</strong> évident. Système de saisie avec <strong>auto-complétion intelligente</strong> (suggestions d'arrêts valides <em>uniquement</em>). Feedback de couleur (vert/rouge) sur les champs.</li>
+                        <li><strong>Bénéfice :</strong> <strong>Réduction du temps de recherche</strong>, élimination de la frustration liée aux adresses non desservies.</li>
                     </ul>
                 </div>
 
@@ -240,8 +246,8 @@ const projectProcessDetails = {
                     <h4 class="text-xl font-bold text-red-800 mb-2">🗺️ 3. "La Carte Contextuelle & Zone Active" (Focus : Tous les profils)</h4>
                     <p class="text-gray-700"><strong>Concept :</strong> Rendre la notion de zone de service TàD intuitive et visuelle.</p>
                     <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
-                        <li>**Implémentation :** La zone de service est **mise en évidence** sur la carte. Les arrêts TàD valides apparaissent comme des **points cliquables**.</li>
-                        <li>**Bénéfice :** **Clarté immédiate** sur les limites du service et les points d’embarquement possibles.</li>
+                        <li><strong>Implémentation :</strong> La zone de service est <strong>mise en évidence</strong> sur la carte. Les arrêts TàD valides apparaissent comme des <strong>points cliquables</strong>.</li>
+                        <li><strong>Bénéfice :</strong> <strong>Clarté immédiate</strong> sur les limites du service et les points d’embarquement possibles.</li>
                     </ul>
                 </div>
 
@@ -249,22 +255,22 @@ const projectProcessDetails = {
                     <h4 class="text-xl font-bold text-red-800 mb-2">⚠️ 4. "Feedback Explicatif & Alternatives" (Focus : Charline & Ethan)</h4>
                     <p class="text-gray-700"><strong>Concept :</strong> Transformer l'échec de la recherche en une opportunité de solution.</p>
                     <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
-                        <li>**Implémentation :** Le message d'échec doit expliquer le **"Pourquoi"** et proposer le **"Quoi faire"** (Ex: Changer l'heure ou Voir les bus alternatifs).</li>
-                        <li>**Bénéfice :** Maintien de l'engagement de l'utilisateur, **transformation de la frustration en action**.</li>
+                        <li><strong>Implémentation :</strong> Le message d'échec doit expliquer le <strong>"Pourquoi"</strong> et proposer le <strong>"Quoi faire"</strong> (Ex: Changer l'heure ou Voir les bus alternatifs).</li>
+                        <li><strong>Bénéfice :</strong> Maintien de l'engagement de l'utilisateur, <strong>transformation de la frustration en action</strong>.</li>
                     </ul>
                 </div>
             </div>
 
             <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Conclusion de l'Idéation</h3>
-            <p>L'étape d'Idéation propose une **approche "assistée et visuelle"** du service TàD, mettant en place des garde-fous pour les novices (Jean-Pierre) tout en offrant des raccourcis efficaces et un feedback intelligent pour les utilisateurs exigeants et familiers du numérique (Ethan et Charline).</p>
+            <p>L'étape d'Idéation propose une <strong>approche "assistée et visuelle"</strong> du service TàD, mettant en place des garde-fous pour les novices (Jean-Pierre) tout en offrant des raccourcis efficaces et un feedback intelligent pour les utilisateurs exigeants et familiers du numérique (Ethan et Charline).</p>
         `,
         prototypage: `
             <p>La phase de <strong>Prototypage (TàD IDFM)</strong> a englobé la conception Basse Fidélité (wireframes) et Haute Fidélité (maquettes UI) dans Figma. L'objectif était de matérialiser les idées validées lors de l'Idéation.</p>
 
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Basse Fidélité (Wireframes)</h3>
             <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>Création de **flux utilisateurs (User Flows)** détaillés pour la réservation et la modification.</li>
-                <li>**Wireframes desktop** se concentrant sur la simplicité du formulaire (réduction des champs obligatoires).</li>
+                <li>Création de <strong>flux utilisateurs (User Flows)</strong> détaillés pour la réservation et la modification.</li>
+                <li><strong>Wireframes desktop</strong> se concentrant sur la simplicité du formulaire (réduction des champs obligatoires).</li>
                 <li>Validation de l'architecture d'information : navigation par onglets pour différencier la recherche et les trajets favoris.</li>
             </ul>
             
@@ -288,8 +294,8 @@ const projectProcessDetails = {
             
             <p class="font-semibold mt-4">Résultats Clés :</p>
             <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>Le **taux de réussite de la tâche de réservation** est passé de 65% (ancienne interface observée) à **95%** (nouvelle interface testée).</li>
-                <li>**Point de friction :** Le processus de modification a révélé une confusion sur l'emplacement du bouton d'édition, menant à une itération.</li>
+                <li>Le <strong>taux de réussite de la tâche de réservation</strong> est passé de 65% (ancienne interface observée) à <strong>95%</strong> (nouvelle interface testée).</li>
+                <li><strong>Point de friction :</strong> Le processus de modification a révélé une confusion sur l'emplacement du bouton d'édition, menant à une itération.</li>
             </ul>
 
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Itération</h3>
@@ -312,7 +318,7 @@ const projectProcessDetails = {
             </ul>
         `,
         definition: `
-            <p>Le travail de <strong>Définition / Synthèse (Médoc)</strong> a abouti à la création de deux Personas : **Marc, le Connaisseur** (recherche des crus classés et une expérience approfondie) et **Léa, l'Organisatrice** (recherche un itinéraire simple et rapide pour toute sa famille).</p>
+            <p>Le travail de <strong>Définition / Synthèse (Médoc)</strong> a abouti à la création de deux Personas : <strong>Marc, le Connaisseur</strong> (recherche des crus classés et une expérience approfondie) et <strong>Léa, l'Organisatrice</strong> (recherche un itinéraire simple et rapide pour toute sa famille).</p>
 
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Recherche Utilisateur :</h3>
             <p>Nous avons mené des entretiens auprès de deux groupes distincts : 5 propriétaires ou responsables de châteaux pour comprendre leurs contraintes de gestion des visites, et 10 touristes (locaux et internationaux) pour évaluer leurs habitudes de planification de voyage.</p>
@@ -337,7 +343,7 @@ const projectProcessDetails = {
             </ul>
         `,
         prototypage: `
-            <p>La phase de <strong>Prototypage (Médoc)</strong> a mis l'accent sur le responsive design. Le wireframing a d'abord été fait pour la version mobile (**Mobile First**), en s'assurant que la carte interactive restait utilisable sur petit écran. Le maquettage Haute Fidélité a utilisé une palette de couleurs inspirée des teintes du vin (bordeaux, ocre, doré) pour une immersion visuelle.</p>
+            <p>La phase de <strong>Prototypage (Médoc)</strong> a mis l'accent sur le responsive design. Le wireframing a d'abord été fait pour la version mobile (<strong>Mobile First</strong>), en s'assurant que la carte interactive restait utilisable sur petit écran. Le maquettage Haute Fidélité a utilisé une palette de couleurs inspirée des teintes du vin (bordeaux, ocre, doré) pour une immersion visuelle.</p>
             
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Fonctionnalités Clés :</h3>
             <p>La <strong>Définition des Fonctionnalités (Médoc)</strong> a mis en avant le besoin d'un "constructeur d'itinéraire" dynamique et de filtres avancés pour les types de visites (dégustation, atelier, repas).</p>
@@ -370,7 +376,7 @@ const projectProcessDetails = {
             </ul>
         `,
         definition: `
-            <p>Le <strong>Définition / Synthèse (Allociné)</strong> principal créé est **Thomas, le Cinéphile Social**, qui cherche un film à regarder ce soir avec des amis et se fie aux notes critiques et aux tendances sur les plateformes de streaming.</p>
+            <p>Le <strong>Définition / Synthèse (Allociné)</strong> principal créé est <strong>Thomas, le Cinéphile Social</strong>, qui cherche un film à regarder ce soir avec des amis et se fie aux notes critiques et aux tendances sur les plateformes de streaming.</p>
 
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Recherche Utilisateur :</h3>
             <p>Des entretiens ont été menés avec des cinéphiles occasionnels et réguliers (8 utilisateurs). Nous avons utilisé la méthode du "Card Sorting" pour comprendre comment ils regroupaient naturellement les films (par genre, réalisateur, humeur, etc.).</p>
