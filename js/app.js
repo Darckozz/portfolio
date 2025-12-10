@@ -103,15 +103,15 @@ const projectProcessDetails = {
             <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 1 – Ethan, Étudiant Urbain (22 ans)</h4>
-                    <img src="carte-d'empathie-ethan.png" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Ethan';" />
+                    <img src="carte-d'empathie-ethan.png" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onclick="openModalWithImage(this)" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Ethan';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 2 – Jean-Pierre, Senior Novice (68 ans)</h4>
-                    <img src="carte-d'empathie-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
+                    <img src="carte-d'empathie-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onclick="openModalWithImage(this)" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 3 – Charline, Active Flexible (40 ans)</h4>
-                    <img src="carte-d'empathie-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
+                    <img src="carte-d'empathie-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onclick="openModalWithImage(this)" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
                 </div>
             </div>
 
@@ -123,21 +123,98 @@ const projectProcessDetails = {
             </ul>
         `,
         definition: `
-            <p>La <strong>Définition / Synthèse (TàD IDFM)</strong> est l'étape où nous avons transformé les données brutes des entretiens et sondages en informations exploitables.</p>
+            <p>À partir des observations, interviews et retours utilisateurs recueillis, la phase de synthèse a permis de transformer les données brutes en problèmes clairement définis, d’identifier les profils utilisateurs majeurs et de formuler un problème central à résoudre.</p>
 
-            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Cartographie du Parcours Utilisateur (User Journey Map)</h3>
-            <p>Nous avons créé une cartographie du parcours utilisateur actuel pour identifier précisément les moments de douleur (pain points) et les opportunités d'amélioration. Les points critiques étaient :</p>
-            <ul class="list-disc list-inside space-y-2 ml-4">
-                <li><strong>Découverte du service :</strong> Confusion sur les zones desservies.</li>
-                <li><strong>Saisie de l'adresse :</strong> Le système de recherche d'arrêt est peu performant.</li>
-                <li><strong>Absence de trajet :</strong> Le feedback en cas d'indisponibilité n'est pas utile.</li>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🎯 Personas & besoins prioritaires</h3>
+            <p>Trois profils principaux émergent de la recherche :</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mt-6 mb-8 text-center">
+                <div class="p-4 border rounded-xl shadow-md bg-gray-50">
+                    <img src="persona-ethan.png" alt="Photo Persona Ethan – Étudiant Urbain" class="w-full h-auto object-cover rounded-lg mb-3 border border-gray-100 cursor-pointer" onclick="openModalWithImage(this)" onerror="this.onerror=null; this.src='https://placehold.co/300x300/7f1d1d/ffffff?text=Photo+Ethan';" />
+                    <h4 class="font-bold text-lg text-gray-800 mb-1">Ethan – Étudiant Urbain (22 ans)</h4>
+                    <p class="text-sm italic text-gray-600">Besoin d’un système rapide, automatique, basé sur la géolocalisation</p>
+                    <p class="text-sm italic text-gray-600">Frustration : "Je ne sais pas si l’adresse est desservie"</p>
+                </div>
+                <div class="p-4 border rounded-xl shadow-md bg-gray-50">
+                    <img src="persona-jean-pierre.png" alt="Photo Persona Jean-Pierre – Senior Novice" class="w-full h-auto object-cover rounded-lg mb-3 border border-gray-100 cursor-pointer" onclick="openModalWithImage(this)" onerror="this.onerror=null; this.src='https://placehold.co/300x300/7f1d1d/ffffff?text=Photo+Jean-Pierre';" />
+                    <h4 class="font-bold text-lg text-gray-800 mb-1">Jean-Pierre – Senior Novice (68 ans)</h4>
+                    <p class="text-sm italic text-gray-600">A besoin d’un accompagnement simple et guidé</p>
+                    <p class="text-sm italic text-gray-600">Frustration : “Je ne comprends pas les étapes”</p>
+                </div>
+                <div class="p-4 border rounded-xl shadow-md bg-gray-50">
+                    <img src="persona-charline.png" alt="Photo Persona Charline – Active Flexible" class="w-full h-auto object-cover rounded-lg mb-3 border border-gray-100 cursor-pointer" onclick="openModalWithImage(this)" onerror="this.onerror=null; this.src='https://placehold.co/300x300/7f1d1d/ffffff?text=Photo+Charline';" />
+                    <h4 class="font-bold text-lg text-gray-800 mb-1">Charline – Active Flexible (40 ans)</h4>
+                    <p class="text-sm italic text-gray-600">Souhaite un outil efficace et fiable, même en horaires décalés</p>
+                    <p class="text-sm italic text-gray-600">Frustration : “Si ça ne marche pas, je ne sais pas quoi ajuster”</p>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🧩 Problèmes clés identifiés</h3>
+            <p>L’analyse des retours convergents fait émerger 4 axes d’insatisfaction majeurs :</p>
+            <ul class="list-disc list-inside space-y-3 ml-4">
+                <li>
+                    <strong class="text-gray-900">1. Difficulté à comprendre la notion de zone</strong><br>
+                    Les utilisateurs ne savent pas toujours dans quelle zone se trouvent leurs arrêts.
+                    <p class="text-sm mt-1 italic text-gray-600">Conséquences : hésitation, abandon dès la page d’accueil.</p>
+                </li>
+                <li>
+                    <strong class="text-gray-900">2. Saisie trop manuelle et manque d’assistance</strong><br>
+                    Le service nécessite de taper des arrêts ou des adresses sans aide.
+                    <p class="text-sm mt-1 italic text-gray-600">Absence de suggestions intelligentes ou géolocalisées.</p>
+                </li>
+                <li>
+                    <strong class="text-gray-900">3. Manque de feedback explicatif</strong><br>
+                    En cas d’erreur ou de trajet indisponible, les messages sont génériques.
+                    <p class="text-sm mt-1 italic text-gray-600">Les utilisateurs ne comprennent pas pourquoi le service ne propose rien.</p>
+                </li>
+                <li>
+                    <strong class="text-gray-900">4. Difficulté des novices à suivre le parcours</strong><br>
+                    Les étapes d’un TàD sont spécifiques et non familières.
+                    <p class="text-sm mt-1 italic text-gray-600">Sans guide ou tutoriel, les utilisateurs ont l’impression de “faire mal”.</p>
+                </li>
             </ul>
 
-            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Problème à résoudre (HMW - How Might We)</h3>
-            <p>Sur la base de cette analyse, le principal défi défini était : <strong>Comment pourrions-nous simplifier la saisie des adresses et la sélection des zones de TàD pour les utilisateurs novices, tout en garantissant un feedback clair en cas d'échec de réservation ?</strong></p>
+            <h3 class="text-2xl font-bold accent-text mt-10 mb-4">🧠 Insight UX majeur</h3>
+            <blockquote class="bg-red-50 border-l-4 border-red-500 p-4 italic text-gray-700">
+                <p>Les utilisateurs ne souhaitent pas “chercher un trajet”, ils souhaitent **“être guidés vers une solution disponible”**.</p>
+                <p class="mt-2">La friction vient principalement du manque d’accompagnement, d’aides visuelles et d’automatisation.</p>
+            </blockquote>
             
-            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Personas Clés</h3>
-            <p>Les trois personas créés (Ethan, Jean-Pierre, Charline) ont été finalisés et utilisés pour valider toutes les décisions de conception ultérieures. (Voir l'étape d'empathie pour les profils initiaux).</p>
+            <h3 class="text-2xl font-bold accent-text mt-10 mb-4">🔥 Problème central reformulé</h3>
+            <p>Comment simplifier la recherche de trajet et réduire les erreurs de saisie en guidant l’utilisateur — même novice — vers un trajet disponible dès son arrivée sur la plateforme ?</p>
+            <p class="mt-3 font-semibold text-gray-800">Version concise (HMW – How Might We) :</p>
+            <blockquote class="bg-red-100 border-l-4 border-red-600 p-4 font-bold text-gray-900 mt-2">
+                HMW : Comment pourrions-nous aider l’utilisateur à trouver rapidement un trajet valide, sans connaissance préalable des zones ni des arrêts ?
+            </blockquote>
+
+            <h3 class="text-2xl font-bold accent-text mt-10 mb-4">🎯 Objectif de conception</h3>
+            <p>Créer un parcours de réservation fluide, assisté et compréhensible, intégrant :</p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>géolocalisation automatique</li>
+                <li>suggestions intelligentes d’arrêts</li>
+                <li>feedback clair et actionnable</li>
+                <li>accompagnement pour les novices</li>
+                <li>visualisation plus intuitive des zones et arrêts</li>
+            </ul>
+            <p class="mt-4 italic text-gray-600">Cette problématique guidera les phases suivantes : idéation, prototypage et tests.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Cartographie du Parcours Utilisateur (User Journey Map)</h3>
+            <p>La cartographie du parcours actuel nous a permis d'identifier précisément les **pain points** et les opportunités d'amélioration pour chaque persona.</p>
+
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="text-center p-4 border rounded-xl shadow-md bg-gray-50">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Parcours Ethan (Recherche rapide)</h4>
+                    <img src="parcours-utilisateur-ethan.png" alt="Parcours Utilisateur Ethan – Étudiant Urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onclick="openModalWithImage(this)" onerror="this.onerror=null; this.src='https://placehold.co/300x200/450a0a/ffffff?text=Parcours+Ethan';" />
+                </div>
+                <div class="text-center p-4 border rounded-xl shadow-md bg-gray-50">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Parcours Jean-Pierre (Découverte novice)</h4>
+                    <img src="parcours-utilisateur-jean-pierre.png" alt="Parcours Utilisateur Jean-Pierre – Senior Novice" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onclick="openModalWithImage(this)" onerror="this.onerror=null; this.src='https://placehold.co/300x200/450a0a/ffffff?text=Parcours+Jean-Pierre';" />
+                </div>
+                <div class="text-center p-4 border rounded-xl shadow-md bg-gray-50">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Parcours Charline (Réservation anticipée)</h4>
+                    <img src="parcours-utilisateur-charline.png" alt="Parcours Utilisateur Charline – Active Flexible" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onclick="openModalWithImage(this)" onerror="this.onerror=null; this.src='https://placehold.co/300x200/450a0a/ffffff?text=Parcours+Charline';" />
+                </div>
+            </div>
         `,
         ideation: `
             <p>La phase d'<strong>Idéation (TàD IDFM)</strong> a été un atelier collaboratif de 2 jours mobilisant l'équipe de design, un développeur et un représentant client (Product Owner). L'objectif était de générer un maximum de solutions créatives pour répondre aux besoins prioritaires définis.</p>
@@ -310,6 +387,21 @@ function getActivePage() {
 }
 
 /**
+ * Fonction dédiée pour ouvrir la modale avec une image spécifique.
+ * Utilisée à la fois dans setupImageZoom et potentiellement en inline HTML.
+ * @param {HTMLImageElement} imgElement - L'élément <img> à afficher dans la modale.
+ */
+function openModalWithImage(imgElement) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex'); // Utiliser 'flex' pour centrer le contenu
+    modalImg.src = imgElement.src;
+    modalImg.alt = imgElement.alt;
+    
+    // Empêcher le défilement du body lorsque la modale est ouverte
+    document.body.style.overflow = 'hidden';
+}
+
+/**
  * Affiche une page avec une transition de fondu et ajuste la hauteur du conteneur.
  * @param {string} pageId - L'ID de la page à afficher (work, about, contact, project-detail, process-detail).
  * @param {string} [projectId=null] - L'ID du projet sélectionné.
@@ -457,34 +549,35 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
 
 /**
  * Configure les gestionnaires d'événements pour le zoom d'image.
- * Cible toutes les balises <img> dans #process-content et les rend cliquables.
+ * Cible toutes les balises <img> dans #process-content et les rend cliquables,
+ * en ignorant celles qui ont déjà un gestionnaire 'onclick' inline.
  */
 function setupImageZoom() {
-    // S'assurer de retirer les anciens gestionnaires d'événements avant d'en ajouter de nouveaux
+    // S'assurer de retirer les anciens gestionnaires d'événements pour éviter les doubles clics
     const oldImages = processContentDiv.querySelectorAll('img');
     oldImages.forEach(img => {
-        img.onclick = null;
-        img.classList.remove('cursor-pointer');
+        // Nettoyer uniquement les gestionnaires définis par JavaScript, pas ceux en inline.
+        if (!img.getAttribute('onclick')) {
+            img.onclick = null;
+            img.classList.remove('cursor-pointer');
+        }
     });
 
     const images = processContentDiv.querySelectorAll('img');
 
-    // 1. Ajouter le curseur "pointeur" aux images (pour l'UX)
+    // Ajouter l'écouteur de clic uniquement aux images qui n'en ont pas déjà un (comme les Empathy Maps originales)
     images.forEach(img => {
-        img.classList.add('cursor-pointer');
-        
-        // 2. Ajouter l'écouteur de clic
-        img.onclick = function() {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex'); // Utiliser 'flex' pour centrer le contenu
-            modalImg.src = this.src;
-            modalImg.alt = this.alt;
+        if (!img.getAttribute('onclick')) {
+            img.classList.add('cursor-pointer');
             
-            // Empêcher le défilement du body lorsque la modale est ouverte
-            document.body.style.overflow = 'hidden';
+            // Ajouter l'écouteur pour appeler la fonction openModalWithImage
+            img.onclick = function() {
+                openModalWithImage(this);
+            }
         }
     });
 }
+
 
 // --- Event Listeners pour la Modale ---
 
