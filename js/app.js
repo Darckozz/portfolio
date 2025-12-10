@@ -101,15 +101,15 @@ const projectProcessDetails = {
             <p>Pour formaliser les besoins et frustrations des utilisateurs, nous avons construit des <strong>Empathy Maps</strong> pour chaque profil type, servant de référence pour la définition des problèmes (étape suivante).</p>
             
             <div class="grid md:grid-cols-3 gap-6 mt-6">
-                <div class="text-center p-4 border rounded-xl shadow-md">
+                <div class="text-center p-4 bg-gray-100">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 1 – Ethan, Étudiant Urbain (22 ans)</h4>
                     <img src="carte-d'empathie-ethan.png" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Ethan';" />
                 </div>
-                <div class="text-center p-4 border rounded-xl shadow-md">
+                <div class="text-center p-4 bg-gray-100">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 2 – Jean-Pierre, Senior Novice (68 ans)</h4>
                     <img src="carte-d'empathie-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
                 </div>
-                <div class="text-center p-4 border rounded-xl shadow-md">
+                <div class="text-center p-4 bg-gray-100">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 3 – Charline, Active Flexible (40 ans)</h4>
                     <img src="carte-d'empathie-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
                 </div>
@@ -129,17 +129,17 @@ const projectProcessDetails = {
             <p>Trois profils principaux émergent de la recherche :</p>
             
             <div class="grid md:grid-cols-3 gap-6 mt-6">
-                <div class="text-center p-4 border rounded-xl shadow-md">
+                <div class="text-center p-4 bg-gray-100">
                     <img src="persona-ethan.png" alt="Photo de profil Persona Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Persona+Ethan';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
                     </ul>
                 </div>
-                <div class="text-center p-4 border rounded-xl shadow-md">
+                <div class="text-center p-4 bg-gray-100">
                     <img src="persona-jean-pierre.png" alt="Photo de profil Persona Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Persona+Jean-Pierre';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
                     </ul>
                 </div>
-                <div class="text-center p-4 border rounded-xl shadow-md">
+                <div class="text-center p-4 bg-gray-100>
                     <img src="persona-charline.png" alt="Photo de profil Persona Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Persona+Charline';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
                     </ul>
