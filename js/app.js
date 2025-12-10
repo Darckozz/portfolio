@@ -171,15 +171,15 @@ const projectProcessDetails = {
             <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Journey 1 - Réservation Rapide</h4>
-                    <img src="user-journey-reservation-rapide.png" alt="User Journey Map pour la Réservation Rapide" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Journey+1';" />
+                    <img src=parcours-ethan.png" alt="User Journey Map pour la Réservation Rapide" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Journey+1';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Journey 2 - Traitement d'Erreur</h4>
-                    <img src="user-journey-traitement-erreur.png" alt="User Journey Map pour le Traitement d'Erreur" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Journey+2';" />
+                    <img src="parcours-jean-pierre.png" alt="User Journey Map pour le Traitement d'Erreur" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Journey+2';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Journey 3 - Consultation d'Info</h4>
-                    <img src="user-journey-consultation-info.png" alt="User Journey Map pour la Consultation d'Information" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Journey+3';" />
+                    <img src="parcours-charline.png" alt="User Journey Map pour la Consultation d'Information" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Journey+3';" />
                 </div>
             </div>
 
