@@ -171,7 +171,7 @@ const projectProcessDetails = {
             <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Parcours Ethan</h4>
-                    <img src=parcours-ethan.png" alt="User Journey Map pour la Réservation Rapide" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Journey+1';" />
+                    <img src="parcours-ethan.png" alt="User Journey Map pour la Réservation Rapide" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Journey+1';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Parcours Jean-Pierre</h4>
