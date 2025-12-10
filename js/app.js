@@ -3,6 +3,7 @@ let currentProject = {
     id: null,
     title: null
 };
+
 // --- Sélection des Éléments DOM ---
 const navLinks = document.querySelectorAll('.nav-link');
 const pageContents = document.querySelectorAll('.page-content');
@@ -19,11 +20,14 @@ const processDetailTitle = document.getElementById('process-detail-title');
 const processContentDiv = document.getElementById('process-content');
 const contentContainer = document.getElementById('content-container');
 const TRANSITION_DURATION = 400; // Doit correspondre au CSS (0.4s)
+
 // --- NOUVEAUX ÉLÉMENTS DOM POUR LE ZOOM ---
 const modal = document.getElementById('image-modal');
 const modalImg = document.getElementById('modal-image');
 const closeBtn = document.querySelector('.close-modal-btn');
-// --- Données des Études de Cas (Corrigées) ---
+
+
+// --- Données des Études de Cas (Corrigées et mises à jour) ---
 const projectProcessDetails = {
     // --- Projet 1 : Transport à la Demande IDFM (Desktop) ---
     "1": {
@@ -43,7 +47,8 @@ const projectProcessDetails = {
                     <li><strong>Sondage en ligne (25 réponses simulées) :</strong> Collecte de données quantitatives sur la fréquence d’utilisation et la perception de la simplicité du service.</li>
                 </ul>
             </div>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Synthèse de la Recherche & Enseignements</h3>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Synthèse de la Recherche & Enseignements</h3>
             
             <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Points récurrents observés :</h4>
             <ul class="list-disc list-inside space-y-2 ml-4">
@@ -53,14 +58,16 @@ const projectProcessDetails = {
                 <li><strong>Recherche manuelle fastidieuse :</strong> Les utilisateurs aimeraient que la géolocalisation et des suggestions automatiques réduisent le temps de saisie.</li>
                 <li><strong>Besoin de feedback clair :</strong> Lorsqu’aucun trajet n’est disponible, le message générique ne permet pas de comprendre pourquoi ni d’explorer des alternatives.</li>
             </ul>
-<h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Citations & Verbatims représentatifs :</h4>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Citations & Verbatims représentatifs :</h4>
             <div class="space-y-3 italic text-gray-600 border-l-4 border-red-300 pl-4">
                 <p>« Je ne sais jamais si mon arrêt est dans la bonne zone, j’ai peur de me tromper. » – <em>Étudiant</em></p>
                 <p>« Quand il n’y a pas de bus, je ne sais pas quoi faire, ça m’énerve. » – <em>Actif</em></p>
                 <p>« L’interface est un peu compliquée, je préfère demander à mon petit-fils de m’aider. » – <em>Senior</em></p>
                 <p>« J’aimerais pouvoir juste cliquer sur ma position et que l’appli propose le trajet. » – <em>Résident périphérique</em></p>
             </div>
-<h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Résultats Clés du Sondage (Simulés) :</h4>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Résultats Clés du Sondage (Simulés) :</h4>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-red-50">
@@ -89,7 +96,8 @@ const projectProcessDetails = {
                     </tbody>
                 </table>
             </div>
-<h3 class="text-2xl font-bold accent-text mt-12 mb-4">Cartes d'Empathie (Empathy Maps) 🧭</h3>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Cartes d'Empathie (Empathy Maps) 🧭</h3>
             <p>Pour formaliser les besoins et frustrations des utilisateurs, nous avons construit des <strong>Empathy Maps</strong> pour chaque profil type, servant de référence pour la définition des problèmes (étape suivante).</p>
             
             <div class="grid md:grid-cols-3 gap-6 mt-6">
@@ -106,108 +114,111 @@ const projectProcessDetails = {
                     <img src="carte-d'empathie-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
                 </div>
             </div>
-<h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Insights Généraux :</h4>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Insights Généraux :</h4>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li>La <strong>géolocalisation</strong> et les <strong>suggestions automatiques</strong> sont essentielles pour réduire les frictions de saisie.</li>
                 <li>Les utilisateurs novices ont besoin d’un <strong>accompagnement progressif</strong> (tutoriel ou guides).</li>
                 <li>Les messages d’erreur doivent être <strong>clairs, explicatifs</strong> et proposer des alternatives pour ne pas décourager l’utilisateur.</li>
             </ul>
-        `, 
-        definition:
-            `<p>À partir des observations, interviews et retours utilisateurs recueillis, la phase de synthèse a permis de transformer les données brutes en problèmes clairement définis, d’identifier les profils utilisateurs majeurs et de formuler un problème central à résoudre.</p>
+        `,
+        definition: `
+            <p>À partir des observations, interviews et retours utilisateurs recueillis, la phase de synthèse a permis de transformer les données brutes en problèmes clairement définis, d’identifier les profils utilisateurs majeurs et de formuler un problème central à résoudre.</p>
             
-            <h3 class="text-3xl font-bold accent-text mt-8 mb-4">🎯 Personas & besoins prioritaires</h3>
-
-            <div class="grid md:grid-cols-3 gap-8 mt-6">
-                <div class="text-center p-4 border border-red-200 rounded-xl shadow-md bg-red-50/50">
-                    <img src="persona-ethan.png" alt="Photo de profil d'Ethan, étudiant urbain" class="w-24 h-24 mx-auto rounded-full object-cover shadow-lg mb-3" onerror="this.onerror=null; this.src='https://placehold.co/100x100/7f1d1d/ffffff?text=Ethan';" />
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Ethan – Étudiant Urbain (22 ans)</h4>
-                    <ul class="list-disc list-inside text-sm text-gray-700 text-left space-y-1 ml-4">
-                        <li>Besoin d’un système rapide, automatique, basé sur la géolocalisation.</li>
-                        <li>Cherche à obtenir un trajet en quelques secondes.</li>
-                        <li><strong>Frustration :</strong> "Je ne sais pas si l’adresse est desservie"</li>
-                    </ul>
-                </div>
-                <div class="text-center p-4 border border-red-200 rounded-xl shadow-md bg-red-50/50">
-                    <img src="persona-jean-pierre.png" alt="Photo de profil de Jean-Pierre, senior" class="w-24 h-24 mx-auto rounded-full object-cover shadow-lg mb-3" onerror="this.onerror=null; this.src='https://placehold.co/100x100/7f1d1d/ffffff?text=Jean-Pierre';" />
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Jean-Pierre – Senior Novice (68 ans)</h4>
-                    <ul class="list-disc list-inside text-sm text-gray-700 text-left space-y-1 ml-4">
-                        <li>A besoin d’un accompagnement simple et guidé.</li>
-                        <li>Se perd dans les zones et la terminologie du service.</li>
-                        <li><strong>Frustration :</strong> “Je ne comprends pas les étapes”</li>
-                    </ul>
-                </div>
-                <div class="text-center p-4 border border-red-200 rounded-xl shadow-md bg-red-50/50">
-                    <img src="persona-charline.png" alt="Photo de profil de Charline, active flexible" class="w-24 h-24 mx-auto rounded-full object-cover shadow-lg mb-3" onerror="this.onerror=null; this.src='https://placehold.co/100x100/7f1d1d/ffffff?text=Charline';" />
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Charline – Active Flexible (40 ans)</h4>
-                    <ul class="list-disc list-inside text-sm text-gray-700 text-left space-y-1 ml-4">
-                        <li>Souhaite un outil efficace et fiable, même en horaires décalés.</li>
-                        <li>A besoin d’informations claires lorsqu’un trajet n’est pas disponible.</li>
-                        <li><strong>Frustration :</strong> “Si ça ne marche pas, je ne sais pas quoi ajuster”</li>
-                    </ul>
-                </div>
-            </div>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🎯 Personas & besoins prioritaires</h3>
+            <p>Trois profils principaux émergent de la recherche :</p>
             
-            <h3 class="text-3xl font-bold accent-text mt-12 mb-4">🧩 Problèmes clés identifiés</h3>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="p-4 bg-gray-50 rounded-lg border">
-                    <h4 class="font-bold text-gray-900 mb-2">1. Difficulté à comprendre la notion de zone</h4>
-                    <p class="text-sm text-gray-700">Les utilisateurs ne savent pas toujours dans quelle zone se trouvent leurs arrêts. Conséquences : hésitation, abandon dès la page d’accueil.</p>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg border">
-                    <h4 class="font-bold text-gray-900 mb-2">2. Saisie trop manuelle et manque d’assistance</h4>
-                    <p class="text-sm text-gray-700">Le service nécessite de taper des arrêts ou des adresses sans aide. Absence de suggestions intelligentes ou géolocalisées.</p>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg border">
-                    <h4 class="font-bold text-gray-900 mb-2">3. Manque de feedback explicatif</h4>
-                    <p class="text-sm text-gray-700">En cas d’erreur ou de trajet indisponible, les messages sont génériques. Les utilisateurs ne comprennent pas pourquoi le service ne propose rien.</p>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg border">
-                    <h4 class="font-bold text-gray-900 mb-2">4. Difficulté des novices à suivre le parcours</h4>
-                    <p class="text-sm text-gray-700">Les étapes d’un TàD sont spécifiques et non familières. Sans guide ou tutoriel, les utilisateurs ont l'impression de “faire mal”.</p>
-                </div>
-            </div>
-
-            <h3 class="text-3xl font-bold accent-text mt-12 mb-4">🧠 Cartographie des Parcours Utilisateurs (avant/après)</h3>
-            <p>Pour illustrer la friction actuelle, nous avons comparé le parcours <strong>idéal</strong> au parcours actuel. Chaque carte est un point de référence pour l'amélioration.</p>
             <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">User Journey: Ethan (Parcours Rapide)</h4>
-                    <img src="user-journey-ethan.png" alt="Cartographie du parcours utilisateur pour Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=User+Journey+Ethan';" />
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">1. Ethan – Étudiant Urbain (22 ans)</h4>
+                    <img src="persona-ethan.png" alt="Photo de profil Persona Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Persona+Ethan';" />
+                    <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
+                        <li><strong>Besoin :</strong> Système rapide, automatique (géolocalisation).</li>
+                        <li><strong>Objectif :</strong> Obtenir un trajet en quelques secondes.</li>
+                        <li><strong>Frustration :</strong> "Je ne sais pas si l’adresse est desservie."</li>
+                    </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">User Journey: Jean-Pierre (Parcours Novice)</h4>
-                    <img src="user-journey-jean-pierre.png" alt="Cartographie du parcours utilisateur pour Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=User+Journey+Jean-Pierre';" />
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">2. Jean-Pierre – Senior Novice (68 ans)</h4>
+                    <img src="persona-jean-pierre.png" alt="Photo de profil Persona Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Persona+Jean-Pierre';" />
+                    <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
+                        <li><strong>Besoin :</strong> Accompagnement simple et guidé.</li>
+                        <li><strong>Difficulté :</strong> Se perd dans les zones et la terminologie du service.</li>
+                        <li><strong>Frustration :</strong> “Je ne comprends pas les étapes.”</li>
+                    </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">User Journey: Charline (Parcours Décalé)</h4>
-                    <img src="user-journey-charline.png" alt="Cartographie du parcours utilisateur pour Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=User+Journey+Charline';" />
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">3. Charline – Active Flexible (40 ans)</h4>
+                    <img src="persona-charline.png" alt="Photo de profil Persona Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Persona+Charline';" />
+                    <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
+                        <li><strong>Besoin :</strong> Outil efficace et fiable, même en horaires décalés.</li>
+                        <li><strong>Attente :</strong> Informations claires lorsqu'un trajet n'est pas disponible.</li>
+                        <li><strong>Frustration :</strong> “Si ça ne marche pas, je ne sais pas quoi ajuster.”</li>
+                    </ul>
                 </div>
             </div>
-            
-            <h3 class="text-3xl font-bold accent-text mt-12 mb-4">🔥 Problème central reformulé</h3>
-            <blockquote class="text-lg text-gray-700 leading-relaxed italic border-l-4 border-red-300 pl-4 mb-6">
-                Comment simplifier la recherche de trajet et réduire les erreurs de saisie en guidant l’utilisateur — même novice — vers un trajet disponible dès son arrivée sur la plateforme ?
-            </blockquote>
-            
-            <p class="font-semibold text-gray-800">Version concise (HMW - How Might We) :</p>
-            <p class="text-xl font-extrabold text-red-800/90 italic p-3 bg-red-100 rounded-lg inline-block">
-                HMW : Comment pourrions-nous aider l’utilisateur à trouver rapidement un trajet valide, sans connaissance préalable des zones ni des arrêts ?
-            </p>
 
-            <h3 class="text-3xl font-bold accent-text mt-12 mb-4">🎯 Objectif de conception</h3>
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧩 Problèmes clés identifiés</h3>
+            <p>L’analyse des retours convergents fait émerger 4 axes d’insatisfaction majeurs :</p>
+            <ol class="list-decimal list-inside space-y-3 ml-4">
+                <li><strong>Difficulté à comprendre la notion de zone</strong>
+                    <p class="text-gray-600 text-sm pl-4">Les utilisateurs ne savent pas toujours dans quelle zone se trouvent leurs arrêts. <em>Conséquences : hésitation, abandon dès la page d’accueil.</em></p>
+                </li>
+                <li><strong>Saisie trop manuelle et manque d’assistance</strong>
+                    <p class="text-gray-600 text-sm pl-4">Le service nécessite de taper des arrêts ou des adresses sans aide. <em>Absence de suggestions intelligentes ou géolocalisées.</em></p>
+                </li>
+                <li><strong>Manque de feedback explicatif</strong>
+                    <p class="text-gray-600 text-sm pl-4">En cas d’erreur ou de trajet indisponible, les messages sont génériques. <em>Les utilisateurs ne comprennent pas pourquoi le service ne propose rien.</em></p>
+                </li>
+                <li><strong>Difficulté des novices à suivre le parcours</strong>
+                    <p class="text-gray-600 text-sm pl-4">Les étapes d’un TàD sont spécifiques et non familières. <em>Sans guide ou tutoriel, les utilisateurs ont l’impression de “faire mal”.</em></p>
+                </li>
+            </ol>
+            
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🗺️ Parcours Utilisateur (User Journey Maps)</h3>
+            <p>Trois parcours clés ont été modélisés pour visualiser l'expérience avant et après la conception.</p>
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="text-center p-4 border rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Journey 1 - Réservation Rapide</h4>
+                    <img src="user-journey-reservation-rapide.png" alt="User Journey Map pour la Réservation Rapide" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Journey+1';" />
+                </div>
+                <div class="text-center p-4 border rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Journey 2 - Traitement d'Erreur</h4>
+                    <img src="user-journey-traitement-erreur.png" alt="User Journey Map pour le Traitement d'Erreur" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Journey+2';" />
+                </div>
+                <div class="text-center p-4 border rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Journey 3 - Consultation d'Info</h4>
+                    <img src="user-journey-consultation-info.png" alt="User Journey Map pour la Consultation d'Information" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Journey+3';" />
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧠 Insight UX majeur</h3>
+            <p class="text-lg font-medium text-gray-700">Les utilisateurs ne souhaitent pas **“chercher un trajet”**, ils souhaitent **“être guidés vers une solution disponible”**.</p>
+            <p>La friction vient principalement du manque d’accompagnement, d’aides visuelles et d’automatisation.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🔥 Problème central reformulé</h3>
+            <p class="italic text-gray-700 border-l-4 border-red-300 pl-4">Comment simplifier la recherche de trajet et réduire les erreurs de saisie en guidant l’utilisateur — même novice — vers un trajet disponible dès son arrivée sur la plateforme ?</p>
+            
+            <p class="font-semibold mt-4">Version concise façon “How Might We” (HMW) :</p>
+            <blockquote class="text-xl font-bold text-red-800 border-l-4 border-red-500 pl-4 py-2 bg-red-50 rounded-lg my-4">
+                HMW : Comment pourrions-nous aider l’utilisateur à trouver rapidement un trajet valide, sans connaissance préalable des zones ni des arrêts ?
+            </blockquote>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🎯 Objectif de conception</h3>
             <p>Créer un parcours de réservation fluide, assisté et compréhensible, intégrant :</p>
             <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>géolocalisation automatique</li>
-                <li>suggestions intelligentes d’arrêts</li>
-                <li>feedback clair et actionnable</li>
-                <li>accompagnement pour les novices</li>
-                <li>visualisation plus intuitive des zones et arrêts</li>
+                <li>Géolocalisation automatique.</li>
+                <li>Suggestions intelligentes d’arrêts.</li>
+                <li>Feedback clair et actionnable.</li>
+                <li>Accompagnement pour les novices.</li>
+                <li>Visualisation plus intuitive des zones et arrêts.</li>
             </ul>
+            <p class="italic text-sm mt-4 text-gray-500">Cette problématique guidera les phases suivantes : idéation, prototypage et tests.</p>
         `,
-        ideation:
-            `<p>La phase d'<strong>Idéation (TàD IDFM)</strong> a été un atelier collaboratif de 2 jours mobilisant l'équipe de design, un développeur et un représentant client (Product Owner). L'objectif était de générer un maximum de solutions créatives pour répondre aux besoins prioritaires définis.</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Techniques utilisées :</h3>
+        ideation: `
+            <p>La phase d'<strong>Idéation (TàD IDFM)</strong> a été un atelier collaboratif de 2 jours mobilisant l'équipe de design, un développeur et un représentant client (Product Owner). L'objectif était de générer un maximum de solutions créatives pour répondre aux besoins prioritaires définis.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Techniques utilisées :</h3>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li><strong>Brainstorming :</strong> Session libre pour générer des idées sur la refonte du tableau de bord.</li>
                 <li><strong>Crazy 8s :</strong> Sketching rapide de 8 variations de l'écran de réservation en 8 minutes. </li>
@@ -216,12 +227,13 @@ const projectProcessDetails = {
             
             <p class="mt-4">Cette phase a permis de transformer des concepts abstraits en esquisses tangibles, jetant les bases des futurs wireframes.</p>
         `,
-        prototypage:
-            `<p>La phase de <strong>Prototypage (TàD IDFM)</strong> a englobé la conception Basse Fidélité (wireframes) et Haute Fidélité (maquettes UI) dans Figma. L'objectif était de matérialiser les idées validées lors de l'Idéation.</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Basse Fidélité (Wireframes)</h3>
+        prototypage: `
+            <p>La phase de <strong>Prototypage (TàD IDFM)</strong> a englobé la conception Basse Fidélité (wireframes) et Haute Fidélité (maquettes UI) dans Figma. L'objectif était de matérialiser les idées validées lors de l'Idéation.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Basse Fidélité (Wireframes)</h3>
             <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>Création de flux utilisateurs (User Flows) détaillés pour la réservation et la modification.</li>
-                <li>Wireframes desktop se concentrant sur la simplicité du formulaire (réduction des champs obligatoires).</li>
+                <li>Création de **flux utilisateurs (User Flows)** détaillés pour la réservation et la modification.</li>
+                <li>**Wireframes desktop** se concentrant sur la simplicité du formulaire (réduction des champs obligatoires).</li>
                 <li>Validation de l'architecture d'information : navigation par onglets pour différencier la recherche et les trajets favoris.</li>
             </ul>
             
@@ -233,9 +245,10 @@ const projectProcessDetails = {
                 <li><strong>Feedback :</strong> Conception de messages d'erreur et de succès non intrusifs et explicatifs.</li>
             </ul>
         `,
-        tests:
-            `<p>La phase finale a été le <strong>Test Utilisateur & Itération (TàD IDFM)</strong>, mené avec 5 utilisateurs n'ayant pas participé à la phase de recherche initiale, afin de mesurer l'efficacité de nos solutions.</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Métrique et Tâches :</h3>
+        tests: `
+            <p>La phase finale a été le <strong>Test Utilisateur & Itération (TàD IDFM)</strong>, mené avec 5 utilisateurs n'ayant pas participé à la phase de recherche initiale, afin de mesurer l'efficacité de nos solutions.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Métrique et Tâches :</h3>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li><strong>Tâche 1 :</strong> Réserver un trajet aller-retour pour la semaine prochaine (critique : succès).</li>
                 <li><strong>Tâche 2 :</strong> Modifier l'heure de départ d'une réservation existante (critique : efficacité).</li>
@@ -244,28 +257,33 @@ const projectProcessDetails = {
             
             <p class="font-semibold mt-4">Résultats Clés :</p>
             <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>Le taux de réussite de la tâche de réservation est passé de 65% (ancienne interface observée) à 95% (nouvelle interface testée).</li>
-                <li>Point de friction : Le processus de modification a révélé une confusion sur l'emplacement du bouton d'édition, menant à une itération.</li>
+                <li>Le **taux de réussite de la tâche de réservation** est passé de 65% (ancienne interface observée) à **95%** (nouvelle interface testée).</li>
+                <li>**Point de friction :** Le processus de modification a révélé une confusion sur l'emplacement du bouton d'édition, menant à une itération.</li>
             </ul>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Itération</h3>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Itération</h3>
             <p>Suite aux tests, le bouton de modification a été déplacé du menu contextuel vers un bouton d'action principal et son label a été clarifié. Cette amélioration a permis de remonter le taux de réussite de la tâche de modification de 70% à 90%.</p>
-        }, 
-        // --- Projet 2 : Le Médoc à la Carte (Desktop/Mobile) ---
-        "2": {
-            analyse:
-            `<p>La <strong>Empathie / Analyse Utilisateur (Le Médoc à la Carte)</strong> a été axée sur le tourisme œnologique en Gironde. Nous avons mené une analyse concurrentielle des plateformes de réservation de visites de châteaux et des sites de guides touristiques pour identifier les lacunes en matière d'expérience utilisateur dans ce secteur.</p>
+        `
+    },
+    
+    // --- Projet 2 : Le Médoc à la Carte (Desktop/Mobile) ---
+    "2": {
+        analyse: `
+            <p>La <strong>Empathie / Analyse Utilisateur (Le Médoc à la Carte)</strong> a été axée sur le tourisme œnologique en Gironde. Nous avons mené une analyse concurrentielle des plateformes de réservation de visites de châteaux et des sites de guides touristiques pour identifier les lacunes en matière d'expérience utilisateur dans ce secteur.</p>
             
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Problématique :</h3>
             <p>Comment créer une expérience de découverte fluide qui équilibre l'information sur les domaines viticoles et la simplicité de réservation d'itinéraires personnalisés ?</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Objectifs :</h3>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Objectifs :</h3>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li>Définir la typologie des utilisateurs (touriste œnophile, local curieux, organisateur de groupe).</li>
                 <li>Cartographier le flux d'information requis pour une visite de cave (horaires, prix, langues).</li>
             </ul>
         `,
-        definition:
-            `<p>Le travail de <strong>Définition / Synthèse (Médoc)</strong> a abouti à la création de deux Personas : Marc, le Connaisseur (recherche des crus classés et une expérience approfondie) et Léa, l'Organisatrice (recherche un itinéraire simple et rapide pour toute sa famille).</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Recherche Utilisateur :</h3>
+        definition: `
+            <p>Le travail de <strong>Définition / Synthèse (Médoc)</strong> a abouti à la création de deux Personas : **Marc, le Connaisseur** (recherche des crus classés et une expérience approfondie) et **Léa, l'Organisatrice** (recherche un itinéraire simple et rapide pour toute sa famille).</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Recherche Utilisateur :</h3>
             <p>Nous avons mené des entretiens auprès de deux groupes distincts : 5 propriétaires ou responsables de châteaux pour comprendre leurs contraintes de gestion des visites, et 10 touristes (locaux et internationaux) pour évaluer leurs habitudes de planification de voyage.</p>
             
             <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Points Clés Révélés :</h4>
@@ -278,35 +296,40 @@ const projectProcessDetails = {
             <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Scénario de Léa :</h4>
             <p>Léa doit pouvoir sélectionner trois châteaux différents sur une journée, voir un itinéraire cartographié entre eux, et les réserver en moins de 10 minutes. Le scénario a mis l'accent sur la facilité de tri et de filtrage par "familial" ou "rapide".</p>
         `,
-        ideation:
-            `<p>L'<strong>Idéation / Conceptualisation (Médoc)</strong> a impliqué des workshops de sketchs pour concevoir le module de carte interactive. L'enjeu était de visualiser les domaines sans surcharger l'interface.</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Solutions Innovantes :</h3>
+        ideation: `
+            <p>L'<strong>Idéation / Conceptualisation (Médoc)</strong> a impliqué des workshops de sketchs pour concevoir le module de carte interactive. L'enjeu était de visualiser les domaines sans surcharger l'interface.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Solutions Innovantes :</h3>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li>Utilisation d'une carte vectorielle stylisée pour mettre en évidence les zones AOC.</li>
                 <li>Développement d'une "Carte de Vœux" (Wishlist) pour les châteaux à visiter plus tard.</li>
             </ul>
         `,
-        prototypage:
-            `<p>La phase de <strong>Prototypage (Médoc)</strong> a mis l'accent sur le responsive design. Le wireframing a d'abord été fait pour la version mobile (Mobile First), en s'assurant que la carte interactive restait utilisable sur petit écran. Le maquettage Haute Fidélité a utilisé une palette de couleurs inspirée des teintes du vin (bordeaux, ocre, doré) pour une immersion visuelle.</p>
+        prototypage: `
+            <p>La phase de <strong>Prototypage (Médoc)</strong> a mis l'accent sur le responsive design. Le wireframing a d'abord été fait pour la version mobile (**Mobile First**), en s'assurant que la carte interactive restait utilisable sur petit écran. Le maquettage Haute Fidélité a utilisé une palette de couleurs inspirée des teintes du vin (bordeaux, ocre, doré) pour une immersion visuelle.</p>
             
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Fonctionnalités Clés :</h3>
             <p>La <strong>Définition des Fonctionnalités (Médoc)</strong> a mis en avant le besoin d'un "constructeur d'itinéraire" dynamique et de filtres avancés pour les types de visites (dégustation, atelier, repas).</p>
-<h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Priorités (Must-Have) :</h4>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Priorités (Must-Have) :</h4>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li>Filtre par type de vin/AOC.</li>
                 <li>Création et sauvegarde d'un itinéraire multi-étapes.</li>
                 <li>Interface multilingue (Français/Anglais).</li>
             </ul>
         `,
-        tests:
-            `<p>Les <strong>Tests Utilisateurs & Itération (Médoc)</strong> ont été effectués sur le prototype Figma final. La métrique principale était le temps nécessaire pour réserver un itinéraire personnalisé de 3 châteaux.</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Résultats & Itération :</h3>
+        tests: `
+            <p>Les <strong>Tests Utilisateurs & Itération (Médoc)</strong> ont été effectués sur le prototype Figma final. La métrique principale était le temps nécessaire pour réserver un itinéraire personnalisé de 3 châteaux.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Résultats & Itération :</h3>
             <p>Le temps de réalisation de la tâche a été réduit de 40% par rapport aux sites concurrents. Un point de friction a été identifié : les utilisateurs n'utilisaient pas la fonctionnalité de sauvegarde des itinéraires, pensant qu'elle ne servait que pour la réservation finale. L'itération a consisté à renommer le bouton et ajouter une infobulle explicative.</p>
-        }, 
-        // --- Projet 3 : Allociné (Desktop) ---
-        "3": {
-            analyse:
-            `<p>L'<strong>Analyse (Allociné)</strong> s'est concentrée sur la plateforme Desktop d'Allociné, ciblant l'expérience de découverte de films. L'analyse heuristique a montré une saturation de l'information et un manque de personnalisation flagrant des recommandations.</p>
+        `
+    },
+    
+    // --- Projet 3 : Allociné (Desktop) ---
+    "3": {
+        analyse: `
+            <p>L'<strong>Analyse (Allociné)</strong> s'est concentrée sur la plateforme Desktop d'Allociné, ciblant l'expérience de découverte de films. L'analyse heuristique a montré une saturation de l'information et un manque de personnalisation flagrant des recommandations.</p>
             
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Objectifs de l'Étude de Cas :</h3>
             <ul class="list-disc list-inside space-y-2 ml-4">
@@ -315,9 +338,10 @@ const projectProcessDetails = {
                 <li>Mettre en valeur les fonctionnalités sociales (avis, notation).</li>
             </ul>
         `,
-        definition:
-            `<p>Le <strong>Définition / Synthèse (Allociné)</strong> principal créé est Thomas, le Cinéphile Social, qui cherche un film à regarder ce soir avec des amis et se fie aux notes critiques et aux tendances sur les plateformes de streaming.</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Recherche Utilisateur :</h3>
+        definition: `
+            <p>Le <strong>Définition / Synthèse (Allociné)</strong> principal créé est **Thomas, le Cinéphile Social**, qui cherche un film à regarder ce soir avec des amis et se fie aux notes critiques et aux tendances sur les plateformes de streaming.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Recherche Utilisateur :</h3>
             <p>Des entretiens ont été menés avec des cinéphiles occasionnels et réguliers (8 utilisateurs). Nous avons utilisé la méthode du "Card Sorting" pour comprendre comment ils regroupaient naturellement les films (par genre, réalisateur, humeur, etc.).</p>
             
             <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Conclusion Clé :</h4>
@@ -326,34 +350,41 @@ const projectProcessDetails = {
             <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Besoin Clé :</h4>
             <p>Une section "Tendance chez vos amis" ou "Recommandé pour votre humeur" pour faciliter la prise de décision rapide.</p>
         `,
-        ideation:
-            `<p>L'<strong>Idéation / Conceptualisation (Allociné)</strong> a généré plusieurs concepts pour l'affichage de la fiche film. Nous avons utilisé le concept de "Design Sprint" pour prototyper rapidement une nouvelle page d'accueil axée sur la découverte.</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Idées Retenues :</h3>
+        ideation: `
+            <p>L'<strong>Idéation / Conceptualisation (Allociné)</strong> a généré plusieurs concepts pour l'affichage de la fiche film. Nous avons utilisé le concept de "Design Sprint" pour prototyper rapidement une nouvelle page d'accueil axée sur la découverte.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Idées Retenues :</h3>
             <p>Utiliser des cartes de films grand format avec des bandes-annonces en autoplay (muet) pour un impact visuel maximal sur la page d'accueil.</p>
         `,
-        prototypage:
-            `<p>La phase de <strong>Prototypage (Allociné)</strong> a revu l'architecture de l'information pour désencombrer la page d'accueil. L'enjeu était de réduire le nombre d'éléments cliquables sans réduire la richesse du catalogue. Le maquettage Haute Fidélité a privilégié un thème sombre pour mettre en valeur les visuels des films (posters).</p>
+        prototypage: `
+            <p>La phase de <strong>Prototypage (Allociné)</strong> a revu l'architecture de l'information pour désencombrer la page d'accueil. L'enjeu était de réduire le nombre d'éléments cliquables sans réduire la richesse du catalogue. Le maquettage Haute Fidélité a privilégié un thème sombre pour mettre en valeur les visuels des films (posters).</p>
             
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Fonctionnalités Clés :</h3>
             <p>La <strong>Définition des Fonctionnalités (Allociné)</strong> a priorisé l'intégration d'un outil de filtration par "Humeur" et la refonte des listes de recommandations pour qu'elles soient visuellement plus impactantes.</p>
-<h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Priorités (Must-Have) :</h4>
+
+            <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">Priorités (Must-Have) :</h4>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li>Système de notation plus clair (fusion des notes presse et spectateurs).</li>
                 <li>Module de recommandation par "Humeur" ou "Activité Récente".</li>
                 <li>Espace personnel des listes de films à voir (Watchlist) plus accessible.</li>
             </ul>
         `,
-        tests:
-            `<p>Les <strong>Tests Utilisateurs & Itération (Allociné)</strong> ont comparé l'ancienne et la nouvelle interface. La tâche clé était de "trouver un film de science-fiction récent et bien noté".</p>
-<h3 class="text-2xl font-bold accent-text mt-8 mb-4">Bilan & Itération :</h3>
+        tests: `
+            <p>Les <strong>Tests Utilisateurs & Itération (Allociné)</strong> ont comparé l'ancienne et la nouvelle interface. La tâche clé était de "trouver un film de science-fiction récent et bien noté".</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Bilan & Itération :</h3>
             <p>Le taux de succès de la tâche a augmenté de 25% grâce à l'amélioration du filtre de recherche et à la clarté du nouveau système de notation. Une itération a été nécessaire sur la couleur des boutons d'action (Ajouter à ma liste) pour un meilleur contraste.</p>
         `
     }
 };
+
+
 // --- Fonctions de Navigation ---
+
 function getActivePage() {
     return document.querySelector('.page-content.is-visible');
 }
+
 /**
  * Affiche une page avec une transition de fondu et ajuste la hauteur du conteneur.
  * @param {string} pageId - L'ID de la page à afficher (work, about, contact, project-detail, process-detail).
@@ -367,19 +398,20 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
     const nextPage = document.querySelector(`[data-page-content="${pageId}"]`);
     const TRANSITION_DURATION_MS = TRANSITION_DURATION;
 
-// S'assurer que la modale de zoom est fermée lors du changement de page
+    // S'assurer que la modale de zoom est fermée lors du changement de page
     if (modal && !modal.classList.contains('hidden')) {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
         document.body.style.overflow = 'auto';
     }
 
-if (!nextPage) {
+
+    if (!nextPage) {
         console.error(`Page ID '${pageId}' non trouvée.`);
         return;
     }
 
-// Vérification de non-rechargement si la page demandée est déjà affichée
+    // Vérification de non-rechargement si la page demandée est déjà affichée
     if (activePage === nextPage) {
         if (pageId === 'work' && (currentProject.id !== null || activePage.id === 'page-project-detail' || activePage.id === 'page-process-detail')) {
             currentProject.id = null;
@@ -389,7 +421,8 @@ if (!nextPage) {
         }
     }
 
-// --- MISE À JOUR IMMÉDIATE DU LIEN DE NAVIGATION ---
+
+    // --- MISE À JOUR IMMÉDIATE DU LIEN DE NAVIGATION ---
     let activeNavPage = pageId;
     if (pageId === 'project-detail' || pageId === 'process-detail') {
         activeNavPage = 'work';
@@ -397,7 +430,7 @@ if (!nextPage) {
         activeNavPage = 'work';
     }
 
-navLinks.forEach(link => {
+    navLinks.forEach(link => {
         link.classList.remove('is-active', 'text-gray-900', 'text-gray-600');
         link.classList.add('text-gray-600');
         if (link.dataset.page === activeNavPage) {
@@ -405,33 +438,34 @@ navLinks.forEach(link => {
         }
     });
 
-// --- ÉTAPE 1: PRÉPARATION & DÉBUT DE TRANSITION DE SORTIE (Fade-out & Hauteur initiale) ---
+    // --- ÉTAPE 1: PRÉPARATION & DÉBUT DE TRANSITION DE SORTIE (Fade-out & Hauteur initiale) ---
     if (activePage && activePage !== nextPage) {
         // Définir la hauteur actuelle pour commencer la transition de taille
         const initialHeight = activePage.offsetHeight;
         contentContainer.style.minHeight = `${initialHeight}px`;
 
-activePage.classList.remove('is-visible');
+        activePage.classList.remove('is-visible');
         
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-// Attendre la fin du fondu-out (TRANSITION_DURATION_MS) avant de masquer l'ancienne page
+        // Attendre la fin du fondu-out (TRANSITION_DURATION_MS) avant de masquer l'ancienne page
         setTimeout(startContentUpdate, TRANSITION_DURATION_MS);
-} else {
+
+    } else {
         // Pas de page active, démarrer directement
         window.scrollTo({ top: 0, behavior: 'smooth' });
         startContentUpdate();
     }
 
-// --- ÉTAPE 2: GESTION DU CONTENU ET CALCUL DE LA NOUVELLE HAUTEUR ---
+    // --- ÉTAPE 2: GESTION DU CONTENU ET CALCUL DE LA NOUVELLE HAUTEUR ---
     function startContentUpdate() {
         if (activePage && activePage !== nextPage) {
             activePage.classList.add('hidden');
         }
 
-// 2.1 Mettre à jour le contenu dynamique (Même logique que l'original)
+        // 2.1 Mettre à jour le contenu dynamique (Même logique que l'original)
         if (pageId === 'process-detail' && processId && processTitle) {
-            if (!currentProject.title || ) {
+            if (!currentProject.title || !currentProject.id) {
                 showPage('work');
                 return;
             }
@@ -443,7 +477,7 @@ activePage.classList.remove('is-visible');
             currentProjectNameSpan.textContent = currentProject.title;
             processContentDiv.innerHTML = content;
             
-            setupImageZoom();
+            setupImageZoom(); // Configuration du zoom d'image après l'ajout du nouveau contenu
         }
         
         if (pageId === 'project-detail' && projectTitle && projectId) {
@@ -454,7 +488,7 @@ activePage.classList.remove('is-visible');
                 figmaLinkButton.href = `https://www.figma.com/file/project-${projectId}-prototype`;
             }
 
-// ********** LOGIQUE POUR L'IMAGE DU PROJET **********
+            // ********** LOGIQUE POUR L'IMAGE DU PROJET **********
             if (projectVisual) {
                 if (projectId === '1') {
                     // Afficher l'image pour le projet IDFM (ID 1)
@@ -467,7 +501,7 @@ activePage.classList.remove('is-visible');
             // ************************************************************
         }
 
-// Si on quitte la page détail, on cache l'image
+        // Si on quitte la page détail, on cache l'image
         if (pageId !== 'project-detail' && projectVisual) {
              projectVisual.classList.add('hidden');
         }
@@ -476,14 +510,14 @@ activePage.classList.remove('is-visible');
         nextPage.classList.remove('hidden');
         nextPage.classList.remove('is-visible'); // S'assurer qu'elle n'est pas visible
 
-// Lire la hauteur de la nouvelle page (elle est maintenant dans le DOM et son contenu a été mis à jour)
+        // Lire la hauteur de la nouvelle page (elle est maintenant dans le DOM et son contenu a été mis à jour)
         const targetHeight = nextPage.offsetHeight;
 
-// 2.3 Déclencher l'animation de hauteur du conteneur
+        // 2.3 Déclencher l'animation de hauteur du conteneur
         // Cela lance la transition CSS de 'min-height'
         contentContainer.style.minHeight = `${targetHeight}px`;
 
-// 2.4 Déclencher le fondu-in après un petit délai (microtask delay) pour permettre au navigateur de commencer l'animation de hauteur
+        // 2.4 Déclencher le fondu-in après un petit délai (microtask delay) pour permettre au navigateur de commencer l'animation de hauteur
         setTimeout(() => {
             nextPage.classList.add('is-visible');
             
@@ -496,6 +530,7 @@ activePage.classList.remove('is-visible');
         }, 10);
     }
 }
+
 /**
  * Configure les gestionnaires d'événements pour le zoom d'image.
  * Cible toutes les balises <img> dans #process-content et les rend cliquables.
@@ -508,29 +543,27 @@ function setupImageZoom() {
         img.classList.remove('cursor-pointer');
     });
 
-const images = processContentDiv.querySelectorAll('img');
+    const images = processContentDiv.querySelectorAll('img');
 
-// 1. Ajouter le curseur "pointeur" aux images (pour l'UX)
+    // 1. Ajouter le curseur "pointeur" aux images (pour l'UX)
     images.forEach(img => {
-        // Empêcher les placeholders d'être cliquables (ceux qui ont une src par défaut et non l'image réelle)
-        if (!img.src.includes('placehold.co')) { 
-            img.classList.add('cursor-pointer');
+        img.classList.add('cursor-pointer');
+        
+        // 2. Ajouter l'écouteur de clic
+        img.onclick = function() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex'); // Utiliser 'flex' pour centrer le contenu
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
             
-            // 2. Ajouter l'écouteur de clic
-            img.onclick = function() {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex'); // Utiliser 'flex' pour centrer le contenu
-                modalImg.src = this.src;
-                modalImg.alt = this.alt;
-                
-                // Empêcher le défilement du body lorsque la modale est ouverte
-                document.body.style.overflow = 'hidden';
-            }
+            // Empêcher le défilement du body lorsque la modale est ouverte
+            document.body.style.overflow = 'hidden';
         }
     });
 }
 
 // --- Event Listeners pour la Modale ---
+
 // 1. Fermer la modale en cliquant sur le bouton X
 if (closeBtn) {
     closeBtn.addEventListener('click', () => {
@@ -539,6 +572,7 @@ if (closeBtn) {
         document.body.style.overflow = 'auto'; // Rétablir le défilement
     });
 }
+
 // 2. Fermer la modale en cliquant en dehors de l'image (sur l'arrière-plan)
 if (modal) {
     modal.addEventListener('click', (e) => {
@@ -551,7 +585,9 @@ if (modal) {
     });
 }
 
+
 // --- Event Listeners Généraux ---
+
 // 1. Navigation principale
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -560,11 +596,13 @@ navLinks.forEach(link => {
         showPage(pageId);
     });
 });
+
 // 2. Lien de retour à l'accueil/Projets (Titre principal)
 homeLink.addEventListener('click', (e) => {
     e.preventDefault();
     showPage(homeLink.dataset.page);
 });
+
 // 3. Clic sur une carte de projet (stocke le projet sélectionné)
 projectCards.forEach(card => {
     card.addEventListener('click', () => {
@@ -573,11 +611,13 @@ projectCards.forEach(card => {
         showPage('project-detail', projectId, projectTitle);
     });
 });
+
 // 4. Bouton de retour dans la page détail du projet (revient à 'work')
 backToWorkButton.addEventListener('click', (e) => {
     e.preventDefault();
     showPage('work');
 });
+
 // 5. Clic sur une carte du PROCESSUS (mène à 'process-detail')
 processCards.forEach(card => {
     card.addEventListener('click', () => {
@@ -586,11 +626,14 @@ processCards.forEach(card => {
         showPage('process-detail', currentProject.id, currentProject.title, processId, processTitle);
     });
 });
+
 // 6. Bouton de retour dans la page détail du processus (revient à 'project-detail')
 backToProjectDetailButton.addEventListener('click', (e) => {
     e.preventDefault();
     showPage('project-detail', currentProject.id, currentProject.title);
 });
+
+
 // 7. Initialisation
 document.addEventListener('DOMContentLoaded', () => {
     showPage('work');
