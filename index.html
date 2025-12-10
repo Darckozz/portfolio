@@ -1,301 +1,301 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Noé Spéciel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="favicon2.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Noé Spéciel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="favicon2.png" />
 </head>
 <body class="min-h-screen text-gray-900">
 
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center sm:items-baseline">
-            
-            <h1 id="home-link" class="text-2xl font-extrabold accent-text tracking-tight cursor-pointer flex items-baseline mb-2 sm:mb-0" data-page="work">
-                Noé Spéciel
-                <span class="text-gray-500 font-normal text-sm ml-2 hidden sm:inline">Étudiant en UX/UI Design</span>
-            </h1>
-            
-            <nav class="space-x-1 sm:space-x-2 font-medium flex">
-                <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="work">Projets</a>
-                <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="about">À propos</a>
-                <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="contact">Contact</a>
-            </nav>
-        </div>
-    </header>
-    
-    <div class="floating-sticker sticker-1 hidden md:block"></div>
-    <div class="floating-sticker sticker-2 hidden md:block"></div>
-    <div class="floating-sticker sticker-3 hidden md:block"></div>
-    <div class="floating-sticker sticker-4 hidden md:block"></div>
-    <div class="floating-sticker sticker-5 hidden md:block"></div>
-    <div class="floating-sticker sticker-6 hidden md:block"></div>
-    <div class="floating-sticker sticker-7 hidden md:block"></div>
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center sm:items-baseline">
+            
+            <h1 id="home-link" class="text-2xl font-extrabold accent-text tracking-tight cursor-pointer flex items-baseline mb-2 sm:mb-0" data-page="work">
+                Noé Spéciel
+                <span class="text-gray-500 font-normal text-sm ml-2 hidden sm:inline">Étudiant en UX/UI Design</span>
+            </h1>
+            
+            <nav class="space-x-1 sm:space-x-2 font-medium flex">
+                <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="work">Projets</a>
+                <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="about">À propos</a>
+                <a href="#" class="nav-link text-gray-600 px-3 py-2 transition duration-150" data-page="contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="floating-sticker sticker-1 hidden md:block"></div>
+    <div class="floating-sticker sticker-2 hidden md:block"></div>
+    <div class="floating-sticker sticker-3 hidden md:block"></div>
+    <div class="floating-sticker sticker-4 hidden md:block"></div>
+    <div class="floating-sticker sticker-5 hidden md:block"></div>
+    <div class="floating-sticker sticker-6 hidden md:block"></div>
+    <div class="floating-sticker sticker-7 hidden md:block"></div>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
 
-        <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-red-800/50" style="transition: min-height 0.4s ease-in-out;">
+        <div id="content-container" class="bg-white p-6 md:p-12 lg:p-16 rounded-3xl shadow-xl border-t-8 border-red-800/50" style="transition: min-height 0.4s ease-in-out;">
 
-            <section id="page-work" data-page-content="work" class="page-content hidden">
-                <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Mes Projets & Études de Cas</h2>
-                
-                <div class="grid md:grid-cols-3 gap-10 lg:gap-14">
-                    
-                    <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full" data-project-id="1" data-project-title="Transport à la Demande IDFM (Desktop)">
-                        <div class="h-48 bg-emerald-100 flex items-center justify-center p-4">
-                            <img src="bus-idfm.jpg" alt="Plusieurs minibus Transport à la Demande IDFM stationnés" class="w-full h-full object-cover rounded-lg shadow-lg p-2" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fecaca/ffffff?text=Image+Bus';">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2 accent-text">TàD IDFM (Desktop)</h3>
-                            <p class="text-sm text-gray-600 mb-4" id="desc-1">
-                                Étude de cas sur le service de Transport à la Demande d’Île-de-France Mobilités visant à identifier les points de friction dans le parcours utilisateur et proposer des solutions pour améliorer l’expérience de réservation.
-                            </p>
-                            <div class="flex-grow"></div> 
-                        </div>
-                    </div>
+            <section id="page-work" data-page-content="work" class="page-content hidden">
+                <h2 class="text-5xl font-extrabold mb-10 tracking-tighter">Mes Projets & Études de Cas</h2>
+                
+                <div class="grid md:grid-cols-3 gap-10 lg:gap-14">
+                    
+                    <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full" data-project-id="1" data-project-title="Transport à la Demande IDFM (Desktop)">
+                        <div class="h-48 bg-emerald-100 flex items-center justify-center p-4">
+                            <img src="bus-idfm.jpg" alt="Plusieurs minibus Transport à la Demande IDFM stationnés" class="w-full h-full object-cover rounded-lg shadow-lg p-2" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fecaca/ffffff?text=Image+Bus';">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-2 accent-text">TàD IDFM (Desktop)</h3>
+                            <p class="text-sm text-gray-600 mb-4" id="desc-1">
+                                Étude de cas sur le service de Transport à la Demande d’Île-de-France Mobilités visant à identifier les points de friction dans le parcours utilisateur et proposer des solutions pour améliorer l’expérience de réservation.
+                            </p>
+                            <div class="flex-grow"></div> 
+                        </div>
+                    </div>
 
-                    <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full" data-project-id="2" data-project-title="Le Médoc à la Carte (Desktop/Mobile)">
-                        <div class="h-48 bg-sky-100 flex items-center justify-center p-4">
-                            <img src="vin.jpeg" alt="Verre de vin et bouteille avec une carte du Médoc" class="w-full h-full object-cover rounded-lg shadow-lg p-2" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fcd34d/ffffff?text=Image+Vin';">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2 accent-text">Le Médoc à la Carte (Desktop/Mobile)</h3>
-                            <p class="text-sm text-gray-600 mb-4" id="desc-2">
-                                Création d’un site web responsive dédié aux visites touristiques et œnologiques dans le Médoc, offrant une expérience utilisateur claire et immersive.
-                            </p>
-                            <div class="flex-grow"></div> 
-                        </div>
-                    </div>
+                    <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full" data-project-id="2" data-project-title="Le Médoc à la Carte (Desktop/Mobile)">
+                        <div class="h-48 bg-sky-100 flex items-center justify-center p-4">
+                            <img src="vin.jpeg" alt="Verre de vin et bouteille avec une carte du Médoc" class="w-full h-full object-cover rounded-lg shadow-lg p-2" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fcd34d/ffffff?text=Image+Vin';">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-2 accent-text">Le Médoc à la Carte (Desktop/Mobile)</h3>
+                            <p class="text-sm text-gray-600 mb-4" id="desc-2">
+                                Création d’un site web responsive dédié aux visites touristiques et œnologiques dans le Médoc, offrant une expérience utilisateur claire et immersive.
+                            </p>
+                            <div class="flex-grow"></div> 
+                        </div>
+                    </div>
 
-                    <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full" data-project-id="3" data-project-title="Allociné (Desktop)">
-                        <div class="h-48 bg-red-200 flex items-center justify-center p-4">
-                            <img src="cinema.jpg" alt="Bobine de film et popcorn" class="w-full h-full object-cover rounded-lg shadow-lg p-2" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fbcfe8/ffffff?text=Image+Cinéma';">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2 accent-text">Allociné (Desktop)</h3>
-                            <p class="text-sm text-gray-600 mb-4" id="desc-3">
-                                Étude de cas visant à l'optimisation de l’expérience de recommandations de films sur Allociné pour une navigation plus fluide et des suggestions personnalisées.
-                            </p>
-                            <div class="flex-grow"></div> 
-                        </div>
-                    </div>
+                    <div class="project-card rounded-xl overflow-hidden cursor-pointer flex flex-col h-full" data-project-id="3" data-project-title="Allociné (Desktop)">
+                        <div class="h-48 bg-red-200 flex items-center justify-center p-4">
+                            <img src="cinema.jpg" alt="Bobine de film et popcorn" class="w-full h-full object-cover rounded-lg shadow-lg p-2" onerror="this.onerror=null; this.src='https://placehold.co/600x400/fbcfe8/ffffff?text=Image+Cinéma';">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-2 accent-text">Allociné (Desktop)</h3>
+                            <p class="text-sm text-gray-600 mb-4" id="desc-3">
+                                Étude de cas visant à l'optimisation de l’expérience de recommandations de films sur Allociné pour une navigation plus fluide et des suggestions personnalisées.
+                            </p>
+                            <div class="flex-grow"></div> 
+                        </div>
+                    </div>
 
-                </div>
-                
-                <p class="mt-12 text-center text-gray-500 italic text-sm">Cliquez sur un projet pour voir l'étude de cas complète.</p>
-            </section>
+                </div>
+                
+                <p class="mt-12 text-center text-gray-500 italic text-sm">Cliquez sur un projet pour voir l'étude de cas complète.</p>
+            </section>
 
-            <section id="page-project-detail" data-page-content="project-detail" class="page-content hidden">
-                <button id="back-to-work" class="flex items-center text-gray-600 hover:accent-text font-medium mb-8 transition duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-                    Retour à tous les projets
-                </button>
+            <section id="page-project-detail" data-page-content="project-detail" class="page-content hidden">
+                <button id="back-to-work" class="flex items-center text-gray-600 hover:accent-text font-medium mb-8 transition duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                    Retour à tous les projets
+                </button>
 
-                <h2 id="project-detail-title" class="text-5xl font-extrabold mb-10 tracking-tighter accent-text">Titre du Projet</h2>
+                <h2 id="project-detail-title" class="text-5xl font-extrabold mb-10 tracking-tighter accent-text">Titre du Projet</h2>
 
-                <div id="project-detail-visual" class="mb-12 rounded-xl overflow-hidden shadow-2xl hidden">
-                    <img src="IDFM-site.png" alt="Aperçu de l'interface de réservation de trajet IDFM" class="w-full h-auto object-cover"/>
-                </div>
-                <div class="mb-12 p-6 bg-gray-50 rounded-xl border border-gray-200 grid md:grid-cols-4 gap-6 text-sm">
-                    <div>
-                        <p class="font-bold text-gray-800 mb-1">Rôle</p>
-                        <p class="text-gray-600">UX / UI Designer</p>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800 mb-1">Durée</p>
-                        <p class="text-gray-600">1 semaine</p>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800 mb-1">Outils</p>
-                        <p class="text-gray-600">Figma</p>
-                    </div>
-                    <div class="md:col-span-1">
-                        <p class="font-bold text-gray-800 mb-1">Compétences clés</p>
-                        <p class="text-gray-600">UX Research, Prototypage, UI Design, Tests Utilisateurs</p>
-                    </div>
-                </div>
+                <div id="project-detail-visual" class="mb-12 rounded-xl overflow-hidden shadow-2xl hidden">
+                    <img src="IDFM-site.png" alt="Aperçu de l'interface de réservation de trajet IDFM" class="w-full h-auto object-cover"/>
+                </div>
+                <div class="mb-12 p-6 bg-gray-50 rounded-xl border border-gray-200 grid md:grid-cols-4 gap-6 text-sm">
+                    <div>
+                        <p class="font-bold text-gray-800 mb-1">Rôle</p>
+                        <p class="text-gray-600">UX / UI Designer</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-800 mb-1">Durée</p>
+                        <p class="text-gray-600">1 semaine</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-800 mb-1">Outils</p>
+                        <p class="text-gray-600">Figma</p>
+                    </div>
+                    <div class="md:col-span-1">
+                        <p class="font-bold text-gray-800 mb-1">Compétences clés</p>
+                        <p class="text-gray-600">UX Research, Prototypage, UI Design, Tests Utilisateurs</p>
+                    </div>
+                </div>
 
-                <div class="flex justify-end mb-4">
-                    <a id="figma-link-button-discreet" href="https://www.figma.com/file/project-1-prototype" target="_blank" class="figma-button-wrapper tooltip p-0 m-0">
-                        <div
-                            class="figma-button-container"
-                            aria-label="Voir le prototype de conception Figma"
-                        >
-                            <img src="figma.png" alt="Logo Figma" />
-                        </div>
-                        <span class="tooltiptext">Voir le Prototype Figma</span>
-                    </a>
-                </div>
+                <div class="flex justify-end mb-4">
+                    <a id="figma-link-button-discreet" href="https://www.figma.com/file/project-1-prototype" target="_blank" class="figma-button-wrapper tooltip p-0 m-0">
+                        <div
+                            class="figma-button-container"
+                            aria-label="Voir le prototype de conception Figma"
+                        >
+                            <img src="figma.png" alt="Logo Figma" />
+                        </div>
+                        <span class="tooltiptext">Voir le Prototype Figma</span>
+                    </a>
+                </div>
 
-                <h3 class="text-3xl font-bold accent-text mb-6">Processus de l'Étude de Cas</h3>
+                <h3 class="text-3xl font-bold accent-text mb-6">Processus de l'Étude de Cas</h3>
 
-                <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
 
-                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white" 
-                        data-process-id="analyse" data-process-title="Empathie / Analyse Utilisateur">
-                        <div class="flex items-center mb-4">
-                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                            </span>
-                            <h4 class="text-xl font-bold text-gray-900">Empathie / Analyse Utilisateur</h4>
-                        </div>
-                        <p class="text-gray-700 flex-grow">Le processus a débuté par une exploration du contexte et des usages afin de comprendre les besoins, attentes et difficultés des utilisateurs.</p>
-                    </div>
+                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white" 
+                        data-process-id="analyse" data-process-title="Empathie / Analyse Utilisateur">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-gray-900">Empathie / Analyse Utilisateur</h4>
+                        </div>
+                        <p class="text-gray-700 flex-grow">Le processus a débuté par une exploration du contexte et des usages afin de comprendre les besoins, attentes et difficultés des utilisateurs.</p>
+                    </div>
 
-                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                        data-process-id="entretiens" data-process-title="Définition / Synthèse">
-                        <div class="flex items-center mb-4">
-                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            </span>
-                            <h4 class="text-xl font-bold text-gray-900">Définition / Synthèse</h4>
-                            </div>
-                        <p class="text-gray-700 flex-grow">Les enseignements collectés ont été analysés et consolidés pour définir les profils utilisateurs et formuler clairement le problème à résoudre.</p>
-                    </div>
+                                        <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
+                        data-process-id="definition" data-process-title="Définition / Synthèse">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-gray-900">Définition / Synthèse</h4>
+                            </div>
+                        <p class="text-gray-700 flex-grow">Les enseignements collectés ont été analysés et consolidés pour définir les profils utilisateurs et formuler clairement le problème à résoudre.</p>
+                    </div>
 
-                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                        data-process-id="ideation" data-process-title="Idéation / Conceptualisation">
-                        <div class="flex items-center mb-4">
-                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M14 14c2.67-1.33 4-3.33 4-6a6 6 0 0 0-12 0c0 2.67 1.33 4.67 4 6"/></svg>
-                            </span>
-                            <h4 class="text-xl font-bold text-gray-900">Idéation / Conceptualisation</h4>
-                        </div>
-                        <p class="text-gray-700 flex-grow">Différentes pistes de solution ont été générées et organisées pour identifier les concepts les plus adaptés aux besoins des utilisateurs.</p>
-                    </div>
+                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
+                        data-process-id="ideation" data-process-title="Idéation / Conceptualisation">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M14 14c2.67-1.33 4-3.33 4-6a6 6 0 0 0-12 0c0 2.67 1.33 4.67 4 6"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-gray-900">Idéation / Conceptualisation</h4>
+                        </div>
+                        <p class="text-gray-700 flex-grow">Différentes pistes de solution ont été générées et organisées pour identifier les concepts les plus adaptés aux besoins des utilisateurs.</p>
+                    </div>
 
-                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
-                        data-process-id="prototypage" data-process-title="Prototypage">
-                        <div class="flex items-center mb-4">
-                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                            </span>
-                            <h4 class="text-xl font-bold text-gray-900">Prototypage</h4>
-                        </div>
-                        <p class="text-gray-700 flex-grow">Les idées sélectionnées ont été matérialisées sous forme de wireframes et de maquettes afin de visualiser et simuler l’expérience proposée.</p>
-                    </div>
-                    
-                    <div class="md:col-span-2 p-6 rounded-xl border border-red-200 shadow-lg bg-red-50 flex flex-col h-full 
-                        process-card" 
-                        data-process-id="tests" 
-                        data-process-title="Tests Utilisateurs & Itération">
-                        <div class="flex items-center mb-4">
-                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-square"><polyline points="9 11 11 13 15 9"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
-                            </span>
-                            <h4 class="text-xl font-bold text-red-800">Tests Utilisateurs & Itération</h4>
-                        </div>
-                        <p class="text-gray-700 font-medium flex-grow">Le prototype a été testé auprès d’utilisateurs, permettant d’apporter des améliorations successives pour affiner et optimiser la solution finale.</p>
-                    </div>
+                    <div class="process-card p-6 rounded-xl border border-gray-200 shadow-sm transition hover:shadow-lg hover:border-red-300 flex flex-col h-full bg-white"
+                        data-process-id="prototypage" data-process-title="Prototypage">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-gray-900">Prototypage</h4>
+                        </div>
+                        <p class="text-gray-700 flex-grow">Les idées sélectionnées ont été matérialisées sous forme de wireframes et de maquettes afin de visualiser et simuler l’expérience proposée.</p>
+                    </div>
+                    
+                    <div class="md:col-span-2 p-6 rounded-xl border border-red-200 shadow-lg bg-red-50 flex flex-col h-full 
+                        process-card" 
+                        data-process-id="tests" 
+                        data-process-title="Tests Utilisateurs & Itération">
+                        <div class="flex items-center mb-4">
+                            <span class="contact-icon text-red-800 mr-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-square"><polyline points="9 11 11 13 15 9"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
+                            </span>
+                            <h4 class="text-xl font-bold text-red-800">Tests Utilisateurs & Itération</h4>
+                        </div>
+                        <p class="text-gray-700 font-medium flex-grow">Le prototype a été testé auprès d’utilisateurs, permettant d’apporter des améliorations successives pour affiner et optimiser la solution finale.</p>
+                    </div>
 
-                </div>
-            </section>
+                </div>
+            </section>
 
-            <section id="page-process-detail" data-page-content="process-detail" class="page-content hidden">
-                <button id="back-to-project-detail" class="flex items-center text-gray-600 hover:accent-text font-medium mb-8 transition duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-                    Retour à l'étude de cas (<span id="current-project-name"></span>)
-                </button>
+            <section id="page-process-detail" data-page-content="process-detail" class="page-content hidden">
+                <button id="back-to-project-detail" class="flex items-center text-gray-600 hover:accent-text font-medium mb-8 transition duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                    Retour à l'étude de cas (<span id="current-project-name"></span>)
+                </button>
 
-                <h2 id="process-detail-title" class="text-5xl font-extrabold mb-10 tracking-tighter accent-text">Titre de l'étape</h2>
-                
-                <div id="process-content" class="prose max-w-none text-gray-700">
-                    <p>Le contenu détaillé de cette étape de processus apparaîtra ici.</p>
-                </div>
-            </section>
+                <h2 id="process-detail-title" class="text-5xl font-extrabold mb-10 tracking-tighter accent-text">Titre de l'étape</h2>
+                
+                <div id="process-content" class="prose max-w-none text-gray-700">
+                    <p>Le contenu détaillé de cette étape de processus apparaîtra ici.</p>
+                </div>
+            </section>
 
-            <section id="page-about" data-page-content="about" class="page-content hidden">
-                <div class="grid lg:grid-cols-3 gap-12 items-start">
-                    
-                    <div class="lg:col-span-1">
-                        <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl mb-8 border-4 border-white">
-                            <img src="Photo de Profil.png" alt="Photo de profil de Noé Spéciel" class="w-full h-full object-cover" 
-                                onerror="this.onerror=null; this.src='https://placehold.co/600x400/f7f7f9/7f1d1d?text=Photo+Noe'; this.classList.add('hidden');">
-                        </div>
+            <section id="page-about" data-page-content="about" class="page-content hidden">
+                <div class="grid lg:grid-cols-3 gap-12 items-start">
+                    
+                    <div class="lg:col-span-1">
+                        <div class="w-48 h-48 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl mb-8 border-4 border-white">
+                            <img src="Photo de Profil.png" alt="Photo de profil de Noé Spéciel" class="w-full h-full object-cover" 
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x400/f7f7f9/7f1d1d?text=Photo+Noe'; this.classList.add('hidden');">
+                        </div>
 
-                        <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
-                        <p class="text-gray-700 leading-relaxed italic border-l-4 border-red-300 pl-4">
-                            "Pour moi, le design se ressent avant tout. Mon objectif est de transformer des problèmes complexes en expériences claires, intuitives et agréables, où chaque interaction compte."
-                        </p>
-                    </div>
+                        <h3 class="text-2xl font-bold accent-text mb-4">Ma Philosophie du Design</h3>
+                        <p class="text-gray-700 leading-relaxed italic border-l-4 border-red-300 pl-4">
+                            "Pour moi, le design se ressent avant tout. Mon objectif est de transformer des problèmes complexes en expériences claires, intuitives et agréables, où chaque interaction compte."
+                        </p>
+                    </div>
 
-                    <div class="lg:col-span-2">
-                        <h2 class="text-5xl font-extrabold mb-6 tracking-tighter">Hello, moi c’est Noé.</h2>
-                        
-                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
-                            Étudiant en design UX/UI, je combine la recherche utilisateur, le design d’interaction et l’esthétique visuelle pour créer des interfaces efficaces et mémorables. Passionné par les nouvelles technologies, j’aime relever des défis concrets à travers des projets pratiques. Mon portfolio met en avant ma capacité à allier créativité, stratégie et ergonomie pour un impact réel.
-                        </p>
+                    <div class="lg:col-span-2">
+                        <h2 class="text-5xl font-extrabold mb-6 tracking-tighter">Hello, moi c’est Noé.</h2>
+                        
+                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                            Étudiant en design UX/UI, je combine la recherche utilisateur, le design d’interaction et l’esthétique visuelle pour créer des interfaces efficaces et mémorables. Passionné par les nouvelles technologies, j’aime relever des défis concrets à travers des projets pratiques. Mon portfolio met en avant ma capacité à allier créativité, stratégie et ergonomie pour un impact réel.
+                        </p>
 
-                        <h3 class="text-2xl font-bold accent-text mb-4 mt-6">Compétences</h3>
-                        <div class="flex flex-wrap gap-3" id="current-skills">
-                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UX Research (Entretiens, Sondages)</span>
-                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UI Design (Figma)</span>
-                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Prototypage & Tests Utilisateurs</span>
-                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Wireframing (Basse et Haute Fidélité)</span>
-                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Design System & Accessibilité</span>
-                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>HTML, CSS & JavaScript</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </section>
+                        <h3 class="text-2xl font-bold accent-text mb-4 mt-6">Compétences</h3>
+                        <div class="flex flex-wrap gap-3" id="current-skills">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UX Research (Entretiens, Sondages)</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>UI Design (Figma)</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Prototypage & Tests Utilisateurs</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Wireframing (Basse et Haute Fidélité)</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>Design System & Accessibilité</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium shadow-sm" data-skill>HTML, CSS & JavaScript</span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
 
-            <section id="page-contact" data-page-content="contact" class="page-content hidden">
-                <div class="flex flex-col items-center text-center">
-                    
-                    <h2 class="text-5xl font-extrabold mb-4 tracking-tighter">Intéressé(e) ? Discutons !</h2>
+            <section id="page-contact" data-page-content="contact" class="page-content hidden">
+                <div class="flex flex-col items-center text-center">
+                    
+                    <h2 class="text-5xl font-extrabold mb-4 tracking-tighter">Intéressé(e) ? Discutons !</h2>
 
-                    <div class="w-full max-w-lg bg-red-50 p-8 rounded-xl shadow-lg mb-12">
-                        <h3 class="text-2xl font-bold accent-text mb-6">Mes Coordonnées</h3>
-                        
-                        <div class="space-y-6 text-lg">
-                            <div class="flex items-center justify-center">
-                                <span class="contact-icon mr-4 text-red-800">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                </span>
-                                <a href="mailto:noe.speciel@hotmail.fr" class="text-gray-800 hover:text-red-800 font-medium transition duration-200">noe.speciel@hotmail.fr</a>
-                            </div>
+                    <div class="w-full max-w-lg bg-red-50 p-8 rounded-xl shadow-lg mb-12">
+                        <h3 class="text-2xl font-bold accent-text mb-6">Mes Coordonnées</h3>
+                        
+                        <div class="space-y-6 text-lg">
+                            <div class="flex items-center justify-center">
+                                <span class="contact-icon mr-4 text-red-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                </span>
+                                <a href="mailto:noe.speciel@hotmail.fr" class="text-gray-800 hover:text-red-800 font-medium transition duration-200">noe.speciel@hotmail.fr</a>
+                            </div>
 
-                            <div class="flex items-center justify-center">
-                                <span class="contact-icon mr-4 text-red-800">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                </span>
-                                <span class="text-gray-800 font-medium">07.83.08.88.23</span>
-                            </div>
-                        </div>
-                    </div>
+                            <div class="flex items-center justify-center">
+                                <span class="contact-icon mr-4 text-red-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </span>
+                                <span class="text-gray-800 font-medium">07.83.08.88.23</span>
+                            </div>
+                        </div>
+                    </div>
 
-                    <h3 class="text-2xl font-bold accent-text mb-6">Mon CV</h3>
-                    <a href="CV-Noé Spéciel.pdf" download target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-red-900 transition duration-300 transform hover:scale-105 whitespace-nowrap">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                        Télécharger mon CV (PDF)
-                    </a>
-                    <h3 class="text-2xl font-bold accent-text mb-4 mt-12">Réseaux Sociaux</h3>
-                    <div class="flex space-x-6">
-                        <a href="https://www.linkedin.com/in/no%C3%A9-sp%C3%A9ciel-b16411159/" target="_blank" class="text-gray-700 hover:text-red-800 transition duration-200 contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </section>
+                    <h3 class="text-2xl font-bold accent-text mb-6">Mon CV</h3>
+                    <a href="CV-Noé Spéciel.pdf" download target="_blank" class="flex items-center justify-center px-10 py-4 text-lg font-semibold text-white accent-bg rounded-full shadow-xl hover:bg-red-900 transition duration-300 transform hover:scale-105 whitespace-nowrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        Télécharger mon CV (PDF)
+                    </a>
+                    <h3 class="text-2xl font-bold accent-text mb-4 mt-12">Réseaux Sociaux</h3>
+                    <div class="flex space-x-6">
+                        <a href="https://www.linkedin.com/in/no%C3%A9-sp%C3%A9ciel-b16411159/" target="_blank" class="text-gray-700 hover:text-red-800 transition duration-200 contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
 
 
-        </div>
-    </main>
+        </div>
+    </main>
 
-    <div id="image-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 items-center justify-center p-4 transition duration-300">
-        <span class="close-modal-btn text-white text-5xl font-light absolute top-4 right-6 cursor-pointer hover:text-red-400">&times;</span>
-        <img id="modal-image" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl" src="" alt="Image agrandie" />
-    </div>
-    
-    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-600 text-sm">
-        &copy; 2025 Noé Spéciel | Designer UX/UI. Tous droits réservés.
-    </footer>
+    <div id="image-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 items-center justify-center p-4 transition duration-300">
+        <span class="close-modal-btn text-white text-5xl font-light absolute top-4 right-6 cursor-pointer hover:text-red-400">&times;</span>
+        <img id="modal-image" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl" src="" alt="Image agrandie" />
+    </div>
+    
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-600 text-sm">
+        &copy; 2025 Noé Spéciel | Designer UX/UI. Tous droits réservés.
+    </footer>
 
-    <script src="js/app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
