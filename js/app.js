@@ -110,7 +110,7 @@ const projectProcessDetails = {
                     <img src="carte-d'empathie-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Charline·Active (40 ans)</h4>
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Charline Active (40 ans)</h4>
                     <img src="carte-d'empathie-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
                 </div>
             </div>
