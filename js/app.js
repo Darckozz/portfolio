@@ -171,6 +171,21 @@ const projectProcessDetails = {
                 </li>
             </ol>
             
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">📝 User Stories (HMW déclinés)</h3>
+            <p>Ces courtes phrases, écrites du point de vue de l'utilisateur, aident à définir et prioriser les fonctionnalités de la solution :</p>
+            <ul class="list-disc list-inside space-y-2 ml-4 italic text-gray-700">
+                <li>En tant qu'<strong>étudiant (Ethan)</strong>, je veux **utiliser ma position actuelle comme départ**, afin de **réduire la saisie manuelle** et gagner du temps.</li>
+                <li>En tant que **senior (Jean-Pierre)**, je veux **que la carte m'affiche clairement les arrêts de ma zone**, afin de **ne pas me tromper d'adresse** lors de ma réservation.</li>
+                <li>En tant qu'**active (Charline)**, je veux **un message qui m'explique clairement pourquoi mon trajet n'est pas disponible**, afin de **savoir immédiatement quelle alternative choisir**.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">💡 Énoncés d'Hypothèse (Testables)</h3>
+            <p>Ces énoncés formalisent les convictions de l'équipe de conception qui seront mesurées lors des tests :</p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Hypothèse "Nous Croyons" :</strong> Nous pensons qu'une **expérience de réservation guidée** et intégrant la **géolocalisation** augmentera le **taux de succès** des recherches de trajets de <strong>plus de 20%</strong>.</li>
+                <li><strong>Hypothèse "Si/Alors" :</strong> Si nous affichons un **code visuel clair** pour les arrêts hors-service, alors **l'hésitation des utilisateurs novices** concernant la zone diminuera de **30%**.</li>
+            </ul>
+
             <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🗺️ Parcours Utilisateur (User Journey Maps)</h3>
             <p>Trois parcours clés ont été modélisés pour visualiser l'expérience actuelle (avant la conception) et identifier les points de douleur spécifiques à chaque Persona (voir les images cliquables ci-dessous).</p>
             <div class="grid md:grid-cols-3 gap-6 mt-6">
