@@ -117,7 +117,7 @@ const projectProcessDetails = {
             <h4 class="text-xl font-bold text-gray-900 mt-8 mb-3">Synthèse des Insights (Vers la Définition) :</h4>
             <ul class="list-disc list-inside space-y-2 ml-4">
                 <li>La conception doit se concentrer sur l'<strong>accompagnement visuel</strong> et l'<strong>automatisation</strong> des tâches répétitives.</li>
-                <li>Le besoin d'un **guide contextuel** est fort pour rassurer les utilisateurs les moins à l'aise (Jean-Pierre).</li>
+                <li>Le besoin d'un <strong>guide contextuel<strong> est fort pour rassurer les utilisateurs les moins à l'aise (Jean-Pierre).</li>
                 <li>Chaque point de blocage doit être géré par un <strong>feedback clair et une alternative</strong> pour éviter l'abandon.</li>
             </ul>
         `,
@@ -132,24 +132,18 @@ const projectProcessDetails = {
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Ethan (Étudiant)</h4>
                     <img src="persona-ethan.png" alt="Photo de profil Persona Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Persona+Ethan';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit space-y-1 text-gray-600">
-                        <li>**Problématique :** Temps perdu avec les étapes manuelles et l'incertitude sur la desserte.</li>
-                        <li>**Besoin clé :** Rapidité, Géolocalisation automatique, Fluidité comme les apps de VTC.</li>
                     </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Jean-Pierre (Senior)</h4>
                     <img src="persona-jean-pierre.png" alt="Photo de profil Persona Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Persona+Jean-Pierre';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit space-y-1 text-gray-600">
-                        <li>**Problématique :** Compréhension difficile du système de zones, crainte de faire une erreur.</li>
-                        <li>**Besoin clé :** Clarté, Accompagnement (guide ou tutoriel), Messages rassurants.</li>
                     </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Charline (Active)</h4>
                     <img src="persona-charline.png" alt="Photo de profil Persona Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Persona+Charline';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit space-y-1 text-gray-600">
-                        <li>**Problématique :** Manque d'alternatives et d'explications en cas de trajet impossible.</li>
-                        <li>**Besoin clé :** Fiabilité, Processus rapide, Informations claires sur la disponibilité du service.</li>
                     </ul>
                 </div>
             </div>
@@ -191,7 +185,7 @@ const projectProcessDetails = {
             <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧠 Insight UX majeur</h3>
             <div class="bg-red-100 border-l-8 border-red-500 p-6 rounded-lg my-4 shadow-inner">
                 <p class="text-xl font-bold text-red-800">
-                    Les utilisateurs ne souhaitent pas **“chercher un trajet”**, ils souhaitent **“être guidés vers une solution disponible”**.
+                    Les utilisateurs ne souhaitent pas <strong>“chercher un trajet”<strong>, ils souhaitent <strong>“être guidés vers une solution disponible”<strong>.
                 </p>
                 <p class="text-base text-gray-700 mt-2">
                     La friction vient principalement du manque d’accompagnement, d’aides visuelles et d’automatisation.
@@ -209,11 +203,11 @@ const projectProcessDetails = {
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🎯 Objectif de conception</h3>
             <p>Créer un parcours de réservation fluide, assisté et compréhensible, intégrant les 5 piliers suivants :</p>
             <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>**Automatisation :** Géolocalisation automatique.</li>
-                <li>**Assistance à la saisie :** Suggestions intelligentes d’arrêts valides.</li>
-                <li>**Gestion de l'erreur :** Feedback clair et actionnable.</li>
-                <li>**Accessibilité :** Accompagnement (guide) pour les novices.</li>
-                <li>**Clarté :** Visualisation plus intuitive des zones et arrêts.</li>
+                <li><strong>Automatisation :<strong> Géolocalisation automatique.</li>
+                <li><strong>Assistance à la saisie :<strong> Suggestions intelligentes d’arrêts valides.</li>
+                <li><strong>Gestion de l'erreur :<strong> Feedback clair et actionnable.</li>
+                <li><strong>Accessibilité :<strong> Accompagnement (guide) pour les novices.</li>
+                <li><strong>Clarté :<strong> Visualisation plus intuitive des zones et arrêts.</li>
             </ul>
             <p class="italic text-sm mt-4 text-gray-500">Cette problématique guidera les phases suivantes : idéation, prototypage et tests.</p>
         `,
