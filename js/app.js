@@ -233,51 +233,84 @@ const projectProcessDetails = {
             <p class="italic text-sm mt-4 text-gray-500">Cette problématique guidera les phases suivantes : idéation, prototypage et tests.</p>
         `,
         ideation: `
-            <p>Cette phase vise à transformer le problème central ("Comment simplifier la recherche de trajet et réduire les erreurs de saisie en guidant l’utilisateur — même novice — vers un trajet disponible dès son arrivée sur la plateforme ?") en solutions concrètes, en se basant sur les besoins et les points de friction identifiés pour <strong>Jean-Pierre</strong>, <strong>Charline</strong>, et <strong>Ethan</strong>.</p>
+            <p>Cette phase vise à transformer le problème central en solutions concrètes en utilisant les enseignements tirés de la recherche utilisateur et de l'audit concurrentiel.</p>
             
-            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Méthode d'Idéation : Brainstorming sur les Problèmes Clés</h3>
-            <p>L'idéation a été menée en se concentrant sur les quatre problèmes clés (zone, saisie manuelle, feedback, parcours novice), aboutissant à quatre fonctionnalités clés :</p>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">✍️ Énoncés d'Objectif (Focus sur les Personas)</h3>
+            <p>Pour garantir que les idées restent centrées sur l'humain, les besoins ont été reformulés :</p>
+            <ul class="list-disc list-inside space-y-2 ml-4 italic text-gray-700">
+                <li><strong>Jean-Pierre</strong> est un senior peu familier du numérique qui a besoin de **parcours très simples et assistés visuellement** parce que l'interface actuelle est source de confusion et d'hésitation.</li>
+                <li><strong>Ethan</strong> est un étudiant pressé qui a besoin d'une **recherche rapide et automatisée (géolocalisation)** parce que le processus manuel de sélection de zone et de saisie d'arrêts est fastidieux et fait perdre du temps.</li>
+                <li><strong>Charline</strong> est une active avec des horaires irréguliers qui a besoin de **messages clairs et de suggestions alternatives** en cas d'indisponibilité parce que les messages génériques l'empêchent de comprendre la cause de l'échec et de planifier un plan B.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🔹 Audit Concurrentiel et Opportunités</h3>
+            <p>L'étude des concurrents (Citymapper, Uber) met en lumière des standards UX essentiels pour le TàD :</p>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-red-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-red-800">Concurrent</th>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-red-800">Force observée</th>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-red-800">Opportunité pour IDFM TàD</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 text-sm">
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Citymapper / Moovit</td>
+                            <td class="px-4 py-2 text-gray-600">Détection automatique de la position (Géolocalisation GPS).</td>
+                            <td class="px-4 py-2 text-gray-600">Intégrer la géolocalisation pour <strong>réduire la friction de saisie</strong> et l'hésitation sur les zones.</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-gray-700 font-medium">Uber</td>
+                            <td class="px-4 py-2 text-gray-600">Guides et aides optionnelles pour les nouveaux utilisateurs.</td>
+                            <td class="px-4 py-2 text-gray-600">Mettre en place un <strong>guide de prise en main optionnel</strong> pour faciliter l'adoption par les <strong>novices (Jean-Pierre)</strong>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="font-semibold mt-4">➡️ Lacune identifiée & Opportunité Unique :</p>
+            <blockquote class="italic text-gray-700 border-l-4 border-red-300 pl-4 my-2">L'opportunité est de lier la géolocalisation à une **visualisation claire des zones desservies** et de proposer un **feedback explicatif** avec des alternatives contextuelles.</blockquote>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">💡 Génération d'Idées (Brainstorming & Conceptualisation)</h3>
+            <p>Les pistes d'amélioration sont regroupées en concepts clés et correspondent aux solutions proposées aux problèmes HMW :</p>
 
             <div class="space-y-6 mt-6">
+                
                 <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
-                    <h4 class="text-xl font-bold text-red-800 mb-2">🌟 1. "Le Guide TàD" (Focus : Jean-Pierre)</h4>
-                    <p class="text-gray-700"><strong>Concept :</strong> Un mode d'assistance activable/désactivable par l'utilisateur (ou proposé par défaut pour les profils novices).</p>
-                    <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
-                        <li><strong>Implémentation :</strong> Affichage d'<strong>info-bulles didactiques</strong> à chaque étape du parcours.</li>
-                        <li><strong>Bénéfice :</strong> Réduit le stress et la peur de l'erreur, <strong>accélère l'onboarding</strong> pour les utilisateurs moins familiers du numérique.</li>
+                    <h4 class="text-xl font-bold text-red-800 mb-2">Concept 1 : L'Assistant de Zone Intelligent</h4>
+                    <ul class="list-disc list-inside ml-4 text-sm text-gray-700 space-y-1">
+                        <li><strong>A. Utiliser la géolocalisation :</strong> Pré-remplir automatiquement le départ et la zone de l'utilisateur.</li>
+                        <li><strong>B. Affichage visuel contraint :</strong> Afficher sur la carte interactive uniquement les arrêts et adresses desservies <em>dès la première interaction</em>.</li>
+                        <li><strong>C. Saisie guidée :</strong> Mise à jour dynamique des arrêts d'arrivée disponibles après la sélection du départ (**"Sélection départ contraint l'arrivée"**).</li>
                     </ul>
                 </div>
 
                 <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
-                    <h4 class="text-xl font-bold text-red-800 mb-2">📍 2. "Saisie Intelligente Géolocalisée" (Focus : Ethan & Charline)</h4>
-                    <p class="text-gray-700"><strong>Concept :</strong> Minimiser la saisie manuelle et éliminer l'incertitude liée aux arrêts.</p>
-                    <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
-                        <li><strong>Implémentation :</strong> Bouton <strong>"Utiliser ma position"</strong> évident. Système de saisie avec <strong>auto-complétion intelligente</strong> (suggestions d'arrêts valides <em>uniquement</em>). Feedback de couleur (vert/rouge) sur les champs.</li>
-                        <li><strong>Bénéfice :</strong> <strong>Réduction du temps de recherche</strong>, élimination de la frustration liée aux adresses non desservies.</li>
+                    <h4 class="text-xl font-bold text-red-800 mb-2">Concept 2 : Le Diagnostic de Trajet (Feedback Actionnable)</h4>
+                    <ul class="list-disc list-inside ml-4 text-sm text-gray-700 space-y-1">
+                        <li><strong>D. Remplacer le message générique :</strong> Remplacer "Aucun service disponible" par un **diagnostic clair** (Ex: Trajet non disponible à cette heure, arrêt hors zone, ou pas de place disponible).</li>
+                        <li><strong>E. Suggestions d'alternatives :</strong> Afficher les prochains horaires de bus estimés même si le trajet actuel est manqué, ou proposer des **arrêts alternatifs géolocalisés à proximité**.</li>
+                    </ul>
+                </div>
+                
+                <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
+                    <h4 class="text-xl font-bold text-red-800 mb-2">Concept 3 : Le Guide Progressif (Accompagnement Novice)</h4>
+                    <ul class="list-disc list-inside ml-4 text-sm text-gray-700 space-y-1">
+                        <li><strong>F. Tutoriel optionnel :</strong> Mettre en place un **tutoriel interactif et optionnel** lors de la première visite (inspiré d'Uber).</li>
+                        <li><strong>G. Simplification :</strong> Simplifier les étapes, notamment la connexion/inscription en la rendant la plus rapide possible (ex: connexion via Google/Apple) ou en l'intégrant naturellement à la fin de l'opération.</li>
                     </ul>
                 </div>
 
-                <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
-                    <h4 class="text-xl font-bold text-red-800 mb-2">🗺️ 3. "La Carte Contextuelle & Zone Active" (Focus : Tous les profils)</h4>
-                    <p class="text-gray-700"><strong>Concept :</strong> Rendre la notion de zone de service TàD intuitive et visuelle.</p>
-                    <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
-                        <li><strong>Implémentation :</strong> La zone de service est <strong>mise en évidence</strong> sur la carte. Les arrêts TàD valides apparaissent comme des <strong>points cliquables</strong>.</li>
-                        <li><strong>Bénéfice :</strong> <strong>Clarté immédiate</strong> sur les limites du service et les points d’embarquement possibles.</li>
-                    </ul>
-                </div>
-
-                <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
-                    <h4 class="text-xl font-bold text-red-800 mb-2">⚠️ 4. "Feedback Explicatif & Alternatives" (Focus : Charline & Ethan)</h4>
-                    <p class="text-gray-700"><strong>Concept :</strong> Transformer l'échec de la recherche en une opportunité de solution.</p>
-                    <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
-                        <li><strong>Implémentation :</strong> Le message d'échec doit expliquer le <strong>"Pourquoi"</strong> et proposer le <strong>"Quoi faire"</strong> (Ex: Changer l'heure ou Voir les bus alternatifs).</li>
-                        <li><strong>Bénéfice :</strong> Maintien de l'engagement de l'utilisateur, <strong>transformation de la frustration en action</strong>.</li>
-                    </ul>
-                </div>
             </div>
 
-            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Conclusion de l'Idéation</h3>
-            <p>L'étape d'Idéation propose une <strong>approche "assistée et visuelle"</strong> du service TàD, mettant en place des garde-fous pour les novices (Jean-Pierre) tout en offrant des raccourcis efficaces et un feedback intelligent pour les utilisateurs exigeants et familiers du numérique (Ethan et Charline).</p>
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🖼️ Prototypage et Visualisation (Storyboards)</h3>
+            <p>Les concepts clés ci-dessus servent de base pour les wireframes et storyboards (représentant les interactions clés) de la prochaine phase. Les visualisations se concentreront sur :</p>
+            <ul class="list-disc list-inside ml-4 text-sm text-gray-700 space-y-1">
+                <li><strong>Écran d'Arrivée :</strong> Intégrer un bouton <strong>"Utiliser ma position actuelle"</strong> visible, avec la carte zoomée sur les zones desservies.</li>
+                <li><strong>Écran de Sélection :</strong> Mise en œuvre du système où la **carte des Arrivées** se met à jour instantanément après la sélection du Départ (Concept 1C).</li>
+                <li><strong>Écran de Résultat d'Échec :</strong> Conception de l'encart de feedback qui explique le <strong>"pourquoi"</strong> et propose des horaires et/ou arrêts alternatifs (Concept 2D & 2E).</li>
+            </ul>
         `,
         prototypage: `
             <p>La phase de <strong>Prototypage (TàD IDFM)</strong> a englobé la conception Basse Fidélité (wireframes) et Haute Fidélité (maquettes UI) dans Figma. L'objectif était de matérialiser les idées validées lors de l'Idéation.</p>
