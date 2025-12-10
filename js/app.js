@@ -98,20 +98,20 @@ const projectProcessDetails = {
             </div>
 
             <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Cartes d'Empathie (Empathy Maps) 🧭</h3>
-            <p>Pour formaliser les besoins et frustrations des utilisateurs, nous avons construit des <strong>Empathy Maps</strong> pour chaque profil type, servant de référence pour la définition des problèmes (étape suivante). Cliquez sur une carte pour l'agrandir.</p>
+            <p>Pour formaliser les besoins et frustrations des utilisateurs, nous avons construit des <strong>Empathy Maps</strong> pour chaque profil type, servant de référence pour la définition des problèmes (étape suivante).</p>
             
             <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 1 – Ethan, Étudiant Urbain (22 ans)</h4>
-                    <img src="carte-d'empathie-ethan.png" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Ethan';" />
+                    <img src="carte-d'empathie-ethan.png" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Ethan';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 2 – Jean-Pierre, Senior Novice (68 ans)</h4>
-                    <img src="carte-d'empathie-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
+                    <img src="carte-d'empathie-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil 3 – Charline, Active Flexible (40 ans)</h4>
-                    <img src="carte-d'empathie-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
+                    <img src="carte-d'empathie-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
                 </div>
             </div>
 
@@ -137,95 +137,116 @@ const projectProcessDetails = {
                 <p>Nous avons observé trois utilisateurs réserver et effectuer un trajet en temps réel. Cette observation non-intrusive a révélé des problèmes d'utilisabilité et de compréhension des messages qui n'auraient pas été mentionnés en entretien (ex : hésitation sur la saisie des adresses).</p>
             </div>
         `,
-        // Contenu mis à jour avec le texte détaillé + images de Personas et de Parcours Utilisateur
         definition: `
-            <p>À partir des observations, interviews et retours utilisateurs recueillis, la phase de synthèse a permis de transformer les données brutes en problèmes clairement définis, d’identifier les profils utilisateurs majeurs et de formuler un problème central à résoudre.</p>
-            
+            <p>À partir des observations, interviews et retours utilisateurs recueillis, la phase de <strong>Définition / Synthèse (TàD IDFM)</strong> a permis de transformer les données brutes en problèmes clairement définis, d’identifier les profils utilisateurs majeurs et de formuler un problème central à résoudre.</p>
+
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🎯 Personas & besoins prioritaires</h3>
-            <p>Trois profils principaux émergent de la recherche. Cliquez sur une image pour l'agrandir.</p>
+            <p>Trois profils principaux émergent de la recherche :</p>
 
             <div class="grid md:grid-cols-3 gap-6 mt-6">
-                <div class="text-center p-4 border rounded-xl shadow-md">
+                <div class="text-center p-4 border rounded-xl shadow-md bg-white">
+                    <img src="persona-ethan.png" alt="Photo de profil d'Ethan, étudiant urbain" class="w-24 h-24 mx-auto object-cover rounded-full mb-3 border-2 border-red-300" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f3f4f6/7f1d1d?text=Ethan';" />
                     <h4 class="font-bold text-lg text-gray-800 mb-2">1. Ethan – Étudiant Urbain (22 ans)</h4>
-                    <img src="persona-ethan.png" alt="Persona Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Persona+Ethan';" />
-                    <ul class="list-disc list-inside space-y-1 ml-4 text-sm mt-4 text-left">
-                        <li><strong>Besoin :</strong> Système rapide, automatique, basé sur la géolocalisation.</li>
+                    <ul class="list-disc list-inside space-y-1 ml-4 text-gray-700 text-sm text-left">
+                        <li><strong>Besoin :</strong> Système rapide, automatique, géolocalisé.</li>
                         <li><strong>Objectif :</strong> Obtenir un trajet en quelques secondes.</li>
                         <li><strong>Frustration :</strong> "Je ne sais pas si l’adresse est desservie."</li>
                     </ul>
                 </div>
-                <div class="text-center p-4 border rounded-xl shadow-md">
+                <div class="text-center p-4 border rounded-xl shadow-md bg-white">
+                    <img src="persona-jean-pierre.png" alt="Photo de profil de Jean-Pierre, senior novice" class="w-24 h-24 mx-auto object-cover rounded-full mb-3 border-2 border-red-300" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f3f4f6/7f1d1d?text=JP';" />
                     <h4 class="font-bold text-lg text-gray-800 mb-2">2. Jean-Pierre – Senior Novice (68 ans)</h4>
-                    <img src="persona-jean-pierre.png" alt="Persona Jean-Pierre, senior novice" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Persona+Jean-Pierre';" />
-                    <ul class="list-disc list-inside space-y-1 ml-4 text-sm mt-4 text-left">
+                    <ul class="list-disc list-inside space-y-1 ml-4 text-gray-700 text-sm text-left">
                         <li><strong>Besoin :</strong> Accompagnement simple et guidé.</li>
-                        <li><strong>Difficulté :</strong> Se perd dans les zones et la terminologie du service.</li>
+                        <li><strong>Objectif :</strong> Comprendre la terminologie et les étapes.</li>
                         <li><strong>Frustration :</strong> “Je ne comprends pas les étapes.”</li>
                     </ul>
                 </div>
-                <div class="text-center p-4 border rounded-xl shadow-md">
+                <div class="text-center p-4 border rounded-xl shadow-md bg-white">
+                    <img src="persona-charline.png" alt="Photo de profil de Charline, active flexible" class="w-24 h-24 mx-auto object-cover rounded-full mb-3 border-2 border-red-300" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f3f4f6/7f1d1d?text=Charline';" />
                     <h4 class="font-bold text-lg text-gray-800 mb-2">3. Charline – Active Flexible (40 ans)</h4>
-                    <img src="persona-charline.png" alt="Persona Charline, active flexible" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Persona+Charline';" />
-                    <ul class="list-disc list-inside space-y-1 ml-4 text-sm mt-4 text-left">
-                        <li><strong>Besoin :</strong> Outil efficace et fiable, même en horaires décalés.</li>
-                        <li><strong>Attente :</strong> Informations claires lorsqu'un trajet n'est pas disponible.</li>
+                    <ul class="list-disc list-inside space-y-1 ml-4 text-gray-700 text-sm text-left">
+                        <li><strong>Besoin :</strong> Outil efficace, fiable, même en horaires décalés.</li>
+                        <li><strong>Objectif :</strong> Informations claires sur l'indisponibilité.</li>
                         <li><strong>Frustration :</strong> “Si ça ne marche pas, je ne sais pas quoi ajuster.”</li>
                     </ul>
                 </div>
             </div>
 
-            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🗺️ Parcours Utilisateur (User Journey Maps)</h3>
-            <p>Trois cartographies détaillées des parcours utilisateurs ont été créées pour visualiser les émotions, les actions et les points de contact sur l'ancienne interface (à améliorer).</p>
-            <div class="grid md:grid-cols-3 gap-6 mt-6">
-                <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Parcours 1 – Réservation Rapide</h4>
-                    <img src="parcours-reservation-rapide.png" alt="Parcours Utilisateur Réservation Rapide" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Parcours+Rapide';" />
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧩 Problèmes clés identifiés</h3>
+            <p>L’analyse des retours convergents fait émerger 4 axes d’insatisfaction majeurs :</p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Difficulté à comprendre la notion de zone :</strong> Les utilisateurs ne savent pas toujours dans quelle zone se trouvent leurs arrêts, causant hésitation et abandon.</li>
+                <li><strong>Saisie trop manuelle et manque d’assistance :</strong> Le service nécessite de taper des arrêts ou des adresses sans aide (suggestions intelligentes ou géolocalisées).</li>
+                <li><strong>Manque de feedback explicatif :</strong> En cas d’erreur ou de trajet indisponible, les messages sont génériques, sans expliquer pourquoi ni proposer d'alternative.</li>
+                <li><strong>Difficulté des novices à suivre le parcours :</strong> Les étapes d’un TàD sont spécifiques. Sans guide, les utilisateurs ont l’impression de “faire mal”.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🗺️ Cartographie du Parcours Utilisateur (User Journey Maps)</h3>
+            <p>Pour chaque persona, nous avons modélisé le parcours utilisateur actuel (As-Is) pour visualiser les points de douleur émotionnelle et les opportunités de conception.</p>
+
+            <div class="grid md:grid-cols-1 gap-6 mt-6">
+                <div class="p-4 border rounded-xl shadow-md bg-white">
+                    <h4 class="font-bold text-lg text-gray-800 mb-3 text-center">Parcours 1 : Ethan – Réservation Express</h4>
+                    <img src="user-journey-map-ethan.png" alt="Cartographie du parcours utilisateur d'Ethan - Réservation rapide via géolocalisation" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/1000x300/f3f4f6/7f1d1d?text=User+Journey+Map+Ethan';" />
                 </div>
-                <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Parcours 2 – Première Utilisation</h4>
-                    <img src="parcours-premiere-utilisation.png" alt="Parcours Utilisateur Première Utilisation" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Parcours+Novice';" />
+                <div class="p-4 border rounded-xl shadow-md bg-white">
+                    <h4 class="font-bold text-lg text-gray-800 mb-3 text-center">Parcours 2 : Jean-Pierre – Première Utilisation</h4>
+                    <img src="user-journey-map-jean-pierre.png" alt="Cartographie du parcours utilisateur de Jean-Pierre - Première utilisation du service" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/1000x300/f3f4f6/7f1d1d?text=User+Journey+Map+Jean-Pierre';" />
                 </div>
-                <div class="text-center p-4 border rounded-xl shadow-md">
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Parcours 3 – Trajet Annulé</h4>
-                    <img src="parcours-trajet-annule.png" alt="Parcours Utilisateur Trajet Annulé" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Parcours+Annulation';" />
+                <div class="p-4 border rounded-xl shadow-md bg-white">
+                    <h4 class="font-bold text-lg text-gray-800 mb-3 text-center">Parcours 3 : Charline – Trajet non Disponible</h4>
+                    <img src="user-journey-map-charline.png" alt="Cartographie du parcours utilisateur de Charline - Situation de trajet non disponible" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/1000x300/f3f4f6/7f1d1d?text=User+Journey+Map+Charline';" />
                 </div>
             </div>
 
-
-            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧩 Problèmes clés identifiés</h3>
-            <p>L’analyse des retours convergents fait émerger 4 axes d’insatisfaction majeurs :</p>
-            <ol class="list-decimal list-inside space-y-3 ml-4">
-                <li><strong>Difficulté à comprendre la notion de zone :</strong> Les utilisateurs ne savent pas toujours dans quelle zone se trouvent leurs arrêts. 
-                    <br><span class="text-gray-600 italic">Conséquences : hésitation, abandon dès la page d’accueil.</span></li>
-                <li><strong>Saisie trop manuelle et manque d’assistance :</strong> Le service nécessite de taper des arrêts ou des adresses sans aide.
-                    <br><span class="text-gray-600 italic">Absence de suggestions intelligentes ou géolocalisées.</span></li>
-                <li><strong>Manque de feedback explicatif :</strong> En cas d’erreur ou de trajet indisponible, les messages sont génériques.
-                    <br><span class="text-gray-600 italic">Les utilisateurs ne comprennent pas pourquoi le service ne propose rien.</span></li>
-                <li><strong>Difficulté des novices à suivre le parcours :</strong> Les étapes d’un TàD sont spécifiques et non familières.
-                    <br><span class="text-gray-600 italic">Sans guide ou tutoriel, les utilisateurs ont l’impression de “faire mal”.</span></li>
-            </ol>
-
             <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧠 Insight UX majeur</h3>
-            <blockquote class="text-lg text-gray-700 leading-relaxed italic border-l-4 border-red-300 pl-4 bg-red-50 p-4 rounded-lg">
-                Les utilisateurs ne souhaitent pas “chercher un trajet”, ils souhaitent **“être guidés vers une solution disponible”**. La friction vient principalement du manque d’accompagnement, d’aides visuelles et d’automatisation.
-            </blockquote>
-            
-            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🔥 Problème central reformulé</h3>
-            <p class="font-semibold text-lg text-gray-800">Comment simplifier la recherche de trajet et réduire les erreurs de saisie en guidant l’utilisateur — même novice — vers un trajet disponible dès son arrivée sur la plateforme ?</p>
-            
-            <p class="mt-4 italic text-gray-600">Ou dans une version plus concise façon “How Might We” (HMW) :</p>
-            <p class="font-bold text-xl accent-text mt-2">HMW : Comment pourrions-nous aider l’utilisateur à trouver rapidement un trajet valide, sans connaissance préalable des zones ni des arrêts ?</p>
+            <div class="p-4 bg-red-100 border-l-4 border-red-800 rounded-r-lg">
+                <p class="text-lg font-medium text-gray-800">Les utilisateurs ne souhaitent pas **“chercher un trajet”**, ils souhaitent **“être guidés vers une solution disponible”**.</p>
+                <p class="text-sm text-gray-700 mt-2">La friction vient principalement du manque d’accompagnement, d’aides visuelles et d’automatisation.</p>
+            </div>
 
-            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🎯 Objectif de conception</h3>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🔥 Problème central reformulé</h3>
+            <p class="text-lg font-bold text-gray-800 italic">Comment simplifier la recherche de trajet et réduire les erreurs de saisie en guidant l’utilisateur — même novice — vers un trajet disponible dès son arrivée sur la plateforme ?</p>
+            <p class="mt-4 font-semibold">Version concise (HMW) :</p>
+            <div class="p-3 bg-red-50 border border-red-200 rounded-lg inline-block">
+                <p class="text-gray-800"><strong>HMW :</strong> Comment pourrions-nous aider l’utilisateur à trouver rapidement un trajet valide, sans connaissance préalable des zones ni des arrêts ?</p>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🎯 Objectif de conception</h3>
             <p>Créer un parcours de réservation fluide, assisté et compréhensible, intégrant :</p>
             <ul class="list-disc list-inside space-y-2 ml-4">
-                <li>géolocalisation automatique</li>
-                <li>suggestions intelligentes d’arrêts</li>
-                <li>feedback clair et actionnable</li>
-                <li>accompagnement pour les novices</li>
-                <li>visualisation plus intuitive des zones et arrêts</li>
+                <li>Géolocalisation automatique.</li>
+                <li>Suggestions intelligentes d’arrêts.</li>
+                <li>Feedback clair et actionnable.</li>
+                <li>Accompagnement pour les novices.</li>
+                <li>Visualisation plus intuitive des zones et arrêts.</li>
             </ul>
-            <p class="mt-4 text-gray-600 italic">Cette problématique guidera les phases suivantes : idéation, prototypage et tests.</p>
+            <p class="mt-4">Cette problématique guidera les phases suivantes : idéation, prototypage et tests.</p>
+        `,
+        personas: `
+            <p>Basé sur les données d'analyse et les entretiens, nous avons synthétisé nos découvertes en trois <strong>Personas (TàD IDFM)</strong> clés, représentant les archétypes d'utilisateurs du service TàD.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Exemple de Persona : "Sophie, l'Utilisatrice Prévoyante"</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Objectif :</strong> Réserver son trajet de retour du travail la veille pour être certaine d'avoir une place.</li>
+                <li><strong>Frustration :</strong> L'interface de modification de réservation est cachée et les messages d'erreur sont peu clairs si un changement n'est plus possible.</li>
+                <li><strong>Besoin :</strong> Un tableau de bord clair avec un historique et une modification en un clic.</li>
+            </ul>
+            
+            <p class="mt-4">Chaque persona était associé à un <strong>Scénario d'Usage</strong> critique, servant de référence constante lors des phases de conception pour évaluer l'efficacité de nos solutions.</p>
+        `,
+        fonctionnalites: `
+            <p>La <strong>Définition des Fonctionnalités (TàD IDFM)</strong> a été réalisée à l'aide de la méthode MoSCoW (Must-have, Should-have, Could-have, Won't-have) en concertation avec les parties prenantes (IDFM) et les retours utilisateurs.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Priorités (Must-Have) :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Simplification du formulaire de réservation (réduction des champs obligatoires).</li>
+                <li>Visualisation claire de la position du véhicule en temps réel sur une carte.</li>
+                <li>Possibilité d'enregistrer des adresses favorites pour une réservation rapide.</li>
+            </ul>
+            
+            <p class="mt-4">Nous avons décidé d'intégrer une fonctionnalité de "réservation récurrente" (Should-Have) pour les trajets quotidiens, un point de friction important identifié lors des entretiens.</p>
         `,
         ideation: `
             <p>La phase d'<strong>Idéation (TàD IDFM)</strong> a été un atelier collaboratif de 2 jours mobilisant l'équipe de design, un développeur et un représentant client (Product Owner). L'objectif était de générer un maximum de solutions créatives pour répondre aux besoins prioritaires définis.</p>
@@ -305,7 +326,7 @@ const projectProcessDetails = {
             </ul>
         `,
         definition: `
-             <p>Le travail de <strong>Définition / Synthèse (Médoc)</strong> a abouti à la création de deux Personas : **Marc, le Connaisseur** (recherche des crus classés et une expérience approfondie) et **Léa, l'Organisatrice** (recherche un itinéraire simple et rapide pour toute sa famille).</p>
+            <p>Le travail de <strong>Définition / Synthèse (Médoc)</strong> a abouti à la création de deux Personas : **Marc, le Connaisseur** (recherche des crus classés et une expérience approfondie) et **Léa, l'Organisatrice** (recherche un itinéraire simple et rapide pour toute sa famille).</p>
 
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Scénario de Léa :</h3>
             <p>Léa doit pouvoir sélectionner trois châteaux différents sur une journée, voir un itinéraire cartographié entre eux, et les réserver en moins de 10 minutes. Le scénario a mis l'accent sur la facilité de tri et de filtrage par "familial" ou "rapide".</p>
@@ -359,7 +380,7 @@ const projectProcessDetails = {
             <p>Les utilisateurs valorisent les recommandations basées sur l'humeur ou les critères sociaux (ce que leurs amis regardent) davantage que les simples catégories de genre classiques.</p>
         `,
         definition: `
-             <p>Le <strong>Définition / Synthèse (Allociné)</strong> principal créé est **Thomas, le Cinéphile Social**, qui cherche un film à regarder ce soir avec des amis et se fie aux notes critiques et aux tendances sur les plateformes de streaming.</p>
+            <p>Le <strong>Définition / Synthèse (Allociné)</strong> principal créé est **Thomas, le Cinéphile Social**, qui cherche un film à regarder ce soir avec des amis et se fie aux notes critiques et aux tendances sur les plateformes de streaming.</p>
 
             <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Besoin Clé :</h3>
             <p>Une section "Tendance chez vos amis" ou "Recommandé pour votre humeur" pour faciliter la prise de décision rapide.</p>
@@ -484,6 +505,8 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
                 return;
             }
             const projectContent = projectProcessDetails[currentProject.id];
+            // Utiliser 'definition' comme fallback si processId est 'entretiens' ou 'personas' pour le projet 1 si vous souhaitez centraliser l'info
+            // NOTE : J'utilise le processId exact car les détails ont été bien séparés.
             const content = (projectContent && projectContent[processId]) ? projectContent[processId] :
                 "<p>Contenu détaillé non disponible pour cette étape ou ce projet.</p>";
             processDetailTitle.textContent = processTitle;
@@ -649,7 +672,5 @@ backToProjectDetailButton.addEventListener('click', (e) => {
 
 // 7. Initialisation
 document.addEventListener('DOMContentLoaded', () => {
-    showPage('work');
-});
     showPage('work');
 });
