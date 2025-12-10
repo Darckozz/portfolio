@@ -12,7 +12,7 @@ const projectCards = document.querySelectorAll('.project-card');
 const projectDetailTitle = document.getElementById('project-detail-title');
 const backToWorkButton = document.getElementById('back-to-work');
 const figmaLinkButton = document.getElementById('figma-link-button-discreet');
-const projectVisual = document.getElementById('project-detail-visual'); 
+const projectVisual = document.getElementById('project-detail-visual');
 const processCards = document.querySelectorAll('.process-card');
 const backToProjectDetailButton = document.getElementById('back-to-project-detail');
 const currentProjectNameSpan = document.getElementById('current-project-name');
@@ -103,15 +103,15 @@ const projectProcessDetails = {
             <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Ethan Étudiant (22 ans)</h4>
-                    <img src="empathie-ethan.png" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Ethan';" />
+                    <img src="empathie-ethan.jpg" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Ethan';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Jean-Pierre Senior (68 ans)</h4>
-                    <img src="empathies-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
+                    <img src="empathie-jean-pierre.jpg" alt="Empathy Map pour Jean-Pierre, senior peu familier du numérique" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Jean-Pierre';" />
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Charline Active (40 ans)</h4>
-                    <img src="empathie-charline.png" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
+                    <img src="empathie-charline.jpg" alt="Empathy Map pour Charline, active avec horaires irréguliers" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/300x400/7f1d1d/ffffff?text=Empathy+Map+Charline';" />
                 </div>
             </div>
 
@@ -131,19 +131,19 @@ const projectProcessDetails = {
             <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Ethan</h4>
-                    <img src="persona-ethan.png" alt="Photo de profil Persona Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Persona+Ethan';" />
+                    <img src="persona-ethan.jpg" alt="Photo de profil Persona Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c1d95/ffffff?text=Persona+Ethan';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
                     </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Jean-Pierre</h4>
-                    <img src="persona-jean-pierre.png" alt="Photo de profil Persona Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Persona+Jean-Pierre';" />
+                    <img src="persona-jean-pierre.jpg" alt="Photo de profil Persona Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/9a3412/ffffff?text=Persona+Jean-Pierre';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
                     </ul>
                 </div>
                 <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Charline</h4>
-                    <img src="persona-charline.png" alt="Photo de profil Persona Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Persona+Charline';" />
+                    <img src="persona-charline.jpg" alt="Photo de profil Persona Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Persona+Charline';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
                     </ul>
                 </div>
@@ -206,18 +206,55 @@ const projectProcessDetails = {
             </ul>
             <p class="italic text-sm mt-4 text-gray-500">Cette problématique guidera les phases suivantes : idéation, prototypage et tests.</p>
         `,
+        // --- CONTENU MIS À JOUR ICI ---
         ideation: `
-            <p>La phase d'<strong>Idéation (TàD IDFM)</strong> a été un atelier collaboratif de 2 jours mobilisant l'équipe de design, un développeur et un représentant client (Product Owner). L'objectif était de générer un maximum de solutions créatives pour répondre aux besoins prioritaires définis.</p>
-
-            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Techniques utilisées :</h3>
-            <ul class="list-disc list-inside space-y-2 ml-4">
-                <li><strong>Brainstorming :</strong> Session libre pour générer des idées sur la refonte du tableau de bord.</li>
-                <li><strong>Crazy 8s :</strong> Sketching rapide de 8 variations de l'écran de réservation en 8 minutes. </li>
-                <li><strong>Dot Voting :</strong> Utilisation de pastilles pour voter collectivement sur les idées les plus prometteuses et les plus réalisables techniquement.</li>
-            </ul>
+            <p>Cette phase vise à transformer le problème central ("Comment simplifier la recherche de trajet et réduire les erreurs de saisie en guidant l’utilisateur — même novice — vers un trajet disponible dès son arrivée sur la plateforme ?") en solutions concrètes, en se basant sur les besoins et les points de friction identifiés pour **Jean-Pierre**, **Charline**, et **Ethan**.</p>
             
-            <p class="mt-4">Cette phase a permis de transformer des concepts abstraits en esquisses tangibles, jetant les bases des futurs wireframes.</p>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Méthode d'Idéation : Brainstorming sur les Problèmes Clés</h3>
+            <p>L'idéation a été menée en se concentrant sur les quatre problèmes clés (zone, saisie manuelle, feedback, parcours novice), aboutissant à quatre fonctionnalités clés :</p>
+
+            <div class="space-y-6 mt-6">
+                <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
+                    <h4 class="text-xl font-bold text-red-800 mb-2">🌟 1. "Le Guide TàD" (Focus : Jean-Pierre)</h4>
+                    <p class="text-gray-700"><strong>Concept :</strong> Un mode d'assistance activable/désactivable par l'utilisateur (ou proposé par défaut pour les profils novices).</p>
+                    <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
+                        <li>**Implémentation :** Affichage d'<strong>info-bulles didactiques</strong> à chaque étape du parcours.</li>
+                        <li>**Bénéfice :** Réduit le stress et la peur de l'erreur, **accélère l'onboarding** pour les utilisateurs moins familiers du numérique.</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
+                    <h4 class="text-xl font-bold text-red-800 mb-2">📍 2. "Saisie Intelligente Géolocalisée" (Focus : Ethan & Charline)</h4>
+                    <p class="text-gray-700"><strong>Concept :</strong> Minimiser la saisie manuelle et éliminer l'incertitude liée aux arrêts.</p>
+                    <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
+                        <li>**Implémentation :** Bouton **"Utiliser ma position"** évident. Système de saisie avec **auto-complétion intelligente** (suggestions d'arrêts valides *uniquement*). Feedback de couleur (vert/rouge) sur les champs.</li>
+                        <li>**Bénéfice :** **Réduction du temps de recherche**, élimination de la frustration liée aux adresses non desservies.</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
+                    <h4 class="text-xl font-bold text-red-800 mb-2">🗺️ 3. "La Carte Contextuelle & Zone Active" (Focus : Tous les profils)</h4>
+                    <p class="text-gray-700"><strong>Concept :</strong> Rendre la notion de zone de service TàD intuitive et visuelle.</p>
+                    <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
+                        <li>**Implémentation :** La zone de service est **mise en évidence** sur la carte. Les arrêts TàD valides apparaissent comme des **points cliquables**.</li>
+                        <li>**Bénéfice :** **Clarté immédiate** sur les limites du service et les points d’embarquement possibles.</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
+                    <h4 class="text-xl font-bold text-red-800 mb-2">⚠️ 4. "Feedback Explicatif & Alternatives" (Focus : Charline & Ethan)</h4>
+                    <p class="text-gray-700"><strong>Concept :</strong> Transformer l'échec de la recherche en une opportunité de solution.</p>
+                    <ul class="list-disc list-inside ml-4 text-sm text-gray-600 mt-2">
+                        <li>**Implémentation :** Le message d'échec doit expliquer le **"Pourquoi"** et proposer le **"Quoi faire"** (Ex: Changer l'heure ou Voir les bus alternatifs).</li>
+                        <li>**Bénéfice :** Maintien de l'engagement de l'utilisateur, **transformation de la frustration en action**.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Conclusion de l'Idéation</h3>
+            <p>L'étape d'Idéation propose une **approche "assistée et visuelle"** du service TàD, mettant en place des garde-fous pour les novices (Jean-Pierre) tout en offrant des raccourcis efficaces et un feedback intelligent pour les utilisateurs exigeants et familiers du numérique (Ethan et Charline).</p>
         `,
+        // --- FIN DU CONTENU MIS À JOUR ---
         prototypage: `
             <p>La phase de <strong>Prototypage (TàD IDFM)</strong> a englobé la conception Basse Fidélité (wireframes) et Haute Fidélité (maquettes UI) dans Figma. L'objectif était de matérialiser les idées validées lors de l'Idéation.</p>
 
