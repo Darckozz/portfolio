@@ -141,7 +141,7 @@ const projectProcessDetails = {
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
                     </ul>
                 </div>
-                <div class="text-center p-4 border rounded-xl shadow-md>
+                <div class="text-center p-4 border rounded-xl shadow-md">
                     <h4 class="font-bold text-lg text-gray-800 mb-2">Profil Charline</h4>
                     <img src="persona-charline.png" alt="Photo de profil Persona Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-gray-100 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/15803d/ffffff?text=Persona+Charline';" />
                     <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit">
