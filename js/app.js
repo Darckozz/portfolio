@@ -185,7 +185,7 @@ const projectProcessDetails = {
             <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧠 Insight UX majeur</h3>
             <div class="bg-red-100 border-l-8 border-red-500 p-6 rounded-lg my-4 shadow-inner">
                 <p class="text-xl font-bold text-red-800">
-                    Les utilisateurs ne souhaitent pas <strong>“chercher un trajet”<strong>, ils souhaitent <strong>“être guidés vers une solution disponible”<strong>.
+                    Les utilisateurs ne souhaitent pas <strong>“chercher un trajet”<strong> , ils souhaitent <strong>“être guidés vers une solution disponible”<strong>.
                 </p>
                 <p class="text-base text-gray-700 mt-2">
                     La friction vient principalement du manque d’accompagnement, d’aides visuelles et d’automatisation.
