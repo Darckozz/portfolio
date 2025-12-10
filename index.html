@@ -3,33 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio UX/UI - [Votre Nom]</title>
+    <title>Mon Portfolio UX/UI - Étude de Cas TàD IDFM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <script>
-        // Configuration de Tailwind pour utiliser les couleurs du projet
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bordeaux: {
-                            50: '#fef2f2',
-                            100: '#fee2e2',
-                            500: '#ef4444',
-                            800: '#991b1b',
-                            900: '#7f1d1d', // --color-bordeaux-base
-                            950: '#450a0a', // --color-bordeaux-dark
-                        },
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
+
+    <div class="fixed bottom-6 right-6 figma-button-wrapper">
+        <a id="figma-link-button-discreet" href="https://www.figma.com/file/project-1-prototype" target="_blank" class="figma-button-container rounded-full shadow-lg hover:shadow-xl transition-all duration-150 ease-in-out">
+            <img src="figma-icon.svg" alt="Lien vers le prototype Figma" />
+        </a>
+        <span class="tooltiptext">Voir le prototype Figma</span>
+    </div>
 
     <div class="floating-sticker sticker-1"></div>
     <div class="floating-sticker sticker-2"></div>
@@ -39,232 +25,145 @@
     <div class="floating-sticker sticker-6"></div>
     <div class="floating-sticker sticker-7"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <header class="flex justify-between items-center py-6 border-b border-gray-200 sticky top-0 z-40 bg-gray-50/95 backdrop-blur-sm">
-            <h1 class="text-3xl font-extrabold tracking-tight">
-                <a href="#" id="home-link" data-page="work" class="accent-text hover:text-bordeaux-800 transition duration-150 ease-in-out">
-                    [Votre Nom]
+
+    <header class="sticky top-0 bg-white shadow-sm z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" id="home-link" data-page="work" class="text-2xl font-black text-gray-900 accent-text">
+                    [MON NOM]
                 </a>
-            </h1>
-
-            <nav class="flex space-x-2 sm:space-x-4">
-                <a href="#work" data-page="work" class="nav-link text-gray-600 font-medium is-active">
-                    Projets
-                </a>
-                <a href="#about" data-page="about" class="nav-link text-gray-600 font-medium">
-                    À Propos
-                </a>
-                <a href="#contact" data-page="contact" class="nav-link text-gray-600 font-medium">
-                    Contact
-                </a>
-            </nav>
-        </header>
-
-        <main id="content-container" class="py-12 relative transition-all duration-400 ease-in-out">
-            
-            <section id="page-work" data-page-content="work" class="page-content is-visible">
-                <h2 class="text-4xl font-extrabold text-gray-900 mb-8">🛠️ Mes Études de Cas UX/UI</h2>
-                <p class="text-lg text-gray-700 mb-12 max-w-3xl">
-                    Chaque carte ci-dessous représente une étude de cas complète, de l'analyse utilisateur à l'itération finale.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <div class="project-card bg-white p-6 rounded-xl cursor-pointer" 
-                         data-project-id="1" data-project-title="Refonte TàD IDFM (Transport à la Demande)"
-                    >
-                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full text-bordeaux-900 bg-bordeaux-100 mb-3">
-                            UX Research & Design System
-                        </span>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">
-                            Refonte TàD IDFM (Transport à la Demande)
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Simplification du parcours de réservation pour réduire l'abandon chez les usagers novices.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag px-3 py-1 text-xs rounded-full">Figma</span>
-                            <span class="skill-tag px-3 py-1 text-xs rounded-full">User Research</span>
-                            <span class="skill-tag px-3 py-1 text-xs rounded-full">Wireframing</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card bg-white p-6 rounded-xl cursor-pointer" 
-                         data-project-id="2" data-project-title="Le Médoc à la Carte : Plateforme Œnotouristique"
-                    >
-                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full text-green-800 bg-green-100 mb-3">
-                            Mobile First & Cartographie
-                        </span>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">
-                            Le Médoc à la Carte
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Conception d'un outil de planification d'itinéraires œnotouristiques personnalisés.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag px-3 py-1 text-xs rounded-full">Mobile First</span>
-                            <span class="skill-tag px-3 py-1 text-xs rounded-full">Prototypage</span>
-                            <span class="skill-tag px-3 py-1 text-xs rounded-full">User Flows</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card bg-white p-6 rounded-xl cursor-pointer" 
-                         data-project-id="3" data-project-title="Concept Allociné : Refonte de la Page de Découverte"
-                    >
-                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full text-blue-800 bg-blue-100 mb-3">
-                            UI Design & Gamification
-                        </span>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">
-                            Concept Allociné
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Amélioration de l'expérience de découverte de films par la personnalisation et l'humeur.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag px-3 py-1 text-xs rounded-full">UI/Visual Design</span>
-                            <span class="skill-tag px-3 py-1 text-xs rounded-full">Heuristic Eval.</span>
-                            <span class="skill-tag px-3 py-1 text-xs rounded-full">Dark Mode</span>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="page-project-detail" data-page-content="project-detail" class="page-content hidden">
-                <div class="flex items-center justify-between mb-8">
-                    <button id="back-to-work" class="flex items-center text-gray-600 hover:text-bordeaux-base transition duration-150">
-                        <span class="text-2xl mr-2">←</span> 
-                        <span class="font-medium">Retour aux Projets</span>
-                    </button>
-                    <div class="figma-button-wrapper tooltip" onclick="window.open(document.getElementById('figma-link-button-discreet').href, '_blank')">
-                        <a href="#" id="figma-link-button-discreet" target="_blank" class="figma-button-container">
-                            <img src="figma-logo.png" alt="Ouvrir le prototype Figma (logo)" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f2f2f2/cc5800?text=Figma';" />
-                        </a>
-                        <span class="tooltiptext">Voir le Prototype Figma</span>
-                    </div>
-                </div>
-
-                <h2 id="project-detail-title" class="text-4xl font-extrabold text-gray-900 mb-10"></h2>
-
-                <div id="project-detail-visual" class="mb-12 hidden w-full rounded-xl shadow-2xl overflow-hidden cursor-pointer"
-                     onclick="openModalWithImage(this.querySelector('img'))" 
-                >
-                    <img src="mockup-idfm-main.png" alt="Mockup principal de la refonte TàD IDFM" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/1200x500/7f1d1d/ffffff?text=Visual+Principal+du+Projet+T%C3%A0D+IDFM';">
-                </div>
                 
-                <h3 class="text-3xl font-bold accent-text mb-6 mt-12">Le Processus UX</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-                    <div class="process-card bg-white p-5 rounded-xl text-center hover:shadow-lg" 
-                         data-process-id="analyse" data-process-title="1. Empathie & Analyse Utilisateur"
-                    >
-                        <div class="text-4xl mb-2">🔎</div>
-                        <p class="font-semibold text-gray-900">Analyse</p>
-                        <p class="text-xs text-gray-500 mt-1">Interviews, Sondages, Heuristique</p>
-                    </div>
-                    <div class="process-card bg-white p-5 rounded-xl text-center hover:shadow-lg" 
-                         data-process-id="definition" data-process-title="2. Définition & Synthèse"
-                    >
-                        <div class="text-4xl mb-2">💡</div>
-                        <p class="font-semibold text-gray-900">Définition</p>
-                        <p class="text-xs text-gray-500 mt-1">Personas, HMW, Parcours</p>
-                    </div>
-                    <div class="process-card bg-white p-5 rounded-xl text-center hover:shadow-lg" 
-                         data-process-id="ideation" data-process-title="3. Idéation & Conceptualisation"
-                    >
-                        <div class="text-4xl mb-2">✍️</div>
-                        <p class="font-semibold text-gray-900">Idéation</p>
-                        <p class="text-xs text-gray-500 mt-1">Crazy 8s, Brainstorming</p>
-                    </div>
-                    <div class="process-card bg-white p-5 rounded-xl text-center hover:shadow-lg" 
-                         data-process-id="prototypage" data-process-title="4. Prototypage & UI Design"
-                    >
-                        <div class="text-4xl mb-2">💻</div>
-                        <p class="font-semibold text-gray-900">Prototype</p>
-                        <p class="text-xs text-gray-500 mt-1">Wireframes, Maquettes HF</p>
-                    </div>
-                    <div class="process-card bg-white p-5 rounded-xl text-center hover:shadow-lg" 
-                         data-process-id="tests" data-process-title="5. Tests Utilisateurs & Itération"
-                    >
-                        <div class="text-4xl mb-2">🔄</div>
-                        <p class="font-semibold text-gray-900">Tests</p>
-                        <p class="text-xs text-gray-500 mt-1">Usability Testing, KPI</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="page-process-detail" data-page-content="process-detail" class="page-content hidden">
-                <div class="mb-8">
-                    <button id="back-to-project-detail" class="flex items-center text-gray-600 hover:text-bordeaux-base transition duration-150">
-                        <span class="text-2xl mr-2">←</span> 
-                        <span class="font-medium">Retour au Projet : <span id="current-project-name" class="font-bold"></span></span>
-                    </button>
-                </div>
-
-                <h2 id="process-detail-title" class="text-4xl font-extrabold text-gray-900 mb-8"></h2>
-                
-                <div id="process-content" class="bg-white p-8 rounded-xl shadow-lg prose max-w-none">
-                    </div>
-            </section>
-
-            <section id="page-about" data-page-content="about" class="page-content hidden">
-                <h2 class="text-4xl font-extrabold text-gray-900 mb-8">👤 À Propos de Moi</h2>
-                <div class="max-w-4xl text-lg text-gray-700 space-y-6">
-                    <p>
-                        Je suis [Votre Nom], un(e) Designer UX/UI passionné(e) par la création d'expériences numériques significatives et accessibles. Fort(e) de [Nombre] années d'expérience, j'excelle à traduire des besoins complexes en solutions simples et intuitives, en plaçant toujours l'utilisateur au centre du processus de conception.
-                    </p>
-                    <h3 class="text-2xl font-bold accent-text pt-4">Ma Philosophie</h3>
-                    <p>
-                        Mon approche est basée sur le Design Thinking : Empathie, Définition, Idéation, Prototypage, et Test. J'aime collaborer étroitement avec les développeurs et les Product Owners pour assurer la faisabilité technique et l'alignement business de chaque solution.
-                    </p>
-                    <h3 class="text-2xl font-bold accent-text pt-4">Compétences Clés</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag px-4 py-2 text-sm rounded-full bg-blue-50 text-blue-800">UX Research</span>
-                        <span class="skill-tag px-4 py-2 text-sm rounded-full bg-purple-50 text-purple-800">Figma / Sketch</span>
-                        <span class="skill-tag px-4 py-2 text-sm rounded-full bg-red-50 text-red-800">Prototypage Interactif</span>
-                        <span class="skill-tag px-4 py-2 text-sm rounded-full bg-green-50 text-green-800">Design System</span>
-                        <span class="skill-tag px-4 py-2 text-sm rounded-full bg-yellow-50 text-yellow-800">HTML/CSS/JS (Notions)</span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="page-contact" data-page-content="contact" class="page-content hidden">
-                <h2 class="text-4xl font-extrabold text-gray-900 mb-8">✉️ Contactez-Moi</h2>
-                <div class="max-w-xl text-lg text-gray-700 space-y-6">
-                    <p>
-                        Intéressé(e) par une collaboration ou souhaitez-vous discuter d'UX ? N'hésitez pas à me contacter. Je suis toujours ouvert(e) aux nouveaux défis.
-                    </p>
-                    <div class="space-y-4">
-                        <p class="font-bold text-gray-900">Email Professionnel :</p>
-                        <p class="accent-text text-xl">
-                            <a href="mailto:[votre.email@domaine.com]" class="hover:underline">[votre.email@domaine.com]</a>
-                        </p>
-                        <p class="font-bold text-gray-900 pt-4">Profil LinkedIn :</p>
-                        <p class="accent-text text-xl">
-                            <a href="[Lien LinkedIn]" target="_blank" class="hover:underline">/in/[votreprofil]</a>
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-80 hidden z-50 items-center justify-center p-4" aria-modal="true" role="dialog">
-            <div class="relative">
-                <button class="close-modal-btn absolute -top-8 -right-8 text-white hover:text-red-300 transition duration-150" aria-label="Fermer la modale">
-                    &times;
-                </button>
-                <img id="modal-image" src="" alt="" class="rounded-lg shadow-2xl">
+                <nav class="flex space-x-2 sm:space-x-4">
+                    <a href="#" data-page="work" class="nav-link text-gray-600 font-medium">Work</a>
+                    <a href="#" data-page="about" class="nav-link text-gray-600 font-medium">À Propos</a>
+                    <a href="#" data-page="contact" class="nav-link text-gray-600 font-medium">Contact</a>
+                </nav>
             </div>
         </div>
+    </header>
 
-        <footer class="text-center py-6 border-t border-gray-200 mt-12 text-sm text-gray-500">
-            © 2025 [Votre Nom]. Réalisé avec ❤️ et beaucoup d'UX.
-        </footer>
+    <main id="content-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-20 relative transition-all duration-400">
+
+        <section id="page-work" data-page-content="work" class="page-content is-visible">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-8 accent-text">🚀 Études de Cas UX/UI</h1>
+            <p class="text-lg text-gray-700 mb-12 max-w-2xl">
+                Découvrez ici le détail de mes travaux, de la recherche utilisateur à la conception finale. Chaque carte présente le problème initial et mon rôle.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card bg-white p-6 rounded-xl shadow-lg cursor-pointer" data-project-id="1" data-project-title="Transport à la Demande IDFM (Refonte)">
+                    <span class="skill-tag inline-block mb-3">UX Research</span>
+                    <span class="skill-tag inline-block mb-3">Prototypage</span>
+                    <h2 class="text-xl font-bold text-gray-900 mt-2 mb-2">Transport à la Demande IDFM (Refonte)</h2>
+                    <p class="text-gray-600 text-sm">Simplification du parcours de réservation et réduction des erreurs de saisie pour une meilleure accessibilité.</p>
+                </div>
+
+                <div class="project-card bg-white p-6 rounded-xl shadow-lg cursor-pointer" data-project-id="2" data-project-title="Le Médoc à la Carte (Mobile-First)">
+                    <span class="skill-tag inline-block mb-3">Mobile Design</span>
+                    <span class="skill-tag inline-block mb-3">Design d'Itinéraire</span>
+                    <h2 class="text-xl font-bold text-gray-900 mt-2 mb-2">Le Médoc à la Carte (Mobile-First)</h2>
+                    <p class="text-gray-600 text-sm">Conception d'une application mobile pour créer et réserver des itinéraires œnologiques personnalisés en Gironde.</p>
+                </div>
+
+                <div class="project-card bg-white p-6 rounded-xl shadow-lg cursor-pointer" data-project-id="3" data-project-title="Allociné (Redesign Desktop)">
+                    <span class="skill-tag inline-block mb-3">UI/Visual Design</span>
+                    <span class="skill-tag inline-block mb-3">Recommandation</span>
+                    <h2 class="text-xl font-bold text-gray-900 mt-2 mb-2">Allociné (Redesign Desktop)</h2>
+                    <p class="text-gray-600 text-sm">Refonte de l'expérience de découverte de films et amélioration de la pertinence des suggestions sur la plateforme Desktop.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-about" data-page-content="about" class="page-content hidden">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-6 accent-text">👋 À Propos de Moi</h1>
+            <div class="max-w-3xl space-y-6 text-lg text-gray-700">
+                <p>En tant que UX/UI Designer passionné, je crois que les meilleurs produits sont ceux qui simplifient la vie sans sacrifier la beauté. Mon approche est guidée par la recherche utilisateur, l'itération rapide et la conviction que chaque pixel doit servir un objectif clair.</p>
+                <p>Mon expertise se concentre sur l'écosystème numérique, notamment la conception d'applications complexes (SaaS, transport) et la refonte d'interfaces existantes pour maximiser l'accessibilité et la rétention. J'utilise principalement Figma pour le prototypage, mais je suis également à l'aise avec la lecture de code Front-End (HTML/CSS/JS) pour assurer une collaboration fluide avec les équipes de développement.</p>
+            </div>
+        </section>
+
+        <section id="page-contact" data-page-content="contact" class="page-content hidden">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-6 accent-text">✉️ Contactez-Moi</h1>
+            <div class="max-w-xl space-y-6 text-lg text-gray-700">
+                <p>N'hésitez pas à me contacter pour toute opportunité de collaboration ou simplement pour échanger sur le design !</p>
+                <ul class="space-y-3">
+                    <li><span class="font-bold accent-text">Email :</span> <a href="mailto:mon.email@example.com" class="hover:underline">mon.email@example.com</a></li>
+                    <li><span class="font-bold accent-text">LinkedIn :</span> <a href="[Votre Lien LinkedIn]" target="_blank" class="hover:underline">[Votre Profil]</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="page-project-detail" data-page-content="project-detail" class="page-content hidden">
+            <a href="#" id="back-to-work" class="text-base text-gray-500 hover:text-gray-700 mb-4 inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                Retour aux Projets
+            </a>
+
+            <h1 id="project-detail-title" class="text-4xl font-extrabold text-gray-900 mt-2 mb-6 accent-text">Titre du Projet</h1>
+
+            <div id="project-detail-visual" class="mb-10 w-full rounded-xl shadow-2xl overflow-hidden border-4 border-white hidden">
+                <img src="project-1-mockup.png" alt="Maquette du Transport à la Demande IDFM" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/1200x500/7f1d1d/ffffff?text=Visuel+du+Projet';" />
+            </div>
+
+            <div class="space-y-6 text-lg text-gray-700 max-w-4xl">
+                <h2 class="text-3xl font-bold text-gray-900 mt-8 mb-4">Le Processus UX/UI</h2>
+                <p>J'ai suivi un cycle de conception itératif en 5 étapes, aligné avec la méthode du Design Thinking.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-8">
+                <div class="process-card bg-white p-5 rounded-xl shadow-md text-center hover:shadow-lg transition-transform duration-300" data-process-id="analyse" data-process-title="1. Empathie / Analyse">
+                    <div class="text-4xl mb-2 accent-text">🔍</div>
+                    <h3 class="font-bold text-gray-900">Analyse</h3>
+                    <p class="text-sm text-gray-500">Recherche, Interviews, Sondages</p>
+                </div>
+
+                <div class="process-card bg-white p-5 rounded-xl shadow-md text-center hover:shadow-lg transition-transform duration-300" data-process-id="definition" data-process-title="2. Définition / Synthèse">
+                    <div class="text-4xl mb-2 accent-text">🎯</div>
+                    <h3 class="font-bold text-gray-900">Définition</h3>
+                    <p class="text-sm text-gray-500">Personas, Problèmes, HMW</p>
+                </div>
+
+                <div class="process-card bg-white p-5 rounded-xl shadow-md text-center hover:shadow-lg transition-transform duration-300" data-process-id="ideation" data-process-title="3. Idéation / Concepts">
+                    <div class="text-4xl mb-2 accent-text">💡</div>
+                    <h3 class="font-bold text-gray-900">Idéation</h3>
+                    <p class="text-sm text-gray-500">Brainstorming, Sketchs, Crazy 8s</p>
+                </div>
+
+                <div class="process-card bg-white p-5 rounded-xl shadow-md text-center hover:shadow-lg transition-transform duration-300" data-process-id="prototypage" data-process-title="4. Prototypage / Maquettes">
+                    <div class="text-4xl mb-2 accent-text">💻</div>
+                    <h3 class="font-bold text-gray-900">Prototypage</h3>
+                    <p class="text-sm text-gray-500">Wireframes, UI, Flux</p>
+                </div>
+
+                <div class="process-card bg-white p-5 rounded-xl shadow-md text-center hover:shadow-lg transition-transform duration-300" data-process-id="tests" data-process-title="5. Test & Itération">
+                    <div class="text-4xl mb-2 accent-text">✅</div>
+                    <h3 class="font-bold text-gray-900">Tests</h3>
+                    <p class="text-sm text-gray-500">Usability, Metrics, Amélioration</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-process-detail" data-page-content="process-detail" class="page-content hidden">
+            <a href="#" id="back-to-project-detail" class="text-base text-gray-500 hover:text-gray-700 mb-4 inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                Retour au Projet <span id="current-project-name" class="font-semibold ml-1"></span>
+            </a>
+
+            <h1 id="process-detail-title" class="text-4xl font-extrabold text-gray-900 mt-2 mb-8 accent-text">Étape du Processus</h1>
+
+            <div id="process-content" class="max-w-4xl space-y-6 text-lg text-gray-700">
+                </div>
+        </section>
+
+    </main>
+
+    <div id="image-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-80 justify-center items-center">
+        <button class="close-modal-btn absolute top-4 right-8 text-white hover:text-red-400 transition-colors">
+            &times;
+        </button>
+        <img id="modal-image" src="" alt="Image en grand format" class="rounded-lg shadow-xl" />
     </div>
 
     <script src="app.js"></script>
-</body>
-</html>
 </body>
 </html>
