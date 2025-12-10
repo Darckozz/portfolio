@@ -4,14 +4,12 @@ body {
     background-color: #f7f7f9; /* Un gris très léger pour le fond */
     overflow-x: hidden; /* Empêche un défilement horizontal causé par des éléments fixes */
 }
-
 /* Définition de la couleur d'accent (Bordeaux/Rouge profond) */
 :root {
     --color-bordeaux-base: #7f1d1d; /* Red 900 - Bordeaux profond (Rétabli) */
     --color-bordeaux-light: #fee2e2; /* Red 100 - Arrière-plan subtil pour l'état actif */
     --color-bordeaux-dark: #450a0a; /* Red 950 - Survol bouton principal (Rétabli) */
 }
-
 .accent-text {
     color: var(--color-bordeaux-base); 
 }
@@ -21,7 +19,6 @@ body {
 .accent-bg:hover {
     background-color: var(--color-bordeaux-dark); 
 }
-
 /* STYLE DU LIEN DE NAVIGATION : Rendu plus rapide */
 .nav-link {
     transition: all 0.15s ease-in-out; 
@@ -29,20 +26,17 @@ body {
     border-radius: 0.5rem; /* rounded-lg */
     padding: 0.5rem 0.75rem; /* Le padding de is-active */
 }
-
 /* NOUVEAU STYLE POUR L'ÉTAT ACTIF (Bordeaux clair) */
 .nav-link.is-active {
     background-color: var(--color-bordeaux-light); /* Fond très léger */
     color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé (utiliser !important pour écraser text-gray-600) */
     font-weight: 700; /* Gras */
 }
-
 /* MODIFICATION CLÉ : Simplification du style au survol pour les liens non actifs */
 .nav-link:not(.is-active):hover {
     background-color: #f3f4f6; /* Ajouter un fond gris très léger pour un survol plus doux que transparent */
     color: var(--color-bordeaux-base); /* Optionnel : Changer la couleur du texte au survol non-actif */
 }
-
 /* Styles pour les cartes de projet */
 .project-card {
     border: 1px solid #e5e7eb;
@@ -55,7 +49,6 @@ body {
     box-shadow: 0 8px 12px -3px rgba(127, 29, 29, 0.08), 0 3px 5px -3px rgba(127, 29, 29, 0.05);
     border-color: #e5e7eb; /* Reste gris clair */
 }
-
 /* Style pour les pastilles de compétences */
 .skill-tag {
     background-color: #f3f4f6;
@@ -73,7 +66,6 @@ body {
     box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
     transform: translateY(-1px);
 }
-
 /* Styles pour l'infobulle (tooltip) */
 .tooltip {
     position: relative;
@@ -101,7 +93,6 @@ body {
     visibility: visible;
     opacity: 1;
 }
-
 /* Style spécifique pour les cartes du processus pour activer le curseur */
 .process-card {
     cursor: pointer;
@@ -114,22 +105,18 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
 }
-
 /* NOUVEAU STYLE pour la transition de page */
 .page-content {
     transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
     opacity: 0; 
     transform: translateY(10px); 
 }
-
 /* La page qui doit être affichée */
 .page-content.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
-
 /* --- STYLES POUR LE BOUTON FIGMA --- */
-
 /* Conteneur principal (pour le tooltip) */
 .figma-button-wrapper {
     position: relative;
@@ -137,7 +124,6 @@ body {
     /* Z-INDEX TRÈS ÉLEVÉ pour être certain qu'il est cliquable */
     z-index: 50; 
 }
-
 /* Style pour le conteneur du bouton Figma : */
 .figma-button-container {
     display: flex;
@@ -151,7 +137,6 @@ body {
     transition: transform 0.15s ease-in-out; 
     cursor: pointer; 
 }
-
 /* Style pour l'image Figma dans le bouton : */
 .figma-button-container img {
     /* Rétabli les dimensions d'origine */
@@ -162,7 +147,6 @@ body {
     /* Assure que l'image ne bouge pas si l'on zoome l'image elle-même */
     transition: none; 
 }
-
 /* Animation au survol : On applique le zoom au conteneur */
 .figma-button-container:hover {
     /* Maintient le fond transparent (ce n'est pas nécessaire de le déclarer, mais sécurisant) */
@@ -171,40 +155,33 @@ body {
     /* Le logo et tout ce qu'il contient fera un zoom de 20% */
     transform: scale(1.2); 
 }
-
 /* --- NOUVEAUX STYLES POUR LA MODALE DE ZOOM --- */
-
 /* Style pour le bouton de fermeture de la modale */
 .close-modal-btn {
     font-size: 3rem; 
     line-height: 1; 
 }
-
 /* S'assurer que l'image dans la modale ne déborde pas */
 #modal-image {
     max-width: 90vw; 
     max-height: 90vh; 
     transition: transform 0.3s ease-out; 
 }
-
 /* --- MODIFICATION CLÉ --- */
 /* Fixer une hauteur minimale pour le conteneur principal */
 #content-container {
     min-height: 400px; /* Assure que le cadre ne remonte pas trop sur les pages courtes */
 }
-
 /* --- NOUVEAUX STYLES POUR LES STICKERS ET ÉLÉMENTS DÉCORATIFS (FLOTTANTS) --- */
-
 /* Animation de flottement subtil */
 @keyframes float {
     0% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(5px, -5px) rotate(1deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
 }
-
 /* Base pour tous les stickers */
 .floating-sticker {
-    /* MODIFICATION CLÉ : Utiliser FIXED pour qu'ils soient ancrés au VIEWPORT et ne défilent pas */
+    /* MODIFICATION CLÉ : Utiliser ABSOLUTE pour qu'ils soient ancrés au VIEWPORT et ne défilent pas */
     position: absolute; 
     
     /* Placé derrière la carte */
@@ -215,7 +192,6 @@ body {
     /* Ombre de base appliquée à tous (sera surchargée si besoin) */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-
 /* 1. Carré jaune (Note Post-it) - En haut à gauche */
 .sticker-1 {
     width: 70px;
@@ -227,7 +203,6 @@ body {
     left: calc(50% - 640px - 100px); 
     animation-duration: 5.5s;
 }
-
 /* 2. Triangle vert (Forme abstraite) - Au milieu à gauche */
 .sticker-2 {
     width: 0;
@@ -247,7 +222,6 @@ body {
     animation-duration: 4s;
     animation-delay: 1.2s;
 }
-
 /* 3. Étoile bordeaux - En haut à droite */
 .sticker-3 {
     width: 50px;
@@ -260,7 +234,6 @@ body {
     animation-duration: 6s;
     animation-delay: 0.5s;
 }
-
 /* 4. Cercle bleu/vert (Ligne de crayon) - Au milieu à droite */
 .sticker-4 {
     width: 30px;
@@ -273,7 +246,6 @@ body {
     animation-duration: 3s;
     animation-delay: 0.8s;
 }
-
 /* 5. Cercle en spirale (CONSERVÉ À right: 5%) - En bas à droite */
 .sticker-5 {
     width: 60px;
@@ -287,7 +259,6 @@ body {
     animation-duration: 5s;
     animation-delay: 1.5s;
 }
-
 /* 6. Forme rectangulaire bordeaux (Autre Post-it) - En bas à gauche */
 .sticker-6 {
     width: 50px;
@@ -301,7 +272,6 @@ body {
     animation-duration: 4.8s;
     animation-delay: 2s;
 }
-
 /* NOUVEAU STICKER 7 : Hexagone Gris/Bleu - En haut au centre */
 .sticker-7 {
     width: 50px;
@@ -316,38 +286,4 @@ body {
     opacity: 0.9;
     animation-duration: 6.5s; /* Une durée plus longue */
     animation-delay: 0.2s;
-}
-
-/* --- NOUVEAUX STYLES POUR LES PERSONAS ET USER JOURNEY MAPS (Placeholders) --- */
-
-.persona-image-placeholder {
-    width: 100%;
-    height: 250px; /* Hauteur fixe pour les images de personas */
-    background-color: #e5e7eb; /* Gris clair */
-    border: 3px solid var(--color-bordeaux-light); /* Bordure légère */
-    border-radius: 0.75rem; /* rounded-xl */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #6b7280; /* Gris moyen */
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.user-journey-image-placeholder {
-    width: 100%;
-    height: 300px; /* Hauteur pour les parcours utilisateurs */
-    background-color: #f3f4f6; /* Gris très clair */
-    border: 1px dashed #d1d5db; /* Bordure pointillée */
-    border-radius: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #9ca3af;
-    text-align: center;
-    margin-top: 1.5rem;
 }
