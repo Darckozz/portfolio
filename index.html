@@ -6,19 +6,21 @@
     <title>Portfolio - Noé Spéciel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Intégration de la favicon minimale et moderne -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
 <body class="min-h-screen">
 
     <header class="sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center">
-            <h1 id="home-link" class="text-xl font-bold tracking-tight cursor-pointer flex items-baseline mb-4 sm:mb-0" data-page="work">
+            <h1 id="home-link" class="text-xl font-bold tracking-tight cursor-pointer flex items-baseline mb-4 sm:mb-0" data-page="about">
                 <span class="text-white font-medium">Noé Spéciel</span>
                 <span class="text-neutral-500 font-normal text-xs ml-3 hidden sm:inline">Étudiant en UX/UI Design</span>
             </h1>
             <nav class="space-x-6 flex text-sm">
+                <!-- "À propos" est positionné en premier et configuré comme actif par défaut -->
+                <a href="#" class="nav-link is-active" data-page="about">À propos</a>
                 <a href="#" class="nav-link" data-page="work">Projets</a>
-                <a href="#" class="nav-link" data-page="about">À propos</a>
                 <a href="#" class="nav-link" data-page="contact">Contact</a>
             </nav>
         </div>
@@ -27,7 +29,65 @@
     <main class="max-w-5xl mx-auto px-6 py-12 md:py-24">
         <div id="content-container" style="transition: min-height 0.4s ease-in-out;">
 
-            <!-- PAGE : WORK (PROJETS STYLE TABLEAU ULTRA-MODERNE) -->
+            <!-- PAGE : ABOUT (STYLE ASYMÉTRIQUE - AFFICHÉE EN PREMIER) -->
+            <section id="page-about" data-page-content="about" class="page-content hidden">
+                <div class="flex flex-col md:flex-row gap-8 items-start mb-16">
+                    <h2 class="text-6xl md:text-9xl font-display-title text-neutral-100 uppercase leading-none tracking-tighter flex-grow">
+                        Noé Spéciel
+                    </h2>
+                    <div class="bg-neutral-900 border border-neutral-800 p-4 rounded-2xl flex items-center gap-4 max-w-sm w-full">
+                        <img src="Photo de Profil.png" alt="Noé Spéciel" class="w-16 h-16 rounded-xl object-cover border border-neutral-700" onerror="this.style.display='none';">
+                        <p class="text-xs text-neutral-400 leading-normal">
+                            Création d'interfaces intuitives et centrées utilisateur. Transformer des parcours complexes en solutions visuelles mémorables.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bandeau horizontal de rôles -->
+                <div class="w-full bg-amber-400 text-black text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-xl flex flex-wrap justify-center gap-4 md:gap-8 mb-12">
+                    <span>UX/UI Designer</span>
+                    <span>•</span>
+                    <span>Product Researcher</span>
+                    <span>•</span>
+                    <span>Interaction Thinker</span>
+                </div>
+
+                <!-- Grille descriptive de compétences -->
+                <div class="grid md:grid-cols-2 gap-12 mt-8">
+                    <div>
+                        <h3 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-4">Expertises clés</h3>
+                        <div class="expert-table-row flex justify-between text-sm">
+                            <span class="text-neutral-300">UX Research (Entretiens, Personas)</span>
+                            <span class="text-amber-400 font-mono">01+</span>
+                        </div>
+                        <div class="expert-table-row flex justify-between text-sm">
+                            <span class="text-neutral-300">UI Design & Création d'interfaces (Figma)</span>
+                            <span class="text-amber-400 font-mono">02+</span>
+                        </div>
+                        <div class="expert-table-row flex justify-between text-sm">
+                            <span class="text-neutral-300">Architecture d'information & Wireframing</span>
+                            <span class="text-amber-400 font-mono">03+</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-4">Méthodologies & Tech</h3>
+                        <div class="expert-table-row flex justify-between text-sm">
+                            <span class="text-neutral-300">Design Systems & Accessibilité</span>
+                            <span class="text-amber-400 font-mono">04+</span>
+                        </div>
+                        <div class="expert-table-row flex justify-between text-sm">
+                            <span class="text-neutral-300">Prototypage fonctionnel & Tests</span>
+                            <span class="text-amber-400 font-mono">05+</span>
+                        </div>
+                        <div class="expert-table-row flex justify-between text-sm">
+                            <span class="text-neutral-300">Intégration UI (HTML, CSS, Tailwind)</span>
+                            <span class="text-amber-400 font-mono">06+</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PAGE : WORK (PROJETS) -->
             <section id="page-work" data-page-content="work" class="page-content hidden">
                 <div class="mb-16">
                     <div class="flex items-baseline space-x-4">
@@ -37,7 +97,6 @@
                         </h2>
                     </div>
                     
-                    <!-- Filtres horizontaux style exemple -->
                     <div class="mt-8 flex flex-wrap gap-2 text-xs text-neutral-400 border-y border-neutral-800 py-3">
                         <span class="px-3 py-1 pill-badge rounded-full">UX Research</span>
                         <span class="px-3 py-1 pill-badge rounded-full">UI Design</span>
@@ -45,9 +104,7 @@
                     </div>
                 </div>
                 
-                <!-- Grille de lignes de projet interactives -->
                 <div class="space-y-3">
-                    
                     <div class="project-card project-list-row px-6 py-5 rounded-xl cursor-pointer flex justify-between items-center" data-project-id="1" data-project-title="Transport à la Demande IDFM (Desktop)">
                         <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
                             <span class="text-neutral-400 font-medium text-sm">TàD IDFM (Desktop)</span>
@@ -71,7 +128,6 @@
                         </div>
                         <span class="text-neutral-500 text-sm font-mono">03/03</span>
                     </div>
-
                 </div>
                 
                 <p class="mt-12 text-center text-neutral-500 italic text-xs">Sélectionnez une étude de cas pour explorer le processus de conception.</p>
@@ -110,7 +166,7 @@
                 </div>
 
                 <div class="flex justify-end mb-8">
-                    <a id="figma-link-button-discreet" href="#" target="_blank" class="figma-button-wrapper tooltip">
+                    <a id="figma-link-button-discreet" href="#" target="_blank" class="figma-button-wrapper tooltip p-0 m-0">
                         <div class="figma-button-container bg-neutral-900 border border-neutral-800 rounded-xl p-3 hover:border-amber-400 transition">
                             <img src="figma.png" alt="Logo Figma" class="w-6 h-6 object-contain" />
                         </div>
@@ -147,74 +203,14 @@
                 </div>
             </section>
 
-            <!-- PAGE : DETAIL DU PROCESSUS (DYNAMIQUE) -->
+            <!-- PAGE : DETAIL DU PROCESSUS -->
             <section id="page-process-detail" data-page-content="process-detail" class="page-content hidden">
                 <button id="back-to-project-detail" class="flex items-center text-neutral-400 hover:text-white text-sm font-medium mb-8 transition duration-200">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
                     Retour à l'étude de cas (<span id="current-project-name" class="text-amber-400"></span>)
                 </button>
                 <h2 id="process-detail-title" class="text-3xl md:text-5xl font-display-title text-white uppercase mb-8">Étape</h2>
-                <div id="process-content" class="prose prose-invert max-w-none text-neutral-300 text-sm leading-relaxed">
-                    <!-- Injection dynamique via app.js -->
-                </div>
-            </section>
-
-            <!-- PAGE : ABOUT (STYLE ASYMÉTRIQUE TRAN KHANH) -->
-            <section id="page-about" data-page-content="about" class="page-content hidden">
-                <div class="flex flex-col md:flex-row gap-8 items-start mb-16">
-                    <h2 class="text-6xl md:text-9xl font-display-title text-neutral-100 uppercase leading-none tracking-tighter flex-grow">
-                        Noé Spéciel
-                    </h2>
-                    <div class="bg-neutral-900 border border-neutral-800 p-4 rounded-2xl flex items-center gap-4 max-w-sm w-full">
-                        <img src="Photo de Profil.png" alt="Noé Spéciel" class="w-16 h-16 rounded-xl object-cover border border-neutral-700" onerror="this.style.display='none';">
-                        <p class="text-xs text-neutral-400 leading-normal">
-                            Création d'interfaces intuitives et centrées utilisateur. Transformer des parcours complexes en solutions visuelles mémorables.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Bandeau horizontal de rôles -->
-                <div class="w-full bg-amber-400 text-black text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-xl flex flex-wrap justify-center gap-4 md:gap-8 mb-12">
-                    <span>UX/UI Designer</span>
-                    <span>•</span>
-                    <span>Product Researcher</span>
-                    <span>•</span>
-                    <span>Interaction Thinker</span>
-                </div>
-
-                <!-- Grille descriptive de compétences à la manière de la capture -->
-                <div class="grid md:grid-cols-2 gap-12 mt-8">
-                    <div>
-                        <h3 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-4">Expertises clés</h3>
-                        <div class="expert-table-row flex justify-between text-sm">
-                            <span class="text-neutral-300">UX Research (Entretiens, Personas)</span>
-                            <span class="text-amber-400 font-mono">01+</span>
-                        </div>
-                        <div class="expert-table-row flex justify-between text-sm">
-                            <span class="text-neutral-300">UI Design & Création d'interfaces (Figma)</span>
-                            <span class="text-amber-400 font-mono">02+</span>
-                        </div>
-                        <div class="expert-table-row flex justify-between text-sm">
-                            <span class="text-neutral-300">Architecture d'information & Wireframing</span>
-                            <span class="text-amber-400 font-mono">03+</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-4">Méthodologies & Tech</h3>
-                        <div class="expert-table-row flex justify-between text-sm">
-                            <span class="text-neutral-300">Design Systems & Accessibilité</span>
-                            <span class="text-amber-400 font-mono">04+</span>
-                        </div>
-                        <div class="expert-table-row flex justify-between text-sm">
-                            <span class="text-neutral-300">Prototypage fonctionnel & Tests</span>
-                            <span class="text-amber-400 font-mono">05+</span>
-                        </div>
-                        <div class="expert-table-row flex justify-between text-sm">
-                            <span class="text-neutral-300">Intégration UI (HTML, CSS, Tailwind)</span>
-                            <span class="text-amber-400 font-mono">06+</span>
-                        </div>
-                    </div>
-                </div>
+                <div id="process-content" class="prose prose-invert max-w-none text-neutral-300 text-sm leading-relaxed"></div>
             </section>
 
             <!-- PAGE : CONTACT -->
