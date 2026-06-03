@@ -1,188 +1,141 @@
-/* Configuration de la police Inter par défaut */
+/* Base Layout & Clean Architecture */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #0f172a; /* Slate 900 : Un bleu nuit très sombre et moderne */
-    color: #f1f5f9; /* Slate 100 : Un blanc cassé doux pour les yeux */
-    overflow-x: hidden; /* Empêche un défilement horizontal causé par des éléments fixes */
+    background-color: #020617; /* Slate 950 : un noir d'encre hyper épuré */
 }
 
-/* Définition des variables de couleurs pour le Mode Sombre */
-:root {
-    --color-accent-base: #f43f5e;   /* Rose/Rouge vif (Rose 500) pour ressortir sur le sombre */
-    --color-accent-light: #881337;  /* Rose/Rouge très sombre (Rose 950) pour les fonds actifs */
-    --color-accent-dark: #e11d48;   /* Rose/Rouge survol (Rose 600) */
-    --bg-card: #1e293b;             /* Slate 800 : Le fond de tes cadres et conteneurs */
-    --border-color: #334155;        /* Slate 700 : Pour des bordures subtiles et discrètes */
-}
-
-/* Application des couleurs dynamiques */
-.accent-text {
-    color: var(--color-accent-base); 
-}
-.accent-bg {
-    background-color: var(--color-accent-base); 
-}
-.accent-bg:hover {
-    background-color: var(--color-accent-dark); 
-}
-
-/* --- ADAPTATION DES CADRES PRINCIPAUX AU MODE SOMBRE --- */
-#content-container {
-    background-color: var(--bg-card) !important;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2) !important;
-}
-
-header {
-    background-color: #1e293b !important; /* En-tête sombre */
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2) !important;
-}
-
-footer {
-    color: #94a3b8 !important; /* Slate 400 pour un texte de footer plus discret */
-}
-
-/* --- STYLE DU LIEN DE NAVIGATION --- */
+/* --- ANIMATION ET ÉLÉGANCE DU MENU --- */
 .nav-link {
-    transition: all 0.15s ease-in-out; 
-    border-radius: 0.5rem; 
-    padding: 0.5rem 0.75rem; 
-    color: #94a3b8 !important; /* Liens inactifs en gris clair */
+    color: #64748b !important; /* Slate 500 */
 }
 
-/* État actif en mode sombre */
+/* Ligne minimaliste sous le lien actif */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: #f43f5e; /* Rose 500 */
+    transform-origin: bottom right;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 .nav-link.is-active {
-    background-color: var(--color-accent-light); 
-    color: var(--color-accent-base) !important; 
-    font-weight: 700; 
+    color: #ffffff !important;
+    font-weight: 600;
 }
 
-/* Survol des liens non actifs */
+.nav-link.is-active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
 .nav-link:not(.is-active):hover {
-    background-color: #334155; /* Fond gris bleu foncé au survol */
-    color: #f8fafc !important; 
+    color: #f8fafc !important;
 }
 
-/* --- CARTES DE PROJET & PROCESSUS --- */
+/* --- SUPPRESSION DES EFFETS DE CONTOURS SUR LES CARTES --- */
 .project-card, .process-card {
-    background-color: #0f172a !important; /* Fond encore plus sombre pour faire du contraste */
-    border: 1px solid var(--border-color) !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2) !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
 }
 
-.project-card:hover, .process-card:hover {
-    transform: translateY(-3px); 
-    box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.15) !important; /* Halo lumineux d'accentuation */
-    border-color: var(--color-accent-base) !important; 
+/* Au survol d'une carte sur Behance, c'est l'image qui bouge ou l'opacité qui s'ajuste, pas le cadre */
+.process-card {
+    background-color: #0f172a !important; /* Slate 900 subtil pour détacher le process */
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Textes secondaires dans les cartes */
-.project-card p, .text-gray-600, .text-gray-700 {
-    color: #cbd5e1 !important; /* Slate 300 pour une excellente lisibilité */
+.process-card:hover {
+    background-color: #1e293b !important; /* Slate 800 */
+    transform: translateY(-2px);
 }
 
-.text-gray-800, .text-gray-900, h2, h3, h4 {
-    color: #f8fafc !important; /* Blanc pur pour les titres importants */
-}
-
-/* Ajustement des encarts spécifiques (comme la section de conclusion ou les métadonnées) */
-.bg-gray-50, .bg-red-50 {
-    background-color: #0f172a !important; 
-    border-color: var(--border-color) !important;
-}
-
-/* --- PASTILLES DE COMPÉTENCES --- */
+/* --- PASTILLES DE COMPÉTENCES ULTRA CLEAN --- */
 .skill-tag {
-    background-color: #334155;
-    color: #f1f5f9;
-    border: 1px solid var(--border-color);
-    transition: all 0.2s ease-in-out;
-    cursor: default; 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    background-color: #0f172a !important;
+    color: #94a3b8 !important;
+    border: 1px solid #1e293b !important;
+    transition: all 0.3s ease;
+    cursor: default;
 }
 
 .skill-tag:hover {
-    background-color: var(--color-accent-light); 
-    color: var(--color-accent-base); 
-    border-color: var(--color-accent-base); 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
-    transform: translateY(-1px);
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
 }
 
-/* --- INFOBULLE (TOOLTIP) --- */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 170px;
-    background-color: #f1f5f9;
-    color: #0f172a;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 8px;
-    position: absolute;
-    z-index: 10;
-    bottom: 120%; 
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.8rem;
-    white-space: nowrap;
+/* --- PROSE STYLE BEHANCE EDITIONS --- */
+.prose h3 {
+    color: #ffffff !important;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+}
+
+.prose strong {
+    color: #f43f5e !important; /* Accentuation discrète dans les textes */
     font-weight: 600;
 }
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+
+.prose table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2rem 0;
 }
 
-/* --- BOUTON FIGMA --- */
-.figma-button-wrapper {
-    position: relative;
-    display: inline-block;
-    z-index: 50; 
+.prose th {
+    color: #ffffff !important;
+    border-bottom: 1px solid #1e293b !important;
+    padding: 0.75rem 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
-.figma-button-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    transition: transform 0.15s ease-in-out; 
-    cursor: pointer; 
+.prose td {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #0f172a !important;
+    color: #94a3b8 !important;
+    font-size: 0.875rem;
 }
 
-.figma-button-container img {
-    width: 60px; 
-    height: 60px;
-    object-fit: contain; 
-    opacity: 1;
-    transition: none; 
-}
-
-.figma-button-container:hover {
-    background-color: transparent; 
-    transform: scale(1.2); 
-}
-
-/* --- MODALE DE ZOOM --- */
-.close-modal-btn {
-    font-size: 3rem; 
-    line-height: 1; 
-}
-
-#modal-image {
-    max-width: 90vw; 
-    max-height: 90vh; 
-    transition: transform 0.3s ease-out; 
-}
-
+/* --- TRANSITIONS DE PAGES FLUIDES (AJUSTEMENT DU CURVE) --- */
 .page-content {
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-    opacity: 0; 
-    transform: translateY(10px); 
+    transition: opacity 0.5s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    opacity: 0;
+    transform: translateY(15px);
 }
 
 .page-content.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* --- TOOLTIP TEXT ADAPTÉ --- */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #ffffff;
+    color: #020617;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
