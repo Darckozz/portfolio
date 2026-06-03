@@ -721,5 +721,5 @@ backToProjectDetailButton.addEventListener('click', (e) => {
 
 // 7. Initialisation
 document.addEventListener('DOMContentLoaded', () => {
-    showPage('work');
+    showPage('about');
 });
