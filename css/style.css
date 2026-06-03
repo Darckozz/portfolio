@@ -68,7 +68,7 @@ header {
 
 .project-list-row:hover {
     background-color: #1a1a1a;
-    border-color: var(--color-gold);
+    border-color: #404040; /* Bordure grise subtile au lieu de jaune */
 }
 
 .expert-table-row {
@@ -78,31 +78,35 @@ header {
 
 /* --- ENCART DE COMPETENCES / BADGES --- */
 .pill-badge {
-    background-color: #171717;
-    color: #ffffff;
+    background-color: #161616;
     border: 1px solid var(--border-dark);
-    font-size: 0.85rem;
-    font-weight: 500;
+    color: #e5e5e5;
+    transition: all 0.2s ease-in-out;
 }
 
-/* --- MODALE DE ZOOM --- */
+.pill-badge:hover {
+    border-color: var(--color-gold);
+    color: #ffffff;
+}
+
+/* Style spécifique pour les cartes de processus cliquables */
+.process-card {
+    background-color: #121212;
+    border: 1px solid #262626;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.process-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-gold);
+    background-color: #161616;
+}
+
+/* Style de la modale d'image pour le zoom */
 .close-modal-btn {
-    font-size: 3rem;
-    line-height: 1;
+    transition: color 0.2s ease;
 }
 
 #modal-image {
-    max-width: 90vw;
-    max-height: 90vh;
-}
-
-.page-content {
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.page-content.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+    cursor: zoom-out;
 }
