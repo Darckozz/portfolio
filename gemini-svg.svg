@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Fond noir texturé comme le site -->
+  <rect width="512" height="512" rx="110" fill="#000000" />
+  
+  <!-- Monogramme géométrique NS -->
+  <text x="50%" y="54%" 
+        font-family="'Syne', 'Plus Jakarta Sans', 'Arial Black', sans-serif" 
+        font-size="240" 
+        font-weight="900" 
+        fill="#FFFFFF" 
+        text-anchor="middle" 
+        dominant-baseline="middle" 
+        letter-spacing="-10">NS</text>
+        
+  <!-- Le point d'accentuation jaune/or du modèle -->
+  <circle cx="395" cy="360" r="32" fill="#fcd34d" />
+</svg>
