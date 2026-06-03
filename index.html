@@ -12,7 +12,6 @@
 
     <header class="sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center">
-            <!-- Modification : Noé Spéciel remplacé par Portfolio -->
             <h1 id="home-link" class="text-xl font-bold tracking-tight cursor-pointer flex items-baseline mb-4 sm:mb-0" data-page="about">
                 <span class="text-white font-medium">Portfolio</span>
                 <span class="text-neutral-500 font-normal text-xs ml-3 hidden sm:inline">Étudiant en UX/UI Design</span>
@@ -20,8 +19,8 @@
             <nav class="space-x-6 flex items-center text-sm">
                 <a href="#" class="nav-link is-active" data-page="about">À propos</a>
                 <a href="#" class="nav-link" data-page="work">Projets</a>
-                <!-- Modification : Bouton Contact moderne sur fond jaune avec texte noir -->
-                <a href="#" class="nav-link px-4 py-2 bg-amber-400 text-black font-semibold rounded-lg hover:bg-amber-300 transition duration-300 shadow-md transform hover:scale-105" data-page="contact" style="color: #000000 !important;">Contact</a>
+                <!-- Modification : Le fond jaune est retiré, retour au style épuré textuel -->
+                <a href="#" class="nav-link" data-page="contact">Contact</a>
             </nav>
         </div>
     </header>
@@ -31,12 +30,13 @@
 
             <!-- PAGE : ABOUT (À PROPOS) -->
             <section id="page-about" data-page-content="about" class="page-content hidden">
-                <div class="flex flex-col md:flex-row gap-8 items-start mb-16">
+                <div class="flex flex-col md:flex-row gap-8 items-center mb-16">
                     <h2 class="text-6xl md:text-9xl font-display-title text-neutral-100 uppercase leading-none tracking-tighter flex-grow">
                         Noé Spéciel
                     </h2>
-                    <div class="bg-neutral-900/80 border border-neutral-800 p-4 rounded-2xl flex items-center gap-4 max-w-sm w-full backdrop-blur-sm">
-                        <img src="Photo de Profil.png" alt="Noé Spéciel" class="w-16 h-16 rounded-xl object-cover border border-neutral-700" onerror="this.style.display='none';">
+                    <!-- Modification : Suppression du cadre de fond. Photo ronde avec contour et texte à côté. -->
+                    <div class="flex items-center gap-4 max-w-md w-full">
+                        <img src="Photo de Profil.png" alt="Noé Spéciel" class="w-20 h-20 rounded-full object-cover border-2 border-neutral-800 flex-shrink-0" onerror="this.style.display='none';">
                         <p class="text-xs text-neutral-400 leading-normal">
                             Création d'interfaces intuitives et centrées utilisateur. Transformer des parcours complexes en solutions visuelles mémorables.
                         </p>
@@ -195,7 +195,7 @@
                     <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="analyse" data-process-title="01 / Analyse utilisateur">
                         <div>
                             <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">01 / Analyse utilisateur</h4>
-                            <p class="text-xs text-neutral-400">Exploration de la problématique, recherche terrain et analysis qualitative.</p>
+                            <p class="text-xs text-neutral-400">Exploration de la problématique, recherche terrain et analyse qualitative.</p>
                         </div>
                     </div>
                     <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="definition" data-process-title="02 / Définition & Synthèse">
