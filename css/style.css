@@ -1,89 +1,120 @@
 /* Configuration de la police Inter par défaut */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f7f7f9; /* Un gris très léger pour le fond */
+    background-color: #0f172a; /* Slate 900 : Un bleu nuit très sombre et moderne */
+    color: #f1f5f9; /* Slate 100 : Un blanc cassé doux pour les yeux */
     overflow-x: hidden; /* Empêche un défilement horizontal causé par des éléments fixes */
 }
 
-/* Définition de la couleur d'accent (Bordeaux/Rouge profond) */
+/* Définition des variables de couleurs pour le Mode Sombre */
 :root {
-    --color-bordeaux-base: #7f1d1d; /* Red 900 - Bordeaux profond (Rétabli) */
-    --color-bordeaux-light: #fee2e2; /* Red 100 - Arrière-plan subtil pour l'état actif */
-    --color-bordeaux-dark: #450a0a; /* Red 950 - Survol bouton principal (Rétabli) */
+    --color-accent-base: #f43f5e;   /* Rose/Rouge vif (Rose 500) pour ressortir sur le sombre */
+    --color-accent-light: #881337;  /* Rose/Rouge très sombre (Rose 950) pour les fonds actifs */
+    --color-accent-dark: #e11d48;   /* Rose/Rouge survol (Rose 600) */
+    --bg-card: #1e293b;             /* Slate 800 : Le fond de tes cadres et conteneurs */
+    --border-color: #334155;        /* Slate 700 : Pour des bordures subtiles et discrètes */
 }
 
+/* Application des couleurs dynamiques */
 .accent-text {
-    color: var(--color-bordeaux-base); 
+    color: var(--color-accent-base); 
 }
 .accent-bg {
-    background-color: var(--color-bordeaux-base); 
+    background-color: var(--color-accent-base); 
 }
 .accent-bg:hover {
-    background-color: var(--color-bordeaux-dark); 
+    background-color: var(--color-accent-dark); 
 }
 
-/* STYLE DU LIEN DE NAVIGATION : Rendu plus rapide */
+/* --- ADAPTATION DES CADRES PRINCIPAUX AU MODE SOMBRE --- */
+#content-container {
+    background-color: var(--bg-card) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2) !important;
+}
+
+header {
+    background-color: #1e293b !important; /* En-tête sombre */
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2) !important;
+}
+
+footer {
+    color: #94a3b8 !important; /* Slate 400 pour un texte de footer plus discret */
+}
+
+/* --- STYLE DU LIEN DE NAVIGATION --- */
 .nav-link {
     transition: all 0.15s ease-in-out; 
-    /* MODIFICATION CLÉ : Ajouter le padding et le border-radius ici */
-    border-radius: 0.5rem; /* rounded-lg */
-    padding: 0.5rem 0.75rem; /* Le padding de is-active */
+    border-radius: 0.5rem; 
+    padding: 0.5rem 0.75rem; 
+    color: #94a3b8 !important; /* Liens inactifs en gris clair */
 }
 
-/* NOUVEAU STYLE POUR L'ÉTAT ACTIF (Bordeaux clair) */
+/* État actif en mode sombre */
 .nav-link.is-active {
-    background-color: var(--color-bordeaux-light); /* Fond très léger */
-    color: var(--color-bordeaux-base) !important; /* Texte bordeaux foncé (utiliser !important pour écraser text-gray-600) */
-    font-weight: 700; /* Gras */
+    background-color: var(--color-accent-light); 
+    color: var(--color-accent-base) !important; 
+    font-weight: 700; 
 }
 
-/* MODIFICATION CLÉ : Simplification du style au survol pour les liens non actifs */
+/* Survol des liens non actifs */
 .nav-link:not(.is-active):hover {
-    background-color: #f3f4f6; /* Ajouter un fond gris très léger pour un survol plus doux que transparent */
-    color: var(--color-bordeaux-base); /* Optionnel : Changer la couleur du texte au survol non-actif */
+    background-color: #334155; /* Fond gris bleu foncé au survol */
+    color: #f8fafc !important; 
 }
 
-/* Styles pour les cartes de projet */
-.project-card {
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-}
-/* MODIFIÉ : Rétabli l'ombre subtile basée sur le bordeaux profond (7f1d1d) */
-.project-card:hover {
-    transform: translateY(-3px); /* Laisse un petit lift subtil */
-    box-shadow: 0 8px 12px -3px rgba(127, 29, 29, 0.08), 0 3px 5px -3px rgba(127, 29, 29, 0.05);
-    border-color: #e5e7eb; /* Reste gris clair */
+/* --- CARTES DE PROJET & PROCESSUS --- */
+.project-card, .process-card {
+    background-color: #0f172a !important; /* Fond encore plus sombre pour faire du contraste */
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Style pour les pastilles de compétences */
+.project-card:hover, .process-card:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.15) !important; /* Halo lumineux d'accentuation */
+    border-color: var(--color-accent-base) !important; 
+}
+
+/* Textes secondaires dans les cartes */
+.project-card p, .text-gray-600, .text-gray-700 {
+    color: #cbd5e1 !important; /* Slate 300 pour une excellente lisibilité */
+}
+
+.text-gray-800, .text-gray-900, h2, h3, h4 {
+    color: #f8fafc !important; /* Blanc pur pour les titres importants */
+}
+
+/* Ajustement des encarts spécifiques (comme la section de conclusion ou les métadonnées) */
+.bg-gray-50, .bg-red-50 {
+    background-color: #0f172a !important; 
+    border-color: var(--border-color) !important;
+}
+
+/* --- PASTILLES DE COMPÉTENCES --- */
 .skill-tag {
-    background-color: #f3f4f6;
-    color: #1f2937;
-    border: 1px solid #e5e7eb;
+    background-color: #334155;
+    color: #f1f5f9;
+    border: 1px solid var(--border-color);
     transition: all 0.2s ease-in-out;
     cursor: default; 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-/* MODIFIÉ : Rétabli l'ombre et le survol basés sur le bordeaux profond (7f1d1d) */
+
 .skill-tag:hover {
-    background-color: var(--color-bordeaux-light); 
-    color: var(--color-bordeaux-base); 
-    border-color: #fca5a5; 
-    box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1); 
+    background-color: var(--color-accent-light); 
+    color: var(--color-accent-base); 
+    border-color: var(--color-accent-base); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
     transform: translateY(-1px);
 }
 
-/* Styles pour l'infobulle (tooltip) */
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
+/* --- INFOBULLE (TOOLTIP) --- */
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 170px;
-    background-color: #333;
-    color: #fff;
+    background-color: #f1f5f9;
+    color: #0f172a;
     text-align: center;
     border-radius: 6px;
     padding: 5px 8px;
@@ -96,224 +127,62 @@ body {
     transition: opacity 0.3s;
     font-size: 0.8rem;
     white-space: nowrap;
+    font-weight: 600;
 }
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
 }
 
-/* Style spécifique pour les cartes du processus pour activer le curseur */
-.process-card {
-    cursor: pointer;
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-/* MODIFIÉ : Rétabli l'ombre basée sur le bordeaux profond (7f1d1d) */
-.process-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(127, 29, 29, 0.1);
-}
-
-/* NOUVEAU STYLE pour la transition de page */
-.page-content {
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-    opacity: 0; 
-    transform: translateY(10px); 
-}
-
-/* La page qui doit être affichée */
-.page-content.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- STYLES POUR LE BOUTON FIGMA --- */
-
-/* Conteneur principal (pour le tooltip) */
+/* --- BOUTON FIGMA --- */
 .figma-button-wrapper {
     position: relative;
     display: inline-block;
-    /* Z-INDEX TRÈS ÉLEVÉ pour être certain qu'il est cliquable */
     z-index: 50; 
 }
 
-/* Style pour le conteneur du bouton Figma : */
 .figma-button-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Définit explicitement la zone pour le zoom */
     width: 60px;
     height: 60px;
-    
-    /* Animation appliquée au survol */
     transition: transform 0.15s ease-in-out; 
     cursor: pointer; 
 }
 
-/* Style pour l'image Figma dans le bouton : */
 .figma-button-container img {
-    /* Rétabli les dimensions d'origine */
     width: 60px; 
     height: 60px;
     object-fit: contain; 
     opacity: 1;
-    /* Assure que l'image ne bouge pas si l'on zoome l'image elle-même */
     transition: none; 
 }
 
-/* Animation au survol : On applique le zoom au conteneur */
 .figma-button-container:hover {
-    /* Maintient le fond transparent (ce n'est pas nécessaire de le déclarer, mais sécurisant) */
     background-color: transparent; 
-    
-    /* Le logo et tout ce qu'il contient fera un zoom de 20% */
     transform: scale(1.2); 
 }
 
-/* --- NOUVEAUX STYLES POUR LA MODALE DE ZOOM --- */
-
-/* Style pour le bouton de fermeture de la modale */
+/* --- MODALE DE ZOOM --- */
 .close-modal-btn {
     font-size: 3rem; 
     line-height: 1; 
 }
 
-/* S'assurer que l'image dans la modale ne déborde pas */
 #modal-image {
     max-width: 90vw; 
     max-height: 90vh; 
     transition: transform 0.3s ease-out; 
 }
 
-/* --- MODIFICATION CLÉ --- */
-/* Fixer une hauteur minimale pour le conteneur principal */
-#content-container {
-    min-height: 400px; /* Assure que le cadre ne remonte pas trop sur les pages courtes */
+.page-content {
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    opacity: 0; 
+    transform: translateY(10px); 
 }
 
-/* --- NOUVEAUX STYLES POUR LES STICKERS ET ÉLÉMENTS DÉCORATIFS (FLOTTANTS) --- */
-
-/* Animation de flottement subtil */
-@keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(5px, -5px) rotate(1deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-/* Base pour tous les stickers */
-.floating-sticker {
-    /* MODIFICATION CLÉ : Utiliser FIXED pour qu'ils soient ancrés au VIEWPORT et ne défilent pas */
-    position: absolute; 
-    
-    /* Placé derrière la carte */
-    z-index: 0; 
-    animation: float 4s ease-in-out infinite alternate;
-    pointer-events: none; /* Rendre les stickers ignorables par la souris */
-    
-    /* Ombre de base appliquée à tous (sera surchargée si besoin) */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* 1. Carré jaune (Note Post-it) - En haut à gauche */
-.sticker-1 {
-    width: 70px;
-    height: 70px;
-    background-color: #fde047; /* Jaune */
-    border-radius: 6px;
-    top: 100px; 
-    /* CHANGÉ : Ancré à gauche de la zone de contenu max (640px = 1280px/2) + décalage */
-    left: calc(50% - 640px - 100px); 
-    animation-duration: 5.5s;
-}
-
-/* 2. Triangle vert (Forme abstraite) - Au milieu à gauche */
-.sticker-2 {
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 50px solid #10b981; /* Vert émeraude */
-    top: 430px; 
-    /* CHANGÉ : Ancré plus loin à gauche de la zone de contenu max */
-    left: calc(50% - 640px - 160px); 
-    
-    /* Ombre retirée spécifiquement pour corriger l'effet sur les bords transparents */
-    box-shadow: none;
-    
-    opacity: 0.85; 
-    
-    animation-duration: 4s;
-    animation-delay: 1.2s;
-}
-
-/* 3. Étoile bordeaux - En haut à droite */
-.sticker-3 {
-    width: 50px;
-    height: 50px;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    background-color: var(--color-bordeaux-base); /* Bordeaux */
-    top: 100px; 
-    /* CHANGÉ : Ancré à droite de la zone de contenu max (640px = 1280px/2) + décalage */
-    right: calc(50% - 640px - 90px); 
-    animation-duration: 6s;
-    animation-delay: 0.5s;
-}
-
-/* 4. Cercle bleu/vert (Ligne de crayon) - Au milieu à droite */
-.sticker-4 {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #06b6d4; /* Cyan */
-    top: 400px;
-    /* CHANGÉ : Ancré plus loin à droite de la zone de contenu max */
-    right: calc(50% - 640px - 160px);
-    animation-duration: 3s;
-    animation-delay: 0.8s;
-}
-
-/* 5. Cercle en spirale (CONSERVÉ À right: 5%) - En bas à droite */
-.sticker-5 {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: radial-gradient(circle, transparent 20%, #f97316 20%, #f97316 40%, transparent 40%, transparent 60%, #ef4444 60%); 
-    top: 800px; 
-    /* CHANGÉ : Ancré à droite de la zone de contenu max */
-    right: calc(50% - 640px - 120px); 
-    opacity: 0.9;
-    animation-duration: 5s;
-    animation-delay: 1.5s;
-}
-
-/* 6. Forme rectangulaire bordeaux (Autre Post-it) - En bas à gauche */
-.sticker-6 {
-    width: 50px;
-    height: 40px;
-    background-color: var(--color-bordeaux-dark);
-    border-radius: 4px;
-    top: 800px; 
-    /* CHANGÉ : Ancré à gauche de la zone de contenu max */
-    left: calc(50% - 640px - 120px);
-    opacity: 0.7;
-    animation-duration: 4.8s;
-    animation-delay: 2s;
-}
-
-/* NOUVEAU STICKER 7 : Hexagone Gris/Bleu - En haut au centre */
-.sticker-7 {
-    width: 50px;
-    height: 50px;
-    background-color: #64748b; /* Slate 500 */
-    /* Forme Hexagone */
-    clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
-    /* Centré au-dessus de la zone du contenu */
-    top: 60px; 
-    left: 45%; 
-    transform: translateX(-50%); /* Décalage pour centrage horizontal */
-    opacity: 0.9;
-    animation-duration: 6.5s; /* Une durée plus longue */
-    animation-delay: 0.2s;
+.page-content.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
