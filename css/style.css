@@ -1,141 +1,108 @@
-/* Base Layout & Clean Architecture */
+/* Importation des typographies du modèle */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #020617; /* Slate 950 : un noir d'encre hyper épuré */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #000000; /* Noir pur comme les captures d'écran */
+    color: #ffffff;
+    overflow-x: hidden;
 }
 
-/* --- ANIMATION ET ÉLÉGANCE DU MENU --- */
+:root {
+    --color-gold: #fcd34d;       /* Le jaune/ambre des exemples */
+    --color-muted-gold: #b45309; /* Version sombre pour les états actifs */
+    --bg-dark-card: #121212;     /* Gris de carte très sombre */
+    --border-dark: #262626;      /* Bordure fine subtile */
+}
+
+.accent-text {
+    color: var(--color-gold);
+}
+
+/* Typographie d'impact pour les grands titres */
+.font-display-title {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.05em;
+}
+
+/* Typographie élégante pour les chiffres ou accents */
+.font-serif-accent {
+    font-family: 'Syne', sans-serif;
+}
+
+/* --- STRUCTURE ET CONTENEURS --- */
+#content-container {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+/* Liens de navigation épurés */
 .nav-link {
-    color: #64748b !important; /* Slate 500 */
-}
-
-/* Ligne minimaliste sous le lien actif */
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 1.5px;
-    bottom: 0;
-    left: 0;
-    background-color: #f43f5e; /* Rose 500 */
-    transform-origin: bottom right;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.2s ease-in-out;
+    color: #a3a3a3 !important;
 }
 
 .nav-link.is-active {
-    color: #ffffff !important;
+    color: var(--color-gold) !important;
     font-weight: 600;
-}
-
-.nav-link.is-active::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
 }
 
 .nav-link:not(.is-active):hover {
-    color: #f8fafc !important;
-}
-
-/* --- SUPPRESSION DES EFFETS DE CONTOURS SUR LES CARTES --- */
-.project-card, .process-card {
-    border: none !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
-}
-
-/* Au survol d'une carte sur Behance, c'est l'image qui bouge ou l'opacité qui s'ajuste, pas le cadre */
-.process-card {
-    background-color: #0f172a !important; /* Slate 900 subtil pour détacher le process */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.process-card:hover {
-    background-color: #1e293b !important; /* Slate 800 */
-    transform: translateY(-2px);
-}
-
-/* --- PASTILLES DE COMPÉTENCES ULTRA CLEAN --- */
-.skill-tag {
-    background-color: #0f172a !important;
-    color: #94a3b8 !important;
-    border: 1px solid #1e293b !important;
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-.skill-tag:hover {
-    background-color: #1e293b !important;
     color: #ffffff !important;
-    border-color: #334155 !important;
 }
 
-/* --- PROSE STYLE BEHANCE EDITIONS --- */
-.prose h3 {
-    color: #ffffff !important;
-    font-weight: 800;
-    letter-spacing: -0.025em;
+/* --- LISTES ET CARTES STYLE "EXEMPLE" --- */
+.project-list-row {
+    background-color: var(--bg-dark-card);
+    border-bottom: 1px solid var(--border-dark);
+    transition: all 0.2s ease-in-out;
 }
 
-.prose strong {
-    color: #f43f5e !important; /* Accentuation discrète dans les textes */
-    font-weight: 600;
+.project-list-row:hover {
+    background-color: #1a1a1a;
+    border-color: var(--color-gold);
 }
 
-.prose table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 2rem 0;
+.expert-table-row {
+    border-bottom: 1px solid var(--border-dark);
+    padding: 1.25rem 0;
 }
 
-.prose th {
-    color: #ffffff !important;
-    border-bottom: 1px solid #1e293b !important;
-    padding: 0.75rem 0;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+/* --- ENCART DE COMPETENCES / BADGES --- */
+.pill-badge {
+    background-color: #171717;
+    color: #ffffff;
+    border: 1px solid var(--border-dark);
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
-.prose td {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #0f172a !important;
-    color: #94a3b8 !important;
-    font-size: 0.875rem;
+/* --- MODALE DE ZOOM --- */
+.close-modal-btn {
+    font-size: 3rem;
+    line-height: 1;
 }
 
-/* --- TRANSITIONS DE PAGES FLUIDES (AJUSTEMENT DU CURVE) --- */
+#modal-image {
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
 .page-content {
-    transition: opacity 0.5s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(10px);
 }
 
 .page-content.is-visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* --- TOOLTIP TEXT ADAPTÉ --- */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    background-color: #ffffff;
-    color: #020617;
-    font-size: 0.7rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 6px 10px;
-    border-radius: 4px;
-    position: absolute;
-    bottom: 130%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
 }
