@@ -1,11 +1,16 @@
 /* Importation des typographies du modèle */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: #000000; /* Noir pur comme les captures d'écran */
     color: #ffffff;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 :root {
@@ -13,6 +18,7 @@ body {
     --color-muted-gold: #b45309; /* Version sombre pour les états actifs */
     --bg-dark-card: #121212;     /* Gris de carte très sombre */
     --border-dark: #262626;      /* Bordure fine subtile */
+    --transition-premium: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .accent-text {
@@ -37,17 +43,38 @@ body {
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.8) !important;
-    backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-dark);
 }
 
-/* Liens de navigation épurés */
+/* Liens de navigation épurés avec effet de ligne moderne */
 .nav-link {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.95rem;
-    transition: all 0.2s ease-in-out;
+    position: relative;
+    padding: 4px 0;
+    transition: var(--transition-premium);
     color: #a3a3a3 !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-gold);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after, .nav-link.is-active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .nav-link.is-active {
@@ -63,50 +90,101 @@ header {
 .project-list-row {
     background-color: var(--bg-dark-card);
     border-bottom: 1px solid var(--border-dark);
-    transition: all 0.2s ease-in-out;
+    transition: var(--transition-premium);
 }
 
+/* Effet de focus moderne sur la ligne du projet au survol */
 .project-list-row:hover {
-    background-color: #1a1a1a;
-    border-color: #404040; /* Bordure grise subtile au lieu de jaune */
+    background-color: #161616;
+    border-color: #444444;
+    transform: translateX(4px); /* Léger décalage vers la droite ultra fluide */
+}
+
+/* Micro-interaction sur l'image dans la liste */
+.project-card img {
+    transition: var(--transition-premium);
+}
+
+.project-card:hover img {
+    transform: scale(1.08); /* Zoom discret et très propre de l'image */
 }
 
 .expert-table-row {
     border-bottom: 1px solid var(--border-dark);
     padding: 1.25rem 0;
+    transition: var(--transition-premium);
+}
+
+.expert-table-row:hover {
+    border-color: #444444;
+    padding-left: 6px;
 }
 
 /* --- ENCART DE COMPETENCES / BADGES --- */
 .pill-badge {
-    background-color: #161616;
+    background-color: #121212;
+    color: #a3a3a3;
     border: 1px solid var(--border-dark);
-    color: #e5e5e5;
-    transition: all 0.2s ease-in-out;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition-premium);
 }
 
 .pill-badge:hover {
     border-color: var(--color-gold);
     color: #ffffff;
+    background-color: #1a1a1a;
+    transform: translateY(-2px);
 }
 
 /* Style spécifique pour les cartes de processus cliquables */
 .process-card {
     background-color: #121212;
-    border: 1px solid #262626;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid var(--border-dark);
+    transition: var(--transition-premium);
 }
 
 .process-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     border-color: var(--color-gold);
     background-color: #161616;
+    box-shadow: 0 10px 30px -15px rgba(252, 211, 77, 0.1);
 }
 
-/* Style de la modale d'image pour le zoom */
+/* --- MODALE DE ZOOM --- */
 .close-modal-btn {
-    transition: color 0.2s ease;
+    font-size: 3rem;
+    line-height: 1;
+    transition: var(--transition-premium);
+}
+
+.close-modal-btn:hover {
+    transform: rotate(90deg);
 }
 
 #modal-image {
+    max-width: 90vw;
+    max-height: 90vh;
     cursor: zoom-out;
+    transition: var(--transition-premium);
+}
+
+/* --- ANIMATIONS DE PAGES (SPA) --- */
+.page-content {
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.page-content.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Boutons génériques animés */
+.btn-motion {
+    transition: var(--transition-premium);
+}
+.btn-motion:hover {
+    transform: scale(1.03);
 }
