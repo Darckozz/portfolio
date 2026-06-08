@@ -1,216 +1,285 @@
-// État global pour stocker le projet actuellement affiché
-let currentProject = {
-    id: null,
-    title: null
-};
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Noé Spéciel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+</head>
+<body class="min-h-screen">
 
-// --- Sélection des Éléments DOM ---\nconst navLinks = document.querySelectorAll('.nav-link');
-const pageContents = document.querySelectorAll('.page-content');
-const homeLink = document.getElementById('home-link');
-const projectCards = document.querySelectorAll('.project-card');
-const projectDetailTitle = document.getElementById('project-detail-title');
-const backToWorkButton = document.getElementById('back-to-work');
-const figmaLinkButton = document.getElementById('figma-link-button-discreet');
-const projectVisual = document.getElementById('project-detail-visual');
-const processCards = document.querySelectorAll('.process-card');
-const backToProjectDetailButton = document.getElementById('back-to-project-detail');
-const currentProjectNameSpan = document.getElementById('current-project-name');
-const processDetailTitle = document.getElementById('process-detail-title');
-const processContentDiv = document.getElementById('process-content');
-const contentContainer = document.getElementById('content-container');
-const TRANSITION_DURATION = 500; // Aligné avec le CSS (0.5s)
+    <header class="sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center">
+            <h1 id="home-link" class="text-xl font-bold tracking-tight cursor-pointer flex items-baseline mb-4 sm:mb-0" data-page="about" role="button" tabindex="0" aria-label="Retour à l'accueil">
+                <span class="text-white font-medium">Portfolio</span>
+                <span class="text-neutral-500 font-normal text-xs ml-3 hidden sm:inline">Étudiant en UX/UI Design</span>
+            </h1>
+            <nav class="space-x-6 flex items-center text-sm">
+                <a href="#" class="nav-link is-active" data-page="about">À propos</a>
+                <a href="#" class="nav-link" data-page="work">Projets</a>
+                <a href="#" class="nav-link" data-page="contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="max-w-5xl mx-auto px-6 py-12 md:py-24">
+        <div id="content-container" style="transition: min-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
 
-// --- ÉLÉMENTS DOM POUR LE ZOOM ---
-const modal = document.getElementById('image-modal');
-const modalImg = document.getElementById('modal-image');
-const closeBtn = document.querySelector('.close-modal-btn');
-
-// --- Données des Études de Cas ---
-const projectProcessDetails = {
-    idfm: {
-        title: "Île-de-France Mobilités",
-        figma: "https://figma.com",
-        analyse: `
-            <h3 class="text-xl font-bold text-white mb-4">Analyse & Recherche Utilisateur</h3>
-            <p>Notre analyse terrain a révélé des frictions majeures sur l'application actuelle lors des correspondances et de l'achat de recharges Navigo.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                <div class="bg-neutral-900 p-4 rounded-xl border border-neutral-800">
-                    <h4 class="font-bold text-amber-400 mb-2">Points de friction</h4>
-                    <ul class="list-disc pl-5 space-y-1 text-sm text-neutral-400">
-                        <li>Temps de chargement NFC trop long</li>
-                        <li>Calcul d'itinéraire confus en cas de perturbation</li>
-                    </ul>
+            <section id="page-about" data-page-content="about" class="page-content hidden">
+                <div class="flex flex-col md:flex-row gap-8 items-center mb-16">
+                    <h2 class="text-6xl md:text-9xl font-display-title text-neutral-100 uppercase leading-none tracking-tighter flex-grow">
+                        Noé Spéciel
+                    </h2>
+                    <div class="flex items-center gap-6 max-w-lg w-full">
+                        <img src="Photo de Profil.png" alt="Noé Spéciel" class="w-28 h-28 rounded-full object-cover border-2 border-amber-400 flex-shrink-0 shadow-lg shadow-amber-400/5" onerror="this.style.display='none';">
+                        <p class="text-sm text-neutral-300 leading-relaxed">
+                            Passionné par le Web et le Product Design, j'étudie la conception d'interfaces esthétiques et accessibles. Je m'efforce de créer des solutions visuelles mémorables qui répondent aux besoins des utilisateurs.
+                        </p>
+                    </div>
                 </div>
-                <div class="bg-neutral-900 p-4 rounded-xl border border-neutral-800">
-                    <h4 class="font-bold text-amber-400 mb-2">Chiffres Clés</h4>
-                    <p class="text-2xl font-bold text-white font-mono">64%</p>
-                    <p class="text-xs text-neutral-500">des utilisateurs abandonnent l'achat via l'app lors des heures de pointe.</p>
+
+                <div class="w-full bg-amber-400 text-black text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-xl flex flex-wrap justify-center gap-4 md:gap-8 mb-12 shadow-lg">
+                    <span>UX/UI Designer</span>
+                    <span>•</span>
+                    <span>Product Designer</span>
+                    <span>•</span>
+                    <span>Web Designer</span>
                 </div>
-            </div>
-        `,
-        definition: `<h3 class="text-xl font-bold text-white mb-4">Définition du Problème</h3><p>Comment pourrions-nous simplifier l'accès aux titres de transport urgents pour un usager stressé en situation de mobilité ?</p>`,
-        ideation: `<h3 class="text-xl font-bold text-white mb-4">Idéation & Ateliers</h3><p>Création de parcours utilisateurs simplifiés basés sur l'accès en 1-clic aux titres favoris.</p>`,
-        prototypage: `<h3 class="text-xl font-bold text-white mb-4">Prototypage Haute Fidélité</h3><p>Design d'une interface en mode sombre optimisée pour le contraste en extérieur.</p><img src="https://placehold.co/800x450/161616/ffffff?text=Interface+Mockup" alt="Mockup IDFM" class="w-full rounded-xl my-4 border border-neutral-800">`,
-        tests: `<h3 class="text-xl font-bold text-white mb-4">Tests & Itérations</h3><p>Tests d'utilisabilité sur un panel de 12 usagers réguliers. Taux de succès des tâches en hausse de 40%.</p>`
-    }
-};
 
-// --- Système de Navigation Fluiide (SPA) ---
-function showPage(pageId, projectId = null, projectTitle = null, processId = null, processTitle = null) {
-    if (contentContainer) {
-        contentContainer.style.minHeight = `${contentContainer.offsetHeight}px`;
-    }
+                <div class="grid md:grid-cols-2 gap-12 mt-8">
+                    <div>
+                        <h3 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-6 border-b border-neutral-800 pb-2">Compétences</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex flex-col">
+                                <span class="text-neutral-200 font-medium">Recherche UX</span>
+                                <span class="text-xs text-neutral-400 mt-0.5">Entretiens utilisateurs, personas, parcours utilisateurs</span>
+                            </div>
+                            <div class="flex flex-col pt-2 border-t border-neutral-900">
+                                <span class="text-neutral-200 font-medium">Conception UX/UI</span>
+                                <span class="text-xs text-neutral-400 mt-0.5">Wireframes, prototypage, design d'interfaces</span>
+                            </div>
+                            <div class="flex flex-col pt-2 border-t border-neutral-900">
+                                <span class="text-neutral-200 font-medium">Design Systems & Accessibilité</span>
+                            </div>
+                            <div class="flex flex-col pt-2 border-t border-neutral-900">
+                                <span class="text-neutral-200 font-medium">Tests utilisateurs & optimisation</span>
+                            </div>
+                            <div class="flex flex-col pt-2 border-t border-neutral-900">
+                                <span class="text-neutral-200 font-medium">Intégration Front-End</span>
+                                <span class="text-xs text-neutral-400 mt-0.5">HTML, CSS, JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
 
-    pageContents.forEach(page => {
-        page.classList.remove('is-visible');
-        setTimeout(() => page.classList.add('hidden'), 250);
-    });
+                    <div>
+                        <h3 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-6 border-b border-neutral-800 pb-2">Outils</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex flex-col">
+                                <span class="text-neutral-500 text-xs uppercase tracking-wider mb-1 font-semibold">Design d'interfaces</span>
+                                <span class="text-neutral-200">Figma, Canva</span>
+                            </div>
+                            <div class="flex flex-col pt-2 border-t border-neutral-900">
+                                <span class="text-neutral-500 text-xs uppercase tracking-wider mb-1 font-semibold">Création graphique</span>
+                                <span class="text-neutral-200">Adobe Photoshop, Illustrator, InDesign</span>
+                            </div>
+                            <div class="flex flex-col pt-2 border-t border-neutral-900">
+                                <span class="text-neutral-500 text-xs uppercase tracking-wider mb-1 font-semibold">E-Commerce</span>
+                                <span class="text-neutral-200">Shopify</span>
+                            </div>
+                            <div class="flex flex-col pt-2 border-t border-neutral-900">
+                                <span class="text-neutral-500 text-xs uppercase tracking-wider mb-1 font-semibold">Gestion & Code</span>
+                                <span class="text-neutral-200">Notion, GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    setTimeout(() => {
-        const targetPage = document.getElementById(`page-${pageId}`);
-        if (targetPage) {
-            
-            // Logique d'affichage dynamique de contenu
-            if (pageId === 'project-detail' && projectId) {
-                currentProject.id = projectId;
-                currentProject.title = projectTitle;
-                projectDetailTitle.textContent = projectTitle;
+            <section id="page-work" data-page-content="work" class="page-content hidden">
+                <div class="mb-16">
+                    <div class="flex items-baseline space-x-4">
+                        <span class="text-8xl md:text-9xl font-serif-accent text-amber-400 leading-none mr-2">3</span>
+                        <h2 class="text-6xl md:text-8xl font-display-title text-white uppercase leading-none tracking-tight">
+                            Projects <span class="text-neutral-500 font-normal font-sans text-4xl md:text-5xl">UX/UI Design</span>
+                        </h2>
+                    </div>
+                    
+                    <div class="mt-8 flex flex-wrap gap-2 text-xs text-neutral-400 border-y border-neutral-800 py-3">
+                        <span class="px-3 py-1.5 pill-badge rounded-full">UX Research</span>
+                        <span class="px-3 py-1.5 pill-badge rounded-full">UI Design</span>
+                        <span class="px-3 py-1.5 pill-badge rounded-full">Prototypage Mobile & Desktop</span>
+                    </div>
+                </div>
                 
-                if (projectProcessDetails[projectId]) {
-                    figmaLinkButton.href = projectProcessDetails[projectId].figma;
-                    figmaLinkButton.classList.remove('hidden');
-                } else {
-                    figmaLinkButton.classList.add('hidden');
-                }
-                projectVisual.innerHTML = `<img src="https://placehold.co/1200x500/121212/ffffff?text=${encodeURIComponent(projectTitle)}" alt="${projectTitle}" class="w-full h-full object-cover">`;
-            }
+                <div class="space-y-3">
+                    <div class="project-card project-list-row px-6 py-4 rounded-xl cursor-pointer flex justify-between items-center gap-4" data-project-id="1" data-project-title="Transport à la Demande IDFM (Desktop)" role="button" tabindex="0" aria-label="Voir le projet Transport à la Demande IDFM">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
+                                <img src="IDFM-site.png" alt="Miniature TàD IDFM" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/121212/ffffff?text=IDFM';">
+                            </div>
+                            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+                                <span class="text-neutral-200 font-medium text-base">TàD IDFM (Desktop)</span>
+                                <span class="text-xs text-neutral-500">Étude de cas Île-de-France Mobilités</span>
+                            </div>
+                        </div>
+                        <span class="text-neutral-500 text-sm font-mono hidden sm:inline">01/03</span>
+                    </div>
 
-            if (pageId === 'process-detail' && projectId && processId) {
-                currentProjectNameSpan.textContent = currentProject.title;
-                processDetailTitle.textContent = processTitle;
+                    <div class="project-card project-list-row px-6 py-4 rounded-xl cursor-pointer flex justify-between items-center gap-4" data-project-id="2" data-project-title="Le Médoc à la Carte (Desktop/Mobile)" role="button" tabindex="0" aria-label="Voir le projet Le Médoc à la Carte">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
+                                <img src="medoc-site.png" alt="Miniature Le Médoc" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/121212/ffffff?text=Médoc';">
+                            </div>
+                            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+                                <span class="text-neutral-200 font-medium text-base">Le Médoc à la Carte</span>
+                                <span class="text-xs text-neutral-500">Site Web Responsive Œnologique</span>
+                            </div>
+                        </div>
+                        <span class="text-neutral-500 text-sm font-mono hidden sm:inline">02/03</span>
+                    </div>
+
+                    <div class="project-card project-list-row px-6 py-4 rounded-xl cursor-pointer flex justify-between items-center gap-4" data-project-id="3" data-project-title="Allociné (Desktop)" role="button" tabindex="0" aria-label="Voir le projet Allociné">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
+                                <img src="allocine-site.png" alt="Miniature Allociné" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/121212/ffffff?text=Allociné';">
+                            </div>
+                            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+                                <span class="text-neutral-200 font-medium text-base">Allociné (Desktop)</span>
+                                <span class="text-xs text-neutral-500">Optimisation des recommandations</span>
+                            </div>
+                        </div>
+                        <span class="text-neutral-500 text-sm font-mono hidden sm:inline">03/03</span>
+                    </div>
+                </div>
                 
-                const projectData = projectProcessDetails[projectId];
-                if (projectData && projectData[processId]) {
-                    processContentDiv.innerHTML = projectData[processId];
-                    setupImageZoom();
-                } else {
-                    processContentDiv.innerHTML = `<p class="text-neutral-500 italic">Contenu en cours de rédaction pour l'étape : ${processTitle}.</p>`;
-                }
-            }
+                <p class="mt-12 text-center text-neutral-500 italic text-xs">Sélectionnez une étude de cas pour explorer le processus de conception.</p>
+            </section>
 
-            targetPage.classList.remove('hidden');
-            setTimeout(() => {
-                targetPage.classList.add('is-visible');
-                window.scrollTo({ top: 0, behavior: 'instant' });
-                if (contentContainer) {
-                    contentContainer.style.minHeight = '';
-                }
-            }, 50);
-        }
-    }, 250);
+            <section id="page-project-detail" data-page-content="project-detail" class="page-content hidden">
+                <button id="back-to-work" class="flex items-center text-neutral-400 hover:text-white text-sm font-medium mb-8 transition duration-200 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 transition-transform group-hover:-translate-x-1"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                    Retour aux projets
+                </button>
 
-    navLinks.forEach(link => {
-        if (link.dataset.page === pageId) {
-            link.classList.add('text-white');
-            link.classList.remove('text-neutral-400');
-        } else {
-            link.classList.remove('text-white');
-            link.classList.add('text-neutral-400');
-        }
-    });
-}
+                <h2 id="project-detail-title" class="text-4xl md:text-6xl font-display-title text-white uppercase mb-8">Titre du Projet</h2>
 
-// --- Gestion du Zoom Image ---
-function setupImageZoom() {
-    const images = processContentDiv.querySelectorAll('img');
-    images.forEach(img => {
-        img.classList.add('cursor-pointer');
-        img.addEventListener('click', function() {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            modalImg.src = this.src;
-            modalImg.alt = this.alt;
-            document.body.style.overflow = 'hidden';
-        });
-    });
-}
+                <div id="project-detail-visual" class="mb-12 rounded-xl overflow-hidden border border-neutral-800 hidden shadow-2xl">
+                    <img src="IDFM-site.png" alt="Aperçu de l'interface" class="w-full h-auto object-cover"/>
+                </div>
+                
+                <div class="mb-12 p-6 bg-neutral-900/40 rounded-2xl border border-neutral-800 grid md:grid-cols-4 gap-6 text-xs backdrop-blur-sm">
+                    <div>
+                        <p class="text-neutral-500 mb-1 uppercase font-bold tracking-wider">Rôle</p>
+                        <p class="text-neutral-200 font-medium">UX / UI Designer</p>
+                    </div>
+                    <div>
+                        <p class="text-neutral-500 mb-1 uppercase font-bold tracking-wider">Durée</p>
+                        <p class="text-neutral-200 font-medium">6 semaines</p>
+                    </div>
+                    <div>
+                        <p class="text-neutral-500 mb-1 uppercase font-bold tracking-wider">Outils</p>
+                        <p class="text-neutral-200 font-medium">Figma, Miro</p>
+                    </div>
+                    <div>
+                        <p class="text-neutral-500 mb-1 uppercase font-bold tracking-wider">Compétences</p>
+                        <p class="text-neutral-200 font-medium">UX Research, UI Design, Tests</p>
+                    </div>
+                </div>
 
-if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-    });
-}
+                <div class="flex justify-end mb-8">
+                    <a id="figma-link-button-discreet" href="#" target="_blank" rel="noopener noreferrer" class="figma-button-wrapper tooltip p-0 m-0 btn-motion" aria-label="Ouvrir le prototype Figma">
+                        <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-3 hover:border-amber-400 transition cubic-bezier(0.16, 1, 0.3, 1) cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5A3.5 3.5 0 0 1 19 5.5A3.5 3.5 0 0 1 15.5 9H12V2z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5A3.5 3.5 0 0 1 8.5 22A3.5 3.5 0 0 1 5 18.5z"/><path d="M12 9h3.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5H12V9z"/></svg>
+                        </div>
+                    </a>
+                </div>
 
-if (modal) {
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-    });
-}
+                <h3 class="text-xl font-bold text-white mb-6 uppercase tracking-wide">Processus méthodologique</h3>
 
-// --- Gestionnaire Universel d'Accessibilité (Clavier + Souris) ---
-function handleAccessibilityClick(e, callback) {
-    if (e.type === 'click' || e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        callback();
-    }
-}
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="analyse" data-process-title="01 / Analyse utilisateur" role="button" tabindex="0">
+                        <div>
+                            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">01 / Analyse utilisateur</h4>
+                            <p class="text-xs text-neutral-400">Exploration de la problématique, recherche terrain et analyse qualitative.</p>
+                        </div>
+                    </div>
+                    <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="definition" data-process-title="02 / Définition & Synthèse" role="button" tabindex="0">
+                        <div>
+                            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">02 / Définition & Synthèse</h4>
+                            <p class="text-xs text-neutral-400">Cartographie des personas, parcours d'empathie et formalisation du problème central.</p>
+                        </div>
+                    </div>
+                    <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="ideation" data-process-title="03 / Idéation & Concept" role="button" tabindex="0">
+                        <div>
+                            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">03 / Idéation & Brainstorming</h4>
+                            <p class="text-xs text-neutral-400">Génération d'hypothèses d'amélioration concrètes et tri des fonctionnalités prioritaires.</p>
+                        </div>
+                    </div>
+                    <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="prototypage" data-process-title="04 / Prototypage UI" role="button" tabindex="0">
+                        <div>
+                            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">04 / Prototypage UI</h4>
+                            <p class="text-xs text-neutral-400">Conception des flux d'architecture d'information et maquettes haute fidélité interactives.</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 process-card p-5 rounded-xl flex justify-between items-center cursor-pointer" data-process-id="tests" data-process-title="05 / Tests & Itérations" role="button" tabindex="0">
+                        <div>
+                            <h4 class="text-sm font-bold text-amber-400 uppercase tracking-wider mb-1">05 / Tests & Itérations constructives</h4>
+                            <p class="text-xs text-neutral-400">Évaluation des solutions d'interfaces directement auprès des utilisateurs finaux ciblés.</p>
+                        </div>
+                        <span class="text-xs text-neutral-500 font-mono">Fin</span>
+                    </div>
+                </div>
+            </section>
 
-// --- Écouteurs d'Événements Réfactorisés ---
+            <section id="page-process-detail" data-page-content="process-detail" class="page-content hidden">
+                <button id="back-to-project-detail" class="flex items-center text-neutral-400 hover:text-white text-sm font-medium mb-8 transition duration-200 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 transition-transform group-hover:-translate-x-1"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                    Retour à l'étude de cas (<span id="current-project-name" class="text-amber-400"></span>)
+                </button>
+                <h2 id="process-detail-title" class="text-3xl md:text-5xl font-display-title text-white uppercase mb-8">Étape</h2>
+                <div id="process-content" class="prose prose-invert max-w-none text-neutral-300 text-sm leading-relaxed"></div>
+            </section>
 
-// Liens de la barre de navigation principale
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        showPage(link.dataset.page);
-    });
-});
+            <section id="page-contact" data-page-content="contact" class="page-content hidden">
+                <div class="max-w-xl mx-auto text-center py-12">
+                    <h2 class="text-5xl font-display-title text-white uppercase tracking-tight mb-4">Travaillons ensemble</h2>
+                    <p class="text-sm text-neutral-400 mb-12">Une idée à matérialiser ou un projet d'étude à mener ? Contactez-moi directement.</p>
 
-// Logo d'accueil
-const triggerHome = () => showPage(homeLink.dataset.page);
-homeLink.addEventListener('click', (e) => handleAccessibilityClick(e, triggerHome));
-homeLink.addEventListener('keydown', (e) => handleAccessibilityClick(e, triggerHome));
+                    <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 space-y-4 text-sm text-left mb-8 shadow-xl">
+                        <div class="flex justify-between items-center py-2 border-b border-neutral-800">
+                            <span class="text-neutral-500 uppercase tracking-wider text-xs">Email</span>
+                            <a href="mailto:noe.speciel@hotmail.fr" class="text-neutral-200 hover:text-amber-400 transition font-mono">noe.speciel@hotmail.fr</a>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-neutral-800">
+                            <span class="text-neutral-500 uppercase tracking-wider text-xs">Téléphone</span>
+                            <a href="tel:+33783088823" class="text-neutral-200 hover:text-amber-400 transition font-mono" aria-label="Appeler Noé Spéciel au 07 83 08 88 23">07.83.08.88.23</a>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-neutral-500 uppercase tracking-wider text-xs">LinkedIn</span>
+                            <a href="https://www.linkedin.com/in/no%C3%A9-sp%C3%A9ciel-b16411159/" target="_blank" rel="noopener noreferrer" class="text-neutral-200 hover:text-amber-400 transition font-mono">in/noe-speciel</a>
+                        </div>
+                    </div>
 
-// Cartes de projets (Page Portfolio)
-projectCards.forEach(card => {
-    const triggerProject = () => {
-        const projectId = card.dataset.projectId;
-        const projectTitle = card.dataset.projectTitle;
-        showPage('project-detail', projectId, projectTitle);
-    };
-    card.addEventListener('click', (e) => handleAccessibilityClick(e, triggerProject));
-    card.addEventListener('keydown', (e) => handleAccessibilityClick(e, triggerProject));
-});
+                    <a href="cv-noe-speciel.pdf" download target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-3 bg-white text-black text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-amber-400 transition duration-300 shadow-lg btn-motion">
+                        Télécharger mon CV (PDF)
+                    </a>
+                </div>
+            </section>
 
-// Bouton Retour aux projets
-backToWorkButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    showPage('work');
-});
+        </div>
+    </main>
 
-// Étapes méthodologiques (Boutons de processus UX)
-processCards.forEach(card => {
-    const triggerProcess = () => {
-        const processId = card.dataset.processId;
-        const processTitle = card.dataset.processTitle;
-        showPage('process-detail', currentProject.id, currentProject.title, processId, processTitle);
-    };
-    card.addEventListener('click', (e) => handleAccessibilityClick(e, triggerProcess));
-    card.addEventListener('keydown', (e) => handleAccessibilityClick(e, triggerProcess));
-});
+    <div id="image-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-95 items-center justify-center p-4">
+        <span class="close-modal-btn text-white text-4xl absolute top-6 right-8 cursor-pointer hover:text-amber-400" role="button" tabindex="0" aria-label="Fermer la modale">&times;</span>
+        <img id="modal-image" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl" src="" alt="Agrandissement" />
+    </div>
+    
+    <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-neutral-600 text-xs border-t border-neutral-900">
+        &copy; 2026 Noé Spéciel | Designer UX/UI. Tous droits réservés.
+    </footer>
 
-// Bouton Retour à l'étude de cas principale
-backToProjectDetailButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    showPage('project-detail', currentProject.id, currentProject.title);
-});
-
-// Initialisation au chargement de la page
-document.addEventListener('DOMContentLoaded', () => {
-    showPage('about');
-});
+    <script src="js/app.js"></script>
+</body>
+</html>
