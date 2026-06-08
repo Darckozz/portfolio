@@ -7,6 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <style>
+        .font-serif-accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body class="min-h-screen">
 
@@ -98,63 +105,76 @@
             </section>
 
             <section id="page-work" data-page-content="work" class="page-content hidden">
-                <div class="mb-16">
+                <div class="mb-12">
                     <div class="flex items-baseline space-x-4">
                         <span class="text-8xl md:text-9xl font-serif-accent text-amber-400 leading-none mr-2">3</span>
                         <h2 class="text-6xl md:text-8xl font-display-title text-white uppercase leading-none tracking-tight">
-                            Projects <span class="text-neutral-500 font-normal font-sans text-4xl md:text-5xl">UX/UI Design</span>
+                            Projets <span class="text-neutral-500 font-normal font-sans text-4xl md:text-5xl">UX/UI</span>
                         </h2>
                     </div>
                     
-                    <div class="mt-8 flex flex-wrap gap-2 text-xs text-neutral-400 border-y border-neutral-800 py-3">
-                        <span class="px-3 py-1.5 pill-badge rounded-full">UX Research</span>
-                        <span class="px-3 py-1.5 pill-badge rounded-full">UI Design</span>
-                        <span class="px-3 py-1.5 pill-badge rounded-full">Prototypage Mobile & Desktop</span>
+                    <div class="mt-8 flex flex-wrap gap-2 text-xs border-y border-neutral-800 py-3">
+                        <button class="px-4 py-1.5 pill-badge rounded-full text-white border-amber-400 bg-neutral-900/50" data-project-tab="1">01. TàD IDFM</button>
+                        <button class="px-4 py-1.5 pill-badge rounded-full" data-project-tab="2">02. Le Médoc à la Carte</button>
+                        <button class="px-4 py-1.5 pill-badge rounded-full" data-project-tab="3">03. Allociné Desktop</button>
                     </div>
                 </div>
                 
-                <div class="space-y-3">
-                    <div class="project-card project-list-row px-6 py-4 rounded-xl cursor-pointer flex justify-between items-center gap-4" data-project-id="1" data-project-title="Transport à la Demande IDFM (Desktop)" role="button" tabindex="0" aria-label="Voir le projet Transport à la Demande IDFM">
-                        <div class="flex items-center gap-6">
-                            <div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
-                                <img src="IDFM-site.png" alt="Miniature TàD IDFM" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/121212/ffffff?text=IDFM';">
+                <div class="mt-8">
+                    <div id="tab-content-1" class="project-tab-content space-y-6">
+                        <div class="project-card bg-neutral-900/40 border border-neutral-800 rounded-2xl p-6 md:p-8 cursor-pointer group" data-project-id="1" data-project-title="Transport à la Demande IDFM (Desktop)" role="button" tabindex="0" aria-label="Ouvrir le projet Transport à la Demande IDFM">
+                            <div class="w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden bg-neutral-950 border border-neutral-800 mb-6">
+                                <img src="IDFM-site.png" alt="Interface de Transport à la Demande IDFM" class="w-full h-full object-cover group-hover:scale-[1.01] transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/1200x500/121212/ffffff?text=IDFM+Desktop';">
                             </div>
-                            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                                <span class="text-neutral-200 font-medium text-base">TàD IDFM (Desktop)</span>
-                                <span class="text-xs text-neutral-500">Étude de cas Île-de-France Mobilités</span>
+                            <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-2">
+                                <h3 class="text-2xl font-bold text-neutral-100 group-hover:text-amber-400 transition">Transport à la Demande IDFM</h3>
+                                <span class="text-xs font-mono text-neutral-500">Étude de cas Île-de-France Mobilités (Desktop)</span>
                             </div>
+                            <p class="text-sm text-neutral-400 mt-3 max-w-4xl leading-relaxed">
+                                Analyse et refonte complète du parcours utilisateur de réservation pour le service de Transport à la Demande d'Île-de-France Mobilités. Ce projet se concentre sur l'automatisation des tâches complexes de géolocalisation, la simplification didactique de la notion de zone tarifaire et l'optimisation minutieuse des contrastes visuels à destination des usagers seniors et novices.
+                            </p>
+                            <span class="inline-flex items-center text-xs text-amber-400 font-medium mt-6 group-hover:translate-x-1 transition-transform">
+                                Découvrir le processus méthodologique &rarr;
+                            </span>
                         </div>
-                        <span class="text-neutral-500 text-sm font-mono hidden sm:inline">01/03</span>
                     </div>
 
-                    <div class="project-card project-list-row px-6 py-4 rounded-xl cursor-pointer flex justify-between items-center gap-4" data-project-id="2" data-project-title="Le Médoc à la Carte (Desktop/Mobile)" role="button" tabindex="0" aria-label="Voir le projet Le Médoc à la Carte">
-                        <div class="flex items-center gap-6">
-                            <div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
-                                <img src="medoc-site.png" alt="Miniature Le Médoc" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/121212/ffffff?text=Médoc';">
+                    <div id="tab-content-2" class="project-tab-content space-y-6 hidden">
+                        <div class="project-card bg-neutral-900/40 border border-neutral-800 rounded-2xl p-6 md:p-8 cursor-pointer group" data-project-id="2" data-project-title="Le Médoc à la Carte (Desktop/Mobile)" role="button" tabindex="0" aria-label="Ouvrir le projet Le Médoc à la Carte">
+                            <div class="w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden bg-neutral-950 border border-neutral-800 mb-6">
+                                <img src="medoc-site.png" alt="Interface du site Le Médoc à la Carte" class="w-full h-full object-cover group-hover:scale-[1.01] transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/1200x500/121212/ffffff?text=Le+Médoc+à+la+Carte';">
                             </div>
-                            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                                <span class="text-neutral-200 font-medium text-base">Le Médoc à la Carte</span>
-                                <span class="text-xs text-neutral-500">Site Web Responsive Œnologique</span>
+                            <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-2">
+                                <h3 class="text-2xl font-bold text-neutral-100 group-hover:text-amber-400 transition">Le Médoc à la Carte</h3>
+                                <span class="text-xs font-mono text-neutral-500">Site Web Responsive Œnologique</span>
                             </div>
+                            <p class="text-sm text-neutral-400 mt-3 max-w-4xl leading-relaxed">
+                                Conception d'une expérience numérique immersive axée sur la planification touristique et la découverte oenologique en région bordelaise. Pensée dans une démarche résolument mobile-first, l'interface simplifie la création d'itinéraires multi-étapes personnalisables à l'aide d'une cartographie interactive et de filtres comportementaux basés sur les types d'expériences recherchées.
+                            </p>
+                            <span class="inline-flex items-center text-xs text-amber-400 font-medium mt-6 group-hover:translate-x-1 transition-transform">
+                                Découvrir le processus méthodologique &rarr;
+                            </span>
                         </div>
-                        <span class="text-neutral-500 text-sm font-mono hidden sm:inline">02/03</span>
                     </div>
 
-                    <div class="project-card project-list-row px-6 py-4 rounded-xl cursor-pointer flex justify-between items-center gap-4" data-project-id="3" data-project-title="Allociné (Desktop)" role="button" tabindex="0" aria-label="Voir le projet Allociné">
-                        <div class="flex items-center gap-6">
-                            <div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
-                                <img src="allocine-site.png" alt="Miniature Allociné" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/121212/ffffff?text=Allociné';">
+                    <div id="tab-content-3" class="project-tab-content space-y-6 hidden">
+                        <div class="project-card bg-neutral-900/40 border border-neutral-800 rounded-2xl p-6 md:p-8 cursor-pointer group" data-project-id="3" data-project-title="Allociné (Desktop)" role="button" tabindex="0" aria-label="Ouvrir le projet Allociné">
+                            <div class="w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden bg-neutral-950 border border-neutral-800 mb-6">
+                                <img src="allocine-site.png" alt="Interface Allociné Desktop" class="w-full h-full object-cover group-hover:scale-[1.01] transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/1200x500/121212/ffffff?text=Allociné+Desktop';">
                             </div>
-                            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                                <span class="text-neutral-200 font-medium text-base">Allociné (Desktop)</span>
-                                <span class="text-xs text-neutral-500">Optimisation des recommandations</span>
+                            <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-2">
+                                <h3 class="text-2xl font-bold text-neutral-100 group-hover:text-amber-400 transition">Allociné Desktop</h3>
+                                <span class="text-xs font-mono text-neutral-500">Optimisation des recommandations</span>
                             </div>
+                            <p class="text-sm text-neutral-400 mt-3 max-w-4xl leading-relaxed">
+                                Refonte et épuration ergonomique de l'interface de choix de programmes sur ordinateur. L'étude de cas documente la restructuration de la hiérarchie de l'information pour limiter la charge cognitive (surabondance d'encarts publicitaires) et l'implémentation innovante d'un moteur de filtres de recommandation alternatifs basés sur l'humeur émotionnelle ou la dimension sociale du spectateur.
+                            </p>
+                            <span class="inline-flex items-center text-xs text-amber-400 font-medium mt-6 group-hover:translate-x-1 transition-transform">
+                                Découvrir le processus méthodologique &rarr;
+                            </span>
                         </div>
-                        <span class="text-neutral-500 text-sm font-mono hidden sm:inline">03/03</span>
                     </div>
                 </div>
-                
-                <p class="mt-12 text-center text-neutral-500 italic text-xs">Sélectionnez une étude de cas pour explorer le processus de conception.</p>
             </section>
 
             <section id="page-project-detail" data-page-content="project-detail" class="page-content hidden">
@@ -273,7 +293,7 @@
 
     <div id="image-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-95 items-center justify-center p-4">
         <span class="close-modal-btn text-white text-4xl absolute top-6 right-8 cursor-pointer hover:text-amber-400" role="button" tabindex="0" aria-label="Fermer la modale">&times;</span>
-        <img id="modal-image" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl" src="" alt="Agrandissement" />
+        <img id="modal-image" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl" src=\"\" alt="Agrandissement" />
     </div>
     
     <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-neutral-600 text-xs border-t border-neutral-900">
