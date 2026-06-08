@@ -1,285 +1,528 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Noé Spéciel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-</head>
-<body class="min-h-screen">
+// État global pour stocker le projet actuellement affiché
+let currentProject = {
+    id: null,
+    title: null
+};
 
-    <header class="sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center">
-            <h1 id="home-link" class="text-xl font-bold tracking-tight cursor-pointer flex items-baseline mb-4 sm:mb-0" data-page="about" role="button" tabindex="0" aria-label="Retour à l'accueil">
-                <span class="text-white font-medium">Portfolio</span>
-                <span class="text-neutral-500 font-normal text-xs ml-3 hidden sm:inline">Étudiant en UX/UI Design</span>
-            </h1>
-            <nav class="space-x-6 flex items-center text-sm">
-                <a href="#" class="nav-link is-active" data-page="about">À propos</a>
-                <a href="#" class="nav-link" data-page="work">Projets</a>
-                <a href="#" class="nav-link" data-page="contact">Contact</a>
-            </nav>
-        </div>
-    </header>
+// --- Sélection des Éléments DOM ---
+const navLinks = document.querySelectorAll('.nav-link');
+const pageContents = document.querySelectorAll('.page-content');
+const homeLink = document.getElementById('home-link');
+const projectCards = document.querySelectorAll('.project-card');
+const projectDetailTitle = document.getElementById('project-detail-title');
+const backToWorkButton = document.getElementById('back-to-work');
+const figmaLinkButton = document.getElementById('figma-link-button-discreet');
+const projectVisual = document.getElementById('project-detail-visual');
+const processCards = document.querySelectorAll('.process-card');
+const backToProjectDetailButton = document.getElementById('back-to-project-detail');
+const currentProjectNameSpan = document.getElementById('current-project-name');
+const processDetailTitle = document.getElementById('process-detail-title');
+const processContentDiv = document.getElementById('process-content');
+const contentContainer = document.getElementById('content-container');
+const TRANSITION_DURATION = 500; // Modifié à 500 pour s'aligner parfaitement avec le CSS (0.5s)
+
+// --- ÉLÉMENTS DOM POUR LE ZOOM ---
+const modal = document.getElementById('image-modal');
+const modalImg = document.getElementById('modal-image');
+const closeBtn = document.querySelector('.close-modal-btn');
+
+
+// --- Données des Études de Cas ---
+const projectProcessDetails = {
+    // --- Projet 1 : Transport à la Demande IDFM (Desktop) ---
+    "1": {
+        analyse: `
+            <p>Pour mieux comprendre les <strong>besoins, motivations et difficultés</strong> des utilisateurs du Transport à la Demande (TàD) en Île-de-France, nous avons mené une recherche centrée sur l’utilisateur combinant entretiens semi-directifs, observations et sondages en ligne. L’objectif était de mettre en évidence les <strong>points de friction</strong> et d’identifier des pistes d’amélioration pour le parcours de réservation.</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🔍 Méthodologie & Participants</h3>
+            <div class="space-y-4 p-4 border border-neutral-800 rounded-xl bg-neutral-900/50">
+                <p class="font-semibold text-neutral-200">Participants :</p>
+                <ul class="list-disc list-inside space-y-1 ml-4 text-neutral-300">
+                    <li><strong>8 utilisateurs</strong> représentant différents profils : 2 étudiants, 2 actifs avec horaires irréguliers, 2 seniors peu familiers du numérique, 2 résidents de zones périphériques.</li>
+                    <li><em>Ces profils ont servi de base à la création des 3 Personas (Ethan, Jean-Pierre, Charline) pour synthétiser les besoins et les comportements.</em></li>
+                </ul>
+                <p class="font-semibold text-neutral-200">Méthodes de Recherche :</p>
+                <ul class="list-disc list-inside space-y-1 ml-4 text-neutral-300">
+                    <li><strong>Entretiens semi-directifs (45 min) :</strong> Questions ouvertes sur les habitudes de déplacement, difficultés et attentes.</li>
+                    <li><strong>Observation (Contextual Inquiry) :</strong> Suivi de 3 participants lors d’une recherche de transport ou d’un trajet TàD pour observer les comportements réels.</li>
+                    <li><strong>Sondage en ligne (25 réponses simulées) :</strong> Collecte de données quantitatives sur la fréquence d’utilisation et la perception de la simplicité du service.</li>
+                </ul>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">💡 Synthèse de la Recherche & Enseignements Clés</h3>
+            
+            <h4 class="text-xl font-bold text-white mt-6 mb-3">Principaux Points de Friction :</h4>
+            <ul class="list-disc list-inside space-y-2 ml-4 text-neutral-300">
+                <li><strong>Difficulté de la notion de zone (Priorité) :</strong> Les utilisateurs ne comprennent pas toujours la zone de service TàD (56% de frustration principale, voir tableau).</li>
+                <li><strong>Méconnaissance des arrêts :</strong> Crainte d’entrer une adresse non desservie, source de frustration et d’hésitation.</li>
+                <li><strong>Complexité pour les novices (Seniors) :</strong> Difficulté à naviguer dans l'interface et à comprendre la séquence des étapes de réservation TàD.</li>
+                <li><strong>Recherche manuelle fastidieuse :</strong> Forte demande pour la <strong>géolocalisation</strong> et les suggestions automatiques (72% jugée très importante).</li>
+                <li><strong>Manque de feedback clair :</strong> Messages d'erreur génériques ("Aucun service disponible") qui n'expliquent pas le problème et ne proposent pas d'alternatives.</li>
+            </ul>
+
+            <h4 class="text-xl font-bold text-white mt-8 mb-3">Verbatims Utilisateurs :</h4>
+            <div class="space-y-3 italic text-neutral-300 border-l-4 border-amber-400 pl-4 bg-neutral-900/30 p-4 rounded-lg">
+                <p>« Je ne sais jamais si mon arrêt est dans la bonne zone, j’ai peur de me tromper. » – <em>Étudiant</em></p>
+                <p>« Quand il n’y a pas de bus, je ne sais pas quoi faire, ça m’énerve. » – <em>Actif</em></p>
+                <p>« L’interface est un peu compliquée, je préfère demander à mon petit-fils de m’aider. » – <em>Senior</em></p>
+            </div>
+
+            <h4 class="text-xl font-bold text-white mt-8 mb-3">Résultats Clés du Sondage (Simulés) :</h4>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-neutral-800 border border-neutral-800 rounded-lg overflow-hidden">
+                    <thead class="bg-neutral-900">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-sm font-semibold text-amber-400">Question</th>
+                            <th class="px-4 py-3 text-left text-sm font-semibold text-amber-400">Réponse majoritaire</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-800 text-sm text-neutral-300">
+                        <tr>
+                            <td class="px-4 py-3 font-medium">Fréquence d’utilisation du TàD</td>
+                            <td class="px-4 py-3">40 % occasionnellement</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium">Confort avec les outils numériques</td>
+                            <td class="px-4 py-3">44 % moyen</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium">Importance de la géolocalisation</td>
+                            <td class="px-4 py-3"><strong class="text-amber-400">72 % très importante</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium">Frustration principale</td>
+                            <td class="px-4 py-3"><strong class="text-amber-400">Choix de la zone (56 %)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">Cartes d'Empathie (Empathy Maps) 🧭</h3>
+            <p>Ces cartes formalisent les émotions, pensées, actions et paroles des utilisateurs pour définir leurs besoins réels.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="text-center p-4 border border-neutral-800 bg-neutral-900/30 rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-neutral-200 mb-2">Profil Ethan Étudiant (22 ans)</h4>
+                    <img src="empathie-ethan.png" alt="Empathy Map pour Ethan, étudiant urbain" class="w-full h-auto object-cover rounded-lg mt-3 border border-neutral-800 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/121212/ffffff?text=Empathy+Map+Ethan';" />
+                </div>
+                <div class="text-center p-4 border border-neutral-800 bg-neutral-900/30 rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-neutral-200 mb-2">Profil Jean-Pierre Senior (68 ans)</h4>
+                    <img src="empathie-jean-pierre.png" alt="Empathy Map pour Jean-Pierre, senior peu familiers" class="w-full h-auto object-cover rounded-lg mt-3 border border-neutral-800 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/121212/ffffff?text=Empathy+Map+Jean-Pierre';" />
+                </div>
+                <div class="text-center p-4 border border-neutral-800 bg-neutral-900/30 rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-neutral-200 mb-2">Profil Charline Active (40 ans)</h4>
+                    <img src="empathie-charline.png" alt="Empathy Map pour Charline, active" class="w-full h-auto object-cover rounded-lg mt-3 border border-neutral-800 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x400/121212/ffffff?text=Empathy+Map+Charline';" />
+                </div>
+            </div>
+            <h4 class="text-xl font-bold text-white mt-8 mb-3">Synthèse des Insights (Vers la Définition) :</h4>
+            <ul class="list-disc list-inside space-y-2 ml-4 text-neutral-300">
+                <li>La conception doit se concentrer sur l'<strong>accompagnement visuel</strong> et l'<strong>automatisation</strong> des tâches répétitives.</li>
+                <li>Le besoin d'un <strong>guide contextuel</strong> est fort pour rassurer les utilisateurs les moins à l'aise (Jean-Pierre).</li>
+                <li>Chaque point de blocage doit être géré par un <strong>feedback clair et une alternative</strong> pour éviter l'abandon.</li>
+            </ul>
+        `,
+        definition: `
+            <p>À partir des observations, interviews et retours utilisateurs recueillis, la phase de synthèse a permis de transformer les données brutes en problèmes clairement définis, d’identifier les profils utilisateurs majeurs et de formuler un problème central à résoudre.</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🎯 Personas & besoins prioritaires</h3>
+            <p>Trois profils principaux émergent de la recherche :</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="text-center p-4 border border-neutral-800 bg-neutral-900/30 rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-neutral-200 mb-2">Profil Ethan (Étudiant)</h4>
+                    <img src="persona-ethan.png" alt="Photo de profil Persona Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-neutral-800 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/121212/ffffff?text=Persona+Ethan';" />
+                    <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit space-y-1 text-neutral-400">
+                        <li><strong>Problématique :</strong> Temps perdu avec les étapes manuelles et l'incertitude sur la desserte.</li>
+                        <li><strong>Besoin clé :</strong> Rapidité, Géolocalisation automatique, Fluidité.</li>
+                    </ul>
+                </div>
+                <div class="text-center p-4 border border-neutral-800 bg-neutral-900/30 rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-neutral-200 mb-2">Profil Jean-Pierre (Senior)</h4>
+                    <img src="persona-jean-pierre.png" alt="Photo de profil Persona Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-neutral-800 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/121212/ffffff?text=Persona+Jean-Pierre';" />
+                    <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit space-y-1 text-neutral-400">
+                        <li><strong>Problématique :</strong> Compréhension difficile des zones, crainte de faire une erreur.</li>
+                        <li><strong>Besoin clé :</strong> Clarté, Accompagnement, Messages rassurants.</li>
+                    </ul>
+                </div>
+                <div class="text-center p-4 border border-neutral-800 bg-neutral-900/30 rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-neutral-200 mb-2">Profil Charline (Active)</h4>
+                    <img src="persona-charline.png" alt="Photo de profil Persona Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-neutral-800 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/121212/ffffff?text=Persona+Charline';" />
+                    <ul class="list-disc list-inside text-sm mt-4 text-left mx-auto max-w-fit space-y-1 text-neutral-400">
+                        <li><strong>Problématique :</strong> Manque d'alternatives en cas de trajet impossible.</li>
+                        <li><strong>Besoin clé :</strong> Fiabilité, Processus rapide, Informations claires.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧩 Problèmes clés identifiés</h3>
+            <p>L’analyse des retours convergents fait émerger 4 axes d’insatisfaction majeurs :</p>
+            <ol class="list-decimal list-inside space-y-3 ml-4 text-neutral-300">
+                <li><strong>Difficulté à comprendre la notion de zone</strong>
+                    <p class="text-neutral-400 text-sm pl-4">Les utilisateurs ne savent pas toujours dans quelle zone se trouvent leurs arrêts.</p>
+                </li>
+                <li><strong>Saisie trop manuelle et manque d’assistance</strong>
+                    <p class="text-neutral-400 text-sm pl-4">Le service nécessite de taper des arrêts ou des adresses sans aide ou suggestion intelligente.</p>
+                </li>
+                <li><strong>Manque de feedback explicatif</strong>
+                    <p class="text-neutral-400 text-sm pl-4">En cas d’erreur ou de trajet indisponible, les messages sont génériques.</p>
+                </li>
+                <li><strong>Difficulté des novices à suivre le parcours</strong>
+                    <p class="text-neutral-400 text-sm pl-4">Sans guide ou tutoriel, les utilisateurs ont l’impression de “faire mal”.</p>
+                </li>
+            </ol>
+            
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">📝 User Stories (HMW déclinés)</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4 italic text-neutral-300">
+                <li>En tant qu'<strong>étudiant (Ethan)</strong>, je veux utiliser ma position actuelle comme départ, afin de réduire la saisie manuelle.</li>
+                <li>En tant que <strong>senior (Jean-Pierre)</strong>, je veux que la carte m'affiche clairement les arrêts de ma zone, afin de ne pas me tromper d'adresse.</li>
+                <li>En tant qu'<strong>active (Charline)</strong>, je veux un message qui m'explique clairement pourquoi mon trajet n'est pas disponible, afin de savoir immédiatement quelle alternative choisir.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🗺️ Parcours Utilisateur (User Journey Maps)</h3>
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="text-center p-4 border border-neutral-800 bg-neutral-900/30 rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-neutral-200 mb-2">Parcours Ethan</h4>
+                    <img src="parcours-ethan.png" alt="User Journey Map Ethan" class="w-full h-auto object-cover rounded-lg mt-3 border border-neutral-800 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/121212/ffffff?text=Journey+Ethan';" />
+                </div>
+                <div class="text-center p-4 border border-neutral-800 bg-neutral-900/30 rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-neutral-200 mb-2">Parcours Jean-Pierre</h4>
+                    <img src="parcours-jean-pierre.png" alt="User Journey Map Jean-Pierre" class="w-full h-auto object-cover rounded-lg mt-3 border border-neutral-800 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/121212/ffffff?text=Journey+Jean-Pierre';" />
+                </div>
+                <div class="text-center p-4 border border-neutral-800 bg-neutral-900/30 rounded-xl shadow-md">
+                    <h4 class="font-bold text-lg text-neutral-200 mb-2">Parcours Charline</h4>
+                    <img src="parcours-charline.png" alt="User Journey Map Charline" class="w-full h-auto object-cover rounded-lg mt-3 border border-neutral-800 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/300x200/121212/ffffff?text=Journey+Charline';" />
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">🧠 Insight UX majeur</h3>
+            <div class="bg-neutral-900 border border-neutral-800 p-6 rounded-lg my-4 shadow-inner">
+                <p class="text-xl font-bold text-amber-400">
+                    Les utilisateurs ne souhaitent pas “chercher un trajet”, ils souhaitent “être guidés vers une solution disponible”.
+                </p>
+            </div>
+
+            <blockquote class="text-xl font-bold text-amber-400 border-l-4 border-amber-400 pl-4 py-2 bg-neutral-900/40 rounded-lg my-4">
+                HMW : Comment pourrions-nous aider l’utilisateur à trouver rapidement un trajet valide, sans connaissance préalable des zones ni des arrêts ?
+            </blockquote>
+        `,
+        ideation: `
+            <p>Cette phase vise à transformer le problème central en solutions concrètes en utilisant les enseignements tirés de la recherche utilisateur.</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">🔹 Audit Concurrentiel & Opportunités</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-neutral-800 border border-neutral-800 rounded-lg overflow-hidden">
+                    <thead class="bg-neutral-900">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-amber-400">Concurrent</th>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-amber-400">Force observée</th>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-amber-400">Opportunité IDFM TàD</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-800 text-sm text-neutral-300">
+                        <tr>
+                            <td class="px-4 py-2 font-medium">Citymapper</td>
+                            <td class="px-4 py-2">Détection automatique de la position via GPS.</td>
+                            <td class="px-4 py-2">Intégrer la géolocalisation pour réduire la friction de saisie.</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 font-medium">Uber</td>
+                            <td class="px-2 py-2">Guides et aides optionnels fluides pour les novices.</td>
+                            <td class="px-4 py-2">Mettre en place un guide de prise en main optionnel.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-bold accent-text mt-12 mb-4">💡 Concepts clés retenus</h3>
+            <div class="space-y-4 mt-6">
+                <div class="p-4 border-l-4 border-amber-400 bg-neutral-900/40 rounded-r-lg">
+                    <h4 class="text-xl font-bold text-white mb-2">1. L'Assistant de Zone Intelligent</h4>
+                    <p class="text-sm text-neutral-300">Pré-remplir automatiquement le départ grâce au GPS et contraindre l'affichage de la carte uniquement sur les arrêts valides restants.</p>
+                </div>
+                <div class="p-4 border-l-4 border-amber-400 bg-neutral-900/40 rounded-r-lg">
+                    <h4 class="text-xl font-bold text-white mb-2">2. Le Diagnostic de Trajet Actionnable</h4>
+                    <p class="text-sm text-neutral-300">Remplacer "Aucun service disponible" par un diagnostic clair (horaires, indisponibilité de zone) et proposer des arrêts alternatifs à proximité.</p>
+                </div>
+            </div>
+        `,
+        prototypage: `
+            <p>La phase de Prototypage a englobé la conception Basse Fidélité (wireframes) et Haute Fidélité (maquettes UI) directement sur Figma.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Basse Fidélité (Wireframes)</h3>
+            <p class="text-neutral-300">Création de User Flows détaillés pour la réservation et la modification de trajets. Architecture d'information optimisée par onglets clairs pour séparer recherche active et favoris.</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Haute Fidélité (Maquettes UI)</h3>
+            <p class="text-neutral-300">Application des codes graphiques d'IDFM avec un accent fort sur l'accessibilité (contrastes AAA, tailles de textes adaptées aux seniors) et l'ajout de feedbacks explicatifs non intrusifs.</p>
+        `,
+        tests: `
+            <p>La phase finale a consisté en des tests utilisateurs modérés menés auprès d'un panel ciblé de 5 participants afin de mesurer l'efficacité des solutions apportées.</p>
+
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Résultats et Métriques :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4 text-neutral-300">
+                <li>Le <strong>taux de réussite des réservations</strong> est passé de 65% (ancienne interface) à <strong>95%</strong> sur le nouveau prototype.</li>
+                <li><strong>Itération nécessaire :</strong> Une confusion sur le bouton d'édition du trajet a nécessité de déplacer l'action vers l'écran principal. Après correction, le taux de succès sur la modification a atteint 90%.</li>
+            </ul>
+        `
+    },
     
-    <main class="max-w-5xl mx-auto px-6 py-12 md:py-24">
-        <div id="content-container" style="transition: min-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+    // --- Projet 2 : Le Médoc à la Carte (Desktop/Mobile) ---
+    "2": {
+        analyse: `
+            <p>L'analyse utilisateur sur le projet du Médoc à la Carte a été axée sur le tourisme œnologique en Gironde. Nous avons mené une analyse concurrentielle des plateformes de réservation de visites de châteaux pour en extraire les forces et faiblesses UX majeures.</p>
+            
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Problématique de départ :</h3>
+            <p class="text-neutral-300">Comment créer une expérience de découverte fluide qui équilibre l'information culturelle complexe des domaines viticoles et la simplicité de planification d'itinéraires géolocalisés ?</p>
+        `,
+        definition: `
+            <p>La phase de synthèse a mis en avant deux Personas cibles : Marc, le connaisseur (expert cherchant des grands crus spécifiques) et Léa, l'organisatrice (qui recherche un itinéraire clé en main et simple pour toute sa famille).</p>
 
-            <section id="page-about" data-page-content="about" class="page-content hidden">
-                <div class="flex flex-col md:flex-row gap-8 items-center mb-16">
-                    <h2 class="text-6xl md:text-9xl font-display-title text-neutral-100 uppercase leading-none tracking-tighter flex-grow">
-                        Noé Spéciel
-                    </h2>
-                    <div class="flex items-center gap-6 max-w-lg w-full">
-                        <img src="Photo de Profil.png" alt="Noé Spéciel" class="w-28 h-28 rounded-full object-cover border-2 border-amber-400 flex-shrink-0 shadow-lg shadow-amber-400/5" onerror="this.style.display='none';">
-                        <p class="text-sm text-neutral-300 leading-relaxed">
-                            Passionné par le Web et le Product Design, j'étudie la conception d'interfaces esthétiques et accessibles. Je m'efforce de créer des solutions visuelles mémorables qui répondent aux besoins des utilisateurs.
-                        </p>
-                    </div>
-                </div>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Points clés révélés :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4 text-neutral-300">
+                <li>Difficulté majeure des touristes internationaux à consolider les informations (langues, horaires).</li>
+                <li>Forte dépendance à la carte interactive pour concevoir une journée logique d'un point A à un point B sans perdre de temps sur la route.</li>
+            </ul>
+        `,
+        ideation: `
+            <p>L'idéation s'est concentrée sur des ateliers de "Crazy Eights" et de sketching rapide pour matérialiser le module de carte interactive multi-étapes sur mobile.</p>
 
-                <div class="w-full bg-amber-400 text-black text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-xl flex flex-wrap justify-center gap-4 md:gap-8 mb-12 shadow-lg">
-                    <span>UX/UI Designer</span>
-                    <span>•</span>
-                    <span>Product Designer</span>
-                    <span>•</span>
-                    <span>Web Designer</span>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-12 mt-8">
-                    <div>
-                        <h3 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-6 border-b border-neutral-800 pb-2">Compétences</h3>
-                        <div class="space-y-4 text-sm">
-                            <div class="flex flex-col">
-                                <span class="text-neutral-200 font-medium">Recherche UX</span>
-                                <span class="text-xs text-neutral-400 mt-0.5">Entretiens utilisateurs, personas, parcours utilisateurs</span>
-                            </div>
-                            <div class="flex flex-col pt-2 border-t border-neutral-900">
-                                <span class="text-neutral-200 font-medium">Conception UX/UI</span>
-                                <span class="text-xs text-neutral-400 mt-0.5">Wireframes, prototypage, design d'interfaces</span>
-                            </div>
-                            <div class="flex flex-col pt-2 border-t border-neutral-900">
-                                <span class="text-neutral-200 font-medium">Design Systems & Accessibilité</span>
-                            </div>
-                            <div class="flex flex-col pt-2 border-t border-neutral-900">
-                                <span class="text-neutral-200 font-medium">Tests utilisateurs & optimisation</span>
-                            </div>
-                            <div class="flex flex-col pt-2 border-t border-neutral-900">
-                                <span class="text-neutral-200 font-medium">Intégration Front-End</span>
-                                <span class="text-xs text-neutral-400 mt-0.5">HTML, CSS, JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-6 border-b border-neutral-800 pb-2">Outils</h3>
-                        <div class="space-y-4 text-sm">
-                            <div class="flex flex-col">
-                                <span class="text-neutral-500 text-xs uppercase tracking-wider mb-1 font-semibold">Design d'interfaces</span>
-                                <span class="text-neutral-200">Figma, Canva</span>
-                            </div>
-                            <div class="flex flex-col pt-2 border-t border-neutral-900">
-                                <span class="text-neutral-500 text-xs uppercase tracking-wider mb-1 font-semibold">Création graphique</span>
-                                <span class="text-neutral-200">Adobe Photoshop, Illustrator, InDesign</span>
-                            </div>
-                            <div class="flex flex-col pt-2 border-t border-neutral-900">
-                                <span class="text-neutral-500 text-xs uppercase tracking-wider mb-1 font-semibold">E-Commerce</span>
-                                <span class="text-neutral-200">Shopify</span>
-                            </div>
-                            <div class="flex flex-col pt-2 border-t border-neutral-900">
-                                <span class="text-neutral-500 text-xs uppercase tracking-wider mb-1 font-semibold">Gestion & Code</span>
-                                <span class="text-neutral-200">Notion, GitHub</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="page-work" data-page-content="work" class="page-content hidden">
-                <div class="mb-16">
-                    <div class="flex items-baseline space-x-4">
-                        <span class="text-8xl md:text-9xl font-serif-accent text-amber-400 leading-none mr-2">3</span>
-                        <h2 class="text-6xl md:text-8xl font-display-title text-white uppercase leading-none tracking-tight">
-                            Projects <span class="text-neutral-500 font-normal font-sans text-4xl md:text-5xl">UX/UI Design</span>
-                        </h2>
-                    </div>
-                    
-                    <div class="mt-8 flex flex-wrap gap-2 text-xs text-neutral-400 border-y border-neutral-800 py-3">
-                        <span class="px-3 py-1.5 pill-badge rounded-full">UX Research</span>
-                        <span class="px-3 py-1.5 pill-badge rounded-full">UI Design</span>
-                        <span class="px-3 py-1.5 pill-badge rounded-full">Prototypage Mobile & Desktop</span>
-                    </div>
-                </div>
-                
-                <div class="space-y-3">
-                    <div class="project-card project-list-row px-6 py-4 rounded-xl cursor-pointer flex justify-between items-center gap-4" data-project-id="1" data-project-title="Transport à la Demande IDFM (Desktop)" role="button" tabindex="0" aria-label="Voir le projet Transport à la Demande IDFM">
-                        <div class="flex items-center gap-6">
-                            <div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
-                                <img src="IDFM-site.png" alt="Miniature TàD IDFM" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/121212/ffffff?text=IDFM';">
-                            </div>
-                            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                                <span class="text-neutral-200 font-medium text-base">TàD IDFM (Desktop)</span>
-                                <span class="text-xs text-neutral-500">Étude de cas Île-de-France Mobilités</span>
-                            </div>
-                        </div>
-                        <span class="text-neutral-500 text-sm font-mono hidden sm:inline">01/03</span>
-                    </div>
-
-                    <div class="project-card project-list-row px-6 py-4 rounded-xl cursor-pointer flex justify-between items-center gap-4" data-project-id="2" data-project-title="Le Médoc à la Carte (Desktop/Mobile)" role="button" tabindex="0" aria-label="Voir le projet Le Médoc à la Carte">
-                        <div class="flex items-center gap-6">
-                            <div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
-                                <img src="medoc-site.png" alt="Miniature Le Médoc" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/121212/ffffff?text=Médoc';">
-                            </div>
-                            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                                <span class="text-neutral-200 font-medium text-base">Le Médoc à la Carte</span>
-                                <span class="text-xs text-neutral-500">Site Web Responsive Œnologique</span>
-                            </div>
-                        </div>
-                        <span class="text-neutral-500 text-sm font-mono hidden sm:inline">02/03</span>
-                    </div>
-
-                    <div class="project-card project-list-row px-6 py-4 rounded-xl cursor-pointer flex justify-between items-center gap-4" data-project-id="3" data-project-title="Allociné (Desktop)" role="button" tabindex="0" aria-label="Voir le projet Allociné">
-                        <div class="flex items-center gap-6">
-                            <div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
-                                <img src="allocine-site.png" alt="Miniature Allociné" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/121212/ffffff?text=Allociné';">
-                            </div>
-                            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                                <span class="text-neutral-200 font-medium text-base">Allociné (Desktop)</span>
-                                <span class="text-xs text-neutral-500">Optimisation des recommandations</span>
-                            </div>
-                        </div>
-                        <span class="text-neutral-500 text-sm font-mono hidden sm:inline">03/03</span>
-                    </div>
-                </div>
-                
-                <p class="mt-12 text-center text-neutral-500 italic text-xs">Sélectionnez une étude de cas pour explorer le processus de conception.</p>
-            </section>
-
-            <section id="page-project-detail" data-page-content="project-detail" class="page-content hidden">
-                <button id="back-to-work" class="flex items-center text-neutral-400 hover:text-white text-sm font-medium mb-8 transition duration-200 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 transition-transform group-hover:-translate-x-1"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-                    Retour aux projets
-                </button>
-
-                <h2 id="project-detail-title" class="text-4xl md:text-6xl font-display-title text-white uppercase mb-8">Titre du Projet</h2>
-
-                <div id="project-detail-visual" class="mb-12 rounded-xl overflow-hidden border border-neutral-800 hidden shadow-2xl">
-                    <img src="IDFM-site.png" alt="Aperçu de l'interface" class="w-full h-auto object-cover"/>
-                </div>
-                
-                <div class="mb-12 p-6 bg-neutral-900/40 rounded-2xl border border-neutral-800 grid md:grid-cols-4 gap-6 text-xs backdrop-blur-sm">
-                    <div>
-                        <p class="text-neutral-500 mb-1 uppercase font-bold tracking-wider">Rôle</p>
-                        <p class="text-neutral-200 font-medium">UX / UI Designer</p>
-                    </div>
-                    <div>
-                        <p class="text-neutral-500 mb-1 uppercase font-bold tracking-wider">Durée</p>
-                        <p class="text-neutral-200 font-medium">6 semaines</p>
-                    </div>
-                    <div>
-                        <p class="text-neutral-500 mb-1 uppercase font-bold tracking-wider">Outils</p>
-                        <p class="text-neutral-200 font-medium">Figma, Miro</p>
-                    </div>
-                    <div>
-                        <p class="text-neutral-500 mb-1 uppercase font-bold tracking-wider">Compétences</p>
-                        <p class="text-neutral-200 font-medium">UX Research, UI Design, Tests</p>
-                    </div>
-                </div>
-
-                <div class="flex justify-end mb-8">
-                    <a id="figma-link-button-discreet" href="#" target="_blank" rel="noopener noreferrer" class="figma-button-wrapper tooltip p-0 m-0 btn-motion" aria-label="Ouvrir le prototype Figma">
-                        <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-3 hover:border-amber-400 transition cubic-bezier(0.16, 1, 0.3, 1) cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5A3.5 3.5 0 0 1 19 5.5A3.5 3.5 0 0 1 15.5 9H12V2z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5A3.5 3.5 0 0 1 8.5 22A3.5 3.5 0 0 1 5 18.5z"/><path d="M12 9h3.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5H12V9z"/></svg>
-                        </div>
-                    </a>
-                </div>
-
-                <h3 class="text-xl font-bold text-white mb-6 uppercase tracking-wide">Processus méthodologique</h3>
-
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="analyse" data-process-title="01 / Analyse utilisateur" role="button" tabindex="0">
-                        <div>
-                            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">01 / Analyse utilisateur</h4>
-                            <p class="text-xs text-neutral-400">Exploration de la problématique, recherche terrain et analyse qualitative.</p>
-                        </div>
-                    </div>
-                    <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="definition" data-process-title="02 / Définition & Synthèse" role="button" tabindex="0">
-                        <div>
-                            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">02 / Définition & Synthèse</h4>
-                            <p class="text-xs text-neutral-400">Cartographie des personas, parcours d'empathie et formalisation du problème central.</p>
-                        </div>
-                    </div>
-                    <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="ideation" data-process-title="03 / Idéation & Concept" role="button" tabindex="0">
-                        <div>
-                            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">03 / Idéation & Brainstorming</h4>
-                            <p class="text-xs text-neutral-400">Génération d'hypothèses d'amélioration concrètes et tri des fonctionnalités prioritaires.</p>
-                        </div>
-                    </div>
-                    <div class="process-card p-5 rounded-xl flex flex-col justify-between cursor-pointer" data-process-id="prototypage" data-process-title="04 / Prototypage UI" role="button" tabindex="0">
-                        <div>
-                            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">04 / Prototypage UI</h4>
-                            <p class="text-xs text-neutral-400">Conception des flux d'architecture d'information et maquettes haute fidélité interactives.</p>
-                        </div>
-                    </div>
-                    <div class="md:col-span-2 process-card p-5 rounded-xl flex justify-between items-center cursor-pointer" data-process-id="tests" data-process-title="05 / Tests & Itérations" role="button" tabindex="0">
-                        <div>
-                            <h4 class="text-sm font-bold text-amber-400 uppercase tracking-wider mb-1">05 / Tests & Itérations constructives</h4>
-                            <p class="text-xs text-neutral-400">Évaluation des solutions d'interfaces directement auprès des utilisateurs finaux ciblés.</p>
-                        </div>
-                        <span class="text-xs text-neutral-500 font-mono">Fin</span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="page-process-detail" data-page-content="process-detail" class="page-content hidden">
-                <button id="back-to-project-detail" class="flex items-center text-neutral-400 hover:text-white text-sm font-medium mb-8 transition duration-200 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 transition-transform group-hover:-translate-x-1"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-                    Retour à l'étude de cas (<span id="current-project-name" class="text-amber-400"></span>)
-                </button>
-                <h2 id="process-detail-title" class="text-3xl md:text-5xl font-display-title text-white uppercase mb-8">Étape</h2>
-                <div id="process-content" class="prose prose-invert max-w-none text-neutral-300 text-sm leading-relaxed"></div>
-            </section>
-
-            <section id="page-contact" data-page-content="contact" class="page-content hidden">
-                <div class="max-w-xl mx-auto text-center py-12">
-                    <h2 class="text-5xl font-display-title text-white uppercase tracking-tight mb-4">Travaillons ensemble</h2>
-                    <p class="text-sm text-neutral-400 mb-12">Une idée à matérialiser ou un projet d'étude à mener ? Contactez-moi directement.</p>
-
-                    <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 space-y-4 text-sm text-left mb-8 shadow-xl">
-                        <div class="flex justify-between items-center py-2 border-b border-neutral-800">
-                            <span class="text-neutral-500 uppercase tracking-wider text-xs">Email</span>
-                            <a href="mailto:noe.speciel@hotmail.fr" class="text-neutral-200 hover:text-amber-400 transition font-mono">noe.speciel@hotmail.fr</a>
-                        </div>
-                        <div class="flex justify-between items-center py-2 border-b border-neutral-800">
-                            <span class="text-neutral-500 uppercase tracking-wider text-xs">Téléphone</span>
-                            <a href="tel:+33783088823" class="text-neutral-200 hover:text-amber-400 transition font-mono" aria-label="Appeler Noé Spéciel au 07 83 08 88 23">07.83.08.88.23</a>
-                        </div>
-                        <div class="flex justify-between items-center py-2">
-                            <span class="text-neutral-500 uppercase tracking-wider text-xs">LinkedIn</span>
-                            <a href="https://www.linkedin.com/in/no%C3%A9-sp%C3%A9ciel-b16411159/" target="_blank" rel="noopener noreferrer" class="text-neutral-200 hover:text-amber-400 transition font-mono">in/noe-speciel</a>
-                        </div>
-                    </div>
-
-                    <a href="cv-noe-speciel.pdf" download target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-3 bg-white text-black text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-amber-400 transition duration-300 shadow-lg btn-motion">
-                        Télécharger mon CV (PDF)
-                    </a>
-                </div>
-            </section>
-
-        </div>
-    </main>
-
-    <div id="image-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-95 items-center justify-center p-4">
-        <span class="close-modal-btn text-white text-4xl absolute top-6 right-8 cursor-pointer hover:text-amber-400" role="button" tabindex="0" aria-label="Fermer la modale">&times;</span>
-        <img id="modal-image" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl" src="" alt="Agrandissement" />
-    </div>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Solutions retenues :</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4 text-neutral-300">
+                <li>Création d'un systeme de "Wishlist" pour mettre de côté des châteaux avant de générer automatiquement un tracé d'itinéraire idéal.</li>
+                <li>Filtres sélectifs basés sur l'expérience (ateliers enfants, dégustation d'exception).</li>
+            </ul>
+        `,
+        prototypage: `
+            <p>Dans une approche Mobile-First, le prototypage s'est d'abord focalisé sur l'ergonomie de la carte interactive sur petit écran (zones de clic minimales de 44x44px). La Haute Fidélité a adopté une charte immersive aux teintes bordeaux, ocre et dorées.</p>
+        `,
+        tests: `
+            <p>Les tests utilisateurs ont mesuré le temps nécessaire pour réserver un itinéraire personnalisé complet de 3 châteaux.</p>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Bilan :</h3>
+            <p class="text-neutral-300">Une baisse de 40% du temps de planification par rapport aux plateformes traditionnelles. L'intitulé de la fonction de sauvegarde a été modifié suite aux tests car il manquait de clarté pour les utilisateurs novices.</p>
+        `
+    },
     
-    <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-neutral-600 text-xs border-t border-neutral-900">
-        &copy; 2026 Noé Spéciel | Designer UX/UI. Tous droits réservés.
-    </footer>
+    // --- Projet 3 : Allociné (Desktop) ---
+    "3": {
+        analyse: `
+            <p>Cette étude de cas ciblait la refonte de l'expérience de découverte de films sur la plateforme Desktop d'Allociné. L'analyse heuristique initiale a mis en évidence une forte saturation visuelle de publicités et un manque d'outils intuitifs de recommandation.</p>
+        `,
+        definition: `
+            <p>Définition du Persona principal : Thomas, le cinéphile social, qui s'appuie fortement sur l'avis de son cercle d'amis et sur son humeur du moment pour choisir son programme du soir.</p>
 
-    <script src="js/app.js"></script>
-</body>
-</html>
+            <h3 class="text-2xl font-bold accent-text mt-8 mb-4">Enseignements clés :</h3>
+            <p class="text-neutral-300">La taxonomie classique par genre cinématographique (Action, Comédie...) ne suffit plus. Les utilisateurs expriment le besoin de filtrer par "Humeur" ou par critères sociaux ("Vu par mes amis").</p>
+        `,
+        ideation: `
+            <p>Pistes conceptuelles explorées lors d'un Design Sprint : mise en avant de cartes de films au format héroïque avec bandes-annonces immersives lues automatiquement en arrière-plan sans son.</p>
+        `,
+        prototypage: `
+            <p>Refonte globale de l'architecture de l'information pour nettoyer et aérer l'interface. Choix d'un thème "Cinéma" sombre unifié permettant aux affiches de films de ressortir de manière percutante.</p>
+        `,
+        tests: `
+            <p>Tâche testée : "Trouver un film récent bien noté adapté à une soirée détente". Le taux de succès a augmenté de 25% grâce au nouveau moteur de filtres combinés et à la clarté du système de notation unifié.</p>
+        `
+    }
+};
+
+
+// --- Fonctions de Navigation ---
+
+function getActivePage() {
+    return document.querySelector('.page-content.is-visible');
+}
+
+function showPage(pageId, projectId = null, projectTitle = null, processId = null, processTitle = null) {
+    const activePage = getActivePage();
+    const nextPage = document.querySelector(`[data-page-content="${pageId}"]`);
+    const TRANSITION_DURATION_MS = TRANSITION_DURATION;
+
+    if (modal && !modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    }
+
+    if (!nextPage) {
+        console.error(`Page ID '${pageId}' non trouvée.`);
+        return;
+    }
+
+    if (activePage === nextPage) {
+        if (pageId === 'work' && (currentProject.id !== null || activePage.id === 'page-project-detail' || activePage.id === 'page-process-detail')) {
+            currentProject.id = null;
+            currentProject.title = null;
+        } else {
+            return;
+        }
+    }
+
+    let activeNavPage = pageId;
+    if (pageId === 'project-detail' || pageId === 'process-detail') {
+        activeNavPage = 'work';
+    } else if (activePage && activePage.dataset.pageContent === 'project-detail' && pageId === 'work') {
+        activeNavPage = 'work';
+    }
+
+    navLinks.forEach(link => {
+        link.classList.remove('is-active', 'text-gray-900', 'text-gray-600');
+        link.classList.add('text-gray-600');
+        if (link.dataset.page === activeNavPage) {
+            link.classList.add('is-active', 'text-gray-900');
+        }
+    });
+
+    if (activePage && activePage !== nextPage) {
+        const initialHeight = activePage.offsetHeight;
+        contentContainer.style.minHeight = `${initialHeight}px`;
+        activePage.classList.remove('is-visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(startContentUpdate, TRANSITION_DURATION_MS);
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        startContentUpdate();
+    }
+
+    function startContentUpdate() {
+        if (activePage && activePage !== nextPage) {
+            activePage.classList.add('hidden');
+        }
+
+        if (pageId === 'process-detail' && processId && processTitle) {
+            if (!currentProject.title || !currentProject.id) {
+                showPage('work');
+                return;
+            }
+            const projectContent = projectProcessDetails[currentProject.id];
+            const content = (projectContent && projectContent[processId]) ? projectContent[processId] :
+                "<p>Contenu détaillé non disponible pour cette étape ou ce projet.</p>";
+            processDetailTitle.textContent = processTitle;
+            currentProjectNameSpan.textContent = currentProject.title;
+            processContentDiv.innerHTML = content;
+            
+            setupImageZoom();
+        }
+        
+        if (pageId === 'project-detail' && projectTitle && projectId) {
+            currentProject.id = projectId;
+            currentProject.title = projectTitle;
+            projectDetailTitle.textContent = projectTitle;
+            if (figmaLinkButton) {
+                figmaLinkButton.href = `https://www.figma.com/file/project-${projectId}-prototype`;
+            }
+
+            if (projectVisual) {
+                if (projectId === '1') {
+                    projectVisual.classList.remove('hidden');
+                } else {
+                    projectVisual.classList.add('hidden');
+                }
+            }
+        }
+
+        if (pageId !== 'project-detail' && projectVisual) {
+             projectVisual.classList.add('hidden');
+        }
+        
+        nextPage.classList.remove('hidden');
+        nextPage.classList.remove('is-visible');
+
+        const targetHeight = nextPage.offsetHeight;
+        contentContainer.style.minHeight = `${targetHeight}px`;
+
+        setTimeout(() => {
+            nextPage.classList.add('is-visible');
+            setTimeout(() => {
+                contentContainer.style.minHeight = 'auto'; 
+            }, TRANSITION_DURATION_MS); 
+        }, 10);
+    }
+}
+
+// --- Zoom Image (Optimisé avec Écouteurs Standardisés) ---
+function setupImageZoom() {
+    const images = processContentDiv.querySelectorAll('img');
+    images.forEach(img => {
+        img.classList.add('cursor-pointer');
+        img.addEventListener('click', function() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
+            document.body.style.overflow = 'hidden';
+        });
+    });
+}
+
+if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    });
+}
+
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// --- Gestionnaire Universel d'Accessibilité (Clavier + Souris) ---
+function handleAccessibilityClick(e, callback) {
+    if (e.type === 'click' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        callback();
+    }
+}
+
+// --- Écouteurs d'Événements Réfactorisés et Sécurisés ---
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageId = link.dataset.page;
+        showPage(pageId);
+    });
+});
+
+const triggerHome = () => showPage(homeLink.dataset.page);
+homeLink.addEventListener('click', (e) => handleAccessibilityClick(e, triggerHome));
+homeLink.addEventListener('keydown', (e) => handleAccessibilityClick(e, triggerHome));
+
+projectCards.forEach(card => {
+    const triggerProject = () => {
+        const projectId = card.dataset.projectId;
+        const projectTitle = card.dataset.projectTitle;
+        showPage('project-detail', projectId, projectTitle);
+    };
+    card.addEventListener('click', (e) => handleAccessibilityClick(e, triggerProject));
+    card.addEventListener('keydown', (e) => handleAccessibilityClick(e, triggerProject));
+});
+
+backToWorkButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    showPage('work');
+});
+
+processCards.forEach(card => {
+    const triggerProcess = () => {
+        const processId = card.dataset.processId;
+        const processTitle = card.dataset.processTitle;
+        showPage('process-detail', currentProject.id, currentProject.title, processId, processTitle);
+    };
+    card.addEventListener('click', (e) => handleAccessibilityClick(e, triggerProcess));
+    card.addEventListener('keydown', (e) => handleAccessibilityClick(e, triggerProcess));
+});
+
+backToProjectDetailButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    showPage('project-detail', currentProject.id, currentProject.title);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    showPage('about');
+});
