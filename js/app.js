@@ -349,6 +349,7 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
 
     if (activePage === nextPage) {
         if (pageId === 'work' && (currentProject.id !== null || activePage.id === 'page-project-detail' || activePage.id === 'page-process-detail')) {
+            // Si on reclique sur Work alors qu'on était dans un détail, on réinitialise pour rester sur Work
             currentProject.id = null;
             currentProject.title = null;
         } else {
@@ -438,7 +439,7 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
     }
 }
 
-// --- Zoom Image (Optimisé avec Écouteurs Standardisés) ---
+// --- Zoom Image ---
 function setupImageZoom() {
     const images = processContentDiv.querySelectorAll('img');
     images.forEach(img => {
@@ -479,7 +480,7 @@ function handleAccessibilityClick(e, callback) {
     }
 }
 
-// --- Écouteurs d'Événements Réfactorisés et Sécurisés ---
+// --- Écouteurs d'Événements Réfatorisés ---
 
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -521,6 +522,36 @@ processCards.forEach(card => {
 backToProjectDetailButton.addEventListener('click', (e) => {
     e.preventDefault();
     showPage('project-detail', currentProject.id, currentProject.title);
+});
+
+// --- Système d'onglets pour la bascule des projets ---
+document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('[data-project-tab]');
+    const tabContents = document.querySelectorAll('.project-tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetTabId = button.dataset.projectTab;
+
+            // 1. Gérer l'état graphique actif du badge
+            tabButtons.forEach(btn => {
+                btn.classList.remove('text-white', 'border-amber-400', 'bg-neutral-900/50');
+            });
+            button.classList.add('text-white', 'border-amber-400', 'bg-neutral-900/50');
+
+            // 2. Dissimuler toutes les cartes
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // 3. Rendre visible le projet sélectionné
+            const activeContent = document.getElementById(`tab-content-${targetTabId}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+        });
+    });
 });
 
 document.addEventListener('DOMContentLoaded', () => {
