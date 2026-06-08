@@ -19,9 +19,9 @@ const currentProjectNameSpan = document.getElementById('current-project-name');
 const processDetailTitle = document.getElementById('process-detail-title');
 const processContentDiv = document.getElementById('process-content');
 const contentContainer = document.getElementById('content-container');
-const TRANSITION_DURATION = 400; // Doit correspondre au CSS (0.4s)
+const TRANSITION_DURATION = 500; // Modifié à 500 pour s'aligner parfaitement avec le CSS (0.5s)
 
-// --- NOUVEAUX ÉLÉMENTS DOM POUR LE ZOOM ---
+// --- ÉLÉMENTS DOM POUR LE ZOOM ---
 const modal = document.getElementById('image-modal');
 const modalImg = document.getElementById('modal-image');
 const closeBtn = document.querySelector('.close-modal-btn');
@@ -55,7 +55,7 @@ const projectProcessDetails = {
             <ul class="list-disc list-inside space-y-2 ml-4 text-neutral-300">
                 <li><strong>Difficulté de la notion de zone (Priorité) :</strong> Les utilisateurs ne comprennent pas toujours la zone de service TàD (56% de frustration principale, voir tableau).</li>
                 <li><strong>Méconnaissance des arrêts :</strong> Crainte d’entrer une adresse non desservie, source de frustration et d’hésitation.</li>
-                <li><strong>Complexité pour les novices (Seniors) :</strong> Difficulté à naviguer dans l’interface et à comprendre la séquence des étapes de réservation TàD.</li>
+                <li><strong>Complexité pour les novices (Seniors) :</strong> Difficulté à naviguer dans l'interface et à comprendre la séquence des étapes de réservation TàD.</li>
                 <li><strong>Recherche manuelle fastidieuse :</strong> Forte demande pour la <strong>géolocalisation</strong> et les suggestions automatiques (72% jugée très importante).</li>
                 <li><strong>Manque de feedback clair :</strong> Messages d'erreur génériques ("Aucun service disponible") qui n'expliquent pas le problème et ne proposent pas d'alternatives.</li>
             </ul>
@@ -79,19 +79,19 @@ const projectProcessDetails = {
                     <tbody class="divide-y divide-neutral-800 text-sm text-neutral-300">
                         <tr>
                             <td class="px-4 py-3 font-medium">Fréquence d’utilisation du TàD</td>
-                            <td class="px-4 py-3">40 % occasionnellement</td>
+                            <td class="px-4 py-3">40 % occasionnellement</td>
                         </tr>
                         <tr>
                             <td class="px-4 py-3 font-medium">Confort avec les outils numériques</td>
-                            <td class="px-4 py-3">44 % moyen</td>
+                            <td class="px-4 py-3">44 % moyen</td>
                         </tr>
                         <tr>
                             <td class="px-4 py-3 font-medium">Importance de la géolocalisation</td>
-                            <td class="px-4 py-3"><strong class="text-amber-400">72 % très importante</strong></td>
+                            <td class="px-4 py-3"><strong class="text-amber-400">72 % très importante</strong></td>
                         </tr>
                         <tr>
                             <td class="px-4 py-3 font-medium">Frustration principale</td>
-                            <td class="px-4 py-3"><strong class="text-amber-400">Choix de la zone (56 %)</strong></td>
+                            <td class="px-4 py-3"><strong class="text-amber-400">Choix de la zone (56 %)</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -439,14 +439,10 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
 }
 
 function setupImageZoom() {
-    const oldImages = processContentDiv.querySelectorAll('img');
-    oldImages.forEach(img => {
-        img.onclick = null;
-        img.classList.remove('cursor-pointer');
-    });
-
     const images = processContentDiv.querySelectorAll('img');
     images.forEach(img => {
+        // Le reset et l'attribution de l'écouteur se font désormais dans la même boucle optimisée
+        img.onclick = null;
         img.classList.add('cursor-pointer');
         img.onclick = function() {
             modal.classList.remove('hidden');
@@ -484,16 +480,37 @@ navLinks.forEach(link => {
     });
 });
 
+// Gestion de l'accessibilité au clavier (Touche Entrée / Espace) pour les éléments cliquables
+function handleAccessibilityClick(e, callback) {
+    if (e.type === 'click' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        callback();
+    }
+}
+
 homeLink.addEventListener('click', (e) => {
     e.preventDefault();
     showPage(homeLink.dataset.page);
 });
+homeLink.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showPage(homeLink.dataset.page);
+    }
+});
 
 projectCards.forEach(card => {
-    card.addEventListener('click', () => {
+    const action = () => {
         const projectId = card.dataset.projectId;
         const projectTitle = card.dataset.projectTitle;
         showPage('project-detail', projectId, projectTitle);
+    };
+    card.addEventListener('click', action);
+    card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            action();
+        }
     });
 });
 
@@ -503,10 +520,17 @@ backToWorkButton.addEventListener('click', (e) => {
 });
 
 processCards.forEach(card => {
-    card.addEventListener('click', () => {
+    const action = () => {
         const processId = card.dataset.processId;
         const processTitle = card.dataset.processTitle;
         showPage('process-detail', currentProject.id, currentProject.title, processId, processTitle);
+    };
+    card.addEventListener('click', action);
+    card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            action();
+        }
     });
 });
 
