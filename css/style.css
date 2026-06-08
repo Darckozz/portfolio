@@ -86,6 +86,12 @@ header {
     color: #ffffff !important;
 }
 
+/* focus states visibles pour l'accessibilité au clavier */
+.nav-link:focus-visible, .project-card:focus-visible, .process-card:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 4px;
+}
+
 /* --- LISTES ET CARTES STYLE "EXEMPLE" --- */
 .project-list-row {
     background-color: var(--bg-dark-card);
