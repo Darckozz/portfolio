@@ -8,7 +8,6 @@ let currentProject = {
 const navLinks = document.querySelectorAll('.nav-link');
 const pageContents = document.querySelectorAll('.page-content');
 const homeLink = document.getElementById('home-link');
-const projectCards = document.querySelectorAll('.project-card');
 const projectDetailTitle = document.getElementById('project-detail-title');
 const backToWorkButton = document.getElementById('back-to-work');
 const figmaLinkButton = document.getElementById('figma-link-button-discreet');
@@ -63,7 +62,7 @@ const projectProcessDetails = {
             <h4 class="text-xl font-bold text-white mt-8 mb-3">Verbatims Utilisateurs :</h4>
             <div class="space-y-3 italic text-neutral-300 border-l-4 border-amber-400 pl-4 bg-neutral-900/30 p-4 rounded-lg">
                 <p>« Je ne sais jamais si mon arrêt est dans la bonne zone, j’ai peur de me tromper. » – <em>Étudiant</em></p>
-                <p>« Quand il n’y a pas de bus, je ne sais pas quoi faire, ça m’énerve. » – <em>Actif</em></p>
+                <p>« Quand il n’y a pas de bus, je ne sais quoi faire, ça m’énerve. » – <em>Actif</em></p>
                 <p>« L’interface est un peu compliquée, je préfère demander à mon petit-fils de m’aider. » – <em>Senior</em></p>
             </div>
 
@@ -349,7 +348,6 @@ function showPage(pageId, projectId = null, projectTitle = null, processId = nul
 
     if (activePage === nextPage) {
         if (pageId === 'work' && (currentProject.id !== null || activePage.id === 'page-project-detail' || activePage.id === 'page-process-detail')) {
-            // Si on reclique sur Work alors qu'on était dans un détail, on réinitialise pour rester sur Work
             currentProject.id = null;
             currentProject.title = null;
         } else {
@@ -480,7 +478,7 @@ function handleAccessibilityClick(e, callback) {
     }
 }
 
-// --- Écouteurs d'Événements Réfatorisés ---
+// --- Écouteurs d'Événements Glogaux ---
 
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -494,15 +492,25 @@ const triggerHome = () => showPage(homeLink.dataset.page);
 homeLink.addEventListener('click', (e) => handleAccessibilityClick(e, triggerHome));
 homeLink.addEventListener('keydown', (e) => handleAccessibilityClick(e, triggerHome));
 
-projectCards.forEach(card => {
-    const triggerProject = () => {
-        const projectId = card.dataset.projectId;
-        const projectTitle = card.dataset.projectTitle;
-        showPage('project-detail', projectId, projectTitle);
-    };
-    card.addEventListener('click', (e) => handleAccessibilityClick(e, triggerProject));
-    card.addEventListener('keydown', (e) => handleAccessibilityClick(e, triggerProject));
-});
+// Dynamise l'attribution des écouteurs sur la carte actuellement visible
+function bindActiveProjectCardClick() {
+    const visibleCard = document.querySelector('.project-tab-content:not(.hidden) .project-card');
+    if (visibleCard) {
+        // Nettoyage pour éviter les doublons d'écouteurs
+        visibleCard.replaceWith(visibleCard.cloneNode(true));
+        
+        // Récupération de la nouvelle instance propre de la carte
+        const cleanCard = document.querySelector('.project-tab-content:not(.hidden) .project-card');
+        
+        const triggerProject = () => {
+            const projectId = cleanCard.dataset.projectId;
+            const projectTitle = cleanCard.dataset.projectTitle;
+            showPage('project-detail', projectId, projectTitle);
+        };
+        cleanCard.addEventListener('click', (e) => handleAccessibilityClick(e, triggerProject));
+        cleanCard.addEventListener('keydown', (e) => handleAccessibilityClick(e, triggerProject));
+    }
+}
 
 backToWorkButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -524,31 +532,32 @@ backToProjectDetailButton.addEventListener('click', (e) => {
     showPage('project-detail', currentProject.id, currentProject.title);
 });
 
-// --- Système d'onglets pour la bascule des projets ---
+// --- Gestion des Onglets Interactifs (Correction du Clic incluse) ---
 document.addEventListener('DOMContentLoaded', () => {
     const tabButtons = document.querySelectorAll('[data-project-tab]');
     const tabContents = document.querySelectorAll('.project-tab-content');
+
+    // Initialisation au premier chargement pour le projet 1
+    bindActiveProjectCardClick();
 
     tabButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             const targetTabId = button.dataset.projectTab;
 
-            // 1. Gérer l'état graphique actif du badge
-            tabButtons.forEach(btn => {
-                btn.classList.remove('text-white', 'border-amber-400', 'bg-neutral-900/50');
-            });
+            // 1. État visuel du bouton cliqué
+            tabButtons.forEach(btn => btn.classList.remove('text-white', 'border-amber-400', 'bg-neutral-900/50'));
             button.classList.add('text-white', 'border-amber-400', 'bg-neutral-900/50');
 
-            // 2. Dissimuler toutes les cartes
-            tabContents.forEach(content => {
-                content.classList.add('hidden');
-            });
+            // 2. Masquer tous les projets
+            tabContents.forEach(content => content.classList.add('hidden'));
 
-            // 3. Rendre visible le projet sélectionné
+            // 3. Afficher le projet voulu
             const activeContent = document.getElementById(`tab-content-${targetTabId}`);
             if (activeContent) {
                 activeContent.classList.remove('hidden');
+                // Étape essentielle : On re-branche l'écouteur de clic sur le projet fraîchement dévoilé
+                bindActiveProjectCardClick();
             }
         });
     });
